@@ -7,6 +7,7 @@ html, body, #app, main{
     padding:0;
     color: white;
     overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
   }
   
   #app {
@@ -23,3 +24,37 @@ html, body, #app, main{
     }
   }
   
+  h1,h2,h3,h4,h5,h6{
+    font-family: 'Questrial', sans-serif;
+    font-weight: bold;
+  }
+
+  .bg-light{
+    background-color: #e5f6fa!important;
+  }
+
+  .btn-primary {
+    color: white;
+    background-color: #98aeb9;
+    border-color: #98aeb9;
+  }
+
+  .btn-primary:hover {
+    color: #fff;
+    background-color: #6c7c83;
+    border-color: #6c7c83;
+  }
+
+  .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #6c7c83;
+    border-color: #6c7c83;
+  }
+
+  .form-control:focus {
+    color: #6c7c83;
+    background-color: #fff;
+    border-color: #98aeb9;
+    outline: 0;
+    box-shadow: 0 0 0 .1rem rgba(152, 174, 185, 25%);
+  }
