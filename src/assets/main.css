@@ -5,7 +5,7 @@ html, body, #app, main{
     height:100%;
     margin:0;
     padding:0;
-    color: white;
+    color: black;
     overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
   }
@@ -31,6 +31,10 @@ html, body, #app, main{
 
   .bg-light{
     background-color: #e5f6fa!important;
+  }
+
+  .bg-secondary{
+    background-color: #d2b08c20!important;
   }
 
   .btn-primary {

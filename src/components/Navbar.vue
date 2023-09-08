@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-0">
+    <nav class="navbar navbar-expand-lg navbar-light py-0">
       <RouterLink class="" to="/"><img alt="Vue logo" class="logo py-3" src="@/assets/logo.png" width="80"/></RouterLink>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,6 +33,10 @@
 </template>
 
 <style scoped>
+  nav{
+    z-index: 3000;
+    width: 100%;
+  }
   .navbarContent{
     height: initial;
   }
@@ -42,14 +46,17 @@
     }
   }
   .nav-item:hover{
-    background-color: #aac2ce2d;
+    background-color: #aac2ce40;
     -webkit-transition: background-color 0.2s ease-out;
     -moz-transition: background-color 0.2s ease-out;
     -o-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
   }
   h3{
-    margin:0
+    color: white;
+    margin:0;
+    -webkit-filter: drop-shadow( 2px 2px 8px rgb(0, 0, 0));
+    filter: drop-shadow( 2px 2px 8px rgb(0, 0, 0));
   }
 
   
