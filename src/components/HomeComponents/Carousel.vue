@@ -11,7 +11,7 @@ import image10 from "../../assets/images/vache.jpg"
 </script>
 
 <template>
-<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="5000" data-wrap="true" data-pause="false">
     <ol class="carousel-indicators">
         <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselIndicators" data-slide-to="1"></li>
@@ -60,22 +60,7 @@ import image10 from "../../assets/images/vache.jpg"
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        slide: 0,
-        sliding: null
-      }
-    },
-    methods: {
-      onSlideStart(slide) {
-        this.sliding = true
-      },
-      onSlideEnd(slide) {
-        this.sliding = false
-      }
-    }
-  }
+
 </script>
     
 <style scoped>
@@ -144,8 +129,8 @@ import image10 from "../../assets/images/vache.jpg"
 }
 h2{
   font-size: clamp(14pt, 4vw, 20pt);
-  -webkit-filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0));
-    filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0));
+  /* -webkit-filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0));
+    filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0)); */
 }
 </style>
 

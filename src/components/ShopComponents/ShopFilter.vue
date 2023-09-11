@@ -1,10 +1,3 @@
-<script setup>
-import {ref} from 'vue';
-defineProps({
-  id: Number
-})
-</script>
-
 <template>
 <div class="mb-3">
     <!-- <div class="">
@@ -23,9 +16,16 @@ defineProps({
             </li>
         </ul>
     </div> -->
-    <a href="#">Peluche</a>
+    <a class="text-capitalize" :href="'category/'+index">{{ filter }}</a>
 </div>
 </template>
+
+<script setup>
+defineProps({
+  filter: Array,
+  index: Number
+})
+</script>
 
 <style scoped>
 input{
@@ -59,5 +59,6 @@ label{
 a{
     text-decoration: none;
     color: initial;
+    margin-right: 10px;
 }
 </style>

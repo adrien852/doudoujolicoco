@@ -1,31 +1,44 @@
-<script setup>
-import ShopFilter from './ShopFilter.vue'
-
-function filterShop(category){
-    // alert('Radio: '+category)
-}
-
-function filterShopAndCollapse(category, id){
-    // alert('Checkbox: '+category)
-}
-function closeAllFiltersBut(){
-    
-}
-</script>
-
 <template>
     <div class="filterContainer">
         <h4>Filtres</h4>
+        <loading :active="isLoading"></loading>
         <div class="filterList">
-            <ShopFilter :id="1" :filter="null" @closeAllFiltersBut="closeAllFiltersBut(filter)" @radio="filterShop" @checkbox="filterShopAndCollapse"/>
-
-            <ShopFilter :id="2" :filter="null" @radio="filterShop" @checkbox="filterShopAndCollapse"/>
-
-            <ShopFilter :id="3" :filter="null" @radio="filterShop" @checkbox="filterShopAndCollapse"/>
+            <ShopFilter v-for="(filter, index) in filters" :filter="filter" :index="index" @closeAllFiltersBut="closeAllFiltersBut(filter)" @radio="filterShop" @checkbox="filterShopAndCollapse"/>
         </div>
                 
     </div>
 </template>
+
+<script setup>
+    import ShopFilter from './ShopFilter.vue'
+    import {getCategories,} from '../../services/ShopService.js'
+    import { onMounted, ref } from 'vue';
+    import Loading from 'vue3-loading-overlay';
+    import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+
+    let filters = null
+    let isLoading = ref(true)
+
+    onMounted(async() => {
+        getCategories().then(response => {
+            filters = response;
+            isLoading.value = false;
+        })
+        
+    })
+
+
+    function filterShop(category){
+        // alert('Radio: '+category)
+    }
+
+    function filterShopAndCollapse(category, id){
+        // alert('Checkbox: '+category)
+    }
+    function closeAllFiltersBut(){
+        
+    }
+</script>
 
 <style scoped>
 .filterContainer{
@@ -41,6 +54,7 @@ function closeAllFiltersBut(){
 }
 
 .filterList{
-    width:150px;
+    min-width: 150px;
+    width:auto;
 }
 </style>

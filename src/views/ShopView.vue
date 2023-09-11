@@ -1,19 +1,9 @@
-<script setup>
-import ShopItem from '../components/ShopComponents/ShopItem.vue'
-import Filters from '../components/ShopComponents/ShopFilters.vue'
-</script>
-
 <template>
 <div class="">
     <div class="container py-5 d-flex">
-        <Filters />
-        <div class="row d-flex justify-content-left offset-lg-1 col-lg-8 col-12">
-            <ShopItem />
-            <ShopItem />
-            <ShopItem />
-            <ShopItem />
-            <ShopItem />
-        </div>
+        <loading :active="isLoading"></loading>
+        <ShopFilters />
+        <ShopItems />
     </div>
 </div>
 
@@ -24,3 +14,19 @@ import Filters from '../components/ShopComponents/ShopFilters.vue'
     max-width: 1600px;
 }
 </style>
+
+<script setup>
+    import ShopItems from '../components/ShopComponents/ShopItems.vue';
+    import ShopFilters from '../components/ShopComponents/ShopFilters.vue';
+    import { onMounted, ref } from 'vue';
+    import Loading from 'vue3-loading-overlay';
+    import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+
+    let isLoading = ref(true)
+    let filtersLoading = ref(true)
+    let itemsLoading = ref(true)
+
+    onMounted(() => {
+        isLoading.value = false;
+    })
+</script>

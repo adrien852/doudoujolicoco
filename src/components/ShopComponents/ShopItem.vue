@@ -1,14 +1,21 @@
 <script setup>
+import { RouterLink } from 'vue-router'
+defineProps({
+    item: Object
+})
 </script>
 
 <template>
-    <a href="#" class="col-md-4 col-sm-6 col-12 mt-4">
+    <RouterLink :to="'/item/'+item.id" class="col-md-4 col-sm-6 col-12 mt-4">
         <div class="shopItemCard bg-white d-flex flex-column">
-            <img width="300" src="../../assets/images/BLOG-5-400x250.png">
-            <p class="itemCategory text-center pt-2">Peluches - Grand format</p>
-            <p class="itemTitle text-center pt-2">Girafe</p>
+            <img width="300" height="300" :src="item.image">
+            <p class="itemCategory text-center pt-2 text-capitalize">{{ item.category }}</p>
+            <div class="itemTitle text-center d-flex">
+                <p class="m-auto">{{ item.title }}</p>
+            </div>
+            
         </div>
-    </a>
+    </RouterLink>
     
 </template>
 
@@ -23,6 +30,7 @@
         -o-transition: transform 0.1s ease-out;
         transition: transform 0.1s ease-out;
         color:initial;
+        height: fit-content;
     }
     a:hover{
         transform: scale(1.03);
@@ -45,5 +53,19 @@
     .itemTitle{
         font-size:larger;
         opacity: 1;
+        height:78px;
+        overflow: hidden;
+    }
+    .itemTitle p{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        padding: 15px;
+    }
+    img{
+        padding:15px;
+        object-fit: contain;
     }
 </style>
