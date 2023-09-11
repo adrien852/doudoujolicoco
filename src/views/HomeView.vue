@@ -3,13 +3,13 @@ import Carousel from '../components/HomeComponents/Carousel.vue'
 </script>
 
 <template>
-  <main>
+  <main class="position-absolute">
       <Carousel />
   </main>
 </template>
 
 <style scoped>
-  nav{
-    position: absolute!important;
-  }
+main{
+  top: 0;
+}
 </style>

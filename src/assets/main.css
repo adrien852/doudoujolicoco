@@ -12,6 +12,7 @@ html, body, #app, main{
   
   #app {
     font-weight: normal;
+    background-color: #d2b08c20!important;
   }
 
   
@@ -61,4 +62,8 @@ html, body, #app, main{
     border-color: #98aeb9;
     outline: 0;
     box-shadow: 0 0 0 .1rem rgba(152, 174, 185, 25%);
+  }
+
+  .p-nav{
+    padding-top: 112px;
   }

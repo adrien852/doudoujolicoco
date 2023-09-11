@@ -4,7 +4,7 @@ import Filters from '../components/ShopComponents/ShopFilters.vue'
 </script>
 
 <template>
-<div class="bg-secondary">
+<div class="">
     <div class="container py-5 d-flex">
         <Filters />
         <div class="row d-flex justify-content-left offset-lg-1 col-lg-8 col-12">
@@ -23,7 +23,4 @@ import Filters from '../components/ShopComponents/ShopFilters.vue'
 .container{
     max-width: 1600px;
 }
-nav{
-    position: relative!important;
-  }
 </style>

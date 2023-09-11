@@ -3,7 +3,7 @@
 
 <template>
     <a href="#" class="col-md-4 col-sm-6 col-12 mt-4">
-        <div class="shopItemCard bg-light d-flex flex-column">
+        <div class="shopItemCard bg-white d-flex flex-column">
             <img width="300" src="../../assets/images/BLOG-5-400x250.png">
             <p class="itemCategory text-center pt-2">Peluches - Grand format</p>
             <p class="itemTitle text-center pt-2">Girafe</p>

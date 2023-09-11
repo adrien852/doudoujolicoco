@@ -52,6 +52,9 @@ import image10 from "../../assets/images/vache.jpg"
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
+    <RouterLink class="" to="/shop"><button class="btn">
+      <h2 class="m-0">Visiter la boutique</h2>
+    </button></RouterLink>
 </div>
 
 </template>
@@ -75,36 +78,74 @@ import image10 from "../../assets/images/vache.jpg"
   }
 </script>
     
-<style>
+<style scoped>
 
 #carouselIndicators, .carousel-item, .carousel-inner, .carousel-item img{
   width:100%;
   height:calc(100vh);
+  filter: saturate(var(--value, 1.1))
 }
 .carousel-item img{
   object-fit: cover;
 }
 #image1 img{
-  object-position: 100% 55%;
+  object-position: 30% 55%;
 }
 #image3 img{
-  object-position: 100% 20%;
+  object-position: 20% 20%;
 }
 #image6 img{
-  object-position: 100% 20%;
+  object-position: 60% 20%;
 }
-#image5 img, #image7 img{
-  object-position: 100% 40%;
+#image7 img{
+  object-position: 70% 40%;
+}
+#image5 img {
+  object-position: 70% 40%;
 }
 #image8 img{
   object-position: 100% 10%;
 }
 #image9 img{
-  object-position: 100% 25%;;
+  object-position: 30% 25%;;
 }
 #image10 img{
-  object-position: 100% 34%;;
+  object-position: 30% 34%;;
 }
-
+.btn{
+  width:40%;
+  height: 100px;
+  min-width: 200px;
+  max-width: 500px;
+  position: absolute;
+  right: 0;
+  bottom: 80px;
+  left: 0;
+  z-index: 15;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #aac2cee7;
+  color: white;
+  border-radius: 10px;
+  -webkit-transition: transform 0.2s ease-out;
+    -moz-transition: transform 0.2s ease-out;
+    -o-transition: transform 0.2s ease-out;
+    transition: transform 0.2s ease-out;
+    -webkit-filter: drop-shadow( 2px 2px 5px rgb(0, 0, 0));
+    filter: drop-shadow( 2px 2px 5px rgb(0, 0, 0));
+}
+.btn:hover{
+    transform: scale(1.03);
+    -webkit-transition: transform 0.2s ease-out;
+    -moz-transition: transform 0.2s ease-out;
+    -o-transition: transform 0.2s ease-out;
+    transition: transform 0.2s ease-out;
+    text-decoration: none;
+}
+h2{
+  font-size: clamp(14pt, 4vw, 20pt);
+  -webkit-filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0));
+    filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0));
+}
 </style>
 
