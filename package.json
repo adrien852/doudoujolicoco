@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "@svifty7/vue-paginate": "^0.0.10",
     "axios": "^1.5.0",
     "bootstrap": "^5.3.1",
     "vue": "^3.3.4",

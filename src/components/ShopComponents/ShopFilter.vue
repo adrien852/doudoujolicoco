@@ -16,15 +16,22 @@
             </li>
         </ul>
     </div> -->
-    <a class="text-capitalize" :href="'category/'+index">{{ filter }}</a>
+    <a :class="['text-capitalize', {activeCategory: activeCategory == index}]" @click="filterByCategory" :href="'#'">{{ filter }}</a>
 </div>
 </template>
 
 <script setup>
-defineProps({
-  filter: Array,
-  index: Number
-})
+    defineProps({
+    filter: Array,
+    index: Number,
+    activeCategory: Boolean
+    });
+    const emit = defineEmits(['filterByCategory'])
+
+    function filterByCategory(){
+        emit('filterByCategory')
+    }
+
 </script>
 
 <style scoped>
@@ -60,5 +67,9 @@ a{
     text-decoration: none;
     color: initial;
     margin-right: 10px;
+    /* font-size: clamp(8pt, 1vw + 2pt, 11pt); */
+}
+.activeCategory{
+    font-weight: bold;
 }
 </style>

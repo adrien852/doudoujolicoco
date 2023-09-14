@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
-    <RouterLink :to="'/item/'+item.id" class="col-md-4 col-sm-6 col-12 mt-4">
+    <RouterLink :to="'/item/'+item.id" class="col-lg-3 col-sm-6 col-12 mt-2">
         <div class="shopItemCard bg-white d-flex flex-column">
             <img width="300" height="300" :src="item.image">
             <p class="itemCategory text-center pt-2 text-capitalize">{{ item.category }}</p>
