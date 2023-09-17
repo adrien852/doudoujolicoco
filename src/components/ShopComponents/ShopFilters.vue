@@ -3,7 +3,7 @@
         <!-- <h4>Filtres</h4> -->
         <loading :active="isLoading"></loading>
         <div class="filterList" v-for="(filter, index) in filters">
-            <ShopFilter :filter="filter" :index="index" :activeCategory="activeCategoryIndex" @filterByCategory="activeCategoryIndex = index" />
+            <ShopFilter :filter="filter" :index="index" :activeCategory="activeCategoryIndex" @categoryClick="activeCategoryIndex = index" />
         </div>
                 
     </div>
@@ -16,16 +16,13 @@
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 
-    defineProps({
-        showFilterModal: Boolean,
-    })
-
     let filters = null
     let isLoading = ref(true)
-    let activeCategoryIndex = ref(0)
+    let activeCategoryIndex = ref(null)
+    const emit = defineEmits(['filterByCategory'])
 
     watch(activeCategoryIndex, (x) =>{
-        console.log(activeCategoryIndex.value);
+        emit('filterByCategory', activeCategoryIndex.value);
     })
 
     onMounted(async() => {

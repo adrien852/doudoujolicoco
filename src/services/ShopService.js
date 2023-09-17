@@ -13,8 +13,9 @@ export async function getItems() {
     return response.data;
 }
 
-export async function getCategoryItems(category) {
+export async function getCategoryItems(categoryId) {
 
-    const response = await axios.get(API+'/products/category/'+category);
+    const categories = await getCategories();
+    const response = await axios.get(API+'/products/category/'+categories[categoryId]);
     return response.data;
 }

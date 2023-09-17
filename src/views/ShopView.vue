@@ -4,8 +4,8 @@
         <loading :active="isLoading"></loading>
         <!-- <button class="btn btn-primary d-lg-none d-block" data-toggle="modal" data-target="#filterModal">Filtres</button>  -->
         <div class="d-flex">
-            <ShopFilters />
-            <ShopItems />
+            <ShopFilters @filterByCategory="filterItemsByCategory" />
+            <ShopItems :categoryId="categoryId"/>
         </div>
         
     </div>
@@ -32,8 +32,13 @@
     let isLoading = ref(true)
     let filtersLoading = ref(true)
     let itemsLoading = ref(true)
+    let categoryId = null
 
     onMounted(() => {
         isLoading.value = false;
     })
+
+    function filterItemsByCategory(id){
+        categoryId = id;
+    }
 </script>

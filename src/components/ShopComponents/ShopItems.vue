@@ -1,11 +1,11 @@
 <template>
     <loading :active="isLoading"></loading>
     <div class="d-flex w-100 flex-column">
-        <vue-paginate class="row mx-auto my-2" v-model="page" :page-count="pageCount" :active-class="active" :containerClass="'pagination'" />
+        <vue-paginate class="row mx-auto my-2" v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" />
         <div id="shopItems" class="row d-flex justify-content-center col-lg-10 col-12 mx-auto">
             <ShopItem v-for="item in paginatedItems" :item="item" />
         </div>
-        <vue-paginate class="row mx-auto mt-4" v-model="page" :page-count="pageCount" :active-class="active" :containerClass="'pagination'" />
+        <vue-paginate class="row mx-auto mt-4" v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" />
     </div>
 </template>
 
@@ -42,35 +42,58 @@
 
 <script setup>
     import ShopItem from './ShopItem.vue';
-    import {getItems} from '../../services/ShopService.js'
+    import {getItems, getCategoryItems} from '../../services/ShopService.js'
     import { onMounted, ref, watch } from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import { VuePaginate } from '@svifty7/vue-paginate';
 
+    const props = defineProps({
+        categoryId: Number,
+    })
 
     let items = null
     let paginatedItems = null
     let isLoading = ref(true)
-    const itemsPerPage = 8
+    const itemsPerPage = 3
     let page = ref(1)
     let pageCount = ref(1)
 
     onMounted(async() => {
         getItems().then(response => {
             items = response;
-            paginatedItems = filterItems(page.value);
+            paginatedItems = paginateItems(page.value);
             pageCount.value = Math.ceil(items.length / itemsPerPage);
             isLoading.value = false;
         })
-        
     })
 
-    watch(page, (x) => {
-        paginatedItems = filterItems(page.value);
+    watch(page, () => {
+        paginatedItems = paginateItems(page.value);
     })
 
-    function filterItems(selectedPage){
+    watch(props, () =>{
+        isLoading.value = true;
+        page.value = 0;
+        if(props.categoryId == null){
+            getItems().then(response => {
+                items = response;
+                page.value = 1;
+                pageCount.value = Math.ceil(items.length / itemsPerPage);
+                isLoading.value = false;
+            })
+        }
+        else{
+            getCategoryItems(props.categoryId).then(response => {
+                items = response;
+                page.value = 1;
+                pageCount.value = Math.ceil(items.length / itemsPerPage);
+                isLoading.value = false;
+            }) 
+        }
+    })
+
+    function paginateItems(selectedPage){
         const startFrom = (selectedPage*itemsPerPage)-itemsPerPage;
         return items.slice(startFrom, startFrom+itemsPerPage);
     }

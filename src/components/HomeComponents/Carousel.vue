@@ -23,25 +23,25 @@ import image10 from "../../assets/images/vache.jpg"
     </ol>
     <div class="carousel-inner">
         <div id="image10" class="carousel-item active">
-          <img alt="Indigo Lights rocking on Fibber Magee's stage" class="d-block" :src="image10">
+          <img alt="Peluche de vache en crochet" class="d-block" :src="image10">
         </div>
         <div id="image3" class="carousel-item">
-          <img alt="Adrien, Indigo Lights' backing vocalist and bassist" class="d-block" :src="image3">
+          <img alt="Doudou d'ours avec un porte tétine en crochet" class="d-block" :src="image3">
         </div>
         <div id="image6" class="carousel-item">
-          <img alt="Gerard, Indigo Lights' lead singer and guitarist" class="d-block" :src="image6">
+          <img alt="Peluche d'éléphant en crochet" class="d-block" :src="image6">
         </div>
         <div id="image1" class="carousel-item">
-          <img alt="Indigo Lights is playing at Tsunami Studios" class="d-block" :src="image2">
+          <img alt="Boîte à bougies en crochet" class="d-block" :src="image2">
         </div>
         <div id="image5" class="carousel-item">
-          <img alt="Enzo, Indigo Lights' drummer" class="d-block" :src="image5">
+          <img alt="Peluche d'éléphant en crochet" class="d-block" :src="image5">
         </div>
         <div id="image8" class="carousel-item">
-          <img alt="Close up of Rob performing a solo on stage" class="d-block" :src="image8">
+          <img alt="Petits lapins en crochet" class="d-block" :src="image8">
         </div>
         <div id="image9" class="carousel-item">
-          <img alt="Rob singing on stage, Adrien in the background" class="d-block" :src="image9">
+          <img alt="Peluche de souris en crochet" class="d-block" :src="image9">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
