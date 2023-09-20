@@ -60,13 +60,6 @@
     }
 }
 
-.showFilterModal{
-    width: 0;
-    -webkit-transition: width 0.2s ease-out;
-    -moz-transition: width 0.2s ease-out;
-    -o-transition: width 0.2s ease-out;
-    transition: width 0.2s ease-out;
-}
 .btn{
     width: fit-content;
     font-size: clamp(10pt, 2vw, 13pt);

@@ -52,7 +52,7 @@ import image10 from "../../assets/images/vache.jpg"
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
-    <RouterLink class="" to="/shop"><button class="btn">
+    <RouterLink class="d-lg-none d-block" to="/shop"><button class="btn">
       <h2 class="m-0">Visiter la boutique</h2>
     </button></RouterLink>
 </div>

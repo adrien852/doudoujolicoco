@@ -2,7 +2,6 @@
 <div class="">
     <div class="container py-5">
         <loading :active="isLoading"></loading>
-        <!-- <button class="btn btn-primary d-lg-none d-block" data-toggle="modal" data-target="#filterModal">Filtres</button>  -->
         <div class="d-flex">
             <ShopFilters @filterByCategory="filterItemsByCategory" />
             <ShopItems :categoryId="categoryId"/>
