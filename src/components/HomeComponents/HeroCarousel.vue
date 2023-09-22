@@ -1,13 +1,13 @@
 <script setup>
-import image2 from "../../assets/images/boite1.jpg"
-import image3 from "../../assets/images/doudous1.jpg"
-import image4 from "../../assets/images/dragon.jpg"
-import image5 from "../../assets/images/elephant1.jpg"
-import image6 from "../../assets/images/elephant2.jpg"
-import image7 from "../../assets/images/elephant3.jpg"
-import image8 from "../../assets/images/lapins.jpg"
-import image9 from "../../assets/images/souris.jpg"
-import image1 from "../../assets/images/vache.jpg"
+import image2 from "@/assets/images/boite1.jpg"
+import image3 from "@/assets/images/doudous1.jpg"
+import image4 from "@/assets/images/dragon.jpg"
+import image5 from "@/assets/images/elephant1.jpg"
+import image6 from "@/assets/images/elephant2.jpg"
+import image7 from "@/assets/images/elephant3.jpg"
+import image8 from "@/assets/images/lapins.jpg"
+import image9 from "@/assets/images/souris.jpg"
+import image1 from "@/assets/images/vache.jpg"
 
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 
@@ -16,7 +16,7 @@ import 'vue3-carousel/dist/carousel.css'
 </script>
 
 <template>
-  <Carousel :wrapAround="true" transition="800" autoplay="4000">
+  <Carousel :wrapAround="true" transition="800" >
     <Slide v-for="(slide, index) in carouselImages" :key="index">
       <div :id="'image'+index" class="carousel__item"><img alt="Peluche de vache en crochet" class="d-block" :src="slide"></div>
     </Slide>
@@ -59,6 +59,8 @@ let carouselImages = [
 .carousel__pagination{
   position: relative;
   bottom: 30px;
+  margin:0;
+  height:0;
 }
 
 #image3 img{

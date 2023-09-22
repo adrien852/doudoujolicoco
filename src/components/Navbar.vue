@@ -4,7 +4,7 @@
 
 <template>
     <nav class="navbar navbar-expand-lg navbar-light py-0">
-      <RouterLink class="" to="/"><img alt="Vue logo" class="logo py-3" src="@/assets/logo.png" width="80"/></RouterLink>
+      <RouterLink class="" to="/"><img alt="Vue logo" class="logo py-3" src="@/assets/logo.png" width="60"/></RouterLink>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -43,7 +43,7 @@
   }
   @media (min-width: 992px) {
     .navbarContent{
-      height: 112px;
+      height: 100px;
     }
   }
   .nav-item:hover{

@@ -1,6 +1,6 @@
 <template>
 <div class="">
-    <div class="container py-5">
+    <div class="container py-3">
         <loading :active="isLoading"></loading>
         <div class="d-flex">
             <ShopFilters @filterByCategory="filterItemsByCategory" />
@@ -22,8 +22,8 @@
 </style>
 
 <script setup>
-    import ShopItems from '../components/ShopComponents/ShopItems.vue';
-    import ShopFilters from '../components/ShopComponents/ShopFilters.vue';
+    import ShopItems from '@/components/ShopComponents/ShopItems.vue';
+    import ShopFilters from '@/components/ShopComponents/ShopFilters.vue';
     import { onMounted, ref } from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';

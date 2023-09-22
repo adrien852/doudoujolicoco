@@ -1,5 +1,21 @@
 <script setup>
-import Carousel from '../components/HomeComponents/CarouselVue.vue'
+  import Carousel from '@/components/HomeComponents/HeroCarousel.vue'
+  import ShopCarousel from '../components/HomeComponents/ShopCarousel.vue';
+  import {getItems} from '@/services/ShopService.js'
+  import { onMounted, ref} from 'vue';
+
+  let items = [];
+  let isLoading = ref(true);
+  let dataLoaded = ref(false);
+
+  onMounted(async() => {
+      getItems().then(response => {
+          items = response;
+          dataLoaded.value = true;
+      })
+      
+  })
+
 </script>
 
 <template>
@@ -21,7 +37,9 @@ import Carousel from '../components/HomeComponents/CarouselVue.vue'
         <Carousel />
       </div>
     </div>
-      
+    <div class="">
+      <ShopCarousel class="mx-4" v-if="dataLoaded" :items="items" />
+    </div>
   </main>
 </template>
 

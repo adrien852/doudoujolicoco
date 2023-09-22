@@ -1,5 +1,5 @@
 <template>
-    <div :class="['filterContainer']">
+    <div :class="['filterContainer pt-3']">
         <!-- <h4>Filtres</h4> -->
         <loading :active="isLoading"></loading>
         <div class="filterList" v-for="(filter, index) in filters">
@@ -10,13 +10,13 @@
 </template>
 
 <script setup>
-    import ShopFilter from './ShopFilter.vue'
-    import {getCategories,} from '../../services/ShopService.js'
+    import ShopFilter from './ShopFilter.vue';
+    import {getCategories,} from '@/services/ShopService.js';
     import { onMounted, ref, watch, computed } from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 
-    let filters = null
+    let filters = []
     let isLoading = ref(true)
     let activeCategoryIndex = ref(null)
     const emit = defineEmits(['filterByCategory'])

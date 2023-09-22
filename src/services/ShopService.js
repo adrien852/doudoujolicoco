@@ -13,6 +13,12 @@ export async function getItems() {
     return response.data;
 }
 
+export async function getItem(itemId) {
+
+    const response = await axios.get(API+'/product/'+itemId);
+    return response.data;
+}
+
 export async function getCategoryItems(categoryId) {
 
     const categories = await getCategories();

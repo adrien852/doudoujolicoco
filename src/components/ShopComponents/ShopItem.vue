@@ -6,14 +6,13 @@ defineProps({
 </script>
 
 <template>
-    <RouterLink :to="'/item/'+item.id" class="col-lg-3 col-sm-6 col-12 mt-2">
+    <RouterLink :to="'/item/'+item.id" class="">
         <div class="shopItemCard bg-white d-flex flex-column">
-            <img width="300" height="300" :src="item.image">
+            <img width="300" height="300" :id="'item'+item.id" :src="item.image">
             <p class="itemCategory text-center pt-2 text-capitalize">{{ item.category }}</p>
             <div class="itemTitle text-center d-flex">
                 <p class="m-auto">{{ item.title }}</p>
             </div>
-            
         </div>
     </RouterLink>
     
@@ -31,6 +30,7 @@ defineProps({
         transition: transform 0.1s ease-out;
         color:initial;
         height: fit-content;
+        width: 100%;
     }
     a:hover{
         transform: scale(1.03);

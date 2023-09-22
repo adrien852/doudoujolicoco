@@ -1,9 +1,11 @@
 <template>
     <loading :active="isLoading"></loading>
     <div class="d-flex w-100 flex-column">
-        <vue-paginate class="row mx-auto my-2" v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" />
+        <vue-paginate class="row mx-auto my-2"
+            v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
+        </vue-paginate>
         <div id="shopItems" class="row d-flex justify-content-center col-lg-10 col-12 mx-auto">
-            <ShopItem v-for="item in paginatedItems" :item="item" />
+            <ShopItem class="col-lg-3 col-sm-6 col-12 my-2" v-for="item in paginatedItems" :item="item" />
         </div>
         <vue-paginate class="row mx-auto mt-4" v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" />
     </div>
@@ -42,7 +44,7 @@
 
 <script setup>
     import ShopItem from './ShopItem.vue';
-    import {getItems, getCategoryItems} from '../../services/ShopService.js'
+    import {getItems, getCategoryItems} from '@/services/ShopService.js'
     import { onMounted, ref, watch } from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
@@ -55,7 +57,7 @@
     let items = null
     let paginatedItems = null
     let isLoading = ref(true)
-    const itemsPerPage = 3
+    const itemsPerPage = 8
     let page = ref(1)
     let pageCount = ref(1)
 
@@ -68,17 +70,14 @@
         })
     })
 
-    watch(page, () => {
-        paginatedItems = paginateItems(page.value);
-    })
-
     watch(props, () =>{
+        console.log('watch props')
         isLoading.value = true;
-        page.value = 0;
         if(props.categoryId == null){
             getItems().then(response => {
                 items = response;
                 page.value = 1;
+                paginatedItems = paginateItems(page.value);
                 pageCount.value = Math.ceil(items.length / itemsPerPage);
                 isLoading.value = false;
             })
@@ -87,6 +86,7 @@
             getCategoryItems(props.categoryId).then(response => {
                 items = response;
                 page.value = 1;
+                paginatedItems = paginateItems(page.value);
                 pageCount.value = Math.ceil(items.length / itemsPerPage);
                 isLoading.value = false;
             }) 
@@ -96,5 +96,11 @@
     function paginateItems(selectedPage){
         const startFrom = (selectedPage*itemsPerPage)-itemsPerPage;
         return items.slice(startFrom, startFrom+itemsPerPage);
+    }
+
+    function clickCallback(pageNum){
+        isLoading.value = true;
+        paginatedItems = paginateItems(pageNum);
+        isLoading.value = false;
     }
 </script>
