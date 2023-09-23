@@ -19,7 +19,7 @@
 </script>
 
 <template>
-  <main class="position-absolute">
+  <main class="">
     <div class="d-flex align-items-center">
       <div class="col-lg-5 col-12 h-100 m-auto d-lg-block d-none">
         <div class="heroLeft text-center">
