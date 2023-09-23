@@ -2,27 +2,25 @@
   <main class="w-100">
     <Hero />
     <div class="mx-5">
-      <ShopCarousel class="" v-if="dataLoaded" :items="items" />
+      <ShopCarousel class="" v-if="dataLoaded" :items="sampleShopItemStore.items" />
     </div>
   </main>
 </template>
 
 <script setup>
   import Hero from '@/components/HomeComponents/Hero.vue'
-  import ShopCarousel from '@/components/HomeComponents/ShopCarousel.vue';
-  import {getItems} from '@/services/ShopService.js'
-  import { onMounted, ref} from 'vue';
+  import ShopCarousel from '@/components/ShopComponents/ShopCarousel.vue';
+  import { useSampleItemStore } from '@/stores/SampleShopItemStore';
+  import { onBeforeMount, onMounted, ref} from 'vue';
 
-  let items = [];
+  const sampleShopItemStore = useSampleItemStore();
   let isLoading = ref(true);
   let dataLoaded = ref(false);
 
-  onMounted(async() => {
-      getItems().then(response => {
-          items = response;
-          dataLoaded.value = true;
-      })
-      
+  onBeforeMount(() => {
+    sampleShopItemStore.fill().then(() => {
+      dataLoaded.value = true;
+    });
   })
 
 </script>

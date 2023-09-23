@@ -1,6 +1,6 @@
 <template>
     <loading :active="isLoading"></loading>
-    <div ref="shopContainer" class="d-flex w-100 flex-column">
+    <div ref="shopContainer" class="d-flex flex-column">
         <vue-paginate class="row mx-auto my-2"
             v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
         </vue-paginate>

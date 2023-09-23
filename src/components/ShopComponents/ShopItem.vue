@@ -1,7 +1,7 @@
 <template>
     <RouterLink :to="'/item/'+item.id" class="">
         <div class="shopItemCard bg-white d-flex flex-column">
-            <img width="300" height="300" :id="'item'+item.id" :src="item.image">
+            <img width="300" height="300" :id="'item'+item.id" :src="imageUrl">
             <p class="itemCategory text-center pt-2 text-capitalize">{{ item.category }}</p>
             <div class="itemTitle text-center d-flex">
                 <p class="m-auto">{{ item.title }}</p>
@@ -13,9 +13,12 @@
 
 <script setup>
 import { RouterLink } from 'vue-router'
-defineProps({
+const props = defineProps({
     item: Object
 })
+
+const imageUrl = new URL(props.item.image, import.meta.url)
+
 </script>
 
 <style scoped>

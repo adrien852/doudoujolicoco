@@ -1,0 +1,20 @@
+[
+{
+    "id": 1,
+    "title": "Olaf",
+    "image": "/src/assets/images/olaf.jpg",
+    "category": "Peluche"
+},
+{
+    "id": 2,
+    "title": "Reine des Neiges",
+    "image": "/src/assets/images/reine.jpg",
+    "category": "Peluche"
+},
+{
+    "id": 3,
+    "title": "Pikachu",
+    "image": "/src/assets/images/pikachu.jpg",
+    "category": "Peluche"
+}
+]

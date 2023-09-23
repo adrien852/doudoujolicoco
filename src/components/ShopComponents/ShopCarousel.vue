@@ -1,5 +1,5 @@
 <template>
-    <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints" :wrapAround="true" autoplay="3000">
+    <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints" :wrapAround="true" :autoplay="3000">
         <Slide v-for="item in props.items" :key="item">
             <ShopItem :item="item" />
         </Slide>
@@ -12,9 +12,8 @@
 
 <script setup>
     import ShopItem from '../ShopComponents/ShopItem.vue';
-    import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
+    import { Carousel, Navigation, Slide } from 'vue3-carousel'
     import 'vue3-carousel/dist/carousel.css'
-    import { watch, ref} from 'vue';
 
     const props = defineProps({
         items: Array
