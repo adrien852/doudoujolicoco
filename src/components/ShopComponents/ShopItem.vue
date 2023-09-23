@@ -1,10 +1,3 @@
-<script setup>
-import { RouterLink } from 'vue-router'
-defineProps({
-    item: Object
-})
-</script>
-
 <template>
     <RouterLink :to="'/item/'+item.id" class="">
         <div class="shopItemCard bg-white d-flex flex-column">
@@ -17,6 +10,13 @@ defineProps({
     </RouterLink>
     
 </template>
+
+<script setup>
+import { RouterLink } from 'vue-router'
+defineProps({
+    item: Object
+})
+</script>
 
 <style scoped>
     .shopItemCard{

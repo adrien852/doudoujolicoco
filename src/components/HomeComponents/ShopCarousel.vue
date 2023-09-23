@@ -1,8 +1,7 @@
 <template>
-    <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints">
+    <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints" :wrapAround="true" autoplay="3000">
         <Slide v-for="item in props.items" :key="item">
             <ShopItem :item="item" />
-            <!-- {{ item.title }} -->
         </Slide>
 
         <template #addons>
@@ -30,7 +29,7 @@
         itemsToShow: 3,
         snapAlign: 'center',
       },
-      1024: {
+      992: {
         itemsToShow: 5,
         snapAlign: 'start',
       },
@@ -42,12 +41,15 @@
         padding: 10px;
     }
     #shopCarousel .carousel__icon{
-        fill: #98aeb9!important;
+        fill: #5f6c73 !important;
+        background-color: white;
+        border-radius: 100%;
+        box-shadow: 2px 3px 8px #0000001f;
     }
     .carousel__next{
-        right: -30px;
+        right: 0px;
     }
     .carousel__prev{
-        left: -30px;
+        left: 0px;
     }
 </style>

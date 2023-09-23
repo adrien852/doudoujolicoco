@@ -43,7 +43,7 @@
   }
   @media (min-width: 992px) {
     .navbarContent{
-      height: 100px;
+      height: 92px;
     }
   }
   .nav-item:hover{

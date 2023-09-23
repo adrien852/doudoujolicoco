@@ -1,22 +1,5 @@
-<script setup>
-import image2 from "@/assets/images/boite1.jpg"
-import image3 from "@/assets/images/doudous1.jpg"
-import image4 from "@/assets/images/dragon.jpg"
-import image5 from "@/assets/images/elephant1.jpg"
-import image6 from "@/assets/images/elephant2.jpg"
-import image7 from "@/assets/images/elephant3.jpg"
-import image8 from "@/assets/images/lapins.jpg"
-import image9 from "@/assets/images/souris.jpg"
-import image1 from "@/assets/images/vache.jpg"
-
-import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
-
-import 'vue3-carousel/dist/carousel.css'
-
-</script>
-
 <template>
-  <Carousel :wrapAround="true" transition="800" >
+  <Carousel :wrapAround="true" transition="800" autoplay="4000">
     <Slide v-for="(slide, index) in carouselImages" :key="index">
       <div :id="'image'+index" class="carousel__item"><img alt="Peluche de vache en crochet" class="d-block" :src="slide"></div>
     </Slide>
@@ -30,6 +13,24 @@ import 'vue3-carousel/dist/carousel.css'
       <h2 class="m-0">Visiter la boutique</h2>
     </button></RouterLink>
 </template>
+
+<script setup>
+import image2 from "@/assets/images/boite1.jpg"
+import image3 from "@/assets/images/doudous1.jpg"
+import image4 from "@/assets/images/dragon.jpg"
+import image5 from "@/assets/images/elephant1.jpg"
+import image6 from "@/assets/images/elephant2.jpg"
+import image7 from "@/assets/images/elephant3.jpg"
+import image8 from "@/assets/images/lapins.jpg"
+import image9 from "@/assets/images/souris.jpg"
+import image1 from "@/assets/images/vache.jpg"
+
+import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
+import { RouterLink, RouterView } from 'vue-router'
+
+import 'vue3-carousel/dist/carousel.css'
+
+</script>
 
 <script>
 let carouselImages = [
@@ -112,6 +113,9 @@ let carouselImages = [
   font-size: clamp(14pt, 4vw, 20pt);
   /* -webkit-filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0));
     filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0)); */
+}
+.carousel__viewport{
+  height: max(calc(100vh - 92px), 495px);
 }
 </style>
 
