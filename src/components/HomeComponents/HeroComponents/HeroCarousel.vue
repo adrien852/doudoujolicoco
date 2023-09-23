@@ -1,7 +1,7 @@
 <template>
-  <Carousel :wrapAround="true" transition="800" autoplay="4000">
+  <Carousel :wrapAround="true" transition="800" >
     <Slide v-for="(slide, index) in carouselImages" :key="index">
-      <div :id="'image'+index" class="carousel__item"><img alt="Peluche de vache en crochet" class="d-block" :src="slide"></div>
+      <div :id="'image'+(index+1)" class="carousel__item"><img alt="Peluche de vache en crochet" class="d-block" :src="slide"></div>
     </Slide>
 
     <template #addons>
@@ -15,14 +15,12 @@
 </template>
 
 <script setup>
-import image2 from "@/assets/images/boite1.jpg"
-import image3 from "@/assets/images/doudous1.jpg"
-import image4 from "@/assets/images/dragon.jpg"
+import image2 from "@/assets/images/olaf.jpg"
+import image3 from "@/assets/images/pikachu.jpg"
+import image4 from "@/assets/images/reine.jpg"
 import image5 from "@/assets/images/elephant1.jpg"
-import image6 from "@/assets/images/elephant2.jpg"
-import image7 from "@/assets/images/elephant3.jpg"
-import image8 from "@/assets/images/lapins.jpg"
-import image9 from "@/assets/images/souris.jpg"
+import image6 from "@/assets/images/lapins.jpg"
+import image7 from "@/assets/images/souris.jpg"
 import image1 from "@/assets/images/vache.jpg"
 
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
@@ -34,7 +32,7 @@ import 'vue3-carousel/dist/carousel.css'
 
 <script>
 let carouselImages = [
-  image1,image3,image2,image5,image8,image9,image4
+  image1,image2,image3,image4,image5,image6,image7
 ]
 </script>
     
@@ -64,20 +62,27 @@ let carouselImages = [
   height:0;
 }
 
-#image3 img{
-  object-position: 67% 100%;
-  object-fit: none;
-}
 #image4 img{
-  object-fit: none;
-  object-position: 5% 0%;
+  object-position: 67% 50%;
+}
+#image5 img{
+  object-position: 50% 50%;
+}
+#image2 img{
+  object-position: 50%;
+}
+#image7 img{
+  object-position: 0% 61%;
 }
 #image1 img{
-  object-position: 15%;
+  object-position: 29% 70%;
+}
+#image3 img{
+  object-position: 50% 74%;
 }
 #image6 img{
-  object-fit: cover;
-  object-position: 67% 0%;
+  object-fit: none;
+  object-position: 7% 13%;
 }
 .carouselBtn{
   width:40%;
@@ -114,7 +119,7 @@ let carouselImages = [
   /* -webkit-filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0));
     filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0)); */
 }
-.carousel__viewport{
+.heroRight .carousel__viewport{
   height: max(calc(100vh - 92px), 495px);
 }
 </style>

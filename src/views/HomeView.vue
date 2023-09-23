@@ -1,10 +1,9 @@
 <template>
   <main class="w-100">
     <Hero />
-    <div class="container">
+    <div class="mx-5">
       <ShopCarousel class="" v-if="dataLoaded" :items="items" />
     </div>
-
   </main>
 </template>
 

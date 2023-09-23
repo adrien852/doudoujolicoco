@@ -15,7 +15,7 @@ export async function getItems() {
 
 export async function getItem(itemId) {
 
-    const response = await axios.get(API+'/product/'+itemId);
+    const response = await axios.get(API+'/products/'+itemId);
     return response.data;
 }
 

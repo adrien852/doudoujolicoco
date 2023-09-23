@@ -1,6 +1,6 @@
 <template>
     <loading :active="isLoading"></loading>
-    <div class="d-flex w-100 flex-column">
+    <div ref="shopContainer" class="d-flex w-100 flex-column">
         <vue-paginate class="row mx-auto my-2"
             v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
         </vue-paginate>
@@ -46,7 +46,7 @@
 <script setup>
     import ShopItem from './ShopItem.vue';
     import {getItems, getCategoryItems} from '@/services/ShopService.js'
-    import { onMounted, ref, watch } from 'vue';
+    import { onMounted, ref, watch, nextTick} from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import { VuePaginate } from '@svifty7/vue-paginate';
@@ -61,6 +61,7 @@
     const itemsPerPage = 8
     let page = ref(1)
     let pageCount = ref(1)
+    const shopContainer = ref(null)
 
     onMounted(async() => {
         getItems().then(response => {
@@ -92,6 +93,9 @@
                 isLoading.value = false;
             }) 
         }
+        nextTick(() => {
+            shopContainer.value?.scrollIntoView({behavior: "smooth"});
+        });
     })
 
     function paginateItems(selectedPage){
@@ -100,6 +104,9 @@
     }
 
     function clickCallback(pageNum){
+        nextTick(() => {
+            shopContainer.value?.scrollIntoView({behavior: "smooth"});
+        });
         isLoading.value = true;
         paginatedItems = paginateItems(pageNum);
         isLoading.value = false;
