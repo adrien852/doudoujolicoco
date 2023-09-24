@@ -16,5 +16,11 @@
     "title": "Pikachu",
     "image": "/src/assets/images/pikachu.jpg",
     "category": "Peluche"
+},
+{
+    "id": 4,
+    "title": "Vache",
+    "image": "/src/assets/images/vache.jpg",
+    "category": "Peluche"
 }
 ]

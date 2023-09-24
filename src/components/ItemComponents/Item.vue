@@ -1,8 +1,9 @@
 <template>
     <div class="itemSummary row d-flex mt-4 justify-content-between align-items-center">
-        <img class="stamp d-none d-md-block" src="@/assets/images/main.png">
-        <div class="itemImage d-flex align-items-center justify-content-center col-md-6 col-12 text-center">
-            <img :src="item.image">
+        <div class="itemImage d-flex align-items-center justify-content-center col-md-6 col-12 text-center px-4">
+            <div>
+               <img :src="item.image"> 
+            </div>
         </div>
         <div class="itemDetails col-md-5 col-12 mt-md-0 mt-3">
             <h3 class="text-capitalize">{{ item.category }}</h3>
@@ -37,6 +38,22 @@ defineProps({
     .itemImage{
         width: 100%;
         min-height: 36vw;
+    }
+
+    .itemImage div{
+        width: fit-content;
+        position: relative;
+    }
+
+    .itemImage div::after{
+        position: absolute;
+        content: '';
+        background: url("@/assets/images/main.png") left center no-repeat;
+        background-size: auto;
+        background-size: 100%;
+        padding: 10%;
+        right:-25px;
+        top: -10px;
     }
 
     .itemImage img{

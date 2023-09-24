@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-  import Hero from '@/components/HomeComponents/Hero.vue'
+  import Hero from '@/components/HomeComponents/HeroComponents/Hero.vue'
   import ShopCarousel from '@/components/ShopComponents/ShopCarousel.vue';
   import { useSampleItemStore } from '@/stores/SampleShopItemStore';
   import { onBeforeMount, onMounted, ref} from 'vue';
