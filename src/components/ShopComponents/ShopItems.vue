@@ -73,7 +73,6 @@
     })
 
     watch(props, () =>{
-        console.log('watch props')
         isLoading.value = true;
         if(props.categoryId == null){
             getItems().then(response => {

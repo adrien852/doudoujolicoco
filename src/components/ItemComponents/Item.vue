@@ -90,7 +90,6 @@ function addItemToCart(){
         margin: 0;
         width: fit-content;
         position: relative;
-        margin: auto;
     }
     h4{
         font-size: 10pt;
@@ -120,6 +119,7 @@ function addItemToCart(){
         color: white;
         font-size: 100%;
         height: auto;
+        margin: auto;
     }
     .btn-primary:hover {
         border-color: none;

@@ -1,8 +1,8 @@
 <template>
     <loading :active="isLoading"></loading>
-    <div v-if="dataLoaded" class="container">
+    <div id="itemContainer" v-if="dataLoaded" class="container">
         <Item :item="item"/>
-        <ShopCarousel class="mt-5" :items="sampleShopItemStore.items" />
+        <ShopCarousel @itemClicked="changeItem" class="mt-5" :items="sampleShopItemStore.items" />
     </div>
     
 </template>
@@ -13,11 +13,12 @@
     import {getItem} from '@/services/ShopService.js'
     import { useRoute } from 'vue-router'
     import { useSampleItemStore } from '@/stores/SampleShopItemStore';
-    import { onBeforeMount, onMounted, ref} from 'vue';
+    import { onBeforeMount, watch, ref, nextTick} from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 
     const route = useRoute();
+    const itemContainer = ref(null)
 
     const sampleShopItemStore = useSampleItemStore();
     let isLoading = ref(true);
@@ -34,4 +35,10 @@
         });
 
     })
+    async function changeItem(itemClicked){
+        item = itemClicked;
+        setTimeout( () => {
+            document.getElementById('itemContainer').scrollIntoView({behavior: "smooth"});
+        });
+    }
 </script>

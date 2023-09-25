@@ -1,7 +1,7 @@
 <template>
     <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints" :wrapAround="true" :autoplay="3000">
         <Slide v-for="item in props.items" :key="item">
-            <ShopItem :item="item" />
+            <ShopItem @click="$emit('itemClicked', item)" :item="item" />
         </Slide>
 
         <template #addons>
