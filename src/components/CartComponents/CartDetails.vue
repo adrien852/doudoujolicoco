@@ -4,25 +4,27 @@
         <hr>
         <ol>
             <li class="d-flex align-items-center">
-                <h3 class="m-0 font-weight-normal">Sous-total</h3><span>50€</span>
+                <h3 class="m-0 font-weight-normal">Sous-total</h3><span>{{ cartStore.subTotal }}€</span>
             </li>
             <li class="d-flex align-items-center">
-                <h3 class="m-0 font-weight-normal">Frais de port</h3><span>10€</span>
-            </li>
-            <li class="d-flex align-items-center">
-                <h3 class="m-0 font-weight-normald">TVA</h3><span>10%</span>
+                <h3 class="tva m-0 font-weight-normal">TVA</h3><span>10%</span>
             </li>
         </ol>
         <hr>
         <li class="d-flex align-items-center">
-            <h2 class="m-0">Total</h2><span class="mt-1 font-weight-bold">66€</span>
+            <h2 class="m-0">Total TTC</h2><span class="mt-1 font-weight-bold">{{ ((cartStore.subTotal+10)+10*(cartStore.subTotal)/100).toFixed(2) }}€</span>
+        </li>
+        <li class="d-flex align-items-center">
+            <h3 class="frais m-0 font-weight-normal">Frais de port</h3><span>10€</span>
         </li>
         <hr>
         <button @click="buyItem" class="btn btn-primary"><h4>Passer la commande</h4></button>
     </div>
 </template>
 <script setup>
-    
+    import { useCartStore } from '@/stores/CartStore'
+
+    const cartStore = useCartStore();
 </script>
 
 <style scoped>
@@ -31,12 +33,15 @@
     }
     h3, h2{
         font-size: 11pt;
-        width: calc(100% - 40px); 
+        width: calc(100% - 58px); 
         overflow: hidden; 
         white-space: nowrap;
     }
+    .frais, .tva{
+        width: calc(100% - 35px); 
+    }
     h3:after, h2:after { 
-        content: " ..........................................................................................." 
+        content: " ...................................................................................................................................................................................................................................................................." 
     }
     span{
         font-weight: normal;
@@ -44,6 +49,7 @@
         width: fit-content;
         overflow: hidden;
         margin-left:auto;
+        font-size: 11pt;
     }
     ol{
         list-style-type: none;
@@ -53,7 +59,7 @@
         width: 100%;
     }
     h2{
-        font-size: 14pt;
+        font-size: 12pt;
     }
     h4{
         font-size: 100%;

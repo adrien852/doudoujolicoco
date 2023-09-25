@@ -1,13 +1,13 @@
 <template>
     <div class="container">
         <div class="d-flex row mt-4">
-            <div id="shopItems" class="row d-flex justify-content-left col-9 mx-auto">
+            <div id="shopItems" class="row d-flex justify-content-left col-lg-9 mx-auto">
                 <div class="col-12 position-relative mb-3" v-for="(item, index) in items">
                     <div @click="cartStore.deleteItem(index)" class="bin"><img class="w-100" src="@/assets/images/bin.png"/></div>
                     <ShopItem :item="item" :longDisplay="true"/>
                 </div>
             </div>
-            <div id="cartDetails" class="col-3">
+            <div id="cartDetails" class="col-lg-3">
                 <CartDetails />
             </div>
         </div>
