@@ -14,7 +14,7 @@
             <p>
                 {{ item.description }}
             </p>
-            <button class="btn btn-primary"><h3>Ajouter au panier</h3></button>
+            <button @click="addItemToCart" class="btn btn-primary"><h3>Ajouter au panier</h3></button>
             <div class="shipment mt-3">
                 <h4 class="shipmentTitle">Livraison</h4>
                 <h4><span id="availibility">Disponible</span> - Expedition immediate</h4>
@@ -26,10 +26,17 @@
 </template>
 
 <script setup>
+import { useCartStore } from '@/stores/CartStore'
 
-defineProps({
+const props = defineProps({
     item: Object
 })
+
+const cartStore = useCartStore();
+
+function addItemToCart(){
+    cartStore.addItem(props.item);
+}
 
 </script>
 
@@ -81,6 +88,9 @@ defineProps({
         color: #a2785b;
         font-size: 13pt;
         margin: 0;
+        width: fit-content;
+        position: relative;
+        margin: auto;
     }
     h4{
         font-size: 10pt;
@@ -104,6 +114,7 @@ defineProps({
         width: 100%;
         height: 40px;
         padding: 0;
+        position: relative;
     }
     .btn h3{
         color: white;
@@ -138,5 +149,14 @@ defineProps({
     #availibility::before{
         content: "🟢";
         padding: 3px;
+    }
+    button h3::before{
+        content: '';
+        position: absolute;
+        background: url("@/assets/images/add-to-cart-white.png") left 40% no-repeat;
+        background-size: 30px auto;
+        padding: 15px;
+        left: -40px;
+        bottom:-4px;
     }
 </style>

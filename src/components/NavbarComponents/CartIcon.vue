@@ -9,7 +9,6 @@
     import { onMounted, watch, ref } from "vue"
 
     const cartStore = useCartStore();
-    cartStore.fill();
 
 </script>
 <style scoped>
@@ -33,7 +32,7 @@
         text-align: center;
         width:21px;
         height:21px;
-        background-color: red;
+        background-color: #c52222;
         border-radius: 100%;
     }
 </style>

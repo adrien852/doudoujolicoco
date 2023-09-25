@@ -1,11 +1,14 @@
 <template>
-    <RouterLink :to="'/item/'+item.id" class="">
-        <div class="shopItemCard bg-white d-flex flex-column">
-            <img width="300" height="300" :id="'item'+item.id" :src="imageUrl">
-            <p class="itemCategory text-center pt-2 text-capitalize">{{ item.category }}</p>
-            <div class="itemTitle text-center d-flex">
-                <p class="m-auto">{{ item.title }}</p>
+    <RouterLink :to="'/item/'+item.id" :class="{'zoom': !longDisplay}">
+        <div :style="{height: longDisplay ? '150px' : 'initial'}" :class="['shopItemCard bg-white d-flex', {'flex-column':!longDisplay}]">
+            <img :class="[{'h-auto': longDisplay}]" width="300" height="300" :id="'item'+item.id" :src="imageUrl">
+            <div :class="['d-flex flex-column justify-content-center p-2', longDisplay ? 'text-left mr-auto' : 'text-center m-auto']">
+                <p class="itemCategory pt-2 text-capitalize">{{ item.category }}</p>
+                <div class="itemTitle d-flex">
+                    <p class="m-auto">{{ item.title }}</p>
+                </div>
             </div>
+            <p :class="['itemPrice text-center ml-auto my-auto mr-4', {'d-none':!longDisplay}]">{{ item.price }}€</p>
         </div>
     </RouterLink>
     
@@ -13,11 +16,13 @@
 
 <script setup>
 import { RouterLink } from 'vue-router'
+import {computed} from 'vue'
 const props = defineProps({
-    item: Object
+    item: Object,
+    longDisplay: Boolean
 })
 
-const imageUrl = new URL(props.item.image, import.meta.url)
+const imageUrl = computed(() => new URL(props.item.image, import.meta.url))
 
 </script>
 
@@ -35,12 +40,14 @@ const imageUrl = new URL(props.item.image, import.meta.url)
         height: fit-content;
         width: 100%;
     }
-    a:hover{
+    .zoom:hover{
         transform: scale(1.03);
         -webkit-transition: transform 0.1s ease-out;
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;
         transition: transform 0.1s ease-out;
+    }
+    a:hover{
         color: initial;
         text-decoration: none;
     }
@@ -65,10 +72,14 @@ const imageUrl = new URL(props.item.image, import.meta.url)
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
-        padding: 15px;
     }
     img{
         padding:15px;
         object-fit: contain;
+    }
+    .itemPrice{
+        color: #6baaca;
+        font-size: 13pt;
+        font-weight: bold;
     }
 </style>

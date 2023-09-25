@@ -1,12 +1,10 @@
 import { defineStore } from "pinia";
-import items from "@/testData.json"
+import { useStorage } from '@vueuse/core'
 
 export const useCartStore = defineStore("CartStore", {
-    state: () => {
-        return {
-            items:[]
-        }
-    },
+    state: () => ({
+        items: useStorage('items', [])
+    }),
 
     getters:{
         count: (state) => state.items.length,
@@ -15,8 +13,14 @@ export const useCartStore = defineStore("CartStore", {
     },
 
     actions:{
-        fill(){
-            this.items = items;
+        addItem(item){
+            this.items.push({ ...item });
+        },
+        clearCart(){
+            this.items = [];
+        },
+        deleteItem(itemToRemoveIndex){
+            this.items.splice(itemToRemoveIndex, 1);
         }
     }
 })

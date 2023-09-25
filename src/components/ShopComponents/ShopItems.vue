@@ -5,7 +5,7 @@
             v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
         </vue-paginate>
         <div id="shopItems" class="row d-flex justify-content-center col-lg-10 col-12 mx-auto">
-            <ShopItem class="col-lg-3 col-sm-6 col-12 my-2" v-for="item in paginatedItems" :item="item" />
+            <ShopItem class="col-lg-3 col-sm-6 col-12 my-2" v-for="item in paginatedItems" :item="item" :longDisplay="false"/>
         </div>
         <vue-paginate class="row mx-auto my-2"
             v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">

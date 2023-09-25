@@ -7,5 +7,4 @@
     import { useCartStore } from '@/stores/CartStore'
 
     const cartStore = useCartStore();
-    cartStore.fill();
 </script>
