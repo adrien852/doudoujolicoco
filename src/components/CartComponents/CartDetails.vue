@@ -4,15 +4,15 @@
         <hr>
         <ol>
             <li class="d-flex align-items-center">
-                <h3 class="m-0 font-weight-normal">Sous-total</h3><span>{{ cartStore.subTotal }}€</span>
+                <h3 class="m-0 font-weight-normal">Total HT</h3><span>{{ ((cartStore.subTotal)-20*(cartStore.subTotal)/100).toFixed(2) }}€</span>
             </li>
             <li class="d-flex align-items-center">
-                <h3 class="tva m-0 font-weight-normal">TVA</h3><span>10%</span>
+                <h3 class="tva m-0 font-weight-normal">TVA 20%</h3><span>{{ ((20*(cartStore.subTotal)/100).toFixed(2)) }}€</span>
             </li>
         </ol>
         <hr>
         <li class="d-flex align-items-center">
-            <h2 class="m-0">Total TTC</h2><span class="mt-1 font-weight-bold">{{ ((cartStore.subTotal+10)+10*(cartStore.subTotal)/100).toFixed(2) }}€</span>
+            <h2 class="m-0">Total TTC</h2><span class="mt-1 font-weight-bold">{{ cartStore.subTotal }}€</span>
         </li>
         <li class="d-flex align-items-center">
             <h3 class="frais m-0 font-weight-normal">Frais de port</h3><span>10€</span>
@@ -38,7 +38,7 @@
         white-space: nowrap;
     }
     .frais, .tva{
-        width: calc(100% - 35px); 
+        width: calc(100% - 45px); 
     }
     h3:after, h2:after { 
         content: " ...................................................................................................................................................................................................................................................................." 
