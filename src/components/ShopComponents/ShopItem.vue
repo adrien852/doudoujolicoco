@@ -1,11 +1,11 @@
 <template>
-    <RouterLink :to="'/item/'+item.id" :class="{'zoom': !longDisplay}">
-        <div :style="{height: longDisplay ? '150px' : 'initial'}" :class="['shopItemCard bg-white d-flex', {'flex-column':!longDisplay}]">
+    <RouterLink :to="'/item/'+item._id" :class="{'zoom': !longDisplay}">
+        <div :style="{height: longDisplay ? '150px' : 'initial', width: longDisplay ? '100%' : 'fit-content'}" :class="['shopItemCard bg-white d-flex', {'flex-column ':!longDisplay}]">
             <img :class="[{'h-auto': longDisplay}]" width="300" height="300" :id="'item'+item.id" :src="imageUrl">
             <div :class="['d-flex flex-column justify-content-center p-2', longDisplay ? 'text-left mr-auto' : 'text-center m-auto']">
-                <p class="itemCategory pt-2 text-capitalize">{{ item.category }}</p>
+                <p class="itemCategory pt-2 text-capitalize">{{ item.category.name }}</p>
                 <div class="itemTitle d-flex">
-                    <p class="m-auto">{{ item.title }}</p>
+                    <p class="m-auto">{{ item.name }}</p>
                 </div>
             </div>
             <p :class="['itemPrice text-center ml-auto my-auto mr-4', {'d-none':!longDisplay}]">{{ item.price }}€</p>
@@ -22,7 +22,7 @@ const props = defineProps({
     longDisplay: Boolean
 })
 
-const imageUrl = computed(() => new URL(props.item.image, import.meta.url))
+const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.image}`, import.meta.url).href)
 
 </script>
 

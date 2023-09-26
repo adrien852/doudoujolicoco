@@ -16,13 +16,13 @@
             </li>
         </ul>
     </div> -->
-    <a :class="['text-capitalize', {activeCategory: activeCategory == index}]" @click="categoryClick" :href="'#'">{{ filter }}</a>
+    <a :class="['text-capitalize', {activeCategory: activeCategory == index}]" @click="categoryClick" :href="'#'">{{ filter.name }}</a>
 </div>
 </template>
 
 <script setup>
     defineProps({
-    filter: String,
+    filter: Object,
     index: Number,
     activeCategory: Number
     });

@@ -2,13 +2,13 @@
     <div class="itemSummary row d-flex mt-4 justify-content-between align-items-center">
         <div class="itemImage d-flex align-items-center justify-content-center col-md-6 col-12 text-center px-4">
             <div>
-               <img :src="item.image"> 
+               <img :src="imageUrl"> 
             </div>
         </div>
         <div class="itemDetails col-md-5 col-12 mt-md-0 mt-3">
-            <h3 class="text-capitalize">{{ item.category }}</h3>
+            <h3 class="text-capitalize">{{ item.category.name }}</h3>
             <div class="d-flex d-md-block align-items-center">
-                <h1 class="mb-2">{{ item.title }}</h1>
+                <h1 class="mb-2">{{ item.name }}</h1>
                 <h2 class="mx-auto mb-2">{{ item.price }}€</h2>
             </div>
             <p>
@@ -27,10 +27,13 @@
 
 <script setup>
 import { useCartStore } from '@/stores/CartStore'
+import { computed } from 'vue';
 
 const props = defineProps({
     item: Object
 })
+
+const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.image}`, import.meta.url).href)
 
 const cartStore = useCartStore();
 
