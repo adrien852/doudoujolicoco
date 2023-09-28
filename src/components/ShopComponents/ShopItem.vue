@@ -1,11 +1,11 @@
 <template>
-    <RouterLink :to="'/item/'+item._id" :class="{'zoom': !longDisplay}">
-        <div :style="{height: longDisplay ? '150px' : 'initial', width: longDisplay ? '100%' : 'fit-content'}" :class="['shopItemCard bg-white d-flex', {'flex-column ':!longDisplay}]">
-            <img :class="[{'h-auto': longDisplay}]" width="300" height="300" :id="'item'+item.id" :src="imageUrl">
-            <div :class="['d-flex flex-column justify-content-center p-2', longDisplay ? 'text-left mr-auto' : 'text-center m-auto']">
+    <RouterLink :to="'/item/'+item.normalized" :class="{'zoom': !longDisplay}">
+        <div :style="{height: longDisplay ? '150px' : 'initial'}" :class="['bg-white d-flex', {'flex-column shopItemCard':!longDisplay}]">
+            <img :class="[{'h-auto cartImg': longDisplay}]" width="300" height="300" :src="imageUrl">
+            <div :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-4' : 'text-center m-auto']">
                 <p class="itemCategory pt-2 text-capitalize">{{ item.category.name }}</p>
                 <div class="itemTitle d-flex">
-                    <p class="m-auto">{{ item.name }}</p>
+                    <p :class="['my-auto', {'m-auto': !longDisplay}]">{{ item.name }}</p>
                 </div>
             </div>
             <p :class="['itemPrice text-center ml-auto my-auto mr-4', {'d-none':!longDisplay}]">{{ item.price }}€</p>
@@ -38,7 +38,6 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.image}`
         transition: transform 0.1s ease-out;
         color:initial;
         height: fit-content;
-        width: 100%;
     }
     .zoom:hover{
         transform: scale(1.03);
@@ -69,13 +68,17 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.image}`
     .itemTitle p{
         overflow: hidden;
         text-overflow: ellipsis;
+        word-wrap: anywhere;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
+    .cartImg{
+        object-position: 50% 40%;
+        max-width: 35%;
+    }
     img{
-        padding:15px;
-        object-fit: contain;
+        object-fit: cover;
     }
     .itemPrice{
         color: #6baaca;

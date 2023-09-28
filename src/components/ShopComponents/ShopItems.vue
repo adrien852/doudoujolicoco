@@ -1,11 +1,11 @@
 <template>
     <loading :active="isLoading"></loading>
-    <div ref="shopContainer" class="d-flex flex-column">
+    <div ref="shopContainer" class="d-flex flex-column w-100">
         <vue-paginate class="row mx-auto my-2"
             v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
         </vue-paginate>
-        <div id="shopItems" class="row d-flex justify-content-center col-lg-10 col-12 mx-auto">
-            <ShopItem class="col-lg-3 col-sm-6 col-12 my-2" v-for="item in paginatedItems" :item="item" :longDisplay="false"/>
+        <div id="shopItems" class="row d-flex justify-content-left col-lg-10 col-12 mx-auto">
+            <ShopItem class="col-lg-3 col-sm-6 col-12 p-lg-3" v-for="item in paginatedItems" :item="item" :longDisplay="false"/>
         </div>
         <vue-paginate class="row mx-auto my-2"
             v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
@@ -52,7 +52,7 @@
     import { VuePaginate } from '@svifty7/vue-paginate';
 
     const props = defineProps({
-        categoryId: Number,
+        categoryNormalized: String,
     })
 
     let items = null
@@ -74,7 +74,7 @@
 
     watch(props, () =>{
         isLoading.value = true;
-        if(props.categoryId == null){
+        if(props.categoryNormalized == null){
             getItems().then(response => {
                 items = response;
                 page.value = 1;
@@ -84,7 +84,7 @@
             })
         }
         else{
-            getCategoryItems(props.categoryId).then(response => {
+            getCategoryItems(props.categoryNormalized).then(response => {
                 items = response;
                 page.value = 1;
                 paginatedItems = paginateItems(page.value);

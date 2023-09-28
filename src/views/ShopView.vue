@@ -4,7 +4,7 @@
         <loading :active="isLoading"></loading>
         <div class="d-flex">
             <ShopFilters @filterByCategory="filterItemsByCategory" />
-            <ShopItems :categoryId="categoryId"/>
+            <ShopItems :categoryNormalized="categoryNormalized"/>
         </div>
         
     </div>
@@ -31,13 +31,13 @@
     let isLoading = ref(true)
     let filtersLoading = ref(true)
     let itemsLoading = ref(true)
-    let categoryId = null
+    let categoryNormalized = null
 
     onMounted(() => {
         isLoading.value = false;
     })
 
-    function filterItemsByCategory(id){
-        categoryId = id;
+    function filterItemsByCategory(normalized){
+        categoryNormalized = normalized;
     }
 </script>

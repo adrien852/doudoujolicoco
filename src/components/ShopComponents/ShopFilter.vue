@@ -16,15 +16,15 @@
             </li>
         </ul>
     </div> -->
-    <a :class="['text-capitalize', {activeCategory: activeCategory == index}]" @click="categoryClick" :href="'#'">{{ filter.name }}</a>
+    <a :class="['text-capitalize', {activeCategory: activeCategory == normalized}]" @click="categoryClick" :href="'#'">{{ filter.name }}</a>
 </div>
 </template>
 
 <script setup>
     defineProps({
     filter: Object,
-    index: Number,
-    activeCategory: Number
+    normalized: String,
+    activeCategory: String
     });
     const emit = defineEmits(['categoryClick'])
 

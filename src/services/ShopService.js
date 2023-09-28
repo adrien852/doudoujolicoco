@@ -19,9 +19,8 @@ export async function getItem(itemId) {
     return response.data;
 }
 
-export async function getCategoryItems(categoryId) {
+export async function getCategoryItems(categoryNormalized) {
 
-    const categories = await getCategories();
-    const response = await axios.get(API+'/products/category/'+categories[categoryId]);
+    const response = await axios.get(API+'/'+categoryNormalized+'/products');
     return response.data;
 }

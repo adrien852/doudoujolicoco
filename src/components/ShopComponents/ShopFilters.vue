@@ -2,8 +2,8 @@
     <div :class="['filterContainer pt-3']">
         <!-- <h4>Filtres</h4> -->
         <loading :active="isLoading"></loading>
-        <div class="filterList" v-for="(filter, index) in filters">
-            <ShopFilter :filter="filter" :index="index" :activeCategory="activeCategoryIndex" @categoryClick="activeCategoryIndex = index" />
+        <div class="filterList" v-for="filter in filters">
+            <ShopFilter :filter="filter" :normalized="filter.normalized" :activeCategory="activeCategoryNormalized" @categoryClick="activeCategoryNormalized = filter.normalized" />
         </div>
                 
     </div>
@@ -18,11 +18,11 @@
 
     let filters = []
     let isLoading = ref(true)
-    let activeCategoryIndex = ref(null)
+    let activeCategoryNormalized = ref(null)
     const emit = defineEmits(['filterByCategory'])
 
-    watch(activeCategoryIndex, (x) =>{
-        emit('filterByCategory', activeCategoryIndex.value);
+    watch(activeCategoryNormalized, (x) =>{
+        emit('filterByCategory', activeCategoryNormalized.value);
     })
 
     onMounted(async() => {

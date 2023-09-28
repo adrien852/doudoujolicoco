@@ -1,5 +1,5 @@
 <template>
-    <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints" :wrapAround="true" :autoplay="3000">
+    <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints" :wrapAround="true" :autoplay=3000>
         <Slide v-for="item in props.items" :key="item">
             <ShopItem @click="$emit('itemClicked', item)" :item="item" />
         </Slide>
@@ -24,12 +24,20 @@
       snapAlign: 'center',
     }
     let breakpoints = {
-      700: {
+      900: {
         itemsToShow: 3,
         snapAlign: 'center',
       },
-      992: {
+      1150: {
+        itemsToShow: 4,
+        snapAlign: 'start',
+      },
+      1350: {
         itemsToShow: 5,
+        snapAlign: 'start',
+      },
+      1600: {
+        itemsToShow: 6,
         snapAlign: 'start',
       },
     }
