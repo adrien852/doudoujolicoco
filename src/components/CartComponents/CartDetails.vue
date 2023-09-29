@@ -18,7 +18,7 @@
             <h3 class="frais m-0 font-weight-normal">Frais de port</h3><span>10€</span>
         </li>
         <hr>
-        <button @click="buyItem" class="btn btn-primary"><h4>Passer la commande</h4></button>
+        <RouterLink to="/paiement"><button @click="buyItem" class="btn btn-primary"><h4>Passer la commande</h4></button></RouterLink>
     </div>
 </template>
 <script setup>
@@ -65,12 +65,13 @@
         font-size: 100%;
         margin: 0;
     }
-    .btn{
+    .btn, a{
         background-color: #6baaca;
         width: 100%;
         height: 40px;
         padding: 0;
         position: relative;
+        display: inline-block;
     }
     .btn-primary:hover {
         border-color: none;

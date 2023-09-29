@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-    defineProps({
+    const props = defineProps({
     filter: Object,
     normalized: String,
     activeCategory: String
@@ -29,7 +29,7 @@
     const emit = defineEmits(['categoryClick'])
 
     function categoryClick(){
-        emit('categoryClick')
+        emit('categoryClick', props.activeCategory == props.normalized)
     }
 
 </script>

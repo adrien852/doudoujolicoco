@@ -19,10 +19,10 @@
             <RouterLink class="d-flex justify-content-center align-items-center w-100 h-100 nav-item nav-link active" to="/">
               <h3 class="px-4">Home</h3>
             </RouterLink>
-            <RouterLink class="d-flex justify-content-center align-items-center w-100 h-100 nav-item nav-link active" to="/about">
+            <RouterLink class="d-flex justify-content-center align-items-center w-100 h-100 nav-item nav-link active" to="/a-propos">
               <h3 class="px-4">About</h3>
             </RouterLink>
-            <RouterLink class="d-flex justify-content-center justify-items-center align-items-center w-100 h-100 nav-item nav-link active" to="/shop">
+            <RouterLink class="d-flex justify-content-center justify-items-center align-items-center w-100 h-100 nav-item nav-link active" to="/boutique">
               <h3 class="px-4">Shop</h3>
             </RouterLink>
             

@@ -1,5 +1,5 @@
 <template>
-    <RouterLink :to="'/item/'+item.normalized" :class="{'zoom': !longDisplay}">
+    <RouterLink :to="'/article/'+item.normalized" :class="{'zoom': !longDisplay}">
         <div :style="{height: longDisplay ? '150px' : 'initial'}" :class="['bg-white d-flex', {'flex-column shopItemCard':!longDisplay}]">
             <img :class="[{'h-auto cartImg': longDisplay}]" width="300" height="300" :src="imageUrl">
             <div :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-4' : 'text-center m-auto']">
@@ -60,7 +60,7 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.image}`
         margin-bottom: 0;
     }
     .itemTitle{
-        font-size:larger;
+        font-size:16pt;
         opacity: 1;
         height:78px;
         overflow: hidden;

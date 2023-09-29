@@ -2,8 +2,9 @@
     <div :class="['filterContainer pt-3']">
         <!-- <h4>Filtres</h4> -->
         <loading :active="isLoading"></loading>
+        <a href="#" v-if="activeCategoryNormalized" @click="activeCategoryNormalized = null" class="btn btn-primary mb-3"><span style="text-shadow:black 0px 0px 1px;">&#10060;</span> Effacer filtrage</a>
         <div class="filterList" v-for="filter in filters">
-            <ShopFilter :filter="filter" :normalized="filter.normalized" :activeCategory="activeCategoryNormalized" @categoryClick="activeCategoryNormalized = filter.normalized" />
+            <ShopFilter :filter="filter" :normalized="filter.normalized" :activeCategory="activeCategoryNormalized" @categoryClick="(isAlreadyActive) => activeCategoryNormalized = (isAlreadyActive) ? null : filter.normalized"/>
         </div>
                 
     </div>
@@ -25,6 +26,11 @@
         emit('filterByCategory', activeCategoryNormalized.value);
     })
 
+    function resetFilters(){
+        activeCategoryNormalized.value = null;
+        emit('filterByCategory', activeCategoryNormalized.value);
+    }
+
     onMounted(async() => {
         getCategories().then(response => {
             filters = response;
@@ -32,6 +38,7 @@
         })
         
     })
+
 </script>
 
 <style scoped>
@@ -62,7 +69,7 @@
 
 .btn{
     width: fit-content;
-    font-size: clamp(10pt, 2vw, 13pt);
+    font-size: 10pt;
     text-align: center;
     padding: 1px 3px;
     margin: 0 2px 5px 0px;

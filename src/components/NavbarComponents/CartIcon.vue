@@ -1,5 +1,5 @@
 <template>
-    <RouterLink to="/cart" :number="cartStore.isEmpty ? '' : cartStore.count" :style="{'--show': cartStore.isEmpty ? 'none' : 'block'}" class="iconContainer">
+    <RouterLink to="/panier" :number="cartStore.isEmpty ? '' : cartStore.count" :style="{'--show': cartStore.isEmpty ? 'none' : 'block'}" class="iconContainer">
         <img src="@/assets/images/trolley.png" />
     </RouterLink>
 </template>

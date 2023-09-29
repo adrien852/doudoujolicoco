@@ -9,7 +9,7 @@
       <Pagination />
     </template>
   </Carousel>
-  <RouterLink class="d-lg-none d-block" to="/shop"><button class="btn carouselBtn">
+  <RouterLink class="d-lg-none d-block" to="/boutique"><button class="btn carouselBtn">
       <h2 class="m-0">Visiter la boutique</h2>
     </button></RouterLink>
 </template>

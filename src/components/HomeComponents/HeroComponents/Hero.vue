@@ -6,7 +6,7 @@
           <img alt="Vue logo" class="logo py-3" src="@/assets/logo.png" width="200"/>
           <h1 class="m-0">Bienvenue chez Coco</h1>
           <h5>Des doudous faits au crochet, et avec amour</h5>
-          <RouterLink class="d-none d-lg-block" to="/shop">
+          <RouterLink class="d-none d-lg-block" to="/boutique">
             <button class="btn">
               <h4 class="m-0">Visiter la boutique</h4>
             </button>
