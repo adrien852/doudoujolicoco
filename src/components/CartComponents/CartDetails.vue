@@ -12,7 +12,7 @@
         </ol>
         <hr>
         <li class="d-flex align-items-center">
-            <h2 class="m-0">Total TTC</h2><span class="mt-1 font-weight-bold">{{ cartStore.subTotal }}€</span>
+            <h2 class="m-0">Total TTC</h2><span class="mt-1 font-weight-bold">{{ cartStore.subTotal.toFixed(2) }}€</span>
         </li>
         <li class="d-flex align-items-center">
             <h3 class="frais m-0 font-weight-normal">Frais de port</h3><span>10€</span>
@@ -81,5 +81,10 @@
         background-color: #4c778d;
         border-color: #4c778d;
         box-shadow: none;
+    }
+    .detailsContainer{
+        background: white;
+        border-radius: 10px;
+        padding:15px;
     }
 </style>

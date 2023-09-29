@@ -2,7 +2,7 @@
     <RouterLink :to="'/article/'+item.normalized" :class="{'zoom': !longDisplay}">
         <div :style="{height: longDisplay ? '150px' : 'initial'}" :class="['bg-white d-flex', {'flex-column shopItemCard':!longDisplay}]">
             <img :class="[{'h-auto cartImg': longDisplay}]" width="300" height="300" :src="imageUrl">
-            <div :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-4' : 'text-center m-auto']">
+            <div :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
                 <p class="itemCategory pt-2 text-capitalize">{{ item.category.name }}</p>
                 <div class="itemTitle d-flex">
                     <p :class="['my-auto', {'m-auto': !longDisplay}]">{{ item.name }}</p>
