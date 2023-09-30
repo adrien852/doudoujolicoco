@@ -1,9 +1,13 @@
 <template>
-    <loading :active="isLoading"></loading>
-    <div class="text-center mt-4">
-        <h3>Paiement</h3>
+    <div class="container">
+        <loading :active="isLoading"></loading>
+        <div class="text-center mt-4">
+            <h3>Paiement</h3>
+        </div>
+        <div class="d-flex justify-content-center">
+            <Payment :braintreeToken="braintreeToken" @paymentInit="paymentInit"/>
+        </div>
     </div>
-    <Payment :braintreeToken="braintreeToken" @paymentInit="paymentInit"/>
 </template>
 <script setup>
     import Payment from '@/components/PaymentComponents/Payment.vue'
@@ -27,17 +31,58 @@
                 authorization: braintreeToken.value
             }, (error, dropinInstance) => {
                 if (error) console.error(error);
+                let submitButton = document.createElement('button');
+                let checkoutButton = document.createElement('button');
+                initializeButtons(submitButton, checkoutButton);
                 isLoading.value = false;
-                const form = document.getElementById('payment-form');
-                form.addEventListener('submit', event => {
+                submitButton.addEventListener('click', event => {
                     event.preventDefault();
                     dropinInstance.requestPaymentMethod((error, payload) => {
-                    if (error) console.error(error);
-                        checkout(payload.nonce, cartStore.items);
+                        if (error) {
+                            console.error(error);
+                        }
+                        else{
+                            checkoutButton.addEventListener('click', event => {
+                                checkout(payload.nonce, cartStore.items).catch((error) => {
+                                    console.log(error);
+                                    submitButton.style.display = 'unset';
+                                    checkoutButton.style.display = 'none';
+                                    dropinInstance.clearSelectedPaymentMethod();
+                                }).then((response) => {
+                                    document.getElementById('payment-form').remove();
+                                })
+                            });
+                            dropinInstance.on('paymentMethodRequestable', function (event) {
+                                submitButton.style.display = 'none';
+                                checkoutButton.style.display = 'unset';
+                            });
+
+                            dropinInstance.on('noPaymentMethodRequestable', function () {
+                                submitButton.style.display = 'unset';
+                                checkoutButton.style.display = 'none';
+                            });
+                        }
                     });
                 });
             });
         });
+    }
+
+    function initializeButtons(submitButton, checkoutButton){
+        
+        submitButton.setAttribute('id', 'sendNonce');
+        submitButton.setAttribute('type', 'button');
+        submitButton.setAttribute('class', 'btn btn-primary');
+        submitButton.innerHTML = "Valider"
+        document.getElementById('submitButtons').appendChild(submitButton);
+        
+        checkoutButton.setAttribute('id', 'sendCheckout');
+        checkoutButton.setAttribute('type', 'button');
+        checkoutButton.setAttribute('class', 'btn btn-primary');
+        checkoutButton.innerHTML = "Payer"
+        checkoutButton.style.display = 'none';
+        document.getElementById('submitButtons').appendChild(checkoutButton);
+
     }
 
     onMounted(async() => {

@@ -1,11 +1,10 @@
 <template>
-    <form id="payment-form" action="#">
+  <form class="col-lg-6 col-md-8 col-12" id="payment-form" action="#">
     <!-- Putting the empty container you plan to pass to
       'braintree.dropin.create' inside a form will make layout and flow
       easier to manage -->
     <div id="dropin-container"></div>
-    <input type="submit" />
-    <input type="hidden" id="nonce" name="payment_method_nonce" />
+    <div class="text-center mt-3" id="submitButtons"></div>
   </form>
 </template>
 <script setup>
@@ -14,6 +13,9 @@
   onMounted(() => {
     emit('paymentInit');
   })
-
-
 </script>
+<style>
+  #submitButtons .btn{
+    background-color: #6baaca;
+  }
+</style>
