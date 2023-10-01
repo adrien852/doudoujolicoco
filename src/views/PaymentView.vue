@@ -30,7 +30,20 @@
                 authorization: braintreeToken.value,
                 locale: 'fr_FR',
                 paypal: {
-                    flow: 'vault'
+                    flow: 'vault',
+                    buttonStyle: {
+                        color: 'blue',
+                        shape: 'rect',
+                        size: 'medium'
+                    }
+                },
+                card: {
+                    cardholderName: {
+                        required: true
+                    },
+                    cvv: {
+                        required: true
+                    }
                 }
             }, (error, dropinInstance) => {
                 if (error) console.error(error);
