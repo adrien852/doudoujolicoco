@@ -19,10 +19,12 @@
         </li>
         <hr>
         <RouterLink to="/paiement"><button @click="buyItem" class="btn btn-primary"><h4>Passer la commande</h4></button></RouterLink>
+        <Paypal />
     </div>
 </template>
 <script setup>
     import { useCartStore } from '@/stores/CartStore'
+    import Paypal from '@/components/PaymentComponents/Paypal.vue'
 
     const cartStore = useCartStore();
 </script>
