@@ -17,16 +17,23 @@
         <li class="d-flex align-items-center">
             <h3 class="frais m-0 font-weight-normal">Frais de port</h3><span>10€</span>
         </li>
-        <hr>
-        <RouterLink to="/paiement"><button @click="buyItem" class="btn btn-primary"><h4>Passer la commande</h4></button></RouterLink>
-        <Paypal />
+        <div v-if="checkoutButton">
+           <hr>
+            <RouterLink to="/livraison"><button class="btn btn-primary"><h4>Passer la commande</h4></button></RouterLink> 
+        </div>
+        
     </div>
 </template>
 <script setup>
     import { useCartStore } from '@/stores/CartStore'
-    import Paypal from '@/components/PaymentComponents/Paypal.vue'
-
     const cartStore = useCartStore();
+
+    const props = defineProps({
+        checkoutButton: {
+            type: Boolean,
+            default: true
+        },
+    });
 </script>
 
 <style scoped>
