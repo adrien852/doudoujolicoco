@@ -3,7 +3,8 @@ import { useStorage } from '@vueuse/core'
 
 export const useCartStore = defineStore("CartStore", {
     state: () => ({
-        items: useStorage('items', [])
+        items: useStorage('items', []),
+        address: useStorage('address', [])
     }),
 
     getters:{
@@ -30,5 +31,9 @@ export const useCartStore = defineStore("CartStore", {
         deleteItem(itemToRemoveIndex){
             this.items.splice(itemToRemoveIndex, 1);
         },
+
+        setAddress(address){
+            this.address = address;
+        }
     }
 })

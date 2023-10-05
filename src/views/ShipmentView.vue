@@ -21,14 +21,11 @@
     const cartStore = useCartStore();
     let isLoading = ref(false);
 
-    // onMounted(async() => {
-    //     isLoading.value=false;
-    // });
-
     function postShipmenttAddress(event){
         isLoading.value = true;
         const customerData = {...event, ...{products:toRaw(cartStore.items)}}
         saveCustomer(customerData).then((response) => {
+            cartStore.setAddress(event);
             router.push({ name: 'payment' })
         }).catch((error) => {
             console.log(error.message)

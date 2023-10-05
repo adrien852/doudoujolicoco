@@ -36,19 +36,18 @@
                         shape: 'rect',
                         size: 'medium'
                     },
-                    billingAgreementDescription: 'Your agreement description',
-                                    enableShippingAddress: true,
-                                    shippingAddressEditable: false,
-                                    shippingAddressOverride: {
-                                    recipientName: 'Scruff McGruff',
-                                    line1: '1234 Main St.',
-                                    line2: 'Unit 1',
-                                    city: 'Chicago',
-                                    countryCode: 'US',
-                                    postalCode: '60652',
-                                    state: 'IL',
-                                    phone: '123.456.7890'
-                                    }
+                    billingAgreementDescription: '',
+                    enableShippingAddress: true,
+                    shippingAddressEditable: false,
+                    shippingAddressOverride: {
+                        recipientName: cartStore.address.firstName + ' ' + cartStore.address.lastName,
+                        line1: cartStore.address.address1,
+                        line2: cartStore.address.address2,
+                        city: cartStore.address.city,
+                        countryCode: 'FR',
+                        postalCode: cartStore.address.postalCode,
+                        phone: cartStore.address.phone,
+                    }
                 },
                 card: {
                     cardholderName: {
