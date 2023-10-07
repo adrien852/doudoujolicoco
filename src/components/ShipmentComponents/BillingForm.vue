@@ -1,6 +1,6 @@
 <template>
     <div>
-        <FormKit type="form" :actions="false" name="shipping">
+        <FormKit type="form" :actions="false" name="billing">
             <div class="d-flex row">
                 <FormKit
                     type="text"
@@ -21,7 +21,6 @@
                     outer-class="col-md-6 col-12"
                 />
             </div>
-
             <div class="d-flex row">
                 <FormKit
                     type="text"
@@ -61,17 +60,7 @@
                     outer-class="col-md-6 col-12"
                 />
             </div>
-            
             <div class="d-flex row">
-                <FormKit
-                    type="text"
-                    validation="email|required"
-                    name="email"
-                    id="email"
-                    label="E-mail"
-                    placeholder="jeanne@gmail.com"
-                    outer-class="col-md-6 col-12"
-                />
                 <FormKit
                     type="text"
                     :validation="[['required'],['matches', /^(33|0)([1-9])\d{8}$/]]"
@@ -85,13 +74,6 @@
                     outer-class="col-md-6 col-12"
                 />
             </div>
-            <FormKit
-                type="checkbox"
-                label="Même addresse de facturation"
-                name="sameAsShipping"
-                :value="true"
-                v-model="sameAsShipping"
-            />
         </FormKit>
             
     </div>
@@ -100,12 +82,6 @@
 import { FormKit } from '@formkit/vue';
 import {ref, watch, computed} from 'vue'
 
-const emit = defineEmits(['sameAsShipping']);
-
-const props = defineProps({
-    isSameAsShipping: Boolean
-});
-
 let sameAsShipping = ref(true);
 
 watch(sameAsShipping, () => {
@@ -113,54 +89,3 @@ watch(sameAsShipping, () => {
 })
 
 </script>
-
-<style>
-[data-invalid]:not([data-type='checkbox']) .formkit-inner {
-  border-color: red;
-  box-shadow: 0 0 0 1px red;
-}
-
-[data-complete]:not([data-type='checkbox']) .formkit-inner {
-  border-color: red;
-  box-shadow: 0 0 0 1px green;
-}
-[data-complete]:not([data-type='checkbox']) .formkit-inner::after {
-  content: '✓';
-  color: green;
-  display: block;
-  padding: 0.5em;
-}
-.formkit-form{
-    background: white;
-    border-radius: 10px;
-    padding:15px;
-    padding-top: 0;
-    width: 100%;
-}
-
-button.formkit-input {
-    color: white;
-    background-color: #98aeb9!important;
-    border-color: #98aeb9!important;
-  }
-
-  button.formkit-input:hover {
-    color: #fff;
-    background-color: #6c7c83!important;
-    border-color: #6c7c83!important;
-  }
-
-  button.formkit-input.focus, button.formkit-input:focus, button.formkit-input:not(:disabled):not(.disabled).active, button.formkit-input:not(:disabled):not(.disabled):active, .show > button.formkit-input.dropdown-toggle {
-    color: #fff;
-    background-color: #515d62!important;
-    border-color: #515d62!important;
-  }
-
-.formkit-outer[data-type="submit"]{
-    text-align: center;
-    margin: 0;
-}
-.formkit-outer[data-type="submit"] .formkit-wrapper{
-    margin: auto;
-}
-</style>

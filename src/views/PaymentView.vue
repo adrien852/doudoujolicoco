@@ -11,6 +11,7 @@
 </template>
 <script setup>
     import Payment from '@/components/PaymentComponents/Payment.vue'
+    import {savePaymentId} from '@/services/CustomerService.js'
     import {getBraintreeToken, checkout} from '@/services/PaymentService.js'
     import {useCartStore} from '@/stores/CartStore.js'
     import {onMounted, ref} from 'vue'
@@ -29,6 +30,7 @@
                 container: document.getElementById('dropin-container'),
                 authorization: braintreeToken.value,
                 locale: 'fr_FR',
+                threeDSecure: true,
                 paypal: {
                     flow: 'vault',
                     buttonStyle: {
@@ -129,14 +131,43 @@
     });
 
     function creditCardSubmit(event, submitButton, checkoutButton, dropinInstance){
+        var threeDSecureParameters = {
+            amount: cartStore.subTotal,
+            email: cartStore.address.email,
+            billingAddress: {
+                givenName: cartStore.address.billing.firstName.normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
+                surname: cartStore.address.billing.lastName.normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
+                phoneNumber: cartStore.address.billing.phoneNumber,
+                streetAddress: cartStore.address.billing.address1,
+                extendedAddress: cartStore.address.billing.address2,
+                locality: cartStore.address.billing.city,
+                postalCode: cartStore.address.billing.postalCode,
+                countryCodeAlpha2: 'FR'
+            },
+            collectDeviceData: true,
+            additionalInformation: {
+            shippingGivenName: cartStore.address.firstName.normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
+            shippingSurname: cartStore.address.lastName.normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
+            shippingPhone: cartStore.address.phoneNumber,
+            shippingAddress: {
+                streetAddress: cartStore.address.address1,
+                extendedAddress: cartStore.address.address2,
+                locality: cartStore.address.city,
+                postalCode: cartStore.address.postalCode,
+                countryCodeAlpha2: 'FR'
+            }
+            },
+        };
         event.preventDefault();
-        dropinInstance.requestPaymentMethod((error, payload) => {
+        dropinInstance.requestPaymentMethod({
+            threeDSecure: threeDSecureParameters
+        }, (error, payload) => {
             if (error) {
                 console.error(error);
             }
             else{
-                submitButton.style.display = 'none';
-                checkoutButton.style.display = 'unset';
+                // submitButton.style.display = 'none';
+                // checkoutButton.style.display = 'unset';
                 checkoutButton.addEventListener('click', event => {
                     checkoutFlow(payload, submitButton, checkoutButton, dropinInstance);
                 });
@@ -145,13 +176,23 @@
     }
 
     function checkoutFlow(payload, submitButton, checkoutButton, dropinInstance){
+
         checkout(payload.nonce, cartStore.items).catch((error) => {
-            console.log(error);
             submitButton.style.display = 'none';
             checkoutButton.style.display = 'none';
             dropinInstance.clearSelectedPaymentMethod();
         }).then((response) => {
-            // document.getElementById('payment-form').remove();
+            if(response.success){
+                const payment = {
+                    paymentId: response.transaction.id,
+                    amount: response.transaction.amount
+                }
+                savePaymentId(cartStore.address.customerId, payment);
+            }
+            else{
+                console.log(response.message);
+            }
+            
         })
     }
 </script>
