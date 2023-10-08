@@ -1,27 +1,32 @@
 <template>
     <div class="detailsContainer">
-        <h1>Détails du panier</h1>
-        <hr>
-        <ol>
-            <li class="d-flex align-items-center">
-                <h3 class="m-0 font-weight-normal">Total HT</h3><span>{{ ((cartStore.subTotal)-20*(cartStore.subTotal)/100).toFixed(2) }}€</span>
-            </li>
-            <li class="d-flex align-items-center">
-                <h3 class="tva m-0 font-weight-normal">TVA 20%</h3><span>{{ ((20*(cartStore.subTotal)/100).toFixed(2)) }}€</span>
-            </li>
-        </ol>
-        <hr>
-        <li class="d-flex align-items-center">
-            <h2 class="m-0">Total TTC</h2><span class="mt-1 font-weight-bold">{{ cartStore.subTotal.toFixed(2) }}€</span>
-        </li>
-        <li class="d-flex align-items-center">
-            <h3 class="frais m-0 font-weight-normal">Frais de port</h3><span>10€</span>
-        </li>
-        <div v-if="checkoutButton">
-           <hr>
-            <RouterLink to="/livraison"><button class="btn btn-primary"><h4>Passer la commande</h4></button></RouterLink> 
+        <div class="detailsTitle text-uppercase">
+            <h1 class="m-0">Détails du panier</h1>
         </div>
-        
+        <div class="detailsColor py-3">
+            <ol class="pb-3 m-0">
+                <li class="d-flex align-items-center">
+                    <h3 class="m-0 font-weight-normal text-uppercase">Total HT</h3><span>{{ ((cartStore.subTotal)-20*(cartStore.subTotal)/100).toFixed(2).replace(".", ",") }}€</span>
+                </li>
+                <li class="d-flex align-items-center">
+                    <h3 class="tva m-0 font-weight-normal text-uppercase">TVA 20%</h3><span>{{ ((20*(cartStore.subTotal)/100).toFixed(2)).replace(".", ",") }}€</span>
+                </li>
+                <li class="d-flex align-items-center">
+                    <h3 class="frais m-0 font-weight-normal text-uppercase">Frais de port</h3><span>10€</span>
+                </li>
+            </ol>
+            <hr class="py-2 my-0">
+            <li class="d-flex align-items-center">
+                <h2 class="m-0 text-uppercase">Total TTC</h2><span class="mt-1 font-weight-bold">{{ ((cartStore.subTotal+10).toFixed(2)).replace(".", ",") }}€</span>
+            </li>
+            <div v-if="checkoutButton">
+                <RouterLink class="mt-4" to="/boutique"><button class="btn btn-primary px-2"><h4 class="text-uppercase">Continuer mes achats</h4></button></RouterLink> 
+                <RouterLink class="mt-3" to="/livraison"><button class="btn btn-primary checkoutButton px-2"><h4 class="text-uppercase">Passer la commande</h4></button></RouterLink> 
+                <div class="d-flex mt-3">
+                    <img class="mx-auto" src="@/assets/images/paiement_icons.png" alt="Méthodes de paiement">
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script setup>
@@ -37,12 +42,16 @@
 </script>
 
 <style scoped>
+    img{
+        width: 150px;
+        max-width: 100%;
+    }
     h1{
-        font-size: 14pt;
+        font-size: 10pt;
     }
     h3, h2{
-        font-size: 11pt;
-        width: calc(100% - 58px); 
+        font-size: 10pt;
+        width: calc(100% - 38px); 
         overflow: hidden; 
         white-space: nowrap;
     }
@@ -67,20 +76,20 @@
     li {
         width: 100%;
     }
-    h2{
-        font-size: 12pt;
-    }
     h4{
-        font-size: 100%;
+        font-size: 10pt;
         margin: 0;
     }
     .btn, a{
-        background-color: #6baaca;
         width: 100%;
         height: 40px;
         padding: 0;
         position: relative;
         display: inline-block;
+        border-radius: .25rem;
+    }
+    .btn{
+        background-color: #94BCD8;
     }
     .btn-primary:hover {
         border-color: none;
@@ -95,5 +104,23 @@
         background: white;
         border-radius: 10px;
         padding:15px;
+    }
+    .detailsTitle{
+        background-color: #94bcd8;
+        color: white;
+        text-align: center;
+        padding: 7px 0;
+    }
+    .checkoutButton{
+        background-color: #f4aa46;
+        border-color: #f4aa46;
+    }
+    .checkoutButton:hover, .checkoutButton.focus, .checkoutButton:focus, .checkoutButton:not(:disabled):not(.disabled).active, .checkoutButton:not(:disabled):not(.disabled):active, .show > .checkoutButton.dropdown-toggle {
+        background-color: #f39a25;
+        border-color: #f39a25;
+    }
+    .detailsColor{
+        background-color: #94bcd814;
+        padding: 0 15px;
     }
 </style>

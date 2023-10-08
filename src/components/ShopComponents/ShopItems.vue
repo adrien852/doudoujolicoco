@@ -4,8 +4,8 @@
         <vue-paginate class="row mx-auto my-2"
             v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
         </vue-paginate>
-        <div id="shopItems" class="row d-flex justify-content-left col-lg-10 col-12 mx-auto">
-            <ShopItem class="col-lg-3 col-sm-6 col-12 p-lg-3" v-for="item in paginatedItems" :item="item" :longDisplay="false"/>
+        <div id="shopItems" class="flex-wrap d-flex justify-content-left mx-auto">
+            <ShopItem class="col-lg-3 col-sm-6 col-12 p-3" v-for="item in paginatedItems" :item="item" :longDisplay="false"/>
         </div>
         <vue-paginate class="row mx-auto my-2"
             v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
@@ -26,7 +26,7 @@
 
 .pagination .active{
     font-weight: bold;
-    background-color: #d2b08c32;
+    background-color: #a18f7b1a;
 }
 
 .pagination li:not(.active, .disabled){
@@ -34,7 +34,7 @@
 }
 
 .pagination li:not(.active, .disabled):hover{
-    background-color: #d2b08c32;
+    background-color: #a18f7b1a;
     transition: background-color .5s;
 }
 

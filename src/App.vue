@@ -5,9 +5,16 @@
 </script>
 
 <template>
-  <header>
+  <header :class="{'noNavMargin': ($route.name == 'shop')}">
     <Navbar />
   </header>
   <RouterView />
 </template>
-
+<style>
+header{
+  margin-bottom: 100px;
+}
+.noNavMargin{
+  margin-bottom: 0px;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-    <div :class="['filterContainer pt-3']">
+    <div :class="['filterContainer']">
         <!-- <h4>Filtres</h4> -->
         <loading :active="isLoading"></loading>
         <a href="#" v-if="activeCategoryNormalized" @click="activeCategoryNormalized = null" class="btn btn-primary mb-3"><span style="text-shadow:black 0px 0px 1px;">&#10060;</span> Effacer filtrage</a>

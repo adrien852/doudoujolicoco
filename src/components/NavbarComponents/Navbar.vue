@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light py-0">
+    <nav :class="['navbar navbar-expand-lg navbar-light py-0', {'navBlock': ($route.name == 'shop')}]">
       <RouterLink class="" to="/"><img alt="Vue logo" class="logo py-3" src="@/assets/logo.png" width="60"/></RouterLink>
       <div class="d-flex d-lg-none align-items-center justify-content-center">
         <CartIcon style="width: 40px;" />
@@ -26,7 +26,11 @@
   nav{
     z-index: 3000;
     width: 100%;
-    background-color: #e6ecee;
+    background-color: rgba(255, 255, 255, 0.322);
+    position: absolute;
+  }
+  .navBlock{
+    position: relative;
   }
   .navbarContent{
     height: initial;
@@ -38,7 +42,7 @@
     }
   }
   .nav-item:hover{
-    background-color: #aac2ce40;
+    background-color: #aac2ce81;
     -webkit-transition: background-color 0.2s ease-out;
     -moz-transition: background-color 0.2s ease-out;
     -o-transition: background-color 0.2s ease-out;

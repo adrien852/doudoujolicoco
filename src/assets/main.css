@@ -7,12 +7,12 @@ html, body, #app{
     padding:0;
     color: black;
     overflow-x: hidden;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Questrial', sans-serif;
   }
   
   #app {
     font-weight: normal;
-    background-color: #d2b08c20!important;
+    background-color: white!important;
   }
 
   
@@ -31,23 +31,23 @@ html, body, #app{
   }
 
   .bg-light{
-    background-color: #e5f6fa!important;
+    background-color:white!important;
   }
 
   .bg-secondary{
-    background-color: #d2b08c20!important;
+    background-color: white!important;
   }
 
   .btn-primary {
     color: white;
-    background-color: #98aeb9;
-    border-color: #98aeb9;
+    background-color: #94BCD8;
+    border-color: #94BCD8;
   }
 
   .btn-primary:hover {
     color: #fff;
-    background-color: #6c7c83;
-    border-color: #6c7c83;
+    background-color: #4c778d;
+    border-color: #4c778d;
   }
 
   .btn-primary.focus, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
@@ -57,13 +57,17 @@ html, body, #app{
   }
 
   .form-control:focus {
-    color: #6c7c83;
+    color: #4c778d;
     background-color: #fff;
-    border-color: #98aeb9;
+    border-color: #94BCD8;
     outline: 0;
     box-shadow: 0 0 0 .1rem rgba(152, 174, 185, 25%);
   }
 
   .p-nav{
     padding-top: 112px;
+  }
+
+  .text-uppercase{
+    letter-spacing: 1px;
   }

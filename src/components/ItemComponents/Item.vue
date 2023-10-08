@@ -6,10 +6,10 @@
             </div>
         </div>
         <div class="itemDetails col-md-5 col-12 mt-md-0 mt-3">
-            <h3 class="text-capitalize">{{ item.category.name }}</h3>
-            <div class="d-flex d-md-block align-items-center">
+            <h3 class="text-uppercase mb-2">{{ item.category.name }}</h3>
+            <div class="d-flex align-items-center">
                 <h1 class="mb-2">{{ item.name }}</h1>
-                <h2 class="mx-auto mb-2">{{ item.price }}€</h2>
+                <h2 class="ml-auto mb-2">{{ item.price }}€</h2>
             </div>
             <p>
                 {{ item.description }}
@@ -17,9 +17,9 @@
             <button @click="addItemToCart" class="btn btn-primary"><h3>Ajouter au panier</h3></button>
             <div class="shipment mt-3">
                 <h4 class="shipmentTitle">Livraison</h4>
-                <h4><span id="availibility">Disponible</span> - Expedition immediate</h4>
-                <h4>Livraison rapide - 2 - 4 jours ouvres en France metropolitaine</h4>
-                <h4>Retours acceptes sous conditions</h4>
+                <!-- <h4><span id="availibility">Disponible</span> - Expedition immediate</h4> -->
+                <h4>Livraison rapide - 2 - 4 jours ouvrés en France métropolitaine</h4>
+                <h4>Retours acceptés sous conditions</h4>
             </div>
         </div>
     </div>
@@ -81,14 +81,15 @@ function addItemToCart(){
     }
 
     h1{
-        font-size: clamp(16pt, 2vw, 20pt);
+        font-size: clamp(18pt, 3vw, 31pt);
+        font-family: 'Arizonia';
     }
     h2{
-        color: #6baaca;
+        color: #94BCD8;
         font-size: 20pt;
     }
     h3{
-        color: #a2785b;
+        color: #A18F7B;
         font-size: 13pt;
         margin: 0;
         width: fit-content;
@@ -100,7 +101,7 @@ function addItemToCart(){
         font-weight: normal;
     }
     p{
-        font-size: 10pt;
+        font-size: 11pt;
     }
     .itemSummary{
         position: relative;
@@ -112,7 +113,7 @@ function addItemToCart(){
         width: 8%;
     }
     .btn{
-        background-color: #6baaca;
+        background-color: #94BCD8;
         width: 100%;
         height: 40px;
         padding: 0;
@@ -135,7 +136,7 @@ function addItemToCart(){
     }
     .shipment{
         padding:20px;
-        background-color: #e6ecee;
+        background-color: #94BCD824;
         border-radius: 10px;
     }
     .shipmentTitle{

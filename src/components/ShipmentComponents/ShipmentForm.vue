@@ -140,14 +140,14 @@ watch(sameAsShipping, () => {
 
 button.formkit-input {
     color: white;
-    background-color: #98aeb9!important;
-    border-color: #98aeb9!important;
+    background-color: #94BCD8!important;
+    border-color: #94BCD8!important;
   }
 
   button.formkit-input:hover {
     color: #fff;
-    background-color: #6c7c83!important;
-    border-color: #6c7c83!important;
+    background-color: #4c778d!important;
+    border-color: #4c778d!important;
   }
 
   button.formkit-input.focus, button.formkit-input:focus, button.formkit-input:not(:disabled):not(.disabled).active, button.formkit-input:not(:disabled):not(.disabled):active, .show > button.formkit-input.dropdown-toggle {

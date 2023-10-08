@@ -1,7 +1,7 @@
 <template>
   <main class="w-100">
     <Hero />
-    <div class="mx-5">
+    <div class="mx-5 mt-lg-4">
       <ShopCarousel class="" v-if="dataLoaded" :items="sampleShopItemStore.items" />
     </div>
   </main>

@@ -40,7 +40,7 @@ let carouselImages = [
 
 .carousel__item, .carousel__item img{
   width:100%;
-  height:calc(100vh);
+  height:100%;
   filter: saturate(var(--value, 1.1))
 }
 .carousel__item img{
@@ -63,7 +63,7 @@ let carouselImages = [
 }
 
 #image4 img{
-  object-position: 67% 50%;
+  object-position: 67% 40%;
 }
 #image5 img{
   object-position: 50% 50%;
@@ -72,13 +72,13 @@ let carouselImages = [
   object-position: 50%;
 }
 #image7 img{
-  object-position: 0% 61%;
+  object-position: 0% 40%;
 }
 #image1 img{
-  object-position: 29% 70%;
+  object-position: 29% 50%;
 }
 #image3 img{
-  object-position: 50% 74%;
+  object-position: 50% 60%;
 }
 #image6 img{
   object-fit: none;
@@ -96,7 +96,7 @@ let carouselImages = [
   z-index: 15;
   margin-right: auto;
   margin-left: auto;
-  background-color: #aac2cee7;
+  background-color: #94BCD8;
   color: white;
   border-radius: 10px;
   -webkit-transition: transform 0.2s ease-out;
@@ -108,19 +108,25 @@ let carouselImages = [
 }
 .carouselBtn:hover{
     transform: scale(1.03);
-    -webkit-transition: transform 0.2s ease-out;
-    -moz-transition: transform 0.2s ease-out;
-    -o-transition: transform 0.2s ease-out;
-    transition: transform 0.2s ease-out;
+    -webkit-transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+    -moz-transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+    -o-transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+    transition: transform 0.2s ease-out, background-color 0.2s ease-out;
     text-decoration: none;
+    background-color: #4c778d;
+    color: white;
 }
 .carouselBtn h2{
   font-size: clamp(14pt, 4vw, 20pt);
   /* -webkit-filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0));
     filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0)); */
 }
-.heroRight .carousel__viewport{
-  height: max(calc(100vh - 92px), 495px);
+.heroLeft .carousel__viewport, .heroLeft, .heroLeft .carousel, .heroLeft .carousel__slide, .heroLeft .carousel__track{
+  height: 100%;
+}
+
+.carousel__viewport{
+  border-radius: 0 50px 50px 0;
 }
 </style>
 

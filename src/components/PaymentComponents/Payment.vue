@@ -16,6 +16,6 @@
 </script>
 <style>
   #submitButtons .btn{
-    background-color: #6baaca;
+    background-color: #94BCD8;
   }
 </style>

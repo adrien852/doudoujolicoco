@@ -1,8 +1,29 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="about container pt-4">
+    <div class="d-flex flex-wrap align-items-center justify-content-center">
+      <div class="col-lg-7">
+        <AboutText />
+      </div>
+      <div class="col-lg-5 col-md-8">
+        <AboutPictures />
+      </div>
+    </div>
+    <div class="d-flex">
+      <img alt="Vue logo" class="logo py-3 mx-auto" src="@/assets/full_logo.png"/>
+    </div>
   </div>
 </template>
 
-<style>
+<script setup>
+  import AboutText from '@/components/AboutComponents/AboutText.vue';
+  import AboutPictures from '@/components/AboutComponents/AboutPictures.vue';
+
+</script>
+
+<style scoped>
+  img{
+    width: 100%;
+    max-width: 400px;
+  }
+
 </style>

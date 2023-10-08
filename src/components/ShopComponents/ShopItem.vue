@@ -1,14 +1,15 @@
 <template>
     <RouterLink :to="'/article/'+item.normalized" :class="{'zoom': !longDisplay}">
-        <div :style="{height: longDisplay ? '150px' : 'initial'}" :class="['bg-white d-flex', {'flex-column shopItemCard':!longDisplay}]">
+        <div :style="{height: longDisplay ? '150px' : 'initial'}" :class="['bg-white d-flex w-100', {'flex-column shopItemCard':!longDisplay}]">
             <img :class="[{'h-auto cartImg': longDisplay}]" width="300" height="300" :src="imageUrl">
             <div :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
-                <p class="itemCategory pt-2 text-capitalize">{{ item.category.name }}</p>
+                <p class="itemCategory text-capitalize">{{ item.category.name }}</p>
                 <div class="itemTitle d-flex">
                     <p :class="['my-auto', {'m-auto': !longDisplay}]">{{ item.name }}</p>
                 </div>
+                <p class="itemCategory">{{ item.price }}€</p>
             </div>
-            <p :class="['itemPrice text-center ml-auto my-auto mr-4', {'d-none':!longDisplay}]">{{ item.price }}€</p>
+            <!-- <p :class="['itemPrice text-center ml-3 my-auto mr-4', {'d-none':!longDisplay}]">{{ item.price }}€</p> -->
         </div>
     </RouterLink>
     
@@ -62,7 +63,7 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.image}`
     .itemTitle{
         font-size:16pt;
         opacity: 1;
-        height:78px;
+        height:38px;
         overflow: hidden;
     }
     .itemTitle p{
@@ -70,18 +71,18 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.image}`
         text-overflow: ellipsis;
         word-wrap: anywhere;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
     }
     .cartImg{
         object-position: 50% 40%;
-        max-width: 35%;
+        width: 160px;
     }
     img{
         object-fit: cover;
     }
     .itemPrice{
-        color: #6baaca;
+        color: #94BCD8;
         font-size: 13pt;
         font-weight: bold;
     }
