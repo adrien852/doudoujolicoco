@@ -88,12 +88,12 @@
                     if(event.type == "PayPalAccount"){
                         submitButton.style.display = 'none';
                         checkoutButton.style.display = 'unset';
-                        checkoutButton.addEventListener('click', event => {
+                        dropinInstance.requestPaymentMethod((error, payload) => {
                             if (error) {
                                 console.error(error);
                             }
                             else{
-                                dropinInstance.requestPaymentMethod((error, payload) => {
+                                checkoutButton.addEventListener('click', event => {
                                     checkoutFlow(payload, submitButton, checkoutButton, dropinInstance);
                                 });
                             }
