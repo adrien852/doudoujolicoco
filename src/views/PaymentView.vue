@@ -63,7 +63,48 @@
                 if (error) console.error(error);
                 let submitButton = document.createElement('button');
                 let checkoutButton = document.createElement('button');
-                initializeListenersAndButtons(dropinInstance, checkoutButton, submitButton)
+                initializeButtons(submitButton, checkoutButton);
+                dropinInstance.on('paymentOptionSelected', function (event){
+                    if(event.paymentOption == "card"){
+                        submitButton.style.display = 'unset';
+                        checkoutButton.style.display = 'none';
+                    }
+                    else{
+                        submitButton.style.display = 'none';
+                    }
+                });
+                dropinInstance.on('changeActiveView', function (event){
+                    if(event.newViewId == "options" || event.newViewId == "methods"){
+                        submitButton.style.display = 'none';
+                    }
+                    if(event.newViewId == "paypal"){
+                        checkoutButton.style.display = 'none';
+                    }
+                    if(event.newViewId == "methods"){
+                        // checkoutButton.style.display = 'unset';
+                    }
+                    console.log(event);
+                });
+                dropinInstance.on('paymentMethodRequestable', function (event) {
+                    if(event.type == "PayPalAccount"){
+                        submitButton.style.display = 'none';
+                        dropinInstance.requestPaymentMethod((error, payload) => {
+                            if (error) {
+                                console.error(error);
+                            }
+                            else{
+                                checkoutButton.addEventListener('click', event => {
+                                    checkoutFlow(payload, submitButton, checkoutButton, dropinInstance);
+                                });
+                            }
+                        });
+                    }
+                    // checkoutButton.style.display = 'unset';
+                });
+                isLoading.value = false;
+                submitButton.addEventListener('click', event => {
+                    creditCardSubmit(event, submitButton, checkoutButton, dropinInstance);
+                });
             });
         });
     }
@@ -126,22 +167,17 @@
                 console.error(error);
             }
             else{
-                checkoutButton.remove();
-                submitButton.remove();
-                submitButton = document.createElement('button');
-                checkoutButton = document.createElement('button');
-                initializeListenersAndButtons(dropinInstance, checkoutButton, submitButton)
+                // submitButton.style.display = 'none';
+                checkoutButton.style.display = 'unset';
                 checkoutButton.addEventListener('click', event => {
                     checkoutFlow(payload, submitButton, checkoutButton, dropinInstance);
                 });
-                checkoutButton.style.display = 'unset';
             }
         });
     }
 
     function checkoutFlow(payload, submitButton, checkoutButton, dropinInstance){
-        isLoading.value = true;
-        document.getElementById('payment-form')
+
         checkout(payload.nonce, cartStore.items).catch((error) => {
             submitButton.style.display = 'none';
             checkoutButton.style.display = 'none';
@@ -159,47 +195,5 @@
             }
             
         })
-    }
-
-    function initializeListenersAndButtons(dropinInstance, checkoutButton, submitButton){
-        initializeButtons(submitButton, checkoutButton);
-        dropinInstance.on('paymentOptionSelected', function (event){
-            if(event.paymentOption == "card"){
-                submitButton.style.display = 'unset';
-                checkoutButton.style.display = 'none';
-            }
-            else{
-                submitButton.style.display = 'none';
-            }
-        });
-        dropinInstance.on('changeActiveView', function (event){
-            if(event.newViewId == "options" || event.newViewId == "methods"){
-                submitButton.style.display = 'none';
-            }
-            if(event.newViewId == "paypal"){
-                checkoutButton.style.display = 'none';
-            }
-        });
-        dropinInstance.on('paymentMethodRequestable', function (event) {
-            if(event.type == "PayPalAccount"){
-                submitButton.style.display = 'none';
-                checkoutButton.style.display = 'unset';
-                dropinInstance.requestPaymentMethod((error, payload) => {
-                    if (error) {
-                        console.error(error);
-                    }
-                    else{
-
-                        checkoutButton.addEventListener('click', event => {
-                            checkoutFlow(payload, submitButton, checkoutButton, dropinInstance);
-                        });
-                    }
-                });
-            }
-        });
-        isLoading.value = false;
-        submitButton.addEventListener('click', event => {
-            creditCardSubmit(event, submitButton, checkoutButton, dropinInstance);
-        });
     }
 </script>
