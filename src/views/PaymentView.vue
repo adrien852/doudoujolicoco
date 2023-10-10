@@ -81,13 +81,13 @@
                         checkoutButton.style.display = 'none';
                     }
                     if(event.newViewId == "methods"){
-                        checkoutButton.style.display = 'unset';
+                        // checkoutButton.style.display = 'unset';
                     }
+                    console.log(event);
                 });
                 dropinInstance.on('paymentMethodRequestable', function (event) {
                     if(event.type == "PayPalAccount"){
                         submitButton.style.display = 'none';
-                        checkoutButton.style.display = 'unset';
                         dropinInstance.requestPaymentMethod((error, payload) => {
                             if (error) {
                                 console.error(error);
@@ -99,6 +99,7 @@
                             }
                         });
                     }
+                    // checkoutButton.style.display = 'unset';
                 });
                 isLoading.value = false;
                 submitButton.addEventListener('click', event => {
@@ -167,7 +168,7 @@
             }
             else{
                 // submitButton.style.display = 'none';
-                // checkoutButton.style.display = 'unset';
+                checkoutButton.style.display = 'unset';
                 checkoutButton.addEventListener('click', event => {
                     checkoutFlow(payload, submitButton, checkoutButton, dropinInstance);
                 });
