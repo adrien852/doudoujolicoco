@@ -11,6 +11,7 @@
 </template>
 <script setup>
     import Payment from '@/components/PaymentComponents/Payment.vue'
+    import router from '@/router'
     import {savePaymentId} from '@/services/CustomerService.js'
     import {getBraintreeToken, checkout} from '@/services/PaymentService.js'
     import {useCartStore} from '@/stores/CartStore.js'
@@ -80,10 +81,6 @@
                     if(event.newViewId == "paypal"){
                         checkoutButton.style.display = 'none';
                     }
-                    if(event.newViewId == "methods"){
-                        // checkoutButton.style.display = 'unset';
-                    }
-                    console.log(event);
                 });
                 dropinInstance.on('paymentMethodRequestable', function (event) {
                     if(event.type == "PayPalAccount"){
@@ -93,13 +90,13 @@
                                 console.error(error);
                             }
                             else{
-                                checkoutButton.addEventListener('click', event => {
-                                    checkoutFlow(payload, submitButton, checkoutButton, dropinInstance);
-                                });
+                                elemental(checkoutButton).oneEventListener('click', ()=>{
+                                    checkoutCallBack(payload, submitButton, checkoutButton, dropinInstance);
+                                })
+                                checkoutButton.style.display = 'unset';
                             }
                         });
                     }
-                    // checkoutButton.style.display = 'unset';
                 });
                 isLoading.value = false;
                 submitButton.addEventListener('click', event => {
@@ -167,17 +164,17 @@
                 console.error(error);
             }
             else{
-                // submitButton.style.display = 'none';
+                elemental(checkoutButton).oneEventListener('click', ()=>{
+                    checkoutCallBack(payload, submitButton, checkoutButton, dropinInstance);
+                })
                 checkoutButton.style.display = 'unset';
-                checkoutButton.addEventListener('click', event => {
-                    checkoutFlow(payload, submitButton, checkoutButton, dropinInstance);
-                });
             }
         });
     }
 
-    function checkoutFlow(payload, submitButton, checkoutButton, dropinInstance){
-
+    function checkoutCallBack(payload, submitButton, checkoutButton, dropinInstance){
+        isLoading.value = true;
+        document.getElementById('payment-form').remove();
         checkout(payload.nonce, cartStore.items).catch((error) => {
             submitButton.style.display = 'none';
             checkoutButton.style.display = 'none';
@@ -189,11 +186,27 @@
                     amount: response.transaction.amount
                 }
                 savePaymentId(cartStore.address.customerId, payment);
+                cartStore.clearCart();
+                router.push({ path: '/' })
             }
             else{
                 console.log(response.message);
             }
             
         })
+    }
+    
+    function elemental(el){
+        el.oneEventListener = (event, func) => {
+            if(el.lastEventListener == null){
+            el.lastEventListener = {};
+            }
+            if(el.lastEventListener[event] != null){
+            el.removeEventListener(event, el.lastEventListener[event]);
+            }
+            el.addEventListener(event, func);
+            el.lastEventListener[event] = func;
+        }
+        return el;
     }
 </script>

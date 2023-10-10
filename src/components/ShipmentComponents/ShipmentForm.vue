@@ -53,7 +53,10 @@
                 />
                 <FormKit
                     type="text"
-                    validation="required|length:5"
+                    :validation="[['required'],['matches', /^\d{5}$/]]"
+                    :validation-messages="{
+                        matches: 'Code Postal doit être exactement 5 chiffres',
+                    }"
                     name="postalCode"
                     id="postalCode"
                     label="Code Postal"
