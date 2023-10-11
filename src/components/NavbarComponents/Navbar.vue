@@ -1,16 +1,30 @@
 <template>
-    <nav :class="['navbar navbar-expand-lg navbar-light py-0', {'navBlock': ($route.name == 'shop')}]">
-      <RouterLink class="" to="/"><img alt="Vue logo" class="logo py-3" src="@/assets/logo.png" width="60"/></RouterLink>
-      <div class="d-flex d-lg-none align-items-center justify-content-center">
+    <nav :class="['navbar navbar-expand-lg navbar-light p-0', {'navBlock': ($route.name == 'shop')}]">
+      <!-- <RouterLink class="" to="/"><img alt="Vue logo" class="logo py-3" src="@/assets/full_logo_text_only.png" width="120"/></RouterLink> -->
+      <div class="d-flex d-lg-none align-items-center justify-content-center px-3">
         <CartIcon style="width: 40px;" />
       </div>
-      <button id="toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="d-flex px-3" style="height: 85px;">
+        <button id="toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      </div>
+
       <div id="navbarNav" class="collapse navbar-collapse">
         <NavbarContent />
       </div>
     </nav>
+    <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h4 class="text-white">Collapsed content</h4>
+      <span class="text-muted">Toggleable via the navbar brand.</span>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
 </template>
 
 <script setup>
@@ -20,6 +34,10 @@
 </script>
 
 <style scoped>
+  #toggler{
+    margin: auto;
+    height:50px;
+  }
   .navbar-nav{
     padding-left: 15px;
   }
@@ -31,22 +49,6 @@
   }
   .navBlock{
     position: relative;
-  }
-  .navbarContent{
-    height: initial;
-    width: 100%;
-  }
-  @media (min-width: 992px) {
-    .navbarContent{
-      height: 92px;
-    }
-  }
-  .nav-item:hover{
-    background-color: #aac2ce81;
-    -webkit-transition: background-color 0.2s ease-out;
-    -moz-transition: background-color 0.2s ease-out;
-    -o-transition: background-color 0.2s ease-out;
-    transition: background-color 0.2s ease-out;
   }
   h3{
     color: black;

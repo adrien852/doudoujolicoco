@@ -1,4 +1,5 @@
 <template>
+  <img alt="Doudou Joli Logo" class="heroLogo py-3 d-lg-none d-block" src="@/assets/full_logo.png">
   <Carousel :wrapAround="true" :transition="800" :autoplay="4000">
     <Slide v-for="(slide, index) in carouselImages" :key="index">
       <div :id="'image'+(index+1)" class="carousel__item"><img alt="Peluche de vache en crochet" class="d-block" :src="slide"></div>
@@ -37,7 +38,11 @@ let carouselImages = [
 </script>
     
 <style>
-
+.heroLogo{
+  position: absolute;
+  z-index: 10;
+  width: 300px;
+}
 .carousel__item, .carousel__item img{
   width:100%;
   height:100%;
@@ -86,7 +91,7 @@ let carouselImages = [
 }
 .carouselBtn{
   width:40%;
-  height: 100px;
+  height: 60px;
   min-width: 200px;
   max-width: 500px;
   position: absolute;
