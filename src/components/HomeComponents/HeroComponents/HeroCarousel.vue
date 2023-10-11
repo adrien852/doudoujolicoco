@@ -41,7 +41,7 @@ let carouselImages = [
 .heroLogo{
   position: absolute;
   z-index: 10;
-  width: 300px;
+  width: 200px;
 }
 .carousel__item, .carousel__item img{
   width:100%;

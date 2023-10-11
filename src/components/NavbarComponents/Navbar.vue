@@ -4,15 +4,16 @@
 
     <nav :class="['navbar navbar-expand-lg navbar-light p-0', {'navBlock': false}]">
       <!-- <RouterLink class="" to="/"><img alt="Vue logo" class="logo py-3" src="@/assets/full_logo_text_only.png" width="120"/></RouterLink> -->
-      <div class="d-flex d-lg-none align-items-center justify-content-center px-3">
-        <CartIcon style="width: 40px;" />
-      </div>
       <div class="d-flex px-3" style="height: 85px;">
         <button id="toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       </div>
+      <RouterLink class="logo position-absolute" to="/"><img alt="Vue logo" class="py-3" src="@/assets/full_logo_text_only.png"/></RouterLink>
 
+      <div class="d-flex d-lg-none align-items-center justify-content-center px-3">
+        <CartIcon style="width: 40px;" />
+      </div>
       <div id="navbarNav" class="collapse navbar-collapse">
         <button id="sideToggler" class="navbar-toggler d-none d-lg-block" type="button">
         <span class="navbar-toggler-icon"></span>
@@ -59,6 +60,14 @@
 </script>
 
 <style scoped>
+.logo{
+  top: 8px;
+  left:calc(50% - 60px);
+  width: 120px;
+}
+img{
+  width: 100%;
+}
   #toggler{
     margin: auto;
     height:50px;
