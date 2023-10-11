@@ -21,24 +21,20 @@
 
     let settings = {
       itemsToShow: 1,
-      snapAlign: 'center',
+      snapAlign: 'left',
     }
     let breakpoints = {
-      900: {
+      768: {
+        itemsToShow: 2,
+        snapAlign: 'center',
+      },
+      992: {
         itemsToShow: 3,
         snapAlign: 'center',
       },
-      1150: {
+      1200: {
         itemsToShow: 4,
-        snapAlign: 'start',
-      },
-      1350: {
-        itemsToShow: 5,
-        snapAlign: 'start',
-      },
-      1600: {
-        itemsToShow: 6,
-        snapAlign: 'start',
+        snapAlign: 'center',
       },
     }
 </script>

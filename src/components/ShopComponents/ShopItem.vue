@@ -37,7 +37,7 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.image}`
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;
         transition: transform 0.1s ease-out;
-        color:initial;
+        color:#22211F;
         height: fit-content;
     }
     .zoom:hover{
@@ -48,7 +48,7 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.image}`
         transition: transform 0.1s ease-out;
     }
     a:hover{
-        color: initial;
+        color: #22211F;
         text-decoration: none;
     }
     .shopItemCard img{

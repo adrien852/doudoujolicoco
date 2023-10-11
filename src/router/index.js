@@ -21,6 +21,11 @@ const router = createRouter({
       component: ShopView
     },
     {
+      path: '/boutique/:categoryNormalized',
+      name: 'filteredShop',
+      component: ShopView
+    },
+    {
       path: '/a-propos',
       name: 'about',
       component: AboutView

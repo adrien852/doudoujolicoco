@@ -13,30 +13,38 @@
 <script setup>
     import ShopFilter from './ShopFilter.vue';
     import {getCategories,} from '@/services/ShopService.js';
-    import { onMounted, ref, watch, computed } from 'vue';
+    import { onMounted } from 'vue';
+    import { onBeforeMount, ref, watch, computed } from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 
+    const props = defineProps({
+        categoryNormalized: String
+    })
+
     let filters = []
     let isLoading = ref(true)
-    let activeCategoryNormalized = ref(null)
     const emit = defineEmits(['filterByCategory'])
+    let activeCategoryNormalized = ref(null);
+
+    watch(props, (x) =>{
+        activeCategoryNormalized.value = props.categoryNormalized;
+        emit('filterByCategory', activeCategoryNormalized.value);
+    })
 
     watch(activeCategoryNormalized, (x) =>{
         emit('filterByCategory', activeCategoryNormalized.value);
     })
 
-    function resetFilters(){
-        activeCategoryNormalized.value = null;
-        emit('filterByCategory', activeCategoryNormalized.value);
-    }
-
-    onMounted(async() => {
+    onBeforeMount(async() => {
         getCategories().then(response => {
             filters = response;
             isLoading.value = false;
         })
-        
+    })
+
+    onMounted(() => {
+        activeCategoryNormalized.value = props.categoryNormalized;
     })
 
 </script>

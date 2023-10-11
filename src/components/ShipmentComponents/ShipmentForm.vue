@@ -129,7 +129,7 @@ watch(sameAsShipping, () => {
 }
 [data-complete]:not([data-type='checkbox']) .formkit-inner::after {
   content: '✓';
-  color: green;
+  color: #22211F;
   display: block;
   padding: 0.5em;
 }

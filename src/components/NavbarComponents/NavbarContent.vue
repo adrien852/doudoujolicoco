@@ -1,12 +1,7 @@
 <template>
         <div class="navbarContent d-flex flex-lg-row flex-column">
           <div class="w-100 d-lg-flex d-none">
-            <div class="navbar-nav h-100 col-lg-5 col-12 p-0">
-              <div class="d-flex px-3" style="height: 85px;">
-                <button id="toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-              </div>
+            <div class="navbar-nav h-100 col-xl-5 col-lg-4 col-12 p-0">
               <RouterLink class="d-flex justify-content-center align-items-center w-100 h-100 nav-item nav-link active text-uppercase" to="/">
                   <h3 class="p-0">Accueil</h3>
               </RouterLink>
@@ -58,7 +53,9 @@ img{
   width: 100%;
 }
 h3{
-  font-size: 12pt;
+  font-size: 11pt;
+  color:#22211F;
+  margin: 0;
 }
 .navbarContent{
     height: initial;

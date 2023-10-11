@@ -4,7 +4,7 @@
         <vue-paginate class="row mx-auto my-2"
             v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
         </vue-paginate>
-        <div id="shopItems" class="flex-wrap d-flex justify-content-left mx-auto">
+        <div id="shopItems" class="flex-wrap d-flex justify-content-left mx-auto w-100">
             <ShopItem class="col-lg-3 col-sm-6 col-12 p-3" v-for="item in paginatedItems" :item="item" :longDisplay="false"/>
         </div>
         <vue-paginate class="row mx-auto my-2"
@@ -18,7 +18,7 @@
 }
 
 .pagination a {
-  color: black;
+  color: #22211F;
   float: left;
   padding: 8px 16px;
   text-decoration: none;
@@ -50,6 +50,7 @@
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import { VuePaginate } from '@svifty7/vue-paginate';
+import { onBeforeMount } from 'vue';
 
     const props = defineProps({
         categoryNormalized: String,
@@ -63,13 +64,27 @@
     let pageCount = ref(1)
     const shopContainer = ref(null)
 
+    onBeforeMount(() => {
+        
+    })
+
     onMounted(async() => {
-        getItems().then(response => {
-            items = response;
-            paginatedItems = paginateItems(page.value);
-            pageCount.value = Math.ceil(items.length / itemsPerPage);
-            isLoading.value = false;
-        })
+        if(!props.categoryNormalized){
+            await getItems().then(response => {
+                items = response;
+                paginatedItems = paginateItems(page.value);
+                pageCount.value = Math.ceil(items.length / itemsPerPage);
+            })
+        }
+        else{
+            await getCategoryItems(props.categoryNormalized).then(response => {
+                items = response;
+                page.value = 1;
+                paginatedItems = paginateItems(page.value);
+                pageCount.value = Math.ceil(items.length / itemsPerPage);
+            }) 
+        }
+        isLoading.value = false;
     })
 
     watch(props, () =>{
@@ -90,7 +105,7 @@
                 paginatedItems = paginateItems(page.value);
                 pageCount.value = Math.ceil(items.length / itemsPerPage);
                 isLoading.value = false;
-            }) 
+            })
         }
         nextTick(() => {
             shopContainer.value?.scrollIntoView({behavior: "smooth"});

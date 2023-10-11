@@ -65,7 +65,7 @@ label{
 }
 a{
     text-decoration: none;
-    color: initial;
+    color: #22211F;
     margin-right: 10px;
     /* font-size: clamp(8pt, 1vw + 2pt, 11pt); */
 }

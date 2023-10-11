@@ -1,6 +1,6 @@
 <template>
     <loading :active="isLoading"></loading>
-    <div class="container mt-4">
+    <div ref="scroll" class="container mt-4">
         <div class="mx-1 d-flex flex-md-wrap flex-wrap-reverse row justify-content-around">
             <div class="d-flex row m-0 col-md-8 col-12 ml-auto mb-md-0 mt-3 mt-md-0">
                 <FormKit
@@ -45,7 +45,7 @@
     import {saveCustomer} from '@/services/CustomerService.js'
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
-    import {onMounted, ref, toRaw } from 'vue'
+    import {onMounted, ref, toRaw, nextTick } from 'vue'
     import {useCartStore} from '@/stores/CartStore.js'
     
     const cartStore = useCartStore();
@@ -53,6 +53,13 @@
     let isSameAsShipping = ref(true);
     let step = ref('shipping')
     const stepNames = ['shipping','billing']
+    let scroll = ref(null)
+
+    onMounted(() => {
+        nextTick(() => {
+            scroll.value?.scrollIntoView({behavior: "smooth"});
+        });
+    });
 
     function postAddress(event){
         isLoading.value = true;
@@ -74,6 +81,6 @@
         height: fit-content;
     }
     .nav-link{
-        color: initial;
+        color: #22211F;
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div id="shopItems" class="row d-flex justify-content-left col-xl-6 col-lg-7 mx-auto">
+    <div id="cartItems" class="row d-flex justify-content-left col-xl-6 col-lg-7 mx-auto">
         <div class="position-relative mb-3 w-100" v-for="(item, index) in items">
             <div @click="cartStore.deleteItem(index)" class="bin"><img class="w-100" src="@/assets/images/bin.png"/></div>
             <ShopItem :item="item" :longDisplay="true"/>
@@ -47,7 +47,11 @@ p{
         transition: transform 0.1s ease-out;
 }
 .totalContainer{
-        background-color: #94bcd814;
-        padding: 10px 15px;
-    }
+    background-color: #94bcd814;
+    padding: 10px 15px;
+    height: 50px;
+}
+#cartItems{
+    height: fit-content;
+}
 </style>

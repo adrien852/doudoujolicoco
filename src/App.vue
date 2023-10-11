@@ -1,20 +1,22 @@
-<script setup>
-  import { RouterLink, RouterView } from 'vue-router'
-  import Navbar from './components/NavbarComponents/Navbar.vue'
-
-</script>
-
 <template>
-  <header :class="{'noNavMargin': ($route.name == 'shop')}">
+  <header :class="{'noNavMargin': false}">
     <Navbar />
   </header>
   <RouterView />
 </template>
+
+<script setup>
+  import { RouterLink, RouterView } from 'vue-router'
+  import Navbar from './components/NavbarComponents/Navbar.vue'
+
+
+</script>
+
 <style>
-header{
-  margin-bottom: 100px;
-}
-.noNavMargin{
-  margin-bottom: 0px;
-}
+  header{
+    margin-bottom: 100px;
+  }
+  .noNavMargin{
+    margin-bottom: 0px;
+  }
 </style>

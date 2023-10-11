@@ -3,10 +3,9 @@
     <div class="container py-3">
         <loading :active="isLoading"></loading>
         <div class="d-flex">
-            <ShopFilters @filterByCategory="filterItemsByCategory" />
+            <!-- <ShopFilters :categoryNormalized="categoryNormalized" @filterByCategory="filterItemsByCategory" /> -->
             <ShopItems :categoryNormalized="categoryNormalized"/>
         </div>
-        
     </div>
 </div>
 
@@ -14,7 +13,7 @@
 
 <style scoped>
 .container{
-    max-width: 1600px;
+    /* max-width: 1600px; */
 }
 .btn{
     margin-bottom: 5px;
@@ -24,20 +23,31 @@
 <script setup>
     import ShopItems from '@/components/ShopComponents/ShopItems.vue';
     import ShopFilters from '@/components/ShopComponents/ShopFilters.vue';
-    import { onMounted, ref } from 'vue';
+    import { useRoute } from 'vue-router'
+    import { onMounted, ref, onBeforeMount } from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+import { watch } from 'vue';
     
-    let isLoading = ref(true)
-    let filtersLoading = ref(true)
-    let itemsLoading = ref(true)
-    let categoryNormalized = null
+    let isLoading = ref(true);
+    let filtersLoading = ref(true);
+    let itemsLoading = ref(true);
+    let categoryNormalized = ref(null);
+    const route = useRoute();
+
+    onBeforeMount(() => {
+        categoryNormalized.value = route.params.categoryNormalized;
+    })
 
     onMounted(() => {
         isLoading.value = false;
     })
 
     function filterItemsByCategory(normalized){
-        categoryNormalized = normalized;
+        categoryNormalized.value = normalized;
     }
+
+    watch(route, () =>{
+        categoryNormalized.value = route.params.categoryNormalized;
+    })
 </script>

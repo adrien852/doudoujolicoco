@@ -1,8 +1,10 @@
 <template>
-  <main class="w-100">
+  <main id="main" class="w-100">
     <Hero />
-    <div class="mx-5 mt-lg-4">
-      <ShopCarousel class="" v-if="dataLoaded" :items="sampleShopItemStore.items" />
+    <div class="container">
+      <div class="mt-lg-4">
+        <ShopCarousel class="" v-if="dataLoaded" :items="sampleShopItemStore.items" />
+      </div>
     </div>
   </main>
 </template>
@@ -23,11 +25,21 @@
     });
   })
 
+  onMounted(() => {
+    document.getElementById("main").addEventListener('click', () => {
+      let sidebar = document.getElementById("mySidebar");
+      if(sidebar.className.includes('toggled')){
+        sidebar.style.width = "0";
+        sidebar.classList.remove('toggled');
+      }
+    })
+  })
+
 </script>
 
 <style scoped>
 h1{
-  color: black;
+  color: #22211F;
 }
 main{
   top: 0;
