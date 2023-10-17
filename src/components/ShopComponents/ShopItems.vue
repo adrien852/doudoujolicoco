@@ -12,45 +12,13 @@
         </vue-paginate>    </div>
 </template>
 
-<style>
-#shopItems{
-    height: fit-content;
-}
-
-.pagination a {
-  color: #22211F;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-.pagination .active{
-    font-weight: bold;
-    background-color: #a18f7b1a;
-}
-
-.pagination li:not(.active, .disabled){
-    cursor: pointer;
-}
-
-.pagination li:not(.active, .disabled):hover{
-    background-color: #a18f7b1a;
-    transition: background-color .5s;
-}
-
-.pagination .disabled a{
-    color: lightgray;
-}
-</style>
-
 <script setup>
     import ShopItem from './ShopItem.vue';
     import {getItems, getCategoryItems} from '@/services/ShopService.js'
-    import { onMounted, ref, watch, nextTick} from 'vue';
+    import { onMounted, ref, watch, nextTick, onBeforeMount} from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import { VuePaginate } from '@svifty7/vue-paginate';
-import { onBeforeMount } from 'vue';
 
     const props = defineProps({
         categoryNormalized: String,
@@ -126,3 +94,35 @@ import { onBeforeMount } from 'vue';
         isLoading.value = false;
     }
 </script>
+
+
+<style>
+#shopItems{
+    height: fit-content;
+}
+
+.pagination a {
+  color: #22211F;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination .active{
+    font-weight: bold;
+    background-color: #a18f7b1a;
+}
+
+.pagination li:not(.active, .disabled){
+    cursor: pointer;
+}
+
+.pagination li:not(.active, .disabled):hover{
+    background-color: #a18f7b1a;
+    transition: background-color .5s;
+}
+
+.pagination .disabled a{
+    color: lightgray;
+}
+</style>

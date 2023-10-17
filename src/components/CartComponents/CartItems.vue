@@ -47,7 +47,7 @@ p{
         transition: transform 0.1s ease-out;
 }
 .totalContainer{
-    background-color: #94bcd814;
+    background-color: #d2d2d214;
     padding: 10px 15px;
     height: 50px;
 }

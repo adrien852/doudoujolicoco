@@ -1,8 +1,8 @@
 <template>
 <div id="mySidebar" class="sidebar">
     <div class="sidebarContent mt-2">
-        <h2>Catégories</h2>
-        <RouterLink v-for="category in categories" :to="'/boutique/'+category.normalized">
+        <RouterLink @click="hideSidebar" to="/boutique/categories"><h2>Catégories</h2></RouterLink>
+        <RouterLink @click="hideSidebar" v-for="category in categories" :to="'/boutique/'+category.normalized">
         <ul class="m-0">
             <li>
                 <h3 class="pl-3">{{category.name}}</h3>
@@ -18,6 +18,14 @@
         categories: Array
     });
 
+    function hideSidebar(){
+        let sidebar = document.getElementById("mySidebar");
+        if(sidebar.className.includes('toggled')){
+            sidebar.style.width = "0";
+            sidebar.classList.remove('toggled');
+        }
+    }
+    
 </script>
 
 <style scoped>
@@ -36,6 +44,7 @@
 }
 
 h2{
+    color:#22211F;
     padding: 5px 20px;
     font-size: 12pt;
 }

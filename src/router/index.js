@@ -6,6 +6,7 @@ import ItemView from '@/views/ItemView.vue'
 import CartView from '@/views/CartView.vue'
 import PaymentView from '@/views/PaymentView.vue'
 import ShipmentView from '@/views/ShipmentView.vue'
+import CategoriesView from '@/views/CategoriesView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,6 +25,11 @@ const router = createRouter({
       path: '/boutique/:categoryNormalized',
       name: 'filteredShop',
       component: ShopView
+    },
+    {
+      path: '/boutique/categories',
+      name: 'categories',
+      component: CategoriesView
     },
     {
       path: '/a-propos',

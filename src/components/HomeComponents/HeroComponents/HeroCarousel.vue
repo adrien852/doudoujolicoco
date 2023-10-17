@@ -130,8 +130,11 @@ let carouselImages = [
   height: 100%;
 }
 
-.carousel__viewport{
-  border-radius: 0 50px 50px 0;
+@media (min-width: 992px) {
+  .carousel__viewport{
+    border-radius: 0 50px 50px 0;
+  }
 }
+
 </style>
 

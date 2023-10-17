@@ -1,30 +1,19 @@
 <template>
-    <RouterLink :to="'/article/'+item.normalized" :class="{'zoom': !longDisplay}">
-        <div :style="{height: longDisplay ? '150px' : 'initial'}" :class="['bg-white d-flex w-100', {'flex-column shopItemCard':!longDisplay}]">
-            <img :class="[{'h-auto cartImg': longDisplay}]" width="300" height="300" :src="imageUrl">
-            <div :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
-                <p class="itemCategory text-uppercase">{{ item.category.name }}</p>
-                <div class="itemTitle d-flex">
-                    <p :class="['my-auto', {'m-auto': !longDisplay}]">{{ item.name }}</p>
-                </div>
-                <p class="itemCategory">{{ item.price }}€</p>
+    <RouterLink :to="'/boutique/'+category.normalized">
+        <div class="d-flex flex-column justify-content-center text-center mx-auto mb-2">
+            <div class="itemTitle d-flex">
+                <p class="m-auto text-uppercase">{{ category.name }}</p>
             </div>
-            <!-- <p :class="['itemPrice text-center ml-3 my-auto mr-4', {'d-none':!longDisplay}]">{{ item.price }}€</p> -->
+        </div>
+        <div class="bg-white d-flex w-100 flex-column shopItemCard zoom">
+            <img width="300" height="300" src="@/assets/images/pikachu.jpg">
         </div>
     </RouterLink>
-    
 </template>
-
 <script setup>
-import { RouterLink } from 'vue-router'
-import {computed} from 'vue'
 const props = defineProps({
-    item: Object,
-    longDisplay: Boolean
+    category: Object,
 })
-
-const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[0]}`, import.meta.url).href)
-
 </script>
 
 <style scoped>
@@ -33,12 +22,14 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[
         box-shadow: 2px 3px 8px #0000001f;
     }
     a{
+        color:#22211F;
+        height: fit-content;
+    }
+    .zoom{
         -webkit-transition: transform 0.1s ease-out;
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;
         transition: transform 0.1s ease-out;
-        color:#22211F;
-        height: fit-content;
     }
     .zoom:hover{
         transform: scale(1.03);
@@ -52,8 +43,9 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[
         text-decoration: none;
     }
     .shopItemCard img{
-        border-radius:10px 10px 0 0;
+        border-radius: 10px;
         width: auto;
+        height: 200px;
     }
     .itemCategory{
         font-size: small;
@@ -73,6 +65,9 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[
         display: -webkit-box;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
+        font-size: 13pt;
+        font-weight: bold;
+        color: #A18F7B;
     }
     .cartImg{
         object-position: 50% 40%;

@@ -25,9 +25,17 @@ html, body, #app{
     }
   }
   
-  h1,h2,h3,h4,h5,h6{
+ h2,h3,h4,h5,h6{
     font-family: 'Questrial', sans-serif;
     font-weight: bold;
+  }
+
+  h1{
+    font-weight: bold;
+    font-family: 'Arizonia';
+    font-size: 30pt;
+    letter-spacing: 0px;
+    color: #A18F7B;
   }
 
   .bg-light{

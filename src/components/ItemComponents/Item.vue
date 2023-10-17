@@ -33,7 +33,7 @@ const props = defineProps({
     item: Object
 })
 
-const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.image}`, import.meta.url).href)
+const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[0]}`, import.meta.url).href)
 
 const cartStore = useCartStore();
 
@@ -83,6 +83,7 @@ function addItemToCart(){
     h1{
         font-size: clamp(18pt, 3vw, 31pt);
         font-family: 'Arizonia';
+        color: #22211F;
     }
     h2{
         color: #94BCD8;

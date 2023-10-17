@@ -57,12 +57,7 @@ img{
   max-width: 100%;
 }
 .heroContainer{
-  height:550px;
-}
-a{
-  position: absolute;
-  left: min(650px, 32vw);
-  top: min(220px, 18vw);
+  height:400px;
 }
 h4{
   font-size: 18px;

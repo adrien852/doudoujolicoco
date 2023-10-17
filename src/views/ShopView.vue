@@ -1,7 +1,8 @@
 <template>
 <div class="">
-    <div class="container py-3">
+    <div class="container">
         <loading :active="isLoading"></loading>
+        <h1 class="mb-lg-1 text-left">Boutique</h1>
         <div class="d-flex">
             <!-- <ShopFilters :categoryNormalized="categoryNormalized" @filterByCategory="filterItemsByCategory" /> -->
             <ShopItems :categoryNormalized="categoryNormalized"/>

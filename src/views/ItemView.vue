@@ -11,10 +11,10 @@
 </template>
 
 <script setup>
-    import Item from '@/components/ItemComponents/Item.vue'
+    import Item from '@/components/ItemComponents/Item.vue';
     import ShopCarousel from '@/components/ShopComponents/ShopCarousel.vue';
-    import {getItem} from '@/services/ShopService.js'
-    import { useRoute } from 'vue-router'
+    import {getItem} from '@/services/ShopService.js';
+    import { useRoute } from 'vue-router';
     import { useSampleItemStore } from '@/stores/SampleShopItemStore';
     import { onBeforeMount, watch, ref, nextTick} from 'vue';
     import Loading from 'vue3-loading-overlay';

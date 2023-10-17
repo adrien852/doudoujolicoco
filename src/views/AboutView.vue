@@ -4,7 +4,7 @@
       <div class="col-lg-7">
         <AboutText />
       </div>
-      <div class="col-lg-5 col-md-8">
+      <div class="col-lg-5 col-md-8 text-center">
         <AboutPictures />
       </div>
     </div>

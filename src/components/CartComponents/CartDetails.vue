@@ -48,6 +48,8 @@
     }
     h1{
         font-size: 10pt;
+        font-family: 'Questrial', sans-serif;
+        color: white;
     }
     h3, h2{
         font-size: 10pt;
@@ -120,7 +122,7 @@
         border-color: #f39a25;
     }
     .detailsColor{
-        background-color: #94bcd814;
+        background-color: #d2d2d214;
         padding: 0 15px;
     }
 </style>

@@ -9,10 +9,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       </div>
-      <RouterLink class="logo position-absolute" to="/"><img alt="Vue logo" class="py-3" src="@/assets/full_logo_text_only.png"/></RouterLink>
+      <RouterLink @click="hideSidebar" class="logo position-absolute" to="/"><img alt="Vue logo" class="py-3" src="@/assets/full_logo_text_only.png"/></RouterLink>
 
       <div class="d-flex d-lg-none align-items-center justify-content-center px-3">
-        <CartIcon style="width: 40px;" />
+        <CartIcon @click="hideSidebar" style="width: 40px;" />
       </div>
       <div id="navbarNav" class="collapse navbar-collapse">
         <button id="sideToggler" class="navbar-toggler d-none d-lg-block" type="button">
@@ -36,15 +36,12 @@
 
     let isLoading = ref(true)
     let categories = ref(null)
-
-    onBeforeMount(() => {
+    
+    onMounted(() => {
       getCategories().then(response => {
             categories = response;
             isLoading.value = false;
         })
-    })
-    
-    onMounted(() => {
       document.getElementById("sideToggler").addEventListener('click', () => {
         let sidebar = document.getElementById("mySidebar");
         if(sidebar.className.includes('toggled')){
@@ -56,7 +53,16 @@
           sidebar.classList.add('toggled');
         }
       })
+      
     })
+
+    function hideSidebar(){
+        let sidebar = document.getElementById("mySidebar");
+        if(sidebar.className.includes('toggled')){
+            sidebar.style.width = "0";
+            sidebar.classList.remove('toggled');
+        }
+    }
 </script>
 
 <style scoped>
