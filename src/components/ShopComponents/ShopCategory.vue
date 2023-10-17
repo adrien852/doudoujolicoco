@@ -6,14 +6,19 @@
             </div>
         </div>
         <div class="bg-white d-flex w-100 flex-column shopItemCard zoom">
-            <img width="300" height="300" src="@/assets/images/pikachu.jpg">
+            <img width="300" height="300" :src="imageUrl">
         </div>
     </RouterLink>
 </template>
 <script setup>
+import { computed } from 'vue';
+
 const props = defineProps({
     category: Object,
 })
+
+const imageUrl = computed(() => new URL(`/src/assets/images/${props.category.image}`, import.meta.url).href)
+
 </script>
 
 <style scoped>
