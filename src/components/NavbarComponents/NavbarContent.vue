@@ -1,7 +1,7 @@
 <template>
         <div class="navbarContent d-flex flex-lg-row flex-column">
           <div class="w-100 d-lg-flex d-none">
-            <div class="navbar-nav h-100 col-xl-5 col-lg-4 col-12 p-0">
+            <div class="navbar-nav h-100 col-xl-4 col-lg-4 col-12 p-0">
               <RouterLink @click="hideSidebar" class="d-flex justify-content-center align-items-center w-100 h-100 nav-item nav-link active text-uppercase" to="/">
                   <h3 class="p-0">Accueil</h3>
               </RouterLink>

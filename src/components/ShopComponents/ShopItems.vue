@@ -76,7 +76,7 @@
             })
         }
         nextTick(() => {
-            shopContainer.value?.scrollIntoView({behavior: "smooth"});
+            // shopContainer.value?.scrollIntoView({behavior: "smooth"});
         });
     })
 

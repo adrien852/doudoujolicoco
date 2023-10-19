@@ -1,6 +1,6 @@
 <template>
     <loading :active="isLoading"></loading>
-    <div ref="scroll" class="container mt-4">
+    <div class="container mt-4">
         <div class="mx-1 d-flex flex-md-wrap flex-wrap-reverse row justify-content-around">
             <div class="d-flex row m-0 col-md-8 col-12 ml-auto mb-md-0 mt-3 mt-md-0">
                 <FormKit
@@ -22,7 +22,7 @@
 
                     <div class="form-body pt-3">
                         <section v-show="step === 'shipping'">
-                            <ShipmentForm id="test" class="col-12 mb-2" @sameAsShipping="(event) => isSameAsShipping = event"/>
+                            <ShipmentForm id="test" class="col-12 mb-2" @sameAsShipping="sameAsShipping"/>
 
                         </section>
 
@@ -45,7 +45,7 @@
     import {saveCustomer} from '@/services/CustomerService.js'
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
-    import {onMounted, ref, toRaw, nextTick } from 'vue'
+    import {ref, toRaw, nextTick} from 'vue'
     import {useCartStore} from '@/stores/CartStore.js'
     
     const cartStore = useCartStore();
@@ -53,13 +53,17 @@
     let isSameAsShipping = ref(true);
     let step = ref('shipping')
     const stepNames = ['shipping','billing']
-    let scroll = ref(null)
 
-    onMounted(() => {
-        nextTick(() => {
-            scroll.value?.scrollIntoView({behavior: "smooth"});
-        });
-    });
+    function sameAsShipping(event){
+        isSameAsShipping = event;
+        if(isSameAsShipping == false){
+            step.value = 'billing';
+            nextTick(() => {
+                const el = document.querySelector(".formkit-form");
+                el.scrollIntoView({block: "start", behavior: "smooth"});
+            })
+        }
+    }
 
     function postAddress(event){
         isLoading.value = true;

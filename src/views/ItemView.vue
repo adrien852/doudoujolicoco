@@ -4,8 +4,10 @@
         <Item :item="item"/>
 
     </div>
-    <div class="mx-5">
-        <ShopCarousel @itemClicked="changeItem" class="" v-if="dataLoaded" :items="sampleShopItemStore.items" />
+    <div class="container">
+        <div class="mt-lg-4">
+            <ShopCarousel @itemClicked="changeItem" class="" v-if="dataLoaded" :items="sampleShopItemStore.items" />
+        </div>
     </div>
     
 </template>
@@ -40,8 +42,5 @@
     })
     async function changeItem(itemClicked){
         item = itemClicked;
-        setTimeout( () => {
-            document.getElementById('itemContainer').scrollIntoView({behavior: "smooth"});
-        });
     }
 </script>

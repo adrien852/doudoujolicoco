@@ -25,10 +25,9 @@
     import ShopItems from '@/components/ShopComponents/ShopItems.vue';
     import ShopFilters from '@/components/ShopComponents/ShopFilters.vue';
     import { useRoute } from 'vue-router'
-    import { onMounted, ref, onBeforeMount } from 'vue';
+    import { onMounted, ref, onBeforeMount, watch } from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
-import { watch } from 'vue';
     
     let isLoading = ref(true);
     let filtersLoading = ref(true);
