@@ -10,6 +10,7 @@
                     label="Prénom"
                     placeholder="Jeanne"
                     outer-class="col-md-6 col-12"
+                    v-model="billingValues.firstName"
                 />
                 <FormKit
                     type="text"
@@ -19,6 +20,7 @@
                     label="Nom"
                     placeholder="Dupont"
                     outer-class="col-md-6 col-12"
+                    v-model="billingValues.lastName"
                 />
             </div>
             <div class="d-flex row">
@@ -30,6 +32,7 @@
                     label="Adresse postale"
                     placeholder="1 rue Jean Jaurès"
                     outer-class="col-lg-6 col-12"
+                    v-model="billingValues.address1"
                 />
                 <FormKit
                     type="text"
@@ -38,6 +41,7 @@
                     label="Complément d'adresse"
                     placeholder="Résidence Le Cigalon"
                     outer-class="col-lg-6 col-12"
+                    v-model="billingValues.address2"
                 />
             </div>
             <div class="d-flex row">
@@ -49,6 +53,7 @@
                     label="Ville"
                     placeholder="Paris"
                     outer-class="col-md-6 col-12"
+                    v-model="billingValues.city"
                 />
                 <FormKit
                     type="text"
@@ -58,6 +63,7 @@
                     label="Code Postal"
                     placeholder="75000"
                     outer-class="col-md-6 col-12"
+                    v-model="billingValues.postalCode"
                 />
             </div>
             <div class="d-flex row">
@@ -72,20 +78,27 @@
                     label="Numéro de téléphone"
                     placeholder="0601020304"
                     outer-class="col-md-6 col-12"
+                    v-model="billingValues.phone"
                 />
             </div>
+            <FormKit
+                type="hidden"
+                name="id"
+                v-model="billingValues.id"
+            >
+            </FormKit>
         </FormKit>
             
     </div>
 </template>
 <script setup>
 import { FormKit } from '@formkit/vue';
-import {ref, watch, computed} from 'vue'
+import {reactive} from 'vue'
 
-let sameAsShipping = ref(true);
+const props = defineProps({
+    initBillingValues: Object
+});
 
-watch(sameAsShipping, () => {
-    emit('sameAsShipping', sameAsShipping.value)
-})
+let billingValues = reactive({...props.initBillingValues})
 
 </script>

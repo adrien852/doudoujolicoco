@@ -10,6 +10,7 @@
                     label="Prénom"
                     placeholder="Jeanne"
                     outer-class="col-md-6 col-12"
+                    v-model="shippingValues.firstName"
                 />
                 <FormKit
                     type="text"
@@ -19,6 +20,7 @@
                     label="Nom"
                     placeholder="Dupont"
                     outer-class="col-md-6 col-12"
+                    v-model="shippingValues.lastName"
                 />
             </div>
 
@@ -31,6 +33,7 @@
                     label="Adresse postale"
                     placeholder="1 rue Jean Jaurès"
                     outer-class="col-lg-6 col-12"
+                    v-model="shippingValues.address1"
                 />
                 <FormKit
                     type="text"
@@ -39,6 +42,7 @@
                     label="Complément d'adresse"
                     placeholder="Résidence Le Cigalon"
                     outer-class="col-lg-6 col-12"
+                    v-model="shippingValues.address2"
                 />
             </div>
             <div class="d-flex row">
@@ -50,6 +54,7 @@
                     label="Ville"
                     placeholder="Paris"
                     outer-class="col-md-6 col-12"
+                    v-model="shippingValues.city"
                 />
                 <FormKit
                     type="text"
@@ -62,6 +67,7 @@
                     label="Code Postal"
                     placeholder="75000"
                     outer-class="col-md-6 col-12"
+                    v-model="shippingValues.postalCode"
                 />
             </div>
             
@@ -74,6 +80,7 @@
                     label="E-mail"
                     placeholder="jeanne@gmail.com"
                     outer-class="col-md-6 col-12"
+                    v-model="shippingValues.email"
                 />
                 <FormKit
                     type="text"
@@ -86,33 +93,39 @@
                     label="Numéro de téléphone"
                     placeholder="0601020304"
                     outer-class="col-md-6 col-12"
+                    v-model="shippingValues.phone"
                 />
             </div>
             <FormKit
                 type="checkbox"
                 label="Même addresse de facturation"
                 name="sameAsShipping"
-                :value="true"
-                v-model="sameAsShipping"
+                v-model="shippingValues.sameAsShipping"
             />
+            <FormKit
+                type="hidden"
+                name="id"
+                v-model="shippingValues.id"
+            >
+            </FormKit>
         </FormKit>
             
     </div>
 </template>
 <script setup>
 import { FormKit } from '@formkit/vue';
-import {ref, watch, computed} from 'vue'
+import {watch, reactive} from 'vue'
 
 const emit = defineEmits(['sameAsShipping']);
 
 const props = defineProps({
-    isSameAsShipping: Boolean
+    initShippingValues: Object
 });
 
-let sameAsShipping = ref(true);
+let shippingValues = reactive({...props.initShippingValues})
 
-watch(sameAsShipping, () => {
-    emit('sameAsShipping', sameAsShipping.value)
+watch(shippingValues, () => {
+    emit('sameAsShipping', shippingValues.sameAsShipping)
 })
 
 </script>
