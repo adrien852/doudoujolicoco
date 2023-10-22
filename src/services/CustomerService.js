@@ -13,9 +13,3 @@ export async function saveCustomer(data) {
     const response = await axios.post(API+'/customers', {hmac: generateHmac(privateKey, payload), publicKey: publicKey, payload: payload});
     return response.data;
 }
-
-export async function savePaymentId(customerId, payment) {
-    let data = payment;
-    const response = await axios.post(API+'/customers/'+customerId, {payload: data});
-    return response.data;
-}

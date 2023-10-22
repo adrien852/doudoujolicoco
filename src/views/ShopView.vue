@@ -43,9 +43,9 @@
         isLoading.value = false;
     })
 
-    function filterItemsByCategory(normalized){
-        categoryNormalized.value = normalized;
-    }
+    // function filterItemsByCategory(normalized){
+    //     categoryNormalized.value = normalized;
+    // }
 
     watch(route, () =>{
         categoryNormalized.value = route.params.categoryNormalized;

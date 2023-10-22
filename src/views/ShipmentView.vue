@@ -94,15 +94,11 @@
     const stepPlugin = (node) => {
         if (node.props.type == "group") {
 
-        // NEW: Store or update the count of blocking validation messages.
-        // FormKit emits the "count:blocking" event (with the count) each
-        // time the count changes.
         node.on('count:blocking', ({ payload: count }) => {
             formErrors[node.name] = count;
         })
 
-        // Stop plugin inheritance to descendant nodes
-        return false
+            return false
         }
     }
 

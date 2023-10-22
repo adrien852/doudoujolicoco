@@ -20,3 +20,9 @@ export async function checkout(nonce, items) {
     const response = await axios.post(API+'/payment/checkout', {hmac: generateHmac(privateKey, payload), publicKey: publicKey, payload: payload});
     return response.data;
 }
+
+export async function savePaymentId(payment) {
+    let data = payment;
+    const response = await axios.post(API+'/payment/save', {payload: data});
+    return response.data;
+}

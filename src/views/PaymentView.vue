@@ -12,8 +12,7 @@
 <script setup>
     import Payment from '@/components/PaymentComponents/Payment.vue'
     import router from '@/router'
-    import {savePaymentId} from '@/services/CustomerService.js'
-    import {getBraintreeToken, checkout} from '@/services/PaymentService.js'
+    import {getBraintreeToken, checkout, savePaymentId} from '@/services/PaymentService.js'
     import {useCartStore} from '@/stores/CartStore.js'
     import {onMounted, ref} from 'vue'
     import Loading from 'vue3-loading-overlay';
@@ -43,13 +42,13 @@
                     enableShippingAddress: true,
                     shippingAddressEditable: false,
                     shippingAddressOverride: {
-                        recipientName: cartStore.address.firstName + ' ' + cartStore.address.lastName,
-                        line1: cartStore.address.address1,
-                        line2: cartStore.address.address2,
-                        city: cartStore.address.city,
+                        recipientName: cartStore.customer.shippingAddress.firstName + ' ' + cartStore.customer.shippingAddress.lastName,
+                        line1: cartStore.customer.shippingAddress.address1,
+                        line2: cartStore.customer.shippingAddress.address2,
+                        city: cartStore.customer.shippingAddress.city,
                         countryCode: 'FR',
-                        postalCode: cartStore.address.postalCode,
-                        phone: cartStore.address.phone,
+                        postalCode: cartStore.customer.shippingAddress.postalCode,
+                        phone: cartStore.customer.shippingAddress.phone,
                     }
                 },
                 card: {
@@ -129,29 +128,30 @@
     });
 
     function creditCardSubmit(event, submitButton, checkoutButton, dropinInstance){
+        const billingAddress = (cartStore.customer.isSameAsShipping) ? cartStore.customer.shippingAddress : cartStore.customer.billingAddress;
         var threeDSecureParameters = {
             amount: cartStore.subTotal,
-            email: cartStore.address.email,
+            email: cartStore.customer.email,
             billingAddress: {
-                givenName: cartStore.address.billing.firstName.normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
-                surname: cartStore.address.billing.lastName.normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
-                phoneNumber: cartStore.address.billing.phoneNumber,
-                streetAddress: cartStore.address.billing.address1,
-                extendedAddress: cartStore.address.billing.address2,
-                locality: cartStore.address.billing.city,
-                postalCode: cartStore.address.billing.postalCode,
+                givenName: billingAddress.firstName.normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
+                surname: billingAddress.lastName.normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
+                phoneNumber: billingAddress.phoneNumber,
+                streetAddress: billingAddress.address1,
+                extendedAddress: billingAddress.address2,
+                locality: billingAddress.city,
+                postalCode: billingAddress.postalCode,
                 countryCodeAlpha2: 'FR'
             },
             collectDeviceData: true,
             additionalInformation: {
-            shippingGivenName: cartStore.address.firstName.normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
-            shippingSurname: cartStore.address.lastName.normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
-            shippingPhone: cartStore.address.phoneNumber,
+            shippingGivenName: cartStore.customer.shippingAddress.firstName.normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
+            shippingSurname: cartStore.customer.shippingAddress.lastName.normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
+            shippingPhone: cartStore.customer.shippingAddress.phoneNumber,
             shippingAddress: {
-                streetAddress: cartStore.address.address1,
-                extendedAddress: cartStore.address.address2,
-                locality: cartStore.address.city,
-                postalCode: cartStore.address.postalCode,
+                streetAddress: cartStore.customer.shippingAddress.address1,
+                extendedAddress: cartStore.customer.shippingAddress.address2,
+                locality: cartStore.customer.shippingAddress.city,
+                postalCode: cartStore.customer.shippingAddress.postalCode,
                 countryCodeAlpha2: 'FR'
             }
             },
@@ -181,11 +181,16 @@
             dropinInstance.clearSelectedPaymentMethod();
         }).then((response) => {
             if(response.success){
+                const now = new Date();
+                const offsetMs = now.getTimezoneOffset() * 60 * 1000;
+                const dateLocal = new Date(now.getTime() - offsetMs);
                 const payment = {
                     paymentId: response.transaction.id,
-                    amount: response.transaction.amount
+                    amount: response.transaction.amount,
+                    customerId: cartStore.customer.id,
+                    createdAt: dateLocal.toISOString().slice(0, 19).replace("T", " ")
                 }
-                savePaymentId(cartStore.address.customerId, payment);
+                savePaymentId(payment);
                 cartStore.clearCart();
                 router.push({ path: '/' })
             }
