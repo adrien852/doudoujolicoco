@@ -2,7 +2,6 @@
     <div class="itemSummary row d-flex mt-4 justify-content-between align-items-center">
         <ItemImageCarousel :item="item" />
         <div class="itemDetails col-md-5 col-12 mt-md-0 mt-3">
-            <h3 class="text-uppercase mb-2">{{ item.category.name }}</h3>
             <div class="d-flex align-items-center">
                 <h1 class="mb-2">{{ item.name }}</h1>
                 <h2 class="ml-auto mb-2">{{ item.price }}€</h2>
@@ -75,7 +74,7 @@ function addItemToCart(){
     }
 
     h1{
-        font-size: clamp(18pt, 3vw, 31pt);
+        font-size: clamp(25pt, 4vw, 35pt);
         font-family: 'Arizonia';
         color: #22211F;
     }

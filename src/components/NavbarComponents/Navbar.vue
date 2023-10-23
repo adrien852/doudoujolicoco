@@ -84,7 +84,7 @@ img{
   nav{
     z-index: 100;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.322);
+    background-color: rgba(255, 255, 255, 0.866);
     position: absolute;
   }
   .navBlock{

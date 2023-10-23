@@ -1,4 +1,5 @@
 <template>
+    <NavPath :path="path"/>
     <loading :active="isLoading"></loading>
     <div id="itemContainer" v-if="dataLoaded" class="container">
         <Item :item="item"/>
@@ -15,6 +16,7 @@
 <script setup>
     import Item from '@/components/ItemComponents/Item.vue';
     import ShopCarousel from '@/components/ShopComponents/ShopCarousel.vue';
+    import NavPath from '@/components/NavbarComponents/NavPath.vue';
     import {getItem} from '@/services/ShopService.js';
     import { useRoute } from 'vue-router';
     import { useSampleItemStore } from '@/stores/SampleShopItemStore';
@@ -29,6 +31,7 @@
     let isLoading = ref(true);
     let dataLoaded = ref(false);
     let item = null;
+    let path = null;
 
     onBeforeMount(async() => {
         sampleShopItemStore.fill().then(() => {
@@ -36,6 +39,8 @@
                 item = response;
                 dataLoaded.value = true;
                 isLoading.value = false;
+
+                path = ['/boutique']
             });
         });
 
