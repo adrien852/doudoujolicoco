@@ -1,10 +1,6 @@
 <template>
     <div class="itemSummary row d-flex mt-4 justify-content-between align-items-center">
-        <div class="itemImage d-flex align-items-center justify-content-center col-md-6 col-12 text-center px-4">
-            <div>
-               <img :src="imageUrl"> 
-            </div>
-        </div>
+        <ItemImageCarousel :item="item" />
         <div class="itemDetails col-md-5 col-12 mt-md-0 mt-3">
             <h3 class="text-uppercase mb-2">{{ item.category.name }}</h3>
             <div class="d-flex align-items-center">
@@ -27,13 +23,11 @@
 
 <script setup>
 import { useCartStore } from '@/stores/CartStore'
-import { computed } from 'vue';
+import ItemImageCarousel from "./ItemImageCarousel.vue"
 
 const props = defineProps({
     item: Object
 })
-
-const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[0]}`, import.meta.url).href)
 
 const cartStore = useCartStore();
 

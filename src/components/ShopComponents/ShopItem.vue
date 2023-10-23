@@ -1,7 +1,9 @@
 <template>
-    <RouterLink :to="'/article/'+item.normalized" :class="{'zoom': !longDisplay}">
+    <RouterLink :to="'/article/'+item.normalized" >
         <div :style="{height: longDisplay ? '150px' : 'initial'}" :class="['bg-white d-flex w-100', {'flex-column shopItemCard':!longDisplay}]">
-            <img :class="[{'h-auto cartImg': longDisplay}]" width="300" height="300" :src="imageUrl">
+            <div class="cartImgContainer">
+                <img :class="[{'h-100 cartImg': longDisplay}, {'w-100 zoom': !longDisplay}]" width="300" height="300" :src="imageUrl">
+            </div>
             <div :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
                 <p class="itemCategory text-uppercase">{{ item.category.name }}</p>
                 <div class="itemTitle d-flex">
@@ -33,19 +35,23 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[
         box-shadow: 2px 3px 8px #0000001f;
     }
     a{
-        -webkit-transition: transform 0.1s ease-out;
-        -moz-transition: transform 0.1s ease-out;
-        -o-transition: transform 0.1s ease-out;
-        transition: transform 0.1s ease-out;
         color:#22211F;
         height: fit-content;
     }
     .zoom:hover{
-        transform: scale(1.03);
-        -webkit-transition: transform 0.1s ease-out;
-        -moz-transition: transform 0.1s ease-out;
-        -o-transition: transform 0.1s ease-out;
-        transition: transform 0.1s ease-out;
+        transform: scale(1.02) rotate(0.03deg);
+        -webkit-transform: scale(1.02) rotate(0.03deg);
+        -moz-transform: scale(1.02) rotate(0.03deg);
+        -webkit-transition: transform 0.3s ease-out;
+        -moz-transition: transform 0.3s ease-out;
+        -o-transition: transform 0.3s ease-out;
+        transition: transform 0.3s ease-out;
+    }
+    .zoom{
+        -webkit-transition: transform 0.3s ease-out;
+        -moz-transition: transform 0.3s ease-out;
+        -o-transition: transform 0.3s ease-out;
+        transition: transform 0.3s ease-out;
     }
     a:hover{
         color: #22211F;
@@ -85,5 +91,8 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[
         color: #94BCD8;
         font-size: 13pt;
         font-weight: bold;
+    }
+    .cartImgContainer{
+        overflow: hidden;
     }
 </style>
