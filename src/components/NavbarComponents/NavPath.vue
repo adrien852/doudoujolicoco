@@ -5,7 +5,7 @@
                 <span v-if="index !== path.length - 1">
                     <RouterLink class="text-uppercase" :to="pathElement.route">{{ pathElement.name }}</RouterLink> 
                 </span>
-                <span v-if="index !== path.length - 1 && path[index+1].name !== undefined"> / </span>
+                <span v-if="index !== path.length - 1 && path[index+1].name"> / </span>
                 <span class="text-uppercase" v-if="index === path.length - 1">{{ pathElement.name }}</span>
             </span>
         </p>

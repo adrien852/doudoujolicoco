@@ -7,6 +7,12 @@ export async function getCategories() {
     return response.data;
 }
 
+export async function getCategory(categoryNormalized) {
+
+    const response = await axios.get(API+'/categories/'+categoryNormalized);
+    return response.data;
+}
+
 export async function getItems() {
 
     const response = await axios.get(API+'/products');
@@ -21,6 +27,6 @@ export async function getItem(itemId) {
 
 export async function getCategoryItems(categoryNormalized) {
 
-    const response = await axios.get(API+'/categories/'+categoryNormalized);
+    const response = await axios.get(API+'/products/categories/'+categoryNormalized);
     return response.data;
 }

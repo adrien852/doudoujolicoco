@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container pt-sm-3 pt-1">
         <div v-if="cartStore.count > 0" class="d-flex row mt-4">
             <CartItems v-if="cartStore.count > 0" :items="cartStore.items"/>
             <div id="cartDetails" class="col-lg-4">

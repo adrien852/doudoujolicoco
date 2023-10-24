@@ -7,7 +7,7 @@
 
 <script setup>
   import { RouterLink, RouterView } from 'vue-router'
-  import Navbar from './components/NavbarComponents/Navbar.vue'
+  import Navbar from '@/components/NavbarComponents/Navbar.vue'
   import { useRoute } from 'vue-router'
   import { watch, onMounted, nextTick } from 'vue';
   const route = useRoute();
@@ -26,7 +26,7 @@
 
 <style>
   header{
-    margin-bottom: 100px;
+    margin-bottom: 92px;
     scroll-margin-top: 100px;
   }
   .noNavMargin{

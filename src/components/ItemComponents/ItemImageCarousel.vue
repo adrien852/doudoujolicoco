@@ -4,8 +4,7 @@
             id="thumbnails"
             :items-to-show="4"
             v-model="currentSlide"
-            :mouse-drag="false"
-            :touch-drag="false"
+            v-bind="settings"
             ref="carousel"
             class="d-sm-block d-none"
         >
@@ -39,6 +38,7 @@ let settings = {
         wrapAround: false,
         mouseDrag: false,
         touchDrag: false,
+        transition: 0
     }
 
 function slideTo(val) {

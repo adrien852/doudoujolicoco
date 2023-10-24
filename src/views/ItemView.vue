@@ -3,11 +3,10 @@
     <loading :active="isLoading"></loading>
     <div id="itemContainer" v-if="dataLoaded" class="container">
         <Item :item="item"/>
-
     </div>
     <div class="container">
         <div class="mt-lg-4">
-            <ShopCarousel @itemClicked="changeItem" class="" v-if="dataLoaded" :items="sampleShopItemStore.items" />
+            <ShopCarousel @itemClicked="changeItem" v-if="dataLoaded" :items="sampleShopItemStore.items" />
         </div>
     </div>
     

@@ -39,19 +39,19 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[
         height: fit-content;
     }
     .zoom:hover{
-        transform: scale(1.02) rotate(0.03deg);
-        -webkit-transform: scale(1.02) rotate(0.03deg);
-        -moz-transform: scale(1.02) rotate(0.03deg);
-        -webkit-transition: transform 0.3s ease-out;
-        -moz-transition: transform 0.3s ease-out;
-        -o-transition: transform 0.3s ease-out;
-        transition: transform 0.3s ease-out;
+        transform: scale(1.02) rotate(0.01deg);
+        -webkit-transform: scale(1.02) rotate(0.01deg);
+        -moz-transform: scale(1.02) rotate(0.01deg);
+        -webkit-transition: transform 0.1s ease-out;
+        -moz-transition: transform 0.1s ease-out;
+        -o-transition: transform 0.1s ease-out;
+        transition: transform 0.1s ease-out;
     }
     .zoom{
-        -webkit-transition: transform 0.3s ease-out;
-        -moz-transition: transform 0.3s ease-out;
-        -o-transition: transform 0.3s ease-out;
-        transition: transform 0.3s ease-out;
+        -webkit-transition: transform 0.1s ease-out;
+        -moz-transition: transform 0.1s ease-out;
+        -o-transition: transform 0.1s ease-out;
+        transition: transform 0.1s ease-out;
     }
     a:hover{
         color: #22211F;
