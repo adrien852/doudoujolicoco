@@ -1,4 +1,5 @@
 <template>
+  <NavPath :path="path"/>
   <div class="about container pt-4">
     <div class="d-flex flex-wrap align-items-center justify-content-center">
       <div class="col-lg-7">
@@ -17,7 +18,23 @@
 <script setup>
   import AboutText from '@/components/AboutComponents/AboutText.vue';
   import AboutPictures from '@/components/AboutComponents/AboutPictures.vue';
+  import NavPath from '@/components/NavbarComponents/NavPath.vue';
+  import { onBeforeMount } from 'vue';
 
+  let path = null;
+
+  onBeforeMount(() => {
+    path = [
+      {
+          name: 'accueil',
+          route: '/'
+      },
+      {
+          name: 'à propos',
+          route: '/a-propos'
+      },
+    ]
+  })
 </script>
 
 <style scoped>

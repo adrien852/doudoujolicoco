@@ -1,5 +1,4 @@
 <template>
-    <h1>À PROPOS</h1>
     <p> 
         Bienvenue dans l'univers doux et chaleureux de Corinne, la créatrice passionnée derrière notre site de commerce en ligne dédié aux créations au crochet. 
         Corinne a toujours été animée par sa créativité manuelle, mais c'est lorsqu'elle a découvert l'art du crochet qu'elle a trouvé sa véritable passion. Ce qui la fait vibrer, c'est de voir les yeux de ses clients, petits et grands, s'illuminer de joie à la vue de ses créations. 

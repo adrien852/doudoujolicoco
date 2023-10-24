@@ -1,13 +1,13 @@
 <template>
     <loading :active="isLoading"></loading>
     <div ref="shopContainer" class="d-flex flex-column w-100">
-        <vue-paginate class="row mx-auto my-2"
+        <vue-paginate v-if="pageCount > 1" class="row mx-auto mt-sm-4 my-2"
             v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
         </vue-paginate>
         <div id="shopItems" class="flex-wrap d-flex justify-content-left mx-auto w-100">
             <ShopItem class="col-lg-3 col-sm-6 col-12 p-3" v-for="item in paginatedItems" :item="item" :longDisplay="false"/>
         </div>
-        <vue-paginate class="row mx-auto my-2"
+        <vue-paginate v-if="pageCount > 1" class="row mx-auto my-2"
             v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
         </vue-paginate>    </div>
 </template>

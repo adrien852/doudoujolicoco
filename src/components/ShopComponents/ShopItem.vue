@@ -31,8 +31,8 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[
 
 <style scoped>
     .shopItemCard{
-        border-radius: 10px;
         box-shadow: 2px 3px 8px #0000001f;
+        border-radius: 10px;
     }
     a{
         color:#22211F;
@@ -94,5 +94,6 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[
     }
     .cartImgContainer{
         overflow: hidden;
+        border-radius: 10px;
     }
 </style>

@@ -39,13 +39,47 @@
                 item = response;
                 dataLoaded.value = true;
                 isLoading.value = false;
-
-                path = ['/boutique']
+                path = [
+                    {
+                        name: 'accueil',
+                        route: '/'
+                    },
+                    {
+                        name: 'boutique',
+                        route: '/boutique'
+                    },
+                    {
+                        name: item.category.name,
+                        route: '/boutique/'+item.category.normalized
+                    },
+                    {
+                        name: item.name,
+                        route: ''
+                    }
+                ]
             });
         });
 
     })
     async function changeItem(itemClicked){
         item = itemClicked;
+        path = [
+            {
+                name: 'accueil',
+                route: '/'
+            },
+            {
+                name: 'boutique',
+                route: '/boutique'
+            },
+            {
+                name: item.category.name,
+                route: '/boutique/'+item.category.normalized
+            },
+            {
+                name: item.name,
+                route: ''
+            }
+        ]
     }
 </script>
