@@ -5,7 +5,7 @@
         </Slide>
 
         <template #addons>
-            <Navigation />
+            <Navigation v-if="categories" />
         </template>
     </Carousel>
     <!-- <div class="container">

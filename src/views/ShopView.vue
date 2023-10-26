@@ -1,7 +1,7 @@
 <template>
+    <loading :is-full-page="false" :active="isLoading"></loading>
     <NavPath :path="path"/>
     <div class="container">
-        <loading :active="isLoading"></loading>
         <div ref="shopContainer" class="d-flex flex-column w-100 mt-sm-4 my-3">
             <vue-paginate v-if="pageCount > 1" class="row mx-auto"
                 v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
@@ -33,6 +33,9 @@
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import { VuePaginate } from '@svifty7/vue-paginate';
+    import { inject } from 'vue'
+    const swal = inject('$swal')
+    import router from '@/router'
     
     let path = null;
     let isLoading = ref(true);
@@ -46,7 +49,49 @@
     const shopContainer = ref(null)
 
     onMounted(async() => {
-        await getCategory(route.params.categoryNormalized).then(async(response) => {
+        if(!route.params.categoryNormalized){
+            await getItems()
+            .then(response => {
+                items = response;
+                paginatedItems = paginateItems(page.value);
+                pageCount.value = Math.ceil(items.length / itemsPerPage);
+            })
+            .catch(function(error) {
+                swal.fire({
+                    icon: 'error',
+                    title: 'Désolé',
+                    text: 'Le site fait face à un soucis technique. Veuillez nous excuser pour le désagrément.',
+                    confirmButtonText: "Retour à l'accueil",
+                    showCloseButton: true,
+                    showConfirmButton: true,
+                }).then(() => {
+                    router.push({ path: '/' })
+                })
+            })
+        }
+        else{
+            await getCategoryItems(route.params.categoryNormalized)
+            .then(response => {
+                items = response;
+                page.value = 1;
+                paginatedItems = paginateItems(page.value);
+                pageCount.value = Math.ceil(items.length / itemsPerPage);
+            }) 
+            .catch(function(error) {
+                swal.fire({
+                    icon: 'error',
+                    title: 'Désolé',
+                    text: 'Le site fait face à un soucis technique. Veuillez nous excuser pour le désagrément.',
+                    confirmButtonText: "Retour à l'accueil",
+                    showCloseButton: true,
+                    showConfirmButton: true,
+                }).then(() => {
+                    router.push({ path: '/' })
+                })
+            })
+        }
+        await getCategory(route.params.categoryNormalized)
+        .then(async(response) => {
             category = response;
             path = [
                 {
@@ -62,22 +107,10 @@
                     route: '/boutique/'+route.params.categoryNormalized
                 },
             ]
-            if(!route.params.categoryNormalized){
-                await getItems().then(response => {
-                    items = response;
-                    paginatedItems = paginateItems(page.value);
-                    pageCount.value = Math.ceil(items.length / itemsPerPage);
-                })
-            }
-            else{
-                await getCategoryItems(route.params.categoryNormalized).then(response => {
-                    items = response;
-                    page.value = 1;
-                    paginatedItems = paginateItems(page.value);
-                    pageCount.value = Math.ceil(items.length / itemsPerPage);
-                }) 
-            }
-        });
+
+        })
+        .catch(function(error) {
+        })
         
         
         isLoading.value = false;

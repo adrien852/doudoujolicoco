@@ -19,9 +19,12 @@
     import {getItem} from '@/services/ShopService.js';
     import { useRoute } from 'vue-router';
     import { useSampleItemStore } from '@/stores/SampleShopItemStore';
-    import { onBeforeMount, watch, ref, nextTick} from 'vue';
+    import { onMounted, ref, reactive} from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+    import router from '@/router'
+    import { inject } from 'vue'
+    const swal = inject('$swal')
 
     const route = useRoute();
     const itemContainer = ref(null)
@@ -29,38 +32,52 @@
     const sampleShopItemStore = useSampleItemStore();
     let isLoading = ref(true);
     let dataLoaded = ref(false);
-    let item = null;
+    let item = reactive({});
     let path = null;
 
-    onBeforeMount(async() => {
-        sampleShopItemStore.fill().then(() => {
-            getItem(route.params.id).then(response => {
-                item = response;
-                dataLoaded.value = true;
-                isLoading.value = false;
-                path = [
-                    {
-                        name: 'accueil',
-                        route: '/'
-                    },
-                    {
-                        name: 'boutique',
-                        route: '/boutique'
-                    },
-                    {
-                        name: item.category.name,
-                        route: '/boutique/'+item.category.normalized
-                    },
-                    {
-                        name: item.name,
-                        route: ''
-                    }
-                ]
-            });
-        });
+    onMounted(() => {
+        getItem(route.params.id)
+        .then(response => {
+            item = response;
+            dataLoaded.value = true;
+            isLoading.value = false;
+            path = [
+                {
+                    name: 'accueil',
+                    route: '/'
+                },
+                {
+                    name: 'boutique',
+                    route: '/boutique'
+                },
+                {
+                    name: item.category.name,
+                    route: '/boutique/'+item.category.normalized
+                },
+                {
+                    name: item.name,
+                    route: ''
+                }
+            ]
+            sampleShopItemStore.fill()
+            .catch(function(error) {
 
-    })
-    async function changeItem(itemClicked){
+            })
+        })
+        .catch(function(error) {
+            swal.fire({
+                icon: 'error',
+                title: 'Désolé',
+                text: 'Le site fait face à un soucis technique. Veuillez nous excuser pour le désagrément.',
+                confirmButtonText: "Retour à l'accueil",
+                showCloseButton: true,
+                showConfirmButton: true,
+            }).then(() => {
+                router.push({ path: '/' })
+            })
+        })
+    });
+    function changeItem(itemClicked){
         item = itemClicked;
         path = [
             {

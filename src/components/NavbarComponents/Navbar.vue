@@ -1,5 +1,4 @@
 <template>
-    <loading :is-full-page="false" :active="isLoading"></loading>
     <SideNav :categories="categories" />
 
     <nav :class="['navbar navbar-expand-lg navbar-light p-0', {'navBlock': false}]">
@@ -38,9 +37,11 @@
     let categories = ref(null)
     
     onMounted(() => {
-      getCategories().then(response => {
+      getCategories()
+      .catch(function(error) {
+      })
+      .then(response => {
             categories = response;
-            isLoading.value = false;
         })
       document.getElementById("sideToggler").addEventListener('click', () => {
         let sidebar = document.getElementById("mySidebar");

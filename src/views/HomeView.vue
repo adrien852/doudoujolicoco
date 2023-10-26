@@ -15,15 +15,24 @@
   import { useSampleItemStore } from '@/stores/SampleShopItemStore';
   import { onBeforeMount, onMounted, ref} from 'vue';
   import {getCategories} from '@/services/ShopService.js';
+  import { inject } from 'vue'
+  const swal = inject('$swal')
+  import Loading from 'vue3-loading-overlay';
+  import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 
   const sampleShopItemStore = useSampleItemStore();
   let isLoading = ref(true);
   let categories = ref(null);
 
   onMounted(() => {
-    getCategories().then(response => {
+    getCategories()
+    .then(response => {
+        console.log(response)
         categories = response;
         isLoading.value = false;
+    })
+    .catch(function (error) {
+      isLoading.value = false;
     })
     document.getElementById("main").addEventListener('click', () => {
       let sidebar = document.getElementById("mySidebar");
