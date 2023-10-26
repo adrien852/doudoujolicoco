@@ -2,8 +2,8 @@
     <NavPath :path="path"/>
     <div class="container">
         <loading :active="isLoading"></loading>
-        <div ref="shopContainer" class="d-flex flex-column w-100">
-            <vue-paginate v-if="pageCount > 1" class="row mx-auto mt-sm-4 my-2"
+        <div ref="shopContainer" class="d-flex flex-column w-100 mt-sm-4 my-3">
+            <vue-paginate v-if="pageCount > 1" class="row mx-auto"
                 v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
             </vue-paginate>
             <!-- <ShopFilters :categoryNormalized="categoryNormalized" @filterByCategory="filterItemsByCategory" /> -->

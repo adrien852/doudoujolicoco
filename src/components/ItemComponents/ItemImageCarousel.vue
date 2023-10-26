@@ -19,7 +19,10 @@
             v-bind="settings"
         >
             <Slide v-for="(slide, index) in imageUrls" :key="index">
-            <div class="carousel__item"><VueMagnifier :src="slide" :mg-width="350" :mg-height="350" :mg-show-overflow="false" :zoom-factor="0.4"/></div>
+            <div class="carousel__item">
+                <VueMagnifier class="d-sm-block d-none" :src="slide" :mg-width="350" :mg-height="350" :mg-show-overflow="false" :zoom-factor="0.4"/>
+                <img class="d-block d-sm-none" :src="slide"/>
+            </div>
             </Slide>
         </Carousel>
     </div>
