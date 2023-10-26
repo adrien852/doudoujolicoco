@@ -131,7 +131,7 @@ let carouselImages = [
 }
 
 @media (min-width: 992px) {
-  .carousel__viewport{
+  .heroLeft .carousel__viewport{
     border-radius: 0 50px 50px 0;
   }
 }
