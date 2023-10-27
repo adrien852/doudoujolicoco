@@ -1,4 +1,5 @@
 <template>
+    <loading :is-full-page="false" :active="isLoading"></loading>
     <SideNav :categories="categories" />
 
     <nav :class="['navbar navbar-expand-lg navbar-light p-0', {'navBlock': false}]">
@@ -8,10 +9,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       </div>
-      <RouterLink @click="hideSidebar" class="logo position-absolute" to="/"><img alt="Vue logo" class="py-3" src="@/assets/full_logo_text_only.png"/></RouterLink>
+      <RouterLink class="logo position-absolute" to="/"><img alt="Vue logo" class="py-3" src="@/assets/full_logo_text_only.png"/></RouterLink>
 
       <div class="d-flex d-lg-none align-items-center justify-content-center px-3">
-        <CartIcon @click="hideSidebar" style="width: 40px;" />
+        <CartIcon style="width: 40px;" />
       </div>
       <div id="navbarNav" class="collapse navbar-collapse">
         <button id="sideToggler" class="navbar-toggler d-none d-lg-block" type="button">
@@ -39,9 +40,11 @@
     onMounted(() => {
       getCategories()
       .catch(function(error) {
+        isLoading.value = false;
       })
       .then(response => {
             categories = response;
+            isLoading.value = false;
         })
       document.getElementById("sideToggler").addEventListener('click', () => {
         let sidebar = document.getElementById("mySidebar");
@@ -56,14 +59,6 @@
       })
       
     })
-
-    function hideSidebar(){
-        let sidebar = document.getElementById("mySidebar");
-        if(sidebar.className.includes('toggled')){
-            sidebar.style.width = "0";
-            sidebar.classList.remove('toggled');
-        }
-    }
 </script>
 
 <style scoped>

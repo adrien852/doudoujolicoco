@@ -17,6 +17,8 @@
     import {onMounted, ref} from 'vue'
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+    import { inject } from 'vue'
+    const swal = inject('$swal')
 
     const cartStore = useCartStore();
 
@@ -175,11 +177,8 @@
     function checkoutCallBack(payload, submitButton, checkoutButton, dropinInstance){
         isLoading.value = true;
         document.getElementById('payment-form').remove();
-        checkout(payload.nonce, cartStore.items).catch((error) => {
-            submitButton.style.display = 'none';
-            checkoutButton.style.display = 'none';
-            dropinInstance.clearSelectedPaymentMethod();
-        }).then((response) => {
+        checkout(payload.nonce, cartStore.items)
+        .then((response) => {
             if(response.success){
                 const now = new Date();
                 const offsetMs = now.getTimezoneOffset() * 60 * 1000;
@@ -190,14 +189,29 @@
                     customerId: cartStore.customer.id,
                     createdAt: dateLocal.toISOString().slice(0, 19).replace("T", " ")
                 }
-                savePaymentId(payment);
-                cartStore.clearCart();
-                router.push({ path: '/' })
+                savePaymentId(payment).then(() => {
+                    cartStore.clearCart();
+                    swal.fire({
+                        icon: 'success',
+                        title: 'Paiement reçu',
+                        text: 'Merci infiniment pour votre confiance. Vous recevrez un email de confirmation pour votre commande.',
+                        confirmButtonText: "Retour à l'accueil",
+                        showCloseButton: true,
+                        showConfirmButton: true,
+                    }).then(() => {
+                        router.push({ path: '/' })
+                    })
+                });
             }
             else{
                 console.log(response.message);
             }
             
+        })
+        .catch((error) => {
+            submitButton.style.display = 'none';
+            checkoutButton.style.display = 'none';
+            dropinInstance.clearSelectedPaymentMethod();
         })
     }
     

@@ -1,5 +1,5 @@
 <template>
-  <header id="header" :class="{'noNavMargin': false}">
+  <header style="position: relative;" id="header" :class="{'noNavMargin': false}">
     <Navbar />
   </header>
   <RouterView />
@@ -18,6 +18,19 @@
         const el = document.getElementById("header");
         el.scrollIntoView({block: "start", behavior: "smooth"});
       })
+    })
+    document.getElementById("app").addEventListener('click', (event) => {
+        let sidebar = document.getElementById("mySidebar");
+        if(
+          !event.target.className.includes('navbar-toggler-icon') &&
+          !event.target.className.includes('navbar-toggler')
+        ){
+          if(sidebar.className.includes('toggled')){
+              sidebar.style.width = "0";
+              sidebar.classList.remove('toggled');
+          }
+        }
+        
     })
   })
   

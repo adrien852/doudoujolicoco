@@ -1,5 +1,5 @@
 <template>
-    <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints" :wrapAround="true" :transition="1000">
+    <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints" :wrapAround="true" :transition="500">
         <Slide v-for="category in categories" :key="item">
             <ShopCategory class="w-100" :category="category" />
         </Slide>

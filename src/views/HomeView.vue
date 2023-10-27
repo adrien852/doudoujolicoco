@@ -15,8 +15,6 @@
   import { useSampleItemStore } from '@/stores/SampleShopItemStore';
   import { onBeforeMount, onMounted, ref} from 'vue';
   import {getCategories} from '@/services/ShopService.js';
-  import { inject } from 'vue'
-  const swal = inject('$swal')
   import Loading from 'vue3-loading-overlay';
   import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 
@@ -27,19 +25,11 @@
   onMounted(() => {
     getCategories()
     .then(response => {
-        console.log(response)
         categories = response;
         isLoading.value = false;
     })
     .catch(function (error) {
       isLoading.value = false;
-    })
-    document.getElementById("main").addEventListener('click', () => {
-      let sidebar = document.getElementById("mySidebar");
-      if(sidebar.className.includes('toggled')){
-        sidebar.style.width = "0";
-        sidebar.classList.remove('toggled');
-      }
     })
   })
 

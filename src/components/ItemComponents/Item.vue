@@ -1,5 +1,5 @@
 <template>
-    <div class="itemSummary row d-flex mt-4 justify-content-between align-items-center">
+    <div class="itemSummary row d-flex mt-sm-4 justify-content-between align-items-center">
         <ItemImageCarousel :item="item" />
         <div class="itemDetails col-md-5 col-12 mt-md-0 mt-3">
             <div class="d-flex align-items-center">
