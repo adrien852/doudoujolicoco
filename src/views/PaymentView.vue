@@ -187,6 +187,7 @@
                     paymentId: response.transaction.id,
                     amount: response.transaction.amount,
                     customerId: cartStore.customer.id,
+                    items: cartStore.items,
                     createdAt: dateLocal.toISOString().slice(0, 19).replace("T", " ")
                 }
                 savePaymentId(payment).then(() => {
@@ -201,10 +202,32 @@
                     }).then(() => {
                         router.push({ path: '/' })
                     })
-                });
+                })
+                .catch(() => {
+                    cartStore.clearCart();
+                    swal.fire({
+                        icon: 'warning',
+                        title: 'Oups !',
+                        html: '<div style="text-align:left">Une erreur est survenue lors de l\'enregistrement de votre paiement. Envoyez nous les informations suivantes à contact@doudoujoli.fr<br/><br/>Client ID : '+cartStore.customer.id+'<br/>Transaction ID : '+response.transaction.id,
+                        confirmButtonText: "Retour à l'accueil",
+                        showConfirmButton: true,
+                    }).then(() => {
+                        router.push({ path: '/' })
+                    })
+                })
             }
             else{
-                console.log(response.message);
+                swal.fire({
+                    icon: 'error',
+                    title: 'Oups !',
+                    text: 'Erreur lors du traitement de votre paiement, veuillez réessayer plus tard.',
+                    confirmButtonText: "OK",
+                    showConfirmButton: true,
+                }).then(() => {
+                    submitButton.style.display = 'none';
+                    checkoutButton.style.display = 'none';
+                    dropinInstance.clearSelectedPaymentMethod();
+                })
             }
             
         })
