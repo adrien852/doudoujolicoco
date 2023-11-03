@@ -8,6 +8,21 @@ import { plugin, defaultConfig } from '@formkit/vue'
 import config from './formkit.config'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import firebase from "firebase/compat/app";
+import "firebase/compat/analytics";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBjIjM34j1ZWCvmmL4pXYYurdnlwiwU_40",
+    authDomain: "doudoujoli-610f9.firebaseapp.com",
+    projectId: "doudoujoli-610f9",
+    storageBucket: "doudoujoli-610f9.appspot.com",
+    messagingSenderId: "989548635733",
+    appId: "1:989548635733:web:74e26f0930e31a81b416dc",
+    measurementId: "G-RZ2TP6TG7V"
+  };
+
+firebase.initializeApp(firebaseConfig);
+const analytics = firebase.analytics();
 
 const app = createApp(App)
 const pinia = createPinia()
