@@ -1,17 +1,25 @@
 <template>
-  <loading :active="isLoading"></loading>
   <main id="main" class="w-100">
     <Hero />
-    <div class="container mt-4">
-      <CategoryCarousel :categories="categories" />
-
-    </div>
+      <div class="py-4 carouselDiv position-relative">
+        <div class="container">
+          <loading class="position-relative" style="height: 250px;" :is-full-page="false" :active="categoryCarouselLoading"></loading>
+          <CategoryCarousel v-if="!categoryCarouselLoading" :categories="categories" />
+        </div>
+      </div>
+      <KeyPoints />
+      <div class="container newProductsDiv position-relative">
+        <loading class="position-relative" style="height: 250px;" :is-full-page="false" :active="newProductsLoading"></loading>
+        <NewProducts v-if="!newProductsLoading" :items="sampleShopItemStore.items" />
+      </div>
   </main>
 </template>
 
 <script setup>
   import Hero from '@/components/HomeComponents/HeroComponents/Hero.vue'
   import CategoryCarousel from '@/components/HomeComponents/CategoryCarousel.vue';
+  import KeyPoints from '@/components/HomeComponents/KeyPoints.vue'
+  import NewProducts from '@/components/HomeComponents/NewProducts.vue'
   import { useSampleItemStore } from '@/stores/SampleShopItemStore';
   import { onBeforeMount, onMounted, ref} from 'vue';
   import {getCategories} from '@/services/ShopService.js';
@@ -19,17 +27,26 @@
   import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 
   const sampleShopItemStore = useSampleItemStore();
-  let isLoading = ref(true);
+  let categoryCarouselLoading = ref(true);
+  let newProductsLoading = ref(true);
   let categories = ref(null);
 
-  onMounted(() => {
+  onBeforeMount(() => {
     getCategories()
     .then(response => {
         categories = response;
-        isLoading.value = false;
+        categoryCarouselLoading.value = false;
     })
     .catch(function (error) {
-      isLoading.value = false;
+      categoryCarouselLoading.value = false;
+    })
+
+    sampleShopItemStore.fill()
+    .then(response => {
+      newProductsLoading.value = false;
+    })
+    .catch(function (error) {
+      newProductsLoading.value = false;
     })
   })
 
@@ -41,5 +58,8 @@ h1{
 }
 main{
   top: 0;
+}
+.carouselDiv{
+  margin: 40px 0
 }
 </style>

@@ -13,7 +13,7 @@
               </RouterLink>
             </div>
             <!-- <SearchBar class="col-lg-5 col-12 justify-content-center" /> -->
-            <RouterLink class="logo position-absolute" to="/"><img alt="Vue logo" class="py-3" src="@/assets/full_logo_text_only.png"/></RouterLink>
+            <RouterLink class="logo position-absolute" to="/"><img alt="Doudou Joli logo" class="py-3" src="@/assets/full_logo_text_only.png"/></RouterLink>
 
             <div class="ml-auto pr-3 col-1 d-lg-flex d-none align-items-center justify-content-center">
               <CartIcon   style="width: 40px;" />

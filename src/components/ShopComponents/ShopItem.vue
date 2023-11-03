@@ -4,7 +4,7 @@
             <div class="cartImgContainer">
                 <img :class="[{'h-100 cartImg': longDisplay}, {'w-100 zoom': !longDisplay}]" width="300" height="300" :src="imageUrl">
             </div>
-            <div :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
+            <div v-if="!hideDescription" :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
                 <p class="itemCategory text-uppercase">{{ item.category.name }}</p>
                 <div class="itemTitle d-flex">
                     <p :class="['my-auto', {'m-auto': !longDisplay}]">{{ item.name }}</p>
@@ -22,7 +22,11 @@ import { RouterLink } from 'vue-router'
 import {computed} from 'vue'
 const props = defineProps({
     item: Object,
-    longDisplay: Boolean
+    longDisplay: Boolean,
+    hideDescription: {
+        type: Boolean,
+        default: false
+    }
 })
 
 const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[0]}`, import.meta.url).href)

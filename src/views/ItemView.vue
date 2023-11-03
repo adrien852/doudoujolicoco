@@ -6,6 +6,7 @@
     </div>
     <div class="container">
         <div class="mt-lg-4">
+            <h4>Vous aimerez aussi...</h4>
             <ShopCarousel @itemClicked="changeItem" v-if="dataLoaded" :items="sampleShopItemStore.items" />
         </div>
     </div>

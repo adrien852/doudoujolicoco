@@ -78,7 +78,7 @@ img{
     padding-left: 15px;
   }
   nav{
-    z-index: 100;
+    z-index: 1000;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.866);
     position: absolute;

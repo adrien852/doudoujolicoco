@@ -2,12 +2,16 @@
   <header style="position: relative;" id="header" :class="{'noNavMargin': false}">
     <Navbar />
   </header>
-  <RouterView />
+  <div class="content">
+    <RouterView />
+  </div>
+  <MyFooter />
 </template>
 
 <script setup>
   import { RouterLink, RouterView } from 'vue-router'
   import Navbar from '@/components/NavbarComponents/Navbar.vue'
+  import MyFooter from '@/components/FooterComponents/MyFooter.vue'
   import { useRoute } from 'vue-router'
   import { watch, onMounted, nextTick } from 'vue';
   const route = useRoute();
@@ -44,5 +48,8 @@
   }
   .noNavMargin{
     margin-bottom: 0px;
+  }
+  .content{
+    min-height: 700px;
   }
 </style>

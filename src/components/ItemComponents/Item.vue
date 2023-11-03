@@ -48,16 +48,16 @@ function addItemToCart(){
         position: relative;
     }
 
-    .itemImage div::after{
+    /* h1::before{
         position: absolute;
         content: '';
-        background: url("@/assets/images/main.png") left center no-repeat;
+        background: url("@/assets/images/handmade.png") left center no-repeat;
         background-size: auto;
-        background-size: 100%;
+        background-size: 70%;
         padding: 10%;
-        right:-25px;
-        top: -10px;
-    }
+        left: -12%;
+        top: -50px;
+    } */
 
     .itemImage img{
         max-height: calc(100vh - 92px - 48px);
