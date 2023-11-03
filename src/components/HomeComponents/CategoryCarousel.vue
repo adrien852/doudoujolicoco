@@ -1,14 +1,17 @@
 <template>
-    <h2>Toutes les catégories</h2>
-    <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints" :wrapAround="true" :transition="500">
-        <Slide v-for="category in categories" :key="item">
-            <ShopCategory class="w-100" :category="category" />
-        </Slide>
+    <div class="py-4">
+        <h2>Toutes les catégories</h2>
+        <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints" :wrapAround="true" :transition="500">
+            <Slide v-for="category in categories" :key="item">
+                <ShopCategory class="w-100" :category="category" />
+            </Slide>
 
-        <template #addons>
-            <Navigation v-if="categories" />
-        </template>
-    </Carousel>
+            <template #addons>
+                <Navigation v-if="categories" />
+            </template>
+        </Carousel>
+    </div>
+
 </template>
 <script setup>
 import ShopCategory from '@/components/ShopComponents/ShopCategory.vue';

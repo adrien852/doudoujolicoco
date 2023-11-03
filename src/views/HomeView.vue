@@ -1,16 +1,16 @@
 <template>
   <main id="main" class="w-100">
     <Hero />
-      <div class="py-4 carouselDiv position-relative">
+      <div class="carouselDiv position-relative">
         <div class="container">
           <loading class="position-relative" style="height: 250px;" :is-full-page="false" :active="categoryCarouselLoading"></loading>
-          <CategoryCarousel v-if="!categoryCarouselLoading" :categories="categories" />
+          <CategoryCarousel v-if="!noCategoryCarousel" :categories="categories" />
         </div>
       </div>
       <KeyPoints />
       <div class="container newProductsDiv position-relative">
         <loading class="position-relative" style="height: 250px;" :is-full-page="false" :active="newProductsLoading"></loading>
-        <NewProducts v-if="!newProductsLoading" :items="sampleShopItemStore.items" />
+        <NewProducts v-if="!noNewProducts" :items="sampleShopItemStore.items" />
       </div>
   </main>
 </template>
@@ -28,7 +28,9 @@
 
   const sampleShopItemStore = useSampleItemStore();
   let categoryCarouselLoading = ref(true);
+  let noCategoryCarousel = ref(true);
   let newProductsLoading = ref(true);
+  let noNewProducts = ref(true);
   let categories = ref(null);
 
   onBeforeMount(() => {
@@ -36,6 +38,7 @@
     .then(response => {
         categories = response;
         categoryCarouselLoading.value = false;
+        noCategoryCarousel.value = false;
     })
     .catch(function (error) {
       categoryCarouselLoading.value = false;
@@ -44,6 +47,7 @@
     sampleShopItemStore.fill()
     .then(response => {
       newProductsLoading.value = false;
+      noNewProducts.value = false;
     })
     .catch(function (error) {
       newProductsLoading.value = false;
