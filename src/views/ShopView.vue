@@ -102,11 +102,15 @@
                     name: 'boutique',
                     route: '/boutique'
                 },
-                {
-                    name: category.name,
-                    route: '/boutique/'+route.params.categoryNormalized
-                },
             ]
+            if(route.params.categoryNormalized){
+                path.push(
+                    {
+                        name: category.name,
+                        route: '/boutique/'+route.params.categoryNormalized
+                    }
+                )
+            }
 
         })
         .catch(function(error) {
@@ -129,11 +133,15 @@
                     name: 'boutique',
                     route: '/boutique'
                 },
-                {
-                    name: category.name,
-                    route: '/boutique/'+route.params.categoryNormalized
-                },
             ]
+            if(route.params.categoryNormalized){
+                path.push(
+                    {
+                        name: category.name,
+                        route: '/boutique/'+route.params.categoryNormalized
+                    }
+                )
+            }
             if(!route.params.categoryNormalized) {
                 await getItems().then(response => {
                     items = response;

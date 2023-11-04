@@ -1,6 +1,6 @@
 <template>
     <loading :active="isLoading"></loading>
-    <div class="container mt-4">
+    <div v-if="cartStore.items.length != 0" class="container mt-4">
         <div class="mx-1 d-flex flex-md-wrap flex-wrap-reverse row justify-content-around">
             <div class="d-flex row m-0 col-md-8 col-12 ml-auto mb-md-0 mt-3 mt-md-0">
                 <FormKit
@@ -86,8 +86,22 @@
     let scroll = ref("scroll")
     let formErrors = reactive({})
     let showError = ref(false);
+    import { inject } from 'vue'
+    const swal = inject('$swal')
 
     onBeforeMount(() => {
+        if(cartStore.items.length == 0){
+            swal.fire({
+                icon: 'warning',
+                title: 'Pas si vite',
+                text: 'Votre panier est vide. Ajoutez-y des articles de la boutique.',
+                confirmButtonText: "Retour à la boutique",
+                showCloseButton: false,
+                showConfirmButton: true,
+            }).then(() => {
+                router.push({ path: '/boutique' })
+            })
+        }
         isSameAsShipping.value = cartStore.customer.isSameAsShipping??true
     })
 

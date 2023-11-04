@@ -54,23 +54,23 @@ img{
     width: 100px;
 }
 .btn{
-  background-color: #dbaa93;
+  background-color: #daa991;
   color: white;
   border-radius: 10px;
-  -webkit-transition: transform 0.2s ease-out, background-color 0.2s ease-out;
-    -moz-transition: transform 0.2s ease-out, background-color 0.2s ease-out;
-    -o-transition: transform 0.2s ease-out, background-color 0.2s ease-out;
-    transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+  -webkit-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
+    -moz-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
+    -o-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
+    transition: transform 0.1s ease-out, background-color 0.1s ease-out;
     padding: 10px;
 }
 .btn:hover{
     transform: scale(1.03);
-    -webkit-transition: transform 0.2s ease-out, background-color 0.2s ease-out;
-    -moz-transition: transform 0.2s ease-out, background-color 0.2s ease-out;
-    -o-transition: transform 0.2s ease-out, background-color 0.2s ease-out;
-    transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+    -webkit-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
+    -moz-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
+    -o-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
+    transition: transform 0.1s ease-out, background-color 0.1s ease-out;
     text-decoration: none;
-    background-color: #db987a;
+    background-color: #bc7d63;
 }
 .btn p{
     font-weight: bold;

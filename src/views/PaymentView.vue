@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div v-if="!(cartStore.items.length == 0 || cartStore.customer.length == 0)" class="container">
         <loading :active="isLoading"></loading>
         <div class="text-center mt-4">
             <h3>Paiement</h3>
@@ -14,7 +14,7 @@
     import router from '@/router'
     import {getBraintreeToken, checkout, savePaymentId} from '@/services/PaymentService.js'
     import {useCartStore} from '@/stores/CartStore.js'
-    import {onMounted, ref} from 'vue'
+    import {onBeforeMount, onMounted, ref} from 'vue'
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import { inject } from 'vue'
@@ -24,6 +24,21 @@
 
     let braintreeToken = ref(null);
     let isLoading = ref(true);
+
+    onBeforeMount(() => {
+        if(cartStore.items.length == 0 || cartStore.customer.length == 0){
+            swal.fire({
+                icon: 'warning',
+                title: 'Pas si vite',
+                text: 'Votre panier est vide. Ajoutez-y des articles de la boutique.',
+                confirmButtonText: "Retour à la boutique",
+                showCloseButton: false,
+                showConfirmButton: true,
+            }).then(() => {
+                router.push({ path: '/boutique' })
+            })
+        }
+    });
 
     async function initializeBrainTree(){
         getBraintreeToken().then(response => {
