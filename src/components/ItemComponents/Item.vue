@@ -23,7 +23,7 @@
 <script setup>
 import router from '@/router'
 import { useCartStore } from '@/stores/CartStore'
-import ItemImageCarousel from "./ItemImageCarousel.vue"
+import ItemImageCarousel from "@/components/ItemComponents/ItemImageCarousel.vue"
 import { inject, ref } from 'vue'
 const swal = inject('$swal')
 
@@ -46,7 +46,10 @@ function addItemToCart(){
         denyButtonText: "Retour à la boutique",
         showCloseButton: true,
         confirmButtonColor: "#f4aa46",
-        denyButtonColor: "#94BCD8"
+        denyButtonColor: "#94BCD8",
+        showClass: {
+            popup: 'animate__animated animate__fadeIn'
+        },
     }).then((result) => {
         if (result.isConfirmed) {
             router.push({ path: '/panier' })
@@ -186,5 +189,8 @@ function addItemToCart(){
     button.swal2-styled{
         font-weight: bold!important;
         font-size: 11pt!important;
+    }
+    .animate__animated.animate__fadeIn {
+    --animate-duration: 0.4s;
     }
 </style>

@@ -1,43 +1,60 @@
 <template>
-    <div class="keyPointsDiv">
+    <div class="keyPointsDiv pt-md-5 pb-md-3 py-3">
         <div class="container">
             <div class="position-relative">
                 <div class="d-flex flex-wrap w-100">
                     <div class="d-flex text-center flex-column col-md-4 col-12">
-                        <div class="keyCard">
+                        <div id="keyCard1" class="keyCard d-none">
                             <img class="m-auto" src="@/assets/images/yarn-ball.png" />
                             <h4>Text 1</h4>
                             <p>Longer text to describe</p>
                         </div>
                     </div>
                     <div class="d-flex text-center flex-column col-md-4 col-12">
-                        <div class="keyCard"><img class="m-auto" src="@/assets/images/knitting.png" />
+                        <div id="keyCard2" class="keyCard d-none"><img class="m-auto" src="@/assets/images/knitting.png" />
                             <h4>Text 1</h4>
                             <p>Longer text to describe</p>
                         </div>
                     </div>
                     <div class="d-flex text-center flex-column col-md-4 col-12">
-                        <div class="keyCard">
+                        <div id="keyCard3" class="keyCard d-none">
                             <img class="m-auto" src="@/assets/images/yarn.png" />
                             <h4>Text 1</h4>
                             <p>Longer text to describe</p>
                         </div>
                     </div>
                 </div>
-                <div class="d-flex mt-4">
+                <div class="d-flex">
                     <RouterLink class="keyPointsButton m-auto" to="/a-propos">
                         <button class="btn">
                             <p class="m-0">En savoir plus</p>
                         </button>
                     </RouterLink>
                 </div>
-                
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
+import {onMounted} from 'vue'
+
+
+  onMounted(() => {
+    window.addEventListener("scroll", function () {
+      // propertyName.value = Math.round(window.pageYOffset)
+      if(document.getElementById("app").scrollTop > 450){
+        document.getElementById("keyCard1").className = "keyCard animate__animated animate__fadeInLeft"
+        document.getElementById("keyCard2").className = "keyCard animate__animated animate__fadeInLeft"
+        document.getElementById("keyCard3").className = "keyCard animate__animated animate__fadeInLeft"
+      }
+      else{
+        document.getElementById("keyCard1").className = "keyCard animate__animated animate__fadeOutLeft"
+        document.getElementById("keyCard2").className = "keyCard animate__animated animate__fadeOutLeft"
+        document.getElementById("keyCard3").className = "keyCard animate__animated animate__fadeOutLeft"
+      }
+    }, true);
+  })
 </script>
 
 <style scoped>
@@ -76,7 +93,7 @@ img{
     font-weight: bold;
 }
 .keyPointsButton{
-    position: absolute;
+    /* position: absolute; */
     left: calc(50% - 63.4px);
 }
 </style>

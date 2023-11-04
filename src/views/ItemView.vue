@@ -5,7 +5,7 @@
         <Item :item="item"/>
     </div>
     <div class="container">
-        <div v-if="dataLoaded" class="mt-lg-4">
+        <div v-if="dataLoaded" class="mt-4">
             <h1>Vous aimerez aussi...</h1>
             <ShopCarousel @itemClicked="changeItem" :items="sampleShopItemStore.items" />
         </div>

@@ -32,6 +32,7 @@
   let newProductsLoading = ref(true);
   let noNewProducts = ref(true);
   let categories = ref(null);
+  let propertyName = ref(0)
 
   onBeforeMount(() => {
     getCategories()

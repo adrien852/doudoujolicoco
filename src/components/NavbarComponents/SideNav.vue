@@ -9,6 +9,8 @@
             </li>
         </ul>
         </RouterLink>
+        <RouterLink to="/contact"><h2 class="m-0 py-2">Contact</h2></RouterLink>
+        <RouterLink to="/faq"><h2 class="m-0 py-2">FAQ</h2></RouterLink>
     </div>
 </div>
 </template>

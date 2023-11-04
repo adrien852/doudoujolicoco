@@ -18,6 +18,9 @@
                         <li>
                             <RouterLink to="#">Catégories</RouterLink>
                         </li>
+                        <li>
+                            <RouterLink to="#">FAQ</RouterLink>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-12">
