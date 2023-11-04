@@ -1,6 +1,6 @@
 <template>
     <div class="py-4">
-        <h2>Toutes les catégories</h2>
+        <h1>Toutes les catégories</h1>
         <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints" :wrapAround="true" :transition="500">
             <Slide v-for="category in categories" :key="item">
                 <ShopCategory class="w-100" :category="category" />
@@ -39,18 +39,3 @@ let breakpoints = {
     },
 }
 </script>
-<style scoped>
-h2{
-    position: relative;
-    margin-bottom: 15px;
-}
-h2::after {
-  position: absolute;
-  content: '';
-  bottom: -7px;
-  height: 4px;
-  background-color: #94BCD8;
-  left: 0;
-  right: 40px;
-}
-</style>

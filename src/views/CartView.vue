@@ -1,5 +1,6 @@
 <template>
-    <div class="container pt-sm-3 pt-1">
+    <div class="container">
+        <h1 class="ml-lg-3 mb-5 text-left">Panier</h1>
         <div v-if="cartStore.count > 0" class="d-flex row mt-4">
             <CartItems v-if="cartStore.count > 0" :items="cartStore.items"/>
             <div id="cartDetails" class="col-lg-4">
@@ -17,6 +18,10 @@
     import CartDetails from '@/components/CartComponents/CartDetails.vue';
     import { useCartStore } from '@/stores/CartStore'
     const cartStore = useCartStore();
-
-   
 </script>
+
+<style scoped>
+    h1::after{
+        max-width: 756px;
+    }
+</style>

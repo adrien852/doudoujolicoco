@@ -21,8 +21,11 @@
 </template>
 
 <script setup>
+import router from '@/router'
 import { useCartStore } from '@/stores/CartStore'
 import ItemImageCarousel from "./ItemImageCarousel.vue"
+import { inject, ref } from 'vue'
+const swal = inject('$swal')
 
 const props = defineProps({
     item: Object
@@ -32,6 +35,25 @@ const cartStore = useCartStore();
 
 function addItemToCart(){
     cartStore.addItem(props.item);
+    swal.fire({
+        title: 'Article ajouté !',
+        imageUrl: new URL(`/src/assets/images/${props.item.images[0]}`, import.meta.url).href,
+        imageWidth: 280,
+        imageAlt: props.item.name,
+        width: 400,
+        showDenyButton: true,
+        confirmButtonText: "Voir mon panier",
+        denyButtonText: "Retour à la boutique",
+        showCloseButton: true,
+        confirmButtonColor: "#f4aa46",
+        denyButtonColor: "#94BCD8"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            router.push({ path: '/panier' })
+        } else if (result.isDenied) {
+            router.push({ path: '/boutique' })
+        }
+    })
 }
 
 </script>
@@ -75,8 +97,9 @@ function addItemToCart(){
 
     h1{
         font-size: clamp(25pt, 4vw, 35pt);
-        font-family: 'Arizonia';
-        color: #22211F;
+    }
+    h1::after{
+        background-color: transparent;
     }
     h2{
         color: #94BCD8;
@@ -156,5 +179,12 @@ function addItemToCart(){
         padding: 15px;
         left: -40px;
         bottom:-4px;
+    }
+    
+</style>
+<style>
+    button.swal2-styled{
+        font-weight: bold!important;
+        font-size: 11pt!important;
     }
 </style>

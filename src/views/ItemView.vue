@@ -6,7 +6,7 @@
     </div>
     <div class="container">
         <div v-if="dataLoaded" class="mt-lg-4">
-            <h4>Vous aimerez aussi...</h4>
+            <h1>Vous aimerez aussi...</h1>
             <ShopCarousel @itemClicked="changeItem" :items="sampleShopItemStore.items" />
         </div>
     </div>
@@ -102,17 +102,7 @@
 </script>
 
 <style scoped>
-h4{
-    position: relative;
-    margin-bottom: 15px;
-}
-h4::after {
-  position: absolute;
-  content: '';
-  bottom: -7px;
-  height: 4px;
-  background-color: #94BCD8;
-  left: 0;
-  right: 40px;
+h1{
+    font-size: 25pt;
 }
 </style>

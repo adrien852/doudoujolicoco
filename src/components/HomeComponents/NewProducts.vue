@@ -1,6 +1,6 @@
 <template>
     <div class="marginDiv">
-        <h2 class="ml-3 text-left">Nouvelles confections</h2>
+        <h1 class="ml-3 text-left">Nouvelles confections</h1>
         <div class="d-flex flex-wrap">
             <div class="col-lg-3 col-sm-6 col-12 d-flex flex-column">
                 <ShopItem class="py-2" :hideDescription="true" :item="items[0]" />
@@ -29,19 +29,6 @@
 </script>
 
 <style scoped>
-h2{
-    position: relative;
-    margin-bottom: 15px;
-}
-h2::after {
-  position: absolute;
-  content: '';
-  bottom: -7px;
-  height: 4px;
-  background-color: #94BCD8;
-  left: 0;
-  right: 40px;
-}
 .marginDiv{
     margin: 40px 0;
     padding: 30px 0;

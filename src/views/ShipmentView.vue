@@ -1,6 +1,7 @@
 <template>
     <loading :active="isLoading"></loading>
     <div v-if="cartStore.items.length != 0" class="container mt-4">
+        <h1 class="ml-lg-3 mb-3 text-left">Formulaire de livraison</h1>
         <div class="mx-1 d-flex flex-md-wrap flex-wrap-reverse row justify-content-around">
             <div class="d-flex row m-0 col-md-8 col-12 ml-auto mb-md-0 mt-3 mt-md-0">
                 <FormKit
@@ -187,5 +188,11 @@
     }
     #mainForm{
         scroll-margin-top: 100px;
+    }
+    h1::after{
+        max-width: 735px;
+    }
+    h1{
+        font-size:27pt
     }
 </style>

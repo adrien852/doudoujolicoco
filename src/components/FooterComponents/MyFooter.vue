@@ -4,7 +4,7 @@
             <RouterLink class="logo d-sm-block d-none" to="/"><img alt="Doudou Joli logo" class="py-3" src="@/assets/full_logo.png"/></RouterLink>
             <div class="flex-wrap d-flex justify-content-center w-100">
                 <div class="col-lg-4 col-12">
-                    <h4>Pages</h4>
+                    <h1>Pages</h1>
                     <ul>
                         <li>
                             <RouterLink to="#">Accueil</RouterLink>
@@ -21,7 +21,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 col-12">
-                    <h4>Information légales</h4>
+                    <h1>Information légales</h1>
                     <ul>
                         <li>
                             <RouterLink to="#">Mentions Légales</RouterLink>
@@ -38,7 +38,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 col-12">
-                    <h4>Contact</h4>
+                    <h1>Contact</h1>
                     <ul>
                         <li>
                             <RouterLink to="#">Formulaire de contact</RouterLink>
@@ -72,18 +72,8 @@ footer{
 img{
   width: 100%;
 }
-h4{
-    position: relative;
-    margin-bottom: 15px;
-}
-h4::after {
-  position: absolute;
-  content: '';
-  bottom: -7px;
-  height: 4px;
-  background-color: #94BCD8;
-  left: 0;
-  right: 40px;
+h1{
+    font-size: 22pt;
 }
 ul{
     padding: 0;
@@ -93,13 +83,14 @@ li{
 }
 li a{
     text-decoration: none;
-    color:black;
+    color:#22211F;
     height: fit-content;
     background-repeat: no-repeat;
     transition: background-size .4s cubic-bezier(.22,.61,.36,1),color .2s ease-out;
     background-size: 0 1px;
     background-image: linear-gradient(black,black);
     background-position: 0 100%;
+    font-size: 10pt;
 }
 li a:hover{
     background-size: 100% 1px;

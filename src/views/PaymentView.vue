@@ -1,9 +1,7 @@
 <template>
     <div v-if="!(cartStore.items.length == 0 || cartStore.customer.length == 0)" class="container">
         <loading :active="isLoading"></loading>
-        <div class="text-center mt-4">
-            <h3>Paiement</h3>
-        </div>
+        <h1 class="ml-3 mb-4 text-left">Paiement</h1>
         <div class="d-flex justify-content-center">
             <Payment :braintreeToken="braintreeToken" @paymentInit="paymentInit"/>
         </div>
