@@ -3,7 +3,7 @@
     <Hero />
       <div class="carouselDiv position-relative">
         <div class="container">
-          <loading class="position-relative" style="height: 250px;" :is-full-page="false" :active="categoryCarouselLoading"></loading>
+          <loading class="position-relative" style="height: 363px;" :is-full-page="false" :active="categoryCarouselLoading"></loading>
           <CategoryCarousel v-if="!noCategoryCarousel" :categories="categories" />
         </div>
       </div>

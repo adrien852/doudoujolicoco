@@ -3,7 +3,7 @@
         <div class="container">
             <div class="position-relative">
                 <div class="d-flex flex-wrap w-100">
-                    <div class="d-flex text-center flex-column col-md-4 col-12">
+                    <div class="keyCards d-flex text-center flex-column col-md-4 col-12">
                         <div id="keyCard1" class="keyCard d-none">
                             <img class="m-auto" src="@/assets/images/yarn-ball.png" />
                             <h4>Text 1</h4>
@@ -37,23 +37,31 @@
 </template>
 
 <script setup>
-import {onMounted} from 'vue'
+import {onMounted, onUnmounted} from 'vue'
 
-
-  onMounted(() => {
-    window.addEventListener("scroll", function () {
+    function scrollListener() {
       // propertyName.value = Math.round(window.pageYOffset)
       if(document.getElementById("app").scrollTop > 450){
         document.getElementById("keyCard1").className = "keyCard animate__animated animate__fadeInLeft"
         document.getElementById("keyCard2").className = "keyCard animate__animated animate__fadeInLeft"
         document.getElementById("keyCard3").className = "keyCard animate__animated animate__fadeInLeft"
       }
-      else{
+      else if(document.getElementById("keyCard1").className != "keyCard d-none"){
         document.getElementById("keyCard1").className = "keyCard animate__animated animate__fadeOutLeft"
         document.getElementById("keyCard2").className = "keyCard animate__animated animate__fadeOutLeft"
         document.getElementById("keyCard3").className = "keyCard animate__animated animate__fadeOutLeft"
       }
-    }, true);
+    }
+
+  onMounted(() => {
+    window.addEventListener("scroll", scrollListener, true);
+    document.getElementById("keyCard1").className = "keyCard d-none"
+    document.getElementById("keyCard2").className = "keyCard d-none"
+    document.getElementById("keyCard3").className = "keyCard d-none"
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener("scroll", scrollListener);
   })
 </script>
 
@@ -66,6 +74,9 @@ import {onMounted} from 'vue'
   margin: 40px 0;
   padding: 70px 0;
   background-color: #dbaa933e;
+}
+.keyCards{
+    min-height: 176px;
 }
 img{
     width: 100px;
