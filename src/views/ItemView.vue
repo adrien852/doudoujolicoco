@@ -7,7 +7,7 @@
     <div class="container">
         <div v-if="dataLoaded" class="mt-4">
             <h1>Vous aimerez aussi...</h1>
-            <ShopCarousel @itemClicked="changeItem" :items="sampleShopItemStore.items" />
+            <ShopCarousel :items="sampleShopItemStore.items" />
         </div>
     </div>
     
@@ -20,7 +20,7 @@
     import {getItem} from '@/services/ShopService.js';
     import { useRoute } from 'vue-router';
     import { useSampleItemStore } from '@/stores/SampleShopItemStore';
-    import { onMounted, ref, reactive} from 'vue';
+    import { onMounted, ref, reactive, watch} from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import router from '@/router'
@@ -36,8 +36,13 @@
     let item = reactive({});
     let path = null;
 
-    onMounted(() => {
-        getItem(route.params.id)
+    watch(route, async() =>{
+        getRouteItem(route.params.id)
+    })
+
+    function getRouteItem(itemId){
+        isLoading.value = true;
+        getItem(itemId)
         .then(response => {
             item = response;
             dataLoaded.value = true;
@@ -60,10 +65,7 @@
                     route: ''
                 }
             ]
-            sampleShopItemStore.fill()
-            .catch(function(error) {
-
-            })
+            
         })
         .catch(function(error) {
             swal.fire({
@@ -77,28 +79,15 @@
                 router.push({ path: '/' })
             })
         })
-    });
-    function changeItem(itemClicked){
-        item = itemClicked;
-        path = [
-            {
-                name: 'accueil',
-                route: '/'
-            },
-            {
-                name: 'boutique',
-                route: '/boutique'
-            },
-            {
-                name: item.category.name,
-                route: '/boutique/'+item.category.normalized
-            },
-            {
-                name: item.name,
-                route: ''
-            }
-        ]
     }
+
+    onMounted(() => {
+        getRouteItem(route.params.id)
+        sampleShopItemStore.fill()
+        .catch(function(error) {
+
+        })
+    });
 </script>
 
 <style scoped>

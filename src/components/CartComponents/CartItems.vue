@@ -1,8 +1,8 @@
 <template>
-    <div id="cartItems" class="row d-flex justify-content-left col-xl-6 col-lg-7 mx-auto">
+    <div id="cartItems" class="row d-flex justify-content-left col mx-auto">
         <div class="position-relative mb-3 w-100" v-for="(item, index) in items">
             <div @click="cartStore.deleteItem(index)" class="bin"><img class="w-100" src="@/assets/images/bin.png"/></div>
-            <ShopItem :item="item" :longDisplay="true"/>
+            <ShopItem @click="$emit('closeSideCart')" :item="item" :longDisplay="true"/>
         </div>
         <div class="d-flex totalContainer align-items-center justify-content-between w-100">
             <p class="m-0">Total</p>
@@ -32,7 +32,7 @@ p{
     width: 35px;
     z-index: 50;
     top: 5px;
-    right: 25px;
+    right: 6px;
     cursor: pointer;
     -webkit-transition: transform 0.1s ease-out;
         -moz-transition: transform 0.1s ease-out;

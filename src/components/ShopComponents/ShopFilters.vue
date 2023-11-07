@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-    import ShopFilter from './ShopFilter.vue';
+    import ShopFilter from '@/components/ShopComponents/ShopFilter.vue';
     import {getCategories,} from '@/services/ShopService.js';
     import { onMounted } from 'vue';
     import { onBeforeMount, ref, watch, computed } from 'vue';

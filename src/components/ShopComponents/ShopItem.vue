@@ -4,7 +4,7 @@
             <div class="cartImgContainer">
                 <img :class="[{'h-100 cartImg': longDisplay}, {'w-100 zoom': !longDisplay}]" width="300" height="300" :src="imageUrl">
             </div>
-            <div v-if="!hideDescription" :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
+            <div v-if="!hideDescription" :style="{minWidth: longDisplay ? '180px' : 'initial'}" :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
                 <p class="itemCategory text-uppercase">{{ item.category.name }}</p>
                 <div class="itemTitle d-flex">
                     <p :class="['my-auto', {'m-auto': !longDisplay}]">{{ item.name }}</p>
@@ -86,7 +86,8 @@ const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[
     }
     .cartImg{
         object-position: 50% 40%;
-        width: 160px;
+        max-width: 210px;
+        width: 100%;
     }
     img{
         object-fit: cover;

@@ -25,14 +25,19 @@
     })
     document.getElementById("app").addEventListener('click', (event) => {
         let sidebar = document.getElementById("mySidebar");
+        let sideCart = document.getElementById("sideCart");
         if(
           !event.target.className.includes('navbar-toggler-icon') &&
           !event.target.className.includes('navbar-toggler')
         ){
           if(sidebar.className.includes('toggled')){
-              sidebar.style.width = "0";
+              sidebar.style.left = "-250px";
               sidebar.classList.remove('toggled');
           }
+        }
+        else{
+          sideCart.style.right = "-350px";
+          sideCart.classList.remove('toggled');
         }
         
     })

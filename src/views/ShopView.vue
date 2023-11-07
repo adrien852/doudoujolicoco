@@ -2,7 +2,7 @@
     <loading :is-full-page="false" :active="isLoading"></loading>
     <NavPath :path="path"/>
     <div class="container">
-        <div ref="shopContainer" class="d-flex flex-column w-100 mt-sm-4 my-3">
+        <div ref="shopContainer" class="d-flex flex-column w-100 py-3">
             <vue-paginate v-if="pageCount > 1" class="row mx-auto"
                 v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
             </vue-paginate>
@@ -17,7 +17,7 @@
 
 <style scoped>
 .container{
-    /* max-width: 1600px; */
+    max-width: 1600px;
 }
 .btn{
     margin-bottom: 5px;
