@@ -55,6 +55,6 @@
     margin-bottom: 0px;
   }
   .content{
-    min-height: 700px;
+    min-height: 600px;
   }
 </style>

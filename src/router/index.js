@@ -7,6 +7,7 @@ import CartView from '@/views/CartView.vue'
 import PaymentView from '@/views/PaymentView.vue'
 import ShipmentView from '@/views/ShipmentView.vue'
 import CategoriesView from '@/views/CategoriesView.vue'
+import NotFound from '@/views/NotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,6 +58,14 @@ const router = createRouter({
       name: 'shipment',
       component: ShipmentView
     },
+    { 
+      path: '/404', 
+      component: NotFound 
+    },  
+    { 
+      path: '/:catchAll(.*)',
+      redirect: '/404' 
+    },  
   ]
 })
 
