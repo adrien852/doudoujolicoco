@@ -32,9 +32,14 @@
 
     onMounted(() => {
         let sideCart = document.getElementById("sideCart");
+        sideCart.addEventListener('mouseover', () => {
+            openSideCart()
+        })
         document.getElementById("header").addEventListener('mouseleave', () => {
             if(sideCart.className.includes('toggled')){
-                // closeSideCart()
+                setTimeout(() => {
+                    closeSideCart()
+                }, 300);
             }
         })
         document.getElementById("cartIcon").addEventListener('click', (event) => {

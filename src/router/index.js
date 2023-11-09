@@ -8,6 +8,7 @@ import PaymentView from '@/views/PaymentView.vue'
 import ShipmentView from '@/views/ShipmentView.vue'
 import CategoriesView from '@/views/CategoriesView.vue'
 import NotFound from '@/views/NotFound.vue'
+import AdminOrderView from '@/views/AdminViews/OrderView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,6 +58,11 @@ const router = createRouter({
       path: '/livraison',
       name: 'shipment',
       component: ShipmentView
+    },
+    {
+      path: '/admin/commandes',
+      name: 'adminCommandes',
+      component: AdminOrderView
     },
     { 
       path: '/404', 
