@@ -8,6 +8,7 @@ import PaymentView from '@/views/PaymentView.vue'
 import ShipmentView from '@/views/ShipmentView.vue'
 import CategoriesView from '@/views/CategoriesView.vue'
 import NotFound from '@/views/NotFound.vue'
+import AdminOrdersView from '@/views/AdminViews/OrdersView.vue'
 import AdminOrderView from '@/views/AdminViews/OrderView.vue'
 
 const router = createRouter({
@@ -62,6 +63,11 @@ const router = createRouter({
     {
       path: '/admin/commandes',
       name: 'adminCommandes',
+      component: AdminOrdersView
+    },
+    {
+      path: '/admin/commandes/:reference',
+      name: 'adminCommande',
       component: AdminOrderView
     },
     { 

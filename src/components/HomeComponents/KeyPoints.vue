@@ -40,7 +40,6 @@
 import {onMounted, onUnmounted} from 'vue'
 
     function scrollListener() {
-      // propertyName.value = Math.round(window.pageYOffset)
       if(document.getElementById("app").scrollTop > 450){
         document.getElementById("keyCard1").className = "keyCard animate__animated animate__fadeInLeft"
         document.getElementById("keyCard2").className = "keyCard animate__animated animate__fadeInLeft"
