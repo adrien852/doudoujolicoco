@@ -7,7 +7,7 @@
           <CategoryCarousel v-if="!noCategoryCarousel" :categories="categories" />
         </div>
       </div>
-      <KeyPoints />
+      <KeyPoints :noAnimation="noAnimation" />
       <div class="container newProductsDiv position-relative">
         <loading class="position-relative" style="height: 250px;" :is-full-page="false" :active="newProductsLoading"></loading>
         <NewProducts v-if="!noNewProducts" :items="sampleShopItemStore.items" />
@@ -32,7 +32,8 @@
   let newProductsLoading = ref(true);
   let noNewProducts = ref(true);
   let categories = ref(null);
-  let propertyName = ref(0)
+  let propertyName = ref(0);
+  let noAnimation = ref(false);
 
   onBeforeMount(() => {
     getCategories()
@@ -42,6 +43,7 @@
         noCategoryCarousel.value = false;
     })
     .catch(function (error) {
+      noAnimation.value = true;
       categoryCarouselLoading.value = false;
     })
 
@@ -51,6 +53,7 @@
       noNewProducts.value = false;
     })
     .catch(function (error) {
+      noAnimation.value = true;
       newProductsLoading.value = false;
     })
   })

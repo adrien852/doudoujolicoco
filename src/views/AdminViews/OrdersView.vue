@@ -1,11 +1,11 @@
 <template>
     <div class="container">
-        <OrderTable />
+        <OrdersTable />
     </div>
 </template>
 
 <script setup>
-    import OrderTable from '@/components/AdminComponents/OrderComponents/OrderTable.vue'
+    import OrdersTable from '@/components/AdminComponents/OrderComponents/OrdersTable.vue'
 </script>
 
 <style scoped>

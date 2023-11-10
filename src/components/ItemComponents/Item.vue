@@ -1,5 +1,5 @@
 <template>
-    <div class="itemSummary row d-flex mt-sm-4 justify-content-between align-items-center">
+    <div class="itemSummary row d-flex mt-sm-4 justify-content-center align-items-center">
         <ItemImageCarousel :item="item" />
         <div class="itemDetails col-md-5 col-12 mt-md-0 mt-3">
             <div class="d-flex align-items-center">
@@ -9,7 +9,7 @@
             <p>
                 {{ item.description }}
             </p>
-            <button @click="addItemToCart" class="btn btn-primary"><h3>Ajouter au panier</h3></button>
+            <button @click="addItemToCart" class="btn btn-primary cartTriggerToggler"><h3 class="cartTriggerToggler">Ajouter au panier</h3></button>
             <div class="shipment mt-3">
                 <h4 class="shipmentTitle">Livraison</h4>
                 <!-- <h4><span id="availibility">Disponible</span> - Expedition immediate</h4> -->
@@ -35,28 +35,36 @@ const cartStore = useCartStore();
 
 function addItemToCart(){
     cartStore.addItem(props.item);
-    swal.fire({
-        title: 'Article ajouté !',
-        imageUrl: new URL(`/src/assets/images/${props.item.images[0]}`, import.meta.url).href,
-        imageWidth: 280,
-        imageAlt: props.item.name,
-        width: 400,
-        showDenyButton: true,
-        confirmButtonText: "Voir mon panier",
-        denyButtonText: "Retour à la boutique",
-        showCloseButton: true,
-        confirmButtonColor: "#f4aa46",
-        denyButtonColor: "#94BCD8",
-        showClass: {
-            popup: 'animate__animated animate__fadeIn'
-        },
-    }).then((result) => {
-        if (result.isConfirmed) {
-            router.push({ path: '/panier' })
-        } else if (result.isDenied) {
-            router.push({ path: '/boutique' })
-        }
-    })
+    openSideCart();
+    // swal.fire({
+    //     title: 'Article ajouté !',
+    //     imageUrl: new URL(`/src/assets/images/${props.item.images[0]}`, import.meta.url).href,
+    //     imageWidth: 280,
+    //     imageAlt: props.item.name,
+    //     width: 400,
+    //     showDenyButton: true,
+    //     confirmButtonText: "Voir mon panier",
+    //     denyButtonText: "Retour à la boutique",
+    //     showCloseButton: true,
+    //     confirmButtonColor: "#f4aa46",
+    //     denyButtonColor: "#94BCD8",
+    //     showClass: {
+    //         popup: 'animate__animated animate__fadeIn'
+    //     },
+    // }).then((result) => {
+    //     if (result.isConfirmed) {
+    //         router.push({ path: '/panier' })
+    //     } else if (result.isDenied) {
+    //         router.push({ path: '/boutique' })
+    //     }
+    // })
+   
+}
+
+function openSideCart(){
+    let sideCart = document.getElementById("sideCart");
+    sideCart.style.right = "0";
+    sideCart.classList.add('toggled');
 }
 
 </script>

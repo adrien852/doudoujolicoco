@@ -37,31 +37,43 @@
 </template>
 
 <script setup>
-import {onMounted, onUnmounted} from 'vue'
+    import {onMounted, onUnmounted, watch} from 'vue'
+    const props = defineProps({
+        noAnimation: Boolean
+    });
 
     function scrollListener() {
-      if(document.getElementById("app").scrollTop > 450){
+        if(document.getElementById("app").scrollTop > 450){
         document.getElementById("keyCard1").className = "keyCard animate__animated animate__fadeInLeft"
         document.getElementById("keyCard2").className = "keyCard animate__animated animate__fadeInLeft"
         document.getElementById("keyCard3").className = "keyCard animate__animated animate__fadeInLeft"
-      }
-      else if(document.getElementById("keyCard1").className != "keyCard d-none"){
+        }
+        else if(document.getElementById("keyCard1").className != "keyCard d-none"){
         document.getElementById("keyCard1").className = "keyCard animate__animated animate__fadeOutLeft"
         document.getElementById("keyCard2").className = "keyCard animate__animated animate__fadeOutLeft"
         document.getElementById("keyCard3").className = "keyCard animate__animated animate__fadeOutLeft"
-      }
+        }
     }
 
-  onMounted(() => {
-    window.addEventListener("scroll", scrollListener, true);
-    document.getElementById("keyCard1").className = "keyCard d-none"
-    document.getElementById("keyCard2").className = "keyCard d-none"
-    document.getElementById("keyCard3").className = "keyCard d-none"
-  })
+    onMounted(() => {
+        window.addEventListener("scroll", scrollListener, true);
+        document.getElementById("keyCard1").className = "keyCard d-none"
+        document.getElementById("keyCard2").className = "keyCard d-none"
+        document.getElementById("keyCard3").className = "keyCard d-none"
+    })
 
-  onUnmounted(() => {
-    window.removeEventListener("scroll", scrollListener);
-  })
+    onUnmounted(() => {
+        window.removeEventListener("scroll", scrollListener, true);
+    })
+
+    watch(props, () => {
+        if(props.noAnimation){
+            window.removeEventListener("scroll", scrollListener, true);
+            document.getElementById("keyCard1").className = "keyCard animate__animated animate__fadeInLeft"
+            document.getElementById("keyCard2").className = "keyCard animate__animated animate__fadeInLeft"
+            document.getElementById("keyCard3").className = "keyCard animate__animated animate__fadeInLeft"
+        }
+    })
 </script>
 
 <style scoped>

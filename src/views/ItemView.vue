@@ -75,6 +75,7 @@
                 confirmButtonText: "Retour à l'accueil",
                 showCloseButton: true,
                 showConfirmButton: true,
+                confirmButtonColor: "#94BCD8",
             }).then(() => {
                 router.push({ path: '/' })
             })
@@ -93,5 +94,8 @@
 <style scoped>
 h1{
     font-size: 25pt;
+}
+.container{
+    max-width: 1600px;
 }
 </style>

@@ -64,6 +64,7 @@
                     confirmButtonText: "Retour à l'accueil",
                     showCloseButton: true,
                     showConfirmButton: true,
+                    confirmButtonColor: "#94BCD8",
                 }).then(() => {
                     router.push({ path: '/' })
                 })
@@ -85,6 +86,7 @@
                     confirmButtonText: "Retour à l'accueil",
                     showCloseButton: true,
                     showConfirmButton: true,
+                    confirmButtonColor: "#94BCD8",
                 }).then(() => {
                     router.push({ path: '/' })
                 })

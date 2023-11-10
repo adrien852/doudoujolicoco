@@ -99,6 +99,7 @@
                 confirmButtonText: "Retour à la boutique",
                 showCloseButton: false,
                 showConfirmButton: true,
+                confirmButtonColor: "#94BCD8",
             }).then(() => {
                 router.push({ path: '/boutique' })
             })

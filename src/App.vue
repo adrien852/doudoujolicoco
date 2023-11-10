@@ -35,7 +35,9 @@
               sidebar.classList.remove('toggled');
           }
         }
-        else{
+        if(
+          !event.target.className.includes('cartTriggerToggler')
+        ){
           sideCart.style.right = "-350px";
           sideCart.classList.remove('toggled');
         }

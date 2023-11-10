@@ -1,5 +1,6 @@
 <template>
     <loading :is-full-page="false" :active="isLoading"></loading>
+    {{ random }}
     <div v-if="orders" class="table-responsive-md">
         <table class="table table-striped">
             <thead>
@@ -32,8 +33,17 @@
     let isLoading = ref(true)
     let orders = reactive(null)
     let tableHeaders = reactive({})
+    let random = null;
+
+    function randomRef() {
+        let numbers = '0123456789';
+        var result = 'C';
+        for (var i = 4; i > 0; --i) result += numbers[Math.floor(Math.random() * (numbers.length - 1))];
+        return result;
+    }
 
     onMounted(async() => {
+        random = randomRef();
         getAdminOrders().then((response) => {
             orders = response.map((order) => {
                 return {

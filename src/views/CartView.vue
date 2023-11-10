@@ -7,8 +7,18 @@
                 <CartDetails />
             </div>
         </div>
-        <div class="text-center mt-4" v-if="cartStore.count <= 0">
-            <h3>Votre panier est vide!</h3>
+        <div class="mt-4 d-flex flex-wrap justify-content-center align-items-center" v-if="cartStore.count <= 0">
+            <div class="text-center mb-md-0 mb-3">
+                <img src="@/assets/images/yarn-ball2.png" />
+            </div>
+            <div class="col-lg-5 col-md-6 text-center">
+                <h3>Votre panier est vide !</h3>
+                <RouterLink to="/boutique">
+                    <button class="btn btn-primary mt-2">
+                    <b><p class="m-0">Visiter la boutique</p></b>
+                    </button>
+                </RouterLink>
+            </div>
         </div>
     </div>
 </template>
@@ -23,5 +33,10 @@
 <style scoped>
     h1::after{
         max-width: 756px;
+    }
+
+    img{
+        max-width: 100px;
+        width: 100%
     }
 </style>

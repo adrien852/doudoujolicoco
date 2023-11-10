@@ -63,7 +63,7 @@
   left: -250px;
   background-color: rgba(255, 255, 255, 0.866);
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: 0.3s;
   text-transform: uppercase !important;
   letter-spacing: 1px;
 }

@@ -1,13 +1,27 @@
 <template>
     <div id="sideCart" class="sideCart pb-3">
-        <div class="sideCartContent mt-2">
-            <CartItems @close-side-cart="closeSideCart" v-if="cartStore.count > 0" :items="cartStore.items"/>
+        <div v-if="cartStore.count > 0" class="sideCartContent mt-2">
+            <CartItems :items="cartStore.items"/>
             <div class="d-flex flex-column">
-                <RouterLink class="mx-auto mt-1" @click="closeSideCart" to="/panier"><button class="btn btn-primary px-2"><span class="text-uppercase">Voir mon panier</span></button></RouterLink> 
-                <RouterLink class="mx-auto mt-1" @click="closeSideCart" to="/livraison"><button class="btn btn-primary checkoutButton px-2"><span class="text-uppercase">Passer la commande</span></button></RouterLink> 
+                <RouterLink class="mx-auto mt-1" to="/panier"><button class="btn btn-primary checkoutButton px-2"><span class="text-uppercase">Voir mon panier</span></button></RouterLink> 
+                <RouterLink class="mx-auto mt-1" to="/boutique"><button class="btn btn-primary px-2"><span class="text-uppercase">Retour à la boutique</span></button></RouterLink> 
+            </div>
+        </div>
+        <div class="mt-2" v-if="cartStore.count <= 0">
+            <div class="text-center mb-md-1 mb-3">
+                <img src="@/assets/images/yarn-ball2.png" />
+            </div>
+            <div class="px-3 text-center">
+                <h3 class="mt-3">Votre panier est vide !</h3>
+                <RouterLink to="/boutique">
+                    <button class="btn btn-primary mt-1">
+                    <b><p class="m-0">Visiter la boutique</p></b>
+                    </button>
+                </RouterLink>
             </div>
         </div>
     </div>
+
 </template>
 
 <script setup>
@@ -20,14 +34,14 @@
 
     function closeSideCart(){
         let sideCart = document.getElementById("sideCart");
-                sideCart.style.right = "-350px";
-                sideCart.classList.remove('toggled');
+        sideCart.style.right = "-350px";
+        sideCart.classList.remove('toggled');
     }
 
     function openSideCart(){
         let sideCart = document.getElementById("sideCart");
-                sideCart.style.right = "0";
-                sideCart.classList.add('toggled');
+        sideCart.style.right = "0";
+        sideCart.classList.add('toggled');
     }
 
     onMounted(() => {
@@ -35,7 +49,7 @@
         document.getElementById("header").addEventListener('mouseleave', () => {
             if(sideCart.className.includes('toggled')){
                 setTimeout(() => {
-                    closeSideCart()
+                    // closeSideCart()
                 }, 300);
             }
         })
@@ -51,6 +65,13 @@
 </script>
 
 <style scoped>
+    h3{
+        font-size: 14pt;
+    }
+    img{
+        max-width: 100px;
+        width: 100%
+    }
     .checkoutButton{
         background-color: #f4aa46;
         border-color: #f4aa46;

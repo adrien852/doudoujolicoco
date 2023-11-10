@@ -1,7 +1,7 @@
 <template>
     <SideCart />
-    <div id="cartIcon" :number="cartStore.isEmpty ? '' : cartStore.count" :style="{'--show': cartStore.isEmpty ? 'none' : 'block'}" class="iconContainer">
-        <img src="@/assets/images/trolley.png" />
+    <div id="cartIcon" :number="cartStore.isEmpty ? '' : cartStore.count" :style="{'--show': cartStore.isEmpty ? 'none' : 'block'}" class="iconContainer cartTriggerToggler">
+        <img class="cartTriggerToggler" src="@/assets/images/trolley.png" />
     </div>
 </template>
 <script setup>
