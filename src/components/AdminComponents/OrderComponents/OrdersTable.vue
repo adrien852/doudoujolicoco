@@ -1,6 +1,4 @@
 <template>
-    <loading :is-full-page="false" :active="isLoading"></loading>
-    {{ random }}
     <div v-if="orders" class="table-responsive-md">
         <table class="table table-striped">
             <thead>
@@ -24,42 +22,10 @@
 </template>
 
 <script setup>
-    import { onMounted } from 'vue';
-    import { getAdminOrders } from '@/services/OrderService';
-    import { ref, reactive } from 'vue';
-    import Loading from 'vue3-loading-overlay';
-    import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
-
-    let isLoading = ref(true)
-    let orders = reactive(null)
-    let tableHeaders = reactive({})
-    let random = null;
-
-    function randomRef() {
-        let numbers = '0123456789';
-        var result = 'C';
-        for (var i = 4; i > 0; --i) result += numbers[Math.floor(Math.random() * (numbers.length - 1))];
-        return result;
-    }
-
-    onMounted(async() => {
-        random = randomRef();
-        getAdminOrders().then((response) => {
-            orders = response.map((order) => {
-                return {
-                    "Référence": order.reference,
-                    "Montant": order.payment.amount+'€',
-                    "Client": order.customer.shippingAddress.firstName+' '+order.customer.shippingAddress.lastName,
-                    "Produits": order.products.map((product) => product.name).join(', '),
-                    "Date de commande": new Date(order.payment.createdAt).toLocaleDateString("fr-FR"),
-                    "Statut": order.status
-                }
-            })
-            tableHeaders = Object.keys(orders[0]);
-            isLoading.value = false;
-        });
-        
-    })
+const props = defineProps({
+    orders: Object,
+    tableHeaders: Object
+})
 </script>
 
 <style scoped>

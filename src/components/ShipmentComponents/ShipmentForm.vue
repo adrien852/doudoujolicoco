@@ -74,6 +74,7 @@
             <div class="d-flex row">
                 <FormKit
                     type="text"
+                    prefix-icon="email"
                     validation="email|required"
                     name="email"
                     id="email"
@@ -89,6 +90,7 @@
                         matches: 'Numéro de téléphone incorrect',
                     }"
                     name="phone"
+                    prefix-icon="telephone"
                     id="phone"
                     label="Numéro de téléphone"
                     placeholder="0601020304"

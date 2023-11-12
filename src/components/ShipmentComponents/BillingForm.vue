@@ -74,6 +74,7 @@
                         matches: 'Numéro de téléphone incorrect',
                     }"
                     name="phone"
+                    prefix-icon="telephone"
                     id="phone"
                     label="Numéro de téléphone"
                     placeholder="0601020304"

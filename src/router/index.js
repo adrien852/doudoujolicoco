@@ -10,6 +10,9 @@ import CategoriesView from '@/views/CategoriesView.vue'
 import NotFound from '@/views/NotFound.vue'
 import AdminOrdersView from '@/views/AdminViews/OrdersView.vue'
 import AdminOrderView from '@/views/AdminViews/OrderView.vue'
+import AdminView from '@/views/AdminViews/AdminView.vue'
+import AdminInventoryView from '@/views/AdminViews/InventoryView.vue'
+import AdminInventoryItemView from '@/views/AdminViews/InventoryItemView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -69,6 +72,21 @@ const router = createRouter({
       path: '/admin/commandes/:reference',
       name: 'adminCommande',
       component: AdminOrderView
+    },
+    {
+      path: '/admin/inventaire',
+      name: 'adminInventaire',
+      component: AdminInventoryView
+    },
+    {
+      path: '/admin/inventaire/:id',
+      name: 'adminInventaireItem',
+      component: AdminInventoryItemView
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: AdminView
     },
     { 
       path: '/404', 

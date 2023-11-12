@@ -24,7 +24,7 @@
 import router from '@/router'
 import { useCartStore } from '@/stores/CartStore'
 import ItemImageCarousel from "@/components/ItemComponents/ItemImageCarousel.vue"
-import { inject, ref } from 'vue'
+import { inject } from 'vue'
 const swal = inject('$swal')
 
 const props = defineProps({

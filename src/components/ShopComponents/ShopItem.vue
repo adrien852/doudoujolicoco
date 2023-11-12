@@ -7,7 +7,7 @@
             <RouterLink :to="'/article/'+item.normalized" class="cartImgContainer">
                 <img :class="[{'h-100 cartImg': longDisplay}, {'w-100 zoom': !longDisplay}]" width="300" height="300" :src="imageUrl">
             </RouterLink>
-            <RouterLink :to="'/article/'+item.normalized" v-if="!hideDescription" :style="{minWidth: longDisplay ? '140px' : 'initial'}" :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
+            <RouterLink :to="'/article/'+item.normalized" v-if="!hideDescription" :style="{minWidth: longDisplay ? '180px' : 'initial'}" :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
                 <p class="itemCategory text-uppercase">{{ item.category.name }}</p>
                 <div class="itemTitle d-flex">
                     <p :class="['my-auto', {'m-auto': !longDisplay}]">{{ item.name }}</p>
@@ -112,7 +112,7 @@ function openSideCart(){
     }
     .cartImgContainer img{
         border-radius:10px 10px 0 0;
-        width: auto;
+        /* width: auto; */
     }
     .itemCategory{
         font-size: small;

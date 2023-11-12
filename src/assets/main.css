@@ -90,3 +90,7 @@ html, body, #app{
   .text-uppercase{
     letter-spacing: 1px;
   }
+
+  label{
+    margin: 0;
+  }
