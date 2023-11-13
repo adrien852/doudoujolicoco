@@ -9,15 +9,15 @@
             #default="{ value }"
             @submit="handleSubmit"
             v-model="item"
-
+            :actions="false"
             >
-            <div class="d-flex flex-wrap">
+            <div class="d-flex justify-content-center flex-wrap">
                 <FormKit
                     type="text"
                     label="Nom"
                     name="name"
                     validation="required"
-                    outer-class="col-md-6 col-12"
+                    outer-class="col-md-5 col-12"
                 />
                 <FormKit
                     type="text"
@@ -26,10 +26,10 @@
                     placeholder="elephant_rouge"
                     validation="required"
                     help="Doit être unique, sans accent ni espace"
-                    outer-class="col-md-6 col-12"
+                    outer-class="col-md-5 col-12"
                 />
             </div>
-            <div class="d-flex flex-wrap">
+            <div class="d-flex justify-content-center flex-wrap">
                 <FormKit
                     type="number"
                     prefix-icon="euro"
@@ -38,61 +38,74 @@
                     label="Prix"
                     name="price"
                     validation="required"
-                    outer-class="col-md-6 col-12"
+                    outer-class="col-md-5 col-12"
                 />
                 <FormKit
                     type="select"
                     label="Catégorie"
                     v-model="item.category.name"
                     :options="categoryNames"
-                    outer-class="col-md-6 col-12"
+                    outer-class="col-md-5 col-12"
                 />
             </div>
+            <div class="d-flex justify-content-center flex-wrap">
+                <FormKit
+                    type="textarea"
+                    label="Description"
+                    name="description"
+                    validation="required"
+                    outer-class="col-md-5 col-12"
+                />
+                <div class="col-md-5">
 
-            <FormKit
-                type="textarea"
-                label="Description"
-                name="description"
-                validation="required"
-                outer-class="col-md-6 col-12"
-            />
-            <div class="d-flex flex-wrap">
-                <FormKit
-                    type="file"
-                    label="Image principale"
-                    outer-class="col-md-6 col-12"
-                    accept="image/*"
-                    name="file1"
-                    @change="uploadImage($event, 0)"
-                />
-                <FormKit
-                    type="file"
-                    label="Image 2"
-                    outer-class="col-md-6 col-12"
-                    ignore="true"
-                    name="file2"
-                    accept="image/*"
-                    @change="uploadImage($event, 1)"
-                />
-                <FormKit
-                    type="file"
-                    label="Image 3"
-                    outer-class="col-md-6 col-12"
-                    ignore="true"
-                    name="file3"
-                    accept="image/*"
-                    @change="uploadImage($event, 2)"
-                />
-                <FormKit
-                    type="file"
-                    label="Image 4"
-                    outer-class="col-md-6 col-12"
-                    ignore="true"
-                    name="file4"
-                    accept="image/*"
-                    @change="uploadImage($event, 3)"
-                />
+                </div>
             </div>
+            <div class="d-flex justify-content-center flex-wrap">
+                <div class="position-relative col-md-5 col-12">
+                    <loading :is-full-page="false" :active="fileUploading"></loading>
+                    <FormKit
+                        type="file"
+                        label="Image principale"
+                        accept="image/*"
+                        name="file1"
+                        @change="uploadImage($event, 0)"
+                    />
+                </div>
+                <div class="position-relative col-md-5 col-12">
+                    <loading :is-full-page="false" :active="fileUploading"></loading>
+                    <FormKit
+                        type="file"
+                        label="Image 2"
+                        ignore="true"
+                        name="file2"
+                        accept="image/*"
+                        @change="uploadImage($event, 1)"
+                    />
+                </div>
+                <div class="position-relative col-md-5 col-12">
+                    <loading :is-full-page="false" :active="fileUploading"></loading>
+                    <FormKit
+                        type="file"
+                        label="Image 3"
+                        ignore="true"
+                        name="file3"
+                        accept="image/*"
+                        @change="uploadImage($event, 2)"
+                    />
+                </div>
+                <div class="position-relative col-md-5 col-12">
+                    <loading :is-full-page="false" :active="fileUploading"></loading>
+                    <FormKit
+                        type="file"
+                        label="Image 4"
+                        ignore="true"
+                        name="file4"
+                        accept="image/*"
+                        @change="uploadImage($event, 3)"
+                    />
+                </div>
+            </div>
+            <FormKit type="submit" :disabled="submitDisabled">Enregistrer</FormKit>
         </FormKit>
             <div v-if="imageData!=null">                     
                 <img class="preview" height="268" width="356" :src="imageData">
@@ -110,6 +123,7 @@
     import { getStorage, uploadBytes, getDownloadURL } from "firebase/storage";
     import {ref as firebaseRef} from "firebase/storage";
     const swal = inject('$swal')
+    import router from '@/router'
 
     const route = useRoute();
     let isLoading = ref(true);
@@ -118,6 +132,8 @@
     let categoryNames = null;
     let imageData = null;
     let photos = {};
+    let fileUploading = ref(false);
+    let submitDisabled = ref(false);
 
     onMounted(async() => {
         await getItem(route.params.id)
@@ -134,7 +150,8 @@
     })
 
     function uploadImage(event, id) {
-        console.log(event.target.name)
+        fileUploading.value = true;
+        submitDisabled.value = true;
         const file = event.target.files[0];
         const storage = getStorage();
 
@@ -143,6 +160,8 @@
         uploadBytes(storageRef, file).then((snapshot) => {
             getDownloadURL(snapshot.ref).then(function(downloadURL) {
                 item.images[id] = downloadURL;
+                fileUploading.value = false;
+                submitDisabled.value = false;
             });
         });
     }
@@ -170,7 +189,9 @@
                     popup: 'animate__animated animate__fadeIn'
                 },
             })
-            isLoading.value = false;
+            .then(() => {
+                router.push({ path: '/admin/inventaire' })
+            })
         })
         .catch(() => {
             swal.fire({

@@ -15,7 +15,7 @@ export const useCartStore = defineStore("CartStore", {
         subTotal(state) {
             let totalPrice = 0;
             state.items.forEach((item) => {
-                totalPrice += item.price;
+                totalPrice += parseFloat(item.price);
             });
             return totalPrice;
         }

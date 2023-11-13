@@ -25,6 +25,7 @@
     import {getItems} from '@/services/ShopService.js'
     import { VuePaginate } from '@svifty7/vue-paginate';
     import { inject, ref } from 'vue'
+    import router from '@/router'
     const swal = inject('$swal')
 
     let items = reactive({})
@@ -49,7 +50,8 @@
                 normalized: "Nom normalisé",
                 categoryName:"Catégorie",
                 price: "Prix",
-                createdAt: "Date de commande",
+                createdAt: "Date de création",
+                modifiedAt: "Dernière modification",
             }
             pageCount.value = Math.ceil(items.length / itemsPerPage);
             isLoading.value = false;
@@ -85,6 +87,7 @@
                 categoryName: item.category.name,
                 price: item.price+"€",
                 createdAt: new Date(item.createdAt).toLocaleDateString("fr-FR"),
+                modifiedAt: new Date(item.modifiedAt).toLocaleDateString("fr-FR"),
             }
         })
     }

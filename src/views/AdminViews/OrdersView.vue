@@ -13,9 +13,12 @@
     import OrdersTable from '@/components/AdminComponents/OrderComponents/OrdersTable.vue'
     import { onMounted } from 'vue';
     import { getAdminOrders } from '@/services/OrderService';
-    import { ref, reactive } from 'vue';
+    import { ref, reactive, inject } from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+    import router from '@/router'
+    const swal = inject('$swal')
+
 
     let isLoading = ref(true)
     let orders = reactive({})
@@ -35,7 +38,20 @@
             })
             tableHeaders = Object.keys(orders[0]);
             isLoading.value = false;
-        });
+        })
+        .catch(function(error) {
+            swal.fire({
+                icon: 'error',
+                title: 'Désolé',
+                text: 'Le site fait face à un soucis technique. Veuillez nous excuser pour le désagrément.',
+                confirmButtonText: "Retour à l'accueil",
+                showCloseButton: true,
+                showConfirmButton: true,
+                confirmButtonColor: "#94BCD8",
+            }).then(() => {
+                router.push({ path: '/' })
+            })
+        })
         
     })
 </script>

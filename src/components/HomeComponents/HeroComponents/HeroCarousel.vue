@@ -16,13 +16,6 @@
 </template>
 
 <script setup>
-import image2 from "@/assets/images/olaf.jpg"
-import image3 from "@/assets/images/pikachu.jpg"
-import image4 from "@/assets/images/reine.jpg"
-import image5 from "@/assets/images/elephant1.jpg"
-import image6 from "@/assets/images/lapins.jpg"
-import image7 from "@/assets/images/souris.jpg"
-import image1 from "@/assets/images/vache.jpg"
 
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import { RouterLink, RouterView } from 'vue-router'
@@ -33,7 +26,11 @@ import 'vue3-carousel/dist/carousel.css'
 
 <script>
 let carouselImages = [
-  image1,image2,image3,image4,image5,image6,image7
+  "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fporte-tetine%2Ffile4?alt=media&token=7c205c76-f5f1-4fed-b32d-b65df559b0e0",
+  "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fsouris%2Ffile1?alt=media&token=b273935b-1049-4476-8455-a6b49b872348",
+  "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fvache_crochet%2Ffile1?alt=media&token=6f311b31-39a1-4c2e-acd7-3a6930f00fdc",
+  "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Folaf%2Ffile1?alt=media&token=51c9bd00-d603-4bd7-8fbb-eb440aad39b2",
+  "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Freine_des_neiges%2Ffile1?alt=media&token=79cc3b8a-8544-4e6d-a563-79ff7d13e77e"
 ]
 </script>
     
@@ -50,6 +47,7 @@ let carouselImages = [
 }
 .carousel__item img{
   object-fit: cover;
+  object-position: 50% 30%;
 }
 .carousel__icon{
   fill: white;
@@ -65,29 +63,6 @@ let carouselImages = [
   bottom: 30px;
   margin:0;
   height:0;
-}
-
-#image4 img{
-  object-position: 67% 40%;
-}
-#image5 img{
-  object-position: 50% 50%;
-}
-#image2 img{
-  object-position: 50%;
-}
-#image7 img{
-  object-position: 0% 40%;
-}
-#image1 img{
-  object-position: 29% 50%;
-}
-#image3 img{
-  object-position: 50% 60%;
-}
-#image6 img{
-  object-fit: none;
-  object-position: 7% 13%;
 }
 .carouselBtn{
   width:40%;

@@ -2,7 +2,7 @@
     <div class="py-4">
         <h1>Toutes les catégories</h1>
         <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints" :wrapAround="true" :transition="500">
-            <Slide v-for="category in categories" :key="item">
+            <Slide v-for="category in categories" :key="category">
                 <ShopCategory class="w-100" :category="category" />
             </Slide>
 
@@ -21,8 +21,7 @@ const props = defineProps({
     categories: Array,
 })
 let settings = {
-    itemsToShow: 1,
-    snapAlign: 'left',
+    itemsToShow: 1
 }
 let breakpoints = {
     768: {

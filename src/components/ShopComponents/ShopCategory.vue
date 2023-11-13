@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="bg-white d-flex w-100 flex-column shopItemCard">
-            <img class="zoom" width="300" height="300" :src="imageUrl">
+            <img class="zoom" width="300" height="300" :src="category.image">
         </div>
     </RouterLink>
 </template>
@@ -16,8 +16,6 @@ import { computed } from 'vue';
 const props = defineProps({
     category: Object,
 })
-
-const imageUrl = computed(() => new URL(`/src/assets/images/${props.category.image}`, import.meta.url).href)
 
 </script>
 
