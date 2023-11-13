@@ -1,6 +1,9 @@
 <template>
     <loading :is-full-page="false" :active="isLoading"></loading>
     <div v-if="item && categories" class="container">
+        <div class="mb-3">
+            <RouterLink to="/admin/inventaire"><button class="btn btn-secondary">Retour</button></RouterLink>
+        </div>
         <FormKit
             type="form"
             #default="{ value }"
@@ -53,7 +56,47 @@
                 validation="required"
                 outer-class="col-md-6 col-12"
             />
+            <div class="d-flex flex-wrap">
+                <FormKit
+                    type="file"
+                    label="Image principale"
+                    outer-class="col-md-6 col-12"
+                    accept="image/*"
+                    name="file1"
+                    @change="uploadImage($event, 0)"
+                />
+                <FormKit
+                    type="file"
+                    label="Image 2"
+                    outer-class="col-md-6 col-12"
+                    ignore="true"
+                    name="file2"
+                    accept="image/*"
+                    @change="uploadImage($event, 1)"
+                />
+                <FormKit
+                    type="file"
+                    label="Image 3"
+                    outer-class="col-md-6 col-12"
+                    ignore="true"
+                    name="file3"
+                    accept="image/*"
+                    @change="uploadImage($event, 2)"
+                />
+                <FormKit
+                    type="file"
+                    label="Image 4"
+                    outer-class="col-md-6 col-12"
+                    ignore="true"
+                    name="file4"
+                    accept="image/*"
+                    @change="uploadImage($event, 3)"
+                />
+            </div>
         </FormKit>
+            <div v-if="imageData!=null">                     
+                <img class="preview" height="268" width="356" :src="imageData">
+            </div>  
     </div>
 </template>
 
@@ -64,6 +107,8 @@
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import { ref, onMounted, inject } from 'vue';
+    import { getStorage, uploadBytes, getDownloadURL } from "firebase/storage";
+    import {ref as firebaseRef} from "firebase/storage";
     const swal = inject('$swal')
 
     const route = useRoute();
@@ -71,11 +116,14 @@
     let item = null;
     let categories = null;
     let categoryNames = null;
+    let imageData = null;
+    let photos = {};
 
     onMounted(async() => {
         await getItem(route.params.id)
         .then(response => {
             item = response;
+            console.log(item.images[0])
         })
         await getCategories()
         .then(response => {
@@ -84,6 +132,20 @@
         }) 
         isLoading.value = false;
     })
+
+    function uploadImage(event, id) {
+        console.log(event.target.name)
+        const file = event.target.files[0];
+        const storage = getStorage();
+
+        const storageRef = firebaseRef(storage, 'product_images/'+item.normalized+'/'+event.target.name);
+
+        uploadBytes(storageRef, file).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then(function(downloadURL) {
+                item.images[id] = downloadURL;
+            });
+        });
+    }
 
     function handleSubmit() {
         isLoading.value = true;
@@ -94,6 +156,7 @@
             description: item.description,
             price: item.price,
             category: categories.find((category) => category.name == item.category.name),
+            images: item.images
         }
         updateItem(reqItem).then(() => {
             swal.fire({
@@ -123,6 +186,11 @@
             })
         })
         
+    }
+
+    function uploadFile(){
+        const storage = getStorage();
+        const mountainImagesRef = ref(storage, 'product_images/mountains.jpg');
     }
 </script>
 

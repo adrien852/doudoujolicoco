@@ -9,6 +9,7 @@ import config from './formkit.config'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import firebase from "firebase/compat/app";
+import "firebase/compat/storage";
 import "firebase/compat/analytics";
 
 const firebaseConfig = {
@@ -23,6 +24,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const analytics = firebase.analytics();
+const storage = firebase.storage();
 
 const app = createApp(App)
 const pinia = createPinia()

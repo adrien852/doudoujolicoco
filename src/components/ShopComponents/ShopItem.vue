@@ -5,7 +5,7 @@
                 <img class="cartTriggerToggler" src="@/assets/images/add-to-cart-white2.png" />
             </span>
             <RouterLink :to="'/article/'+item.normalized" class="cartImgContainer">
-                <img :class="[{'h-100 cartImg': longDisplay}, {'w-100 zoom': !longDisplay}]" width="300" height="300" :src="imageUrl">
+                <img :class="[{'h-100 cartImg': longDisplay}, {'w-100 zoom': !longDisplay}]" width="300" height="300" :src="item.images[0]">
             </RouterLink>
             <RouterLink :to="'/article/'+item.normalized" v-if="!hideDescription" :style="{minWidth: longDisplay ? '180px' : 'initial'}" :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
                 <p class="itemCategory text-uppercase">{{ item.category.name }}</p>
@@ -33,9 +33,6 @@ const props = defineProps({
 })
 
 const cartStore = useCartStore();
-
-const imageUrl = computed(() => new URL(`/src/assets/images/${props.item.images[0]}`, import.meta.url).href)
-
 
 function addItemToCart(){
     cartStore.addItem(props.item);
