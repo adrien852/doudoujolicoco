@@ -76,6 +76,7 @@ function openSideCart(){
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;
         transition: transform 0.1s ease-out;
+        cursor: pointer;
     }
     .addBasket img{
         width: 100%;
