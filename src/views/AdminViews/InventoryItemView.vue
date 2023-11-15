@@ -60,6 +60,21 @@
 
                 </div>
             </div>
+            <div class="d-flex justify-content-center">
+                <div class="col-12 offset-md-7">
+                    <h4>Images</h4>
+                    <p>Pour conserver une présentation stable et uniforme sur le site, quelques règles à retenir : </p>
+                    <ol>
+                        <li>Orientation portrait.</li>
+                        <li>Centrer parfaitement le sujet sur la photo.</li>
+                        <li>Laisser suffisamment d'espace autour du sujet. Il ne devrait pas occuper plus de &#8531; de la photo.</li>
+                        <li>Privilégier les formats suivants : jpg, jpeg, png.</li>
+                        <li>L'<b>image principale</b> correspond à l'image représentant l'objet à travers le site. Les autres images sont visibles uniquement sur la page produit.</li>
+                    </ol>
+                </div>
+                <div class="col-md-5">
+                </div>
+            </div>
             <div class="d-flex justify-content-center flex-wrap">
                 <div class="position-relative col-md-5 col-12">
                     <loading :is-full-page="false" :active="fileUploading"></loading>
