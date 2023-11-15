@@ -1,15 +1,18 @@
 <template>
-    <NavPath :path="path"/>
-    <loading :active="isLoading"></loading>
-    <div id="itemContainer" v-if="dataLoaded" class="container">
-        <Item :item="item"/>
-    </div>
-    <div class="container">
-        <div v-if="dataLoaded" class="mt-4">
-            <h1>Vous aimerez aussi...</h1>
-            <ShopCarousel :items="sampleShopItemStore.items" />
+    <div v-if="item">
+        <NavPath :path="path"/>
+        <loading :active="isLoading"></loading>
+        <div id="itemContainer" v-if="dataLoaded" class="container">
+            <Item :item="item"/>
         </div>
+        <div class="container">
+            <div v-if="dataLoaded" class="mt-4">
+                <h1>Vous aimerez aussi...</h1>
+                <ShopCarousel :items="sampleShopItemStore.items" />
+            </div>
+        </div> 
     </div>
+
     
 </template>
 
@@ -36,9 +39,7 @@
     let item = reactive({});
     let path = null;
 
-    watch(route, async() =>{
-        getRouteItem(route.params.id)
-    })
+
 
     function getRouteItem(itemId){
         isLoading.value = true;
@@ -68,17 +69,7 @@
             
         })
         .catch(function(error) {
-            swal.fire({
-                icon: 'error',
-                title: 'Désolé',
-                text: 'Le site fait face à un soucis technique. Veuillez nous excuser pour le désagrément.',
-                confirmButtonText: "Retour à l'accueil",
-                showCloseButton: true,
-                showConfirmButton: true,
-                confirmButtonColor: "#94BCD8",
-            }).then(() => {
-                router.push({ path: '/' })
-            })
+            router.push({ path: '/404' })
         })
     }
 
@@ -87,6 +78,9 @@
         sampleShopItemStore.fill()
         .catch(function(error) {
 
+        })
+        watch(route, async() =>{
+            getRouteItem(route.params.id)
         })
     });
 </script>

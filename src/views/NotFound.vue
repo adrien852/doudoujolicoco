@@ -7,9 +7,11 @@
             <h1>Oups !</h1>
             <h2>Cette page n'existe pas</h2>
             <div class="text-center mt-4">
-                <button class="btn text-center">
-                    <h3 class="m-0">Retour à l'accueil</h3>
-                </button>
+                <RouterLink to="/">
+                    <button class="btn text-center">
+                        <h3 class="m-0">Retour à l'accueil</h3>
+                    </button>
+                </RouterLink>
             </div>
             
         </div>

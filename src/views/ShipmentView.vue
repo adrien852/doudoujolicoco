@@ -79,7 +79,7 @@
     import {useCartStore} from '@/stores/CartStore.js'
     
     const cartStore = useCartStore();
-    let isLoading = ref(false);
+    let isLoading = ref(true);
     let initSameAsShipping = ref(true);
     let isSameAsShipping = ref(true);
     let step = ref('shipping')
@@ -105,6 +105,26 @@
             })
         }
         isSameAsShipping.value = cartStore.customer.isSameAsShipping??true
+    })
+
+    onMounted(async() => {
+        let oldCart = cartStore.items
+        cartStore.checkCartValidity().then(() => {
+            if(JSON.stringify(oldCart) !== JSON.stringify(cartStore.items)){
+                swal.fire({
+                    icon: 'warning',
+                    title: 'Attention',
+                    text: 'La disponibilité et/ou le prix de vos articles ont changé depuis leur ajout au panier. Veuillez vérifier votre panier avant de continuer.',
+                    confirmButtonText: "OK",
+                    showCloseButton: false,
+                    showConfirmButton: true,
+                    confirmButtonColor: "#94BCD8",
+                }).then(() => {
+                    router.push({ path: '/panier' })
+                })
+            }
+            isLoading.value = false;
+        });
     })
 
     const stepPlugin = (node) => {
