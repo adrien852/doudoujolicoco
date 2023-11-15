@@ -69,6 +69,18 @@ html, body, #app{
     border-color: #4c778d;
   }
 
+  .btn-delete{
+    color: #fff;
+    background-color: #D89494;
+    border-color: #D89494;
+  }
+
+  .btn-delete:hover {
+    color: #fff;
+    background-color: #916363;
+    border-color: #916363;
+  }
+
   .btn-primary.focus, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
     color: #fff;
     background-color: #515d62;

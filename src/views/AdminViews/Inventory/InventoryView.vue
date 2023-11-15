@@ -3,13 +3,14 @@
     <div class="container">
         <div class="mb-3">
             <RouterLink to="/admin"><button class="btn btn-secondary">Retour</button></RouterLink>
+            <RouterLink class="position-relative ml-2" to="/admin/inventaire/nouveau"><button id="deleteButton" class="btn btn-primary">Nouveau</button></RouterLink>
         </div>
         <h1>Inventaire</h1>
         <div ref="shopContainer" class="d-flex flex-column w-100">
             <vue-paginate v-if="pageCount > 1" class="row mx-auto"
                 v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
             </vue-paginate> 
-            <InventoryTable :items="paginatedItems" :tableHeaders="tableHeaders"/>
+            <InventoryTable @itemIdDeleted="removeItem" :items="paginatedItems" :tableHeaders="tableHeaders"/>
             <vue-paginate v-if="pageCount > 1" class="row mx-auto"
                 v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
             </vue-paginate>
@@ -92,6 +93,13 @@
         })
     }
 
+    function removeItem(deletedItem){
+        isLoading.value = true;
+        items = items.filter((item) => (item.id !== deletedItem.id));
+        mappedItems = mapItems(items);
+        paginatedItems = paginateItems(page.value);
+        isLoading.value = false;
+    }
     
     function clickCallback(pageNum){
         // nextTick(() => {
@@ -105,5 +113,11 @@
 </script>
 
 <style scoped>
-    
+    #deleteButton::before{
+        content: "+";
+        position: relative;
+        bottom: 1px;
+        left: -3px;
+        font-weight: bold;
+    }
 </style>

@@ -154,7 +154,6 @@
         await getItem(route.params.id)
         .then(response => {
             item = response;
-            console.log(item.images[0])
         })
         await getCategories()
         .then(response => {
@@ -192,21 +191,36 @@
             category: categories.find((category) => category.name == item.category.name),
             images: item.images
         }
-        updateItem(reqItem).then(() => {
-            swal.fire({
-                icon: 'success',
-                title: 'Sauvegarde réussie',
-                text: 'Votre article a bien été enregistré.',
-                confirmButtonText: "OK",
-                showCloseButton: true,
-                confirmButtonColor: "#94BCD8",
-                showClass: {
-                    popup: 'animate__animated animate__fadeIn'
-                },
-            })
-            .then(() => {
-                router.push({ path: '/admin/inventaire' })
-            })
+        updateItem(reqItem).then((response) => {
+            if(response.code === 'ER_DUP_ENTRY'){
+                swal.fire({
+                    icon: 'error',
+                    title: 'Sauvegarde échouée',
+                    html: 'Un article avec ce <b>Nom normalisé</b> existe déjà. Réessayez avec un nom différent.',
+                    confirmButtonText: "OK",
+                    showCloseButton: true,
+                    confirmButtonColor: "#94BCD8",
+                    showClass: {
+                        popup: 'animate__animated animate__fadeIn'
+                    },
+                })
+            }
+            else{
+                swal.fire({
+                    icon: 'success',
+                    title: 'Sauvegarde réussie',
+                    text: 'Votre article a bien été enregistré.',
+                    confirmButtonText: "OK",
+                    showCloseButton: false,
+                    confirmButtonColor: "#94BCD8",
+                    showClass: {
+                        popup: 'animate__animated animate__fadeIn'
+                    },
+                })
+                .then(() => {
+                    router.push({ path: '/admin/inventaire' })
+                })
+            }
         })
         .catch(() => {
             swal.fire({
@@ -221,12 +235,7 @@
                 },
             })
         })
-        
-    }
-
-    function uploadFile(){
-        const storage = getStorage();
-        const mountainImagesRef = ref(storage, 'product_images/mountains.jpg');
+        isLoading.value = false;
     }
 </script>
 
