@@ -64,6 +64,7 @@ onMounted(() => {
 <style>
 #thumbnails{
     margin-right: 10px;
+    min-width: 19%;
 }
 #thumbnails .carousel__track{
     flex-direction: column;
@@ -81,5 +82,8 @@ onMounted(() => {
 }
 #imageGallery .carousel__viewport, #thumbnails .carousel__viewport{
     border-radius: 0;
+}
+#imageGallery{
+    min-width: 81%;
 }
 </style>
