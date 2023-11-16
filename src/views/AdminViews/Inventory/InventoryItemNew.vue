@@ -71,58 +71,89 @@
                         <li>Laisser suffisamment d'espace autour du sujet. Il ne devrait pas occuper plus de &#8531; de la photo.</li>
                         <li>Privilégier les formats suivants : jpg, jpeg, png.</li>
                         <li>L'<b>image principale</b> correspond à l'image représentant l'objet à travers le site. Les autres images sont visibles uniquement sur la page produit.</li>
+                        <li>N'enregistrez pas de photos tant que <b>Nom normalisé</b> n'est pas définitivement choisi.</li>
+                        <li class="text-red">Ne pas oublier d'<b>Enregistrer</b> avec le bouton tout en bas de la page pour sauvegarder le formulaire ET les images !</li>
                     </ol>
                 </div>
                 <div class="col-md-5">
                 </div>
             </div>
-            <div class="d-flex justify-content-center flex-wrap">
-                <div class="position-relative col-md-5 col-12">
-                    <loading :is-full-page="false" :active="fileUploading"></loading>
-                    <FormKit
-                        type="file"
-                        label="Image principale"
-                        accept="image/*"
-                        name="file1"
-                        :disabled="!(item.normalized)"
-                        @change="uploadImage($event, 0)"
-                    />
+            <div class="d-flex align-items-center">
+                <div class="d-flex justify-content-center flex-wrap col-lg-7">
+                    <div class="position-relative col-md-5 col-12 mb-4">
+                        <loading :is-full-page="false" :active="fileUploading"></loading>
+                        <div class="d-flex flex-column">
+                            <FormKit
+                                type="file"
+                                label="Image principale"
+                                accept="image/*"
+                                name="file1"
+                                id="file1"
+                                :disabled="!(item.normalized)"
+                                @change="uploadImage($event, 0)"
+                            />
+                            <div @click="previewClick('file1')" v-if="item.images[0] !== ''" class="imagePreview m-auto card"><img  :src="item.images[0]" /></div>
+                            <div @click="previewClick('file1')" v-if="item.images[0] === ''" class="imagePreview w-100 card"><img class="missingPhoto w-25 opacity-50 m-auto" src="@/assets/images/missing_photo.png"/></div>
+                        </div>
+                    </div>
+                    <div class="position-relative col-md-5 col-12 mb-4">
+                        <loading :is-full-page="false" :active="fileUploading"></loading>
+                        <div class="d-flex flex-column">
+                            <FormKit
+                                type="file"
+                                label="Image 2"
+                                accept="image/*"
+                                name="file2"
+                                id="file2"
+                                :disabled="!(item.normalized)"
+                                @change="uploadImage($event, 1)"
+                            />
+                            <div @click="previewClick('file2')" v-if="item.images[1] !== ''" class="imagePreview m-auto card"><img  :src="item.images[1]" /></div>
+                            <div @click="previewClick('file2')" v-if="item.images[1] === ''" class="imagePreview w-100 card"><img class="missingPhoto w-25 opacity-50 m-auto" src="@/assets/images/missing_photo.png"/></div>
+                        </div>
+                    </div>
+                    <div class="position-relative col-md-5 col-12 mb-4">
+                        <loading :is-full-page="false" :active="fileUploading"></loading>
+                        <div class="d-flex flex-column">
+                            <FormKit
+                                type="file"
+                                label="Image 3"
+                                accept="image/*"
+                                name="file3"
+                                id="file3"
+                                :disabled="!(item.normalized)"
+                                @change="uploadImage($event, 2)"
+                            />
+                            <div @click="previewClick('file3')" v-if="item.images[2] !== ''" class="imagePreview m-auto card"><img  :src="item.images[2]" /></div>
+                            <div @click="previewClick('file3')" v-if="item.images[2] === ''" class="imagePreview w-100 card"><img class="missingPhoto w-25 opacity-50 m-auto" src="@/assets/images/missing_photo.png"/></div>
+                        </div>
+                    </div>
+                    <div class="position-relative col-md-5 col-12 mb-4">
+                        <loading :is-full-page="false" :active="fileUploading"></loading>
+                        <div class="d-flex flex-column">
+                            <FormKit
+                                type="file"
+                                label="Image 4"
+                                accept="image/*"
+                                name="file4"
+                                id="file4"
+                                :disabled="!(item.normalized)"
+                                @change="uploadImage($event, 3)"
+                            />
+                            <div @click="previewClick('file4')" v-if="item.images[3] !== ''" class="imagePreview m-auto card"><img  :src="item.images[3]" /></div>
+                            <div @click="previewClick('file4')"  v-if="item.images[3] === ''" class="imagePreview w-100 card"><img class="missingPhoto w-25 opacity-50 m-auto" src="@/assets/images/missing_photo.png"/></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="position-relative col-md-5 col-12">
+                <div v-if="item.images[0] !== ''" class="col-6 position-relative">
+                    <h4>Aperçu du produit en boutique</h4>
                     <loading :is-full-page="false" :active="fileUploading"></loading>
-                    <FormKit
-                        type="file"
-                        label="Image 2"
-                        ignore="true"
-                        name="file2"
-                        :disabled="!(item.normalized)"
-                        accept="image/*"
-                        @change="uploadImage($event, 1)"
-                    />
-                </div>
-                <div class="position-relative col-md-5 col-12">
-                    <loading :is-full-page="false" :active="fileUploading"></loading>
-                    <FormKit
-                        type="file"
-                        label="Image 3"
-                        ignore="true"
-                        name="file3"
-                        :disabled="!(item.normalized)"
-                        accept="image/*"
-                        @change="uploadImage($event, 2)"
-                    />
-                </div>
-                <div class="position-relative col-md-5 col-12">
-                    <loading :is-full-page="false" :active="fileUploading"></loading>
-                    <FormKit
-                        type="file"
-                        label="Image 4"
-                        ignore="true"
-                        name="file4"
-                        :disabled="!(item.normalized)"
-                        accept="image/*"
-                        @change="uploadImage($event, 3)"
-                    />
+                    <ShopItem :item="{
+                        ...item,
+                        images: {
+                            0: item.images[0]
+                        }
+                    }"/>
                 </div>
             </div>
             <FormKit type="submit" :disabled="submitDisabled">Enregistrer</FormKit>
@@ -135,6 +166,7 @@
 
 <script setup>
     import { useRoute } from 'vue-router';
+    import ShopItem from '@/components/ShopComponents/ShopItem.vue';
     import { getCategories } from '@/services/ShopService.js'
     import { saveItem } from '@/services/InventoryService.js'
     import Loading from 'vue3-loading-overlay';
@@ -242,6 +274,10 @@
             })
         })
         isLoading.value = false;
+    }
+
+    function previewClick(id){
+        document.getElementById(id).click();
     }
 </script>
 
