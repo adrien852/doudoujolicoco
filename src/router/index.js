@@ -14,6 +14,7 @@ import AdminView from '@/views/AdminViews/AdminView.vue'
 import AdminInventoryView from '@/views/AdminViews/Inventory/InventoryView.vue'
 import AdminInventoryItemView from '@/views/AdminViews/Inventory/InventoryItemView.vue'
 import AdminInventoryNewView from '@/views/AdminViews/Inventory/InventoryItemNew.vue'
+import ContactView from '@/views/ContactView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -63,6 +64,11 @@ const router = createRouter({
       path: '/livraison',
       name: 'shipment',
       component: ShipmentView
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: ContactView
     },
     {
       path: '/admin/commandes',

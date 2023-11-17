@@ -305,25 +305,5 @@
 </script>
 
 <style>
-[data-type="select"]:not([data-multiple]) .formkit-inner::after {
-  background-color: transparent!important;
-}
 
-[data-type="textarea"] .formkit-inner::after {
-  content:none!important;
-}
-
-.imagePreview{
-    min-height: 120px;
-    width: 150px;
-}
-
-.missingPhoto{
-    opacity: 25%;
-}
-
-.text-red{
-    color: rgb(245, 150, 62);
-    font-weight: bold;
-}
 </style>

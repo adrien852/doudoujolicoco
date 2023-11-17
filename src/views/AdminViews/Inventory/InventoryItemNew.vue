@@ -282,11 +282,5 @@
 </script>
 
 <style>
-[data-type="select"]:not([data-multiple]) .formkit-inner::after {
-  background-color: transparent!important;
-}
 
-[data-type="textarea"] .formkit-inner::after {
-  content:none!important;
-}
 </style>

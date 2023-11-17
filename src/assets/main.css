@@ -106,3 +106,31 @@ html, body, #app{
   label{
     margin: 0;
   }
+
+  .formkit-outer .formkit-icon.formkit-prefix-icon {
+    border-radius: var(--fk-border-radius-tl) 0 0 var(--fk-border-radius-bl);
+    background: transparent!important;
+    box-shadow: 1px 0 0 0 rgba(0,0,0,0.33);
+  }
+
+  [data-type="select"]:not([data-multiple]) .formkit-inner::after {
+    background-color: transparent!important;
+  }
+  
+  [data-type="textarea"] .formkit-inner::after {
+    content:none!important;
+  }
+  
+  .imagePreview{
+      min-height: 120px;
+      width: 150px;
+  }
+  
+  .missingPhoto{
+      opacity: 25%;
+  }
+  
+  .text-red{
+      color: rgb(245, 150, 62);
+      font-weight: bold;
+  }
