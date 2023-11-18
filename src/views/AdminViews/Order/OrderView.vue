@@ -4,7 +4,7 @@
         <div class="mb-3">
             <RouterLink to="/admin/commandes"><button class="btn btn-secondary">Retour</button></RouterLink>
         </div>
-        <div v-if="order" class="d-flex flex-wrap">
+        <div class="d-flex flex-wrap">
             <OrderDetails :order="order"/>
             <OrderCustomerInfo :order="order"/>
             <OrderManage :order="order"/>
