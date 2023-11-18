@@ -23,7 +23,7 @@
     import { onMounted, reactive } from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
-    import {getItems} from '@/services/ShopService.js'
+    import {getItems} from '@/services/InventoryService.js'
     import { VuePaginate } from '@svifty7/vue-paginate';
     import { inject, ref } from 'vue'
     import router from '@/router'

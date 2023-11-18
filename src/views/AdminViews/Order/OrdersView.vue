@@ -40,6 +40,7 @@
             isLoading.value = false;
         })
         .catch(function(error) {
+            console.log(error)
             swal.fire({
                 icon: 'error',
                 title: 'Désolé',

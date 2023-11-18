@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { inject, ref } from 'vue';
+import { inject } from 'vue';
 import { deleteItem } from '@/services/InventoryService.js'
 const swal = inject('$swal')
 

@@ -16,6 +16,7 @@ import AdminInventoryItemView from '@/views/AdminViews/Inventory/InventoryItemVi
 import AdminInventoryNewView from '@/views/AdminViews/Inventory/InventoryItemNew.vue'
 import ContactView from '@/views/ContactView.vue'
 import FaqView from '@/views/FaqView.vue'
+import LoginView from '@/views/LoginView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -75,6 +76,11 @@ const router = createRouter({
       path: '/faq',
       name: 'faq',
       component: FaqView
+    },
+    {
+      path: '/se-connecter',
+      name: 'login',
+      component: LoginView
     },
     {
       path: '/admin/commandes',
