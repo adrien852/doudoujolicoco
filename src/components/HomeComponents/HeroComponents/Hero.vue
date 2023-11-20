@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex align-items-center heroContainer">
-      <div class="col-lg-6 col-12 p-0 heroLeft">
+      <div class="col-lg-6 col-12 p-0 h-100">
         <HeroCarousel />
       </div>
       <div class="heroRight col-lg-6 col-12 m-auto d-lg-block d-none position-relative">

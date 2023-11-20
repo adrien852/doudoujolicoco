@@ -15,7 +15,9 @@ html, body, #app{
     background-color: white!important;
   }
 
-  
+  .swiper-pagination-bullet-active{
+    background: white!important;
+  }
   
   @media (min-width: 1024px) {
   

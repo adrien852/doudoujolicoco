@@ -37,9 +37,6 @@
                 <img :src="slide"/>
             </div>
             </Slide>
-            <template #addons>
-                <Pagination />
-            </template>
         </Carousel>
     </div>
 </template>
@@ -103,5 +100,14 @@ onMounted(() => {
 }
 #imageGallery{
     min-width: 81%;
+}
+.carousel__item, .carousel__item img{
+  width:100%;
+  height:100%;
+  filter: saturate(var(--value, 1.1))
+}
+.carousel__item img{
+  object-fit: cover;
+  object-position: 50% 30%;
 }
 </style>
