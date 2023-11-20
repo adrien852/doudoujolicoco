@@ -58,6 +58,6 @@
     margin-bottom: 0px;
   }
   .content{
-    min-height: 600px;
+    min-height: calc(100vh - 218px - 92px);
   }
 </style>

@@ -18,20 +18,35 @@
             :items-to-show="1"
             v-model="currentSlide" 
             v-bind="settings"
+            class="d-sm-block d-none"
         >
             <Slide v-for="(slide, index) in item.images" :key="index">
             <div class="carousel__item">
                 <VueMagnifier class="d-sm-block d-none" :src="slide" :mg-width="350" :mg-height="350" :mg-show-overflow="false" :zoom-factor="0.4"/>
-                <img class="d-block d-sm-none" :src="slide"/>
             </div>
             </Slide>
+        </Carousel>
+        <Carousel 
+            id="mobileGallery"
+            :items-to-show="1"
+            :wrapAround="true"
+            class="d-block d-sm-none"
+        >
+            <Slide v-for="(slide, index) in item.images" :key="index">
+            <div class="carousel__item">
+                <img :src="slide"/>
+            </div>
+            </Slide>
+            <template #addons>
+                <Pagination />
+            </template>
         </Carousel>
     </div>
 </template>
 <script setup>
 import VueMagnifier from '@websitebeaver/vue-magnifier'
 import '@websitebeaver/vue-magnifier/styles.css'
-import { Carousel, Navigation, Slide } from 'vue3-carousel'
+import { Carousel, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import { computed, ref } from 'vue';
 import { onMounted } from 'vue';
@@ -62,6 +77,9 @@ onMounted(() => {
 </script>
 
 <style>
+#mobileGallery .carousel__pagination{
+    left:-10%;
+}
 #thumbnails{
     margin-right: 10px;
     min-width: 19%;

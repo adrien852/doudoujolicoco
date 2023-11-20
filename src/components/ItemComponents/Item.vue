@@ -1,7 +1,7 @@
 <template>
     <div class="itemSummary row d-flex mt-sm-4 justify-content-center align-items-center">
         <ItemImageCarousel :item="item" />
-        <div class="itemDetails col-md-5 col-12 mt-md-0 mt-3">
+        <div class="itemDetails d-flex flex-column col-md-5 col-12 mt-md-0 mt-3">
             <div class="d-flex align-items-center">
                 <h1 class="mb-2">{{ item.name }}</h1>
                 <h2 class="ml-auto mb-2">{{ item.price }}€</h2>
@@ -113,7 +113,7 @@ function openSideCart(){
         background-color: transparent;
     }
     h2{
-        color: #94BCD8;
+        color: #4c778d;
         font-size: 20pt;
     }
     h3{
@@ -141,11 +141,14 @@ function openSideCart(){
         width: 8%;
     }
     .btn{
-        background-color: #94BCD8;
-        width: 100%;
+        background-color: #f4aa46;
+        margin:auto;
+        width: 350px;
+        max-width: 100%;
         height: 40px;
         padding: 0;
         position: relative;
+        border: none;
     }
     .btn h3{
         color: white;
@@ -155,11 +158,11 @@ function openSideCart(){
     }
     .btn-primary:hover {
         border-color: none;
-        background-color: #4c778d;
+        background-color: #f39a25;
     }
     .btn-primary.focus, .btn-primary:focus {
-        background-color: #4c778d;
-        border-color: #4c778d;
+        background-color: #f39a25;
+        border-color: #f39a25;
         box-shadow: none;
     }
     .shipment{
