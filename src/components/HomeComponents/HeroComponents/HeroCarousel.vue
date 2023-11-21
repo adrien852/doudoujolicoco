@@ -3,6 +3,7 @@
   <swiper 
     class="homeSwiper"
     :modules="modules" 
+    effect="fade"
     :loop="true"
     :autoplay="{
       delay: 4000,
@@ -25,12 +26,13 @@
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
 import { RouterLink, RouterView } from 'vue-router'
 import 'vue3-carousel/dist/carousel.css'
 
-let modules = [Autoplay, Pagination]
+let modules = [Autoplay, Pagination, EffectFade]
 
 let carouselImages = [
   "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fporte-tetine%2Ffile4?alt=media&token=7c205c76-f5f1-4fed-b32d-b65df559b0e0",
