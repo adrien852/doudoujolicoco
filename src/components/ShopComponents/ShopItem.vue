@@ -56,7 +56,7 @@ function openSideCart(){
         border-radius: 100%;
         width: 55px;
         height: 53px;
-        z-index: 500;
+        z-index: 10;
         padding: 8px;
         right:5px;
         top:5px;
