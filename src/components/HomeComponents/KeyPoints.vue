@@ -5,7 +5,7 @@
                 <div class="d-flex flex-wrap w-100">
                     <div class="keyCards d-flex text-center flex-column col-md-4 col-12">
                         <div class="keyCard">
-                            <div id="keyCard1" class=" d-none">
+                            <div id="keyCard1" class="d-none">
                             <img class="m-auto" src="@/assets/images/yarn-ball.png" />
                             <h4>Text 1</h4>
                             <p>Longer text to describe</p>
@@ -15,18 +15,20 @@
                     </div>
                     <div class="d-flex text-center flex-column col-md-4 col-12">
                         <div class="keyCard">
-                        <div id="keyCard2" class="keyCard d-none"><img class="m-auto" src="@/assets/images/knitting.png" />
-                            <h4>Text 1</h4>
-                            <p>Longer text to describe</p>
-                        </div></div>
+                            <div id="keyCard2" class="d-none"><img class="m-auto" src="@/assets/images/knitting.png" />
+                                <h4>Text 1</h4>
+                                <p>Longer text to describe</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="d-flex text-center flex-column col-md-4 col-12">
                         <div class="keyCard">
-                        <div id="keyCard3" class="keyCard d-none">
-                            <img class="m-auto" src="@/assets/images/yarn.png" />
-                            <h4>Text 1</h4>
-                            <p>Longer text to describe</p>
-                        </div></div>
+                            <div id="keyCard3" class="d-none">
+                                <img class="m-auto" src="@/assets/images/yarn.png" />
+                                <h4>Text 1</h4>
+                                <p>Longer text to describe</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="d-flex">
@@ -53,7 +55,7 @@
         document.getElementById("keyCard2").className = "animate__animated animate__fadeInLeft"
         document.getElementById("keyCard3").className = "animate__animated animate__fadeInLeft"
         }
-        else if(document.getElementById("keyCard1").className != "keyCard d-none"){
+        else if(document.getElementById("keyCard1").className != "d-none"){
         document.getElementById("keyCard1").className = "animate__animated animate__fadeOutLeft"
         document.getElementById("keyCard2").className = "animate__animated animate__fadeOutLeft"
         document.getElementById("keyCard3").className = "animate__animated animate__fadeOutLeft"

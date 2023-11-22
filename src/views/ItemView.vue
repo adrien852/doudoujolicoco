@@ -42,7 +42,7 @@
 
 
     function getRouteItem(itemId){
-        item = {};
+        dataLoaded.value = false;
         isLoading.value = true;
         getItem(itemId)
         .then(response => {
