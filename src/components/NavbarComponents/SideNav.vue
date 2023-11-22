@@ -27,28 +27,41 @@
         categories: Array
     });
 
+    function closeSideBar(){
+        let sidebar = document.getElementById("mySidebar");
+        sidebar.style.left = "-250px";
+        sidebar.classList.remove('toggled');
+    }
+
+    function openSideBar(){
+        let sidebar = document.getElementById("mySidebar");
+        sidebar.style.left = "0";
+        sidebar.classList.add('toggled');
+    }
+
     onMounted(() => {
         let sidebar = document.getElementById("mySidebar");
         document.getElementById("header").addEventListener('mouseleave', () => {
-            if(sidebar.className.includes('toggled')){
-            sidebar.style.left = "-250px";
-            sidebar.classList.remove('toggled');
+            if(window.innerWidth > 991){
+                if(sidebar.className.includes('toggled')){
+                    closeSideBar();
+                }
             }
         })
         document.getElementById("sideToggler").addEventListener('mouseenter', () => {
-            if(!sidebar.className.includes('toggled')){
-            sidebar.style.left = "0";
-            sidebar.classList.add('toggled');
+            if(window.innerWidth > 991){
+                if(!sidebar.className.includes('toggled')){
+                    openSideBar();
+                }
             }
         })
         document.getElementById("sideToggler").addEventListener('click', () => {
+            console.log(sidebar.className)
             if(!sidebar.className.includes('toggled')){
-            sidebar.style.left = "0";
-            sidebar.classList.add('toggled');
+                openSideBar();
             }
             else{
-            sidebar.style.left = "-250px";
-            sidebar.classList.remove('toggled');
+                closeSideBar();
             }
         })
     })

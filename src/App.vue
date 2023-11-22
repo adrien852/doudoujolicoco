@@ -1,5 +1,5 @@
 <template>
-  <header style="position: relative;" id="header" :class="{'noNavMargin': false}">
+  <header style="position: relative;" id="header" ref="header" :class="{'noNavMargin': false}">
     <Navbar />
   </header>
   <div class="content">
@@ -13,14 +13,14 @@
   import Navbar from '@/components/NavbarComponents/Navbar.vue'
   import MyFooter from '@/components/FooterComponents/MyFooter.vue'
   import { useRoute } from 'vue-router'
-  import { watch, onMounted, nextTick } from 'vue';
+  import { watch, onMounted, nextTick, ref } from 'vue';
   const route = useRoute();
+  const header = ref(null)
   
   onMounted(() => {
     watch(route, () =>{
       nextTick(() => {
-        const el = document.getElementById("header");
-        el.scrollIntoView({block: "start", behavior: "smooth"});
+        header.value?.scrollIntoView();
       })
     })
     document.getElementById("app").addEventListener('click', (event) => {

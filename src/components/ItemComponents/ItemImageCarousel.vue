@@ -74,6 +74,9 @@ onMounted(() => {
 </script>
 
 <style>
+.itemImage{
+    min-height: 400px;
+}
 #mobileGallery .carousel__pagination{
     left:-10%;
 }

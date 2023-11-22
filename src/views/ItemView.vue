@@ -42,6 +42,7 @@
 
 
     function getRouteItem(itemId){
+        item = {};
         isLoading.value = true;
         getItem(itemId)
         .then(response => {

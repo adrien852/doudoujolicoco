@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "deploy": "firebase deploy",
     "host": "vite --host",
     "serve": "vite",
     "build": "vite build",

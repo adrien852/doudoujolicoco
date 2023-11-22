@@ -37,7 +37,7 @@
     const swal = inject('$swal')
     import router from '@/router'
     
-    let path = null;
+    let path = reactive([]);
     let isLoading = ref(true);
     let items = reactive({});
     let paginatedItems = reactive([]);
@@ -92,10 +92,10 @@
                 })
             })
         }
-        await getCategory(route.params.categoryNormalized)
+        getCategory(route.params.categoryNormalized)
         .then(async(response) => {
             category = response;
-            path = [
+            path.push(
                 {
                     name: 'accueil',
                     route: '/'
@@ -104,7 +104,7 @@
                     name: 'boutique',
                     route: '/boutique'
                 },
-            ]
+            )
             if(route.params.categoryNormalized){
                 path.push(
                     {
@@ -169,9 +169,9 @@
     }
 
     function clickCallback(pageNum){
-        nextTick(() => {
-            shopContainer.value?.scrollIntoView({behavior: "smooth"});
-        });
+        // nextTick(() => {
+        //     shopContainer.value?.scrollIntoView({behavior: "smooth"});
+        // });
         isLoading.value = true;
         paginatedItems = paginateItems(pageNum);
         isLoading.value = false;
