@@ -30,7 +30,6 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
 import { RouterLink, RouterView } from 'vue-router'
-import 'vue3-carousel/dist/carousel.css'
 
 let modules = [Autoplay, Pagination, EffectFade]
 

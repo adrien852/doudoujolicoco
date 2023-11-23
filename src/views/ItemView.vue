@@ -23,7 +23,7 @@
     import {getItem} from '@/services/ShopService.js';
     import { useRoute } from 'vue-router';
     import { useSampleItemStore } from '@/stores/SampleShopItemStore';
-    import { onMounted, ref, reactive, watch} from 'vue';
+    import { onMounted, ref, reactive, watch, onBeforeMount} from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import router from '@/router'
@@ -74,12 +74,16 @@
         })
     }
 
-    onMounted(() => {
-        getRouteItem(route.params.id)
+    onBeforeMount(() => {
         sampleShopItemStore.fill()
         .catch(function(error) {
 
         })
+    })
+
+    onMounted(() => {
+        getRouteItem(route.params.id)
+
         watch(route, async() =>{
             getRouteItem(route.params.id)
         })

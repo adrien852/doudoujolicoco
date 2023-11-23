@@ -136,3 +136,11 @@ html, body, #app{
       color: rgb(245, 150, 62);
       font-weight: bold;
   }
+
+  .swiper-button-prev, .swiper-button-next {
+    color:white;
+  }
+
+  .vue-magnifier__magnifier-image{
+      cursor:crosshair!important;
+  }

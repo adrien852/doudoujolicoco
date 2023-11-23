@@ -1,21 +1,26 @@
 <template>
     <div class="py-4">
         <h1>Toutes les catégories</h1>
-        <Carousel id="shopCarousel" v-bind="settings" :breakpoints="breakpoints" :wrapAround="true" :transition="500">
-            <Slide v-for="category in categories" :key="category">
+        <swiper 
+            class="shopCarousel"
+            :modules="modules"
+            :spaceBetween="30"
+            :slidesPerView="3"
+            :navigation="true"
+        >
+            <swiper-slide class="swipeImg" v-for="category in categories" :key="category">
                 <ShopCategory class="w-100" :category="category" />
-            </Slide>
-
-            <template #addons>
-                <Navigation v-if="categories" />
-            </template>
-        </Carousel>
+            </swiper-slide>
+        </swiper>
     </div>
 
 </template>
 <script setup>
 import ShopCategory from '@/components/ShopComponents/ShopCategory.vue';
-import { Carousel, Navigation, Slide } from 'vue3-carousel'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation } from 'swiper/modules';
+
+let modules = [Navigation]
 
 const props = defineProps({
     categories: Array,
@@ -38,3 +43,9 @@ let breakpoints = {
     },
 }
 </script>
+
+<style>
+.swiper-button-prev, .swiper-button-next {
+    color:white;
+}
+</style>
