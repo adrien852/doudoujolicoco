@@ -1,16 +1,19 @@
 import { defineStore } from "pinia";
-import { getItems } from "@/services/ShopService"
+import { useStorage } from '@vueuse/core'
+import { getItems, getCategories } from "@/services/ShopService"
 
 export const useSampleItemStore = defineStore("SampleItemStore", {
-    state: () => {
-        return {
-            items:[]
-        }
-    },
+    state: () => ({
+        items: useStorage('items', []),
+        categories: useStorage('categories', [])
+    }),
 
     actions:{
-        async fill(){
+        async fillItems(){
             this.items = await getItems();
+        },
+        async fillCategories(){
+            this.categories = await getCategories();
         }
     }
 })

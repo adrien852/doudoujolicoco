@@ -1,6 +1,6 @@
 <template>
     <loading :active="isLoading"></loading>
-    <div v-if="cartStore.items.length != 0" class="container mt-4">
+    <div v-if="cartStore.cartItems.length != 0" class="container mt-4">
         <h1 class="ml-lg-3 mb-3 text-left">Formulaire de livraison</h1>
         <div class="mx-1 d-flex flex-md-wrap flex-wrap-reverse row justify-content-around">
             <div class="d-flex row m-0 col-md-8 col-12 ml-auto mb-md-0 mt-3 mt-md-0">
@@ -91,7 +91,7 @@
     const swal = inject('$swal')
 
     onBeforeMount(() => {
-        if(cartStore.items.length == 0){
+        if(cartStore.cartItems.length == 0){
             swal.fire({
                 icon: 'warning',
                 title: 'Pas si vite',
@@ -108,9 +108,9 @@
     })
 
     onMounted(async() => {
-        let oldCart = cartStore.items
+        let oldCart = cartStore.cartItems
         cartStore.checkCartValidity().then(() => {
-            if(JSON.stringify(oldCart) !== JSON.stringify(cartStore.items)){
+            if(JSON.stringify(oldCart) !== JSON.stringify(cartStore.cartItems)){
                 swal.fire({
                     icon: 'warning',
                     title: 'Attention',
@@ -157,7 +157,7 @@
             ...addresses,
             
         }
-        const customerWithItems = {...customer, ...{products:toRaw(cartStore.items)}}
+        const customerWithItems = {...customer, ...{products:toRaw(cartStore.cartItems)}}
         saveCustomer(customerWithItems).then((response) => {
             customer.id = response.id;
             customer.shippingAddress.id = response.shippingAddress.id

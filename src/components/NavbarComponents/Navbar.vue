@@ -23,23 +23,24 @@
     import NavbarContent from '@/components/NavbarComponents/NavbarContent.vue';
     import CartIconToggler from '@/components/CartComponents/CartIconToggler.vue';
     import SideNav from '@/components/NavbarComponents/SideNav.vue';
-    import {getCategories} from '@/services/ShopService.js';
+    import { useSampleItemStore } from '@/stores/SampleShopItemStore'; 
     import { onMounted, ref, onBeforeMount } from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 
     let isLoading = ref(true)
     let categories = ref(null)
+    const sampleItemStore = useSampleItemStore();
     
     onMounted(() => {
-      getCategories()
+      sampleItemStore.fillCategories()
+      .then(() => {
+        categories = sampleItemStore.categories;
+        isLoading.value = false;
+      })
       .catch(function(error) {
         isLoading.value = false;
       })
-      .then(response => {
-            categories = response;
-            isLoading.value = false;
-        })
     })
 </script>
 

@@ -27,7 +27,8 @@
 <script setup>
     import ShopItems from '@/components/ShopComponents/ShopItems.vue';
     import NavPath from '@/components/NavbarComponents/NavPath.vue';
-    import {getItems, getCategoryItems, getCategory} from '@/services/ShopService.js'
+    import {getItems, getCategoryItems} from '@/services/ShopService.js'
+    import { useSampleItemStore } from '@/stores/SampleShopItemStore';
     import { useRoute } from 'vue-router'
     import { onMounted, ref, nextTick, watch, reactive } from 'vue';
     import Loading from 'vue3-loading-overlay';
@@ -45,8 +46,9 @@
     let page = ref(1);
     let pageCount = ref(1);
     const route = useRoute();
-    let category = reactive({});
+    let category = ref(null);
     const shopContainer = ref(null)
+    const sampleShopItemStore = useSampleItemStore()
 
     onMounted(async() => {
         if(!route.params.categoryNormalized){
@@ -92,74 +94,66 @@
                 })
             })
         }
-        getCategory(route.params.categoryNormalized)
-        .then(async(response) => {
-            category = response;
-            path.push(
-                {
-                    name: 'accueil',
-                    route: '/'
-                },
-                {
-                    name: 'boutique',
-                    route: '/boutique'
-                },
-            )
-            if(route.params.categoryNormalized){
-                path.push(
-                    {
-                        name: category.name,
-                        route: '/boutique/'+route.params.categoryNormalized
-                    }
-                )
-            }
-
-        })
-        .catch(function(error) {
-        })
         
+        if(!category.value){
+            if(route.params.categoryNormalized){
+                category = sampleShopItemStore.categories.find((category) => category.normalized === route.params.categoryNormalized);
+            }            
+            setCategory()
+        }
         
         isLoading.value = false;
     })
 
+    watch(sampleShopItemStore, () => {
+        if(route.params.categoryNormalized){
+            category = sampleShopItemStore.categories.find((category) => category.normalized === route.params.categoryNormalized);
+        }
+        setCategory();
+    })
+
+    function setCategory(){
+        path = [
+            {
+                name: 'accueil',
+                route: '/'
+            },
+            {
+                name: 'boutique',
+                route: '/boutique'
+            },
+        ]
+        if(route.params.categoryNormalized){
+            path.push(
+                {
+                    name: category.name,
+                    route: '/boutique/'+route.params.categoryNormalized
+                }
+            )
+        }
+    }
+
     watch(route, async() =>{
         isLoading.value = true;
-        await getCategory(route.params.categoryNormalized).then(async(response) => {
-            category = response;
-            path = [
-                {
-                    name: 'accueil',
-                    route: '/'
-                },
-                {
-                    name: 'boutique',
-                    route: '/boutique'
-                },
-            ]
-            if(route.params.categoryNormalized){
-                path.push(
-                    {
-                        name: category.name,
-                        route: '/boutique/'+route.params.categoryNormalized
-                    }
-                )
-            }
-            if(!route.params.categoryNormalized) {
-                await getItems().then(response => {
-                    items = response;
-                    paginatedItems = paginateItems(page.value);
-                    pageCount.value = Math.ceil(items.length / itemsPerPage);
-                })
-            }
-            else{
-                await getCategoryItems(route.params.categoryNormalized).then(response => {
-                    items = response;
-                    page.value = 1;
-                    paginatedItems = paginateItems(page.value);
-                    pageCount.value = Math.ceil(items.length / itemsPerPage);
-                }) 
-            }
-        });
+        if(route.params.categoryNormalized){
+            category = sampleShopItemStore.categories.find((category) => category.normalized === route.params.categoryNormalized);
+        }
+        setCategory();
+        if(!route.params.categoryNormalized) {
+            await getItems().then(response => {
+                items = response;
+                paginatedItems = paginateItems(page.value);
+                pageCount.value = Math.ceil(items.length / itemsPerPage);
+            })
+        }
+        else{
+            await getCategoryItems(route.params.categoryNormalized).then(response => {
+                items = response;
+                page.value = 1;
+                paginatedItems = paginateItems(page.value);
+                pageCount.value = Math.ceil(items.length / itemsPerPage);
+            }) 
+        }
         isLoading.value = false;
     })
 

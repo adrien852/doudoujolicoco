@@ -90,7 +90,7 @@
     min-height: 176px;
 }
 .keyPointsDiv{
-  margin: 40px 0;
+  /* margin: 40px 0; */
   padding: 70px 0;
   background-color: #dbaa933e;
 }

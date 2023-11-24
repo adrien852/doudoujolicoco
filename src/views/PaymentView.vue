@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!(cartStore.items.length == 0 || cartStore.customer.length == 0)" class="container">
+    <div v-if="!(cartStore.cartItems.length == 0 || cartStore.customer.length == 0)" class="container">
         <loading :active="isLoading"></loading>
         <h1 class="ml-3 mb-4 text-left">Paiement</h1>
         <div class="d-flex justify-content-center">
@@ -24,7 +24,7 @@
     let isLoading = ref(true);
 
     onBeforeMount(() => {
-        if(cartStore.items.length == 0 || cartStore.customer.length == 0){
+        if(cartStore.cartItems.length == 0 || cartStore.customer.length == 0){
             swal.fire({
                 icon: 'warning',
                 title: 'Pas si vite',
@@ -191,7 +191,7 @@
     function checkoutCallBack(payload, submitButton, checkoutButton, dropinInstance){
         isLoading.value = true;
         document.getElementById('payment-form').remove();
-        checkout(payload.nonce, cartStore.items)
+        checkout(payload.nonce, cartStore.cartItems)
         .then((response) => {
             if(response.success){
                 const now = new Date();
@@ -201,7 +201,7 @@
                     paymentId: response.transaction.id,
                     amount: response.transaction.amount,
                     customerId: cartStore.customer.id,
-                    items: cartStore.items,
+                    items: cartStore.cartItems,
                     createdAt: dateLocal.toISOString().slice(0, 19).replace("T", " ")
                 }
                 savePaymentId(payment).then(() => {

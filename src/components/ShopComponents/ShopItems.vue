@@ -1,13 +1,13 @@
 <template>
     <div>
         <div id="shopItems" class="flex-wrap d-flex justify-content-left mx-auto w-100">
-            <ShopItem class="col-lg-3 col-sm-6 col-12 pt-sm-3 pb-3" v-for="item in paginatedItems" :item="item" :longDisplay="false"/>
+            <SimpleShopItem class="col-lg-3 col-sm-6 col-12 pt-sm-3 pb-5" v-for="item in paginatedItems" :item="item"/>
         </div>
     </div>
 </template>
 
 <script setup>
-    import ShopItem from './ShopItem.vue';
+    import SimpleShopItem from './SimpleShopItem.vue';
 
     const props = defineProps({
         paginatedItems: Array,

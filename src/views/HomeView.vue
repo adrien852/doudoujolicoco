@@ -21,10 +21,10 @@
   import KeyPoints from '@/components/HomeComponents/KeyPoints.vue'
   import NewProducts from '@/components/HomeComponents/NewProducts.vue'
   import { useSampleItemStore } from '@/stores/SampleShopItemStore';
-  import { onBeforeMount, onMounted, ref} from 'vue';
-  import {getCategories} from '@/services/ShopService.js';
+  import { onBeforeMount, reactive, ref, watch} from 'vue';
   import Loading from 'vue3-loading-overlay';
   import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+import { onMounted } from 'vue';
 
   const sampleShopItemStore = useSampleItemStore();
   let categoryCarouselLoading = ref(true);
@@ -32,22 +32,31 @@
   let newProductsLoading = ref(true);
   let noNewProducts = ref(true);
   let categories = ref(null);
-  let propertyName = ref(0);
   let noAnimation = ref(false);
 
-  onBeforeMount(() => {
-    getCategories()
-    .then(response => {
-        categories = response;
-        categoryCarouselLoading.value = false;
-        noCategoryCarousel.value = false;
-    })
-    .catch(function (error) {
-      noAnimation.value = true;
-      categoryCarouselLoading.value = false;
-    })
+  watch(sampleShopItemStore, () => {
+    categories = sampleShopItemStore.categories;
+    setCategories()
+  })
 
-    sampleShopItemStore.fill()
+  function setCategories(){
+    if(categories.length > 0){
+      categories = sampleShopItemStore.categories;
+      noCategoryCarousel.value = false;
+    }
+    else{
+      noAnimation.value = true;
+      newProductsLoading.value = false;
+    }
+    categoryCarouselLoading.value = false;
+  }
+
+  onMounted(() => {
+    if(!categories.value){
+        categories = sampleShopItemStore.categories;
+        setCategories();
+    }
+    sampleShopItemStore.fillItems()
     .then(response => {
       newProductsLoading.value = false;
       noNewProducts.value = false;
@@ -66,8 +75,5 @@ h1{
 }
 main{
   top: 0;
-}
-.carouselDiv{
-  margin: 40px 0
 }
 </style>

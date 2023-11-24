@@ -4,7 +4,7 @@
         <div class="itemDetails d-flex flex-column col-lg-5 col-12 mt-lg-0 mt-3">
             <div class="d-flex align-items-center">
                 <h1 class="mb-2">{{ item.name }}</h1>
-                <h2 class="ml-auto mb-2">{{ item.price }}€</h2>
+                <h2 class="ml-auto mb-2">{{ parseFloat(item.price) }}€</h2>
             </div>
             <p>
                 {{ item.description }}

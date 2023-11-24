@@ -1,35 +1,30 @@
 <template>
     <div>
-        <div :style="{height: longDisplay ? '150px' : 'initial'}" :class="['bg-white d-flex w-100', {'flex-column shopItemCard position-relative':!longDisplay}]">
+        <div class="bg-white d-flex w-100 flex-column shopItemCard position-relative">
             <span @click="addItemToCart" v-if="!longDisplay" class="addBasket cartTriggerToggler">
                 <img class="cartTriggerToggler" src="@/assets/images/add-to-cart-white2.png" />
             </span>
             <RouterLink :to="'/article/'+item.normalized" class="cartImgContainer">
-                <img :class="[{'h-100 cartImg': longDisplay}, {'w-100 zoom': !longDisplay}]" width="300" height="300" :src="item.images[0]">
+                <img class="w-100 zoom" width="300" height="300" :src="item.images[0]">
             </RouterLink>
-            <RouterLink :to="'/article/'+item.normalized" v-if="!hideDescription" :style="{minWidth: longDisplay ? '180px' : 'initial'}" :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
-                <p class="itemCategory text-uppercase">{{ item.category.name }}</p>
-                <div class="itemTitle d-flex">
-                    <p :class="['my-auto', {'m-auto': !longDisplay}]">{{ item.name }}</p>
+            <RouterLink :to="'/article/'+item.normalized" class="mt-2 px-1">
+                <div class="itemTitle text-left">
+                    <p class="m-0">{{ item.name }}</p>
                 </div>
-                <p class="itemCategory">{{ parseFloat(item.price) }}€</p>
             </RouterLink>
-            <!-- <p :class="['itemPrice text-center ml-3 my-auto mr-4', {'d-none':!longDisplay}]">{{ item.price }}€</p> -->
+            <RouterLink class="d-flex align-items-center justify-content-between px-1" :to="'/boutique/'+item.category.normalized">
+                <p class="itemCategory text-uppercase ">{{ item.category.name }}</p>
+                <p class="itemPrice m-0">{{ parseFloat(item.price) }}€</p>
+            </RouterLink>
         </div>
     </div>
 </template>
 
 <script setup>
 import { RouterLink } from 'vue-router'
-import {computed} from 'vue'
 import { useCartStore } from '@/stores/CartStore'
 const props = defineProps({
-    item: Object,
-    longDisplay: Boolean,
-    hideDescription: {
-        type: Boolean,
-        default: false
-    }
+    item: Object
 })
 
 const cartStore = useCartStore();
@@ -81,10 +76,6 @@ function openSideCart(){
     .addBasket img{
         width: 100%;
     }
-    .shopItemCard{
-        box-shadow: 2px 3px 8px #0000001f;
-        border-radius: 10px;
-    }
     a{
         color:#22211F;
         /* height: fit-content; */
@@ -109,13 +100,12 @@ function openSideCart(){
         text-decoration: none;
     }
     .cartImgContainer img{
-        border-radius:10px 10px 0 0;
         /* width: auto; */
     }
     .itemCategory{
-        font-size: small;
         opacity: 0.6;
         margin-bottom: 0;
+        font-size: 8pt;
     }
     .itemTitle{
         font-size:16pt;
@@ -140,12 +130,9 @@ function openSideCart(){
         object-fit: cover;
     }
     .itemPrice{
-        color: #94BCD8;
         font-size: 13pt;
-        font-weight: bold;
     }
     .cartImgContainer{
         overflow: hidden;
-        border-radius: 10px;
     }
 </style>

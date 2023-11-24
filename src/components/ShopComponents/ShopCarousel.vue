@@ -22,13 +22,13 @@
         }"
     >
         <swiper-slide class="swipeImg" v-for="item in items" :key="item">
-            <ShopItem @click="$emit('itemClicked', item)" :item="item" />
+            <SimpleShopItem @click="$emit('itemClicked', item)" :item="item" />
         </swiper-slide>
     </swiper>
 </template>
 
 <script setup>
-    import ShopItem from '@/components/ShopComponents/ShopItem.vue';
+    import SimpleShopItem from '@/components/ShopComponents/SimpleShopItem.vue';
     import { Swiper, SwiperSlide } from 'swiper/vue';
     import { Autoplay, FreeMode } from 'swiper/modules';
     import 'swiper/css';

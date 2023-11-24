@@ -2,7 +2,7 @@
     <div class="container">
         <h1 class="ml-lg-3 mb-5 text-left">Panier</h1>
         <div v-if="cartStore.count > 0" class="d-flex row mt-4">
-            <CartItems v-if="cartStore.count > 0" :items="cartStore.items"/>
+            <CartItems v-if="cartStore.count > 0" :items="cartStore.cartItems"/>
             <div id="cartDetails" class="col-lg-4">
                 <CartDetails />
             </div>

@@ -16,16 +16,19 @@
         </RouterLink>
         <RouterLink to="/contact"><h2 class="m-0 py-2">Contact</h2></RouterLink>
         <RouterLink to="/faq"><h2 class="m-0 py-2">FAQ</h2></RouterLink>
-        <RouterLink to="/admin"><h2 class="m-0 py-2">Admin</h2></RouterLink>
+        <RouterLink v-if="adminStore.isAdmin" to="/admin"><h2 class="m-0 py-2">Admin</h2></RouterLink>
     </div>
 </div>
 </template>
 <script setup>
     import { onMounted } from 'vue';
+    import { useAdminStore } from '../../stores/AdminStore';
 
     const props = defineProps({
         categories: Array
     });
+
+    const adminStore = useAdminStore();
 
     function closeSideBar(){
         let sidebar = document.getElementById("mySidebar");
@@ -56,7 +59,6 @@
             }
         })
         document.getElementById("sideToggler").addEventListener('click', () => {
-            console.log(sidebar.className)
             if(!sidebar.className.includes('toggled')){
                 openSideBar();
             }

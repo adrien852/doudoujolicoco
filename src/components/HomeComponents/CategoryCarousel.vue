@@ -1,5 +1,5 @@
 <template>
-    <div class="py-4">
+    <div class="py-4 my-4">
         <h1>Toutes les catégories</h1>
         <swiper 
             class="shopCarousel"

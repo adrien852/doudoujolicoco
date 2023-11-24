@@ -4,18 +4,18 @@ import { getItem } from "@/services/ShopService"
 
 export const useCartStore = defineStore("CartStore", {
     state: () => ({
-        items: useStorage('items', []),
+        cartItems: useStorage('cartItems', []),
         customer: useStorage('customer', [])
     }),
 
     getters:{
-        count: (state) => state.items.length,
+        count: (state) => state.cartItems.length,
 
         isEmpty: (state) => state.count == 0,
 
         subTotal(state) {
             let totalPrice = 0;
-            state.items.forEach((item) => {
+            state.cartItems.forEach((item) => {
                 totalPrice += parseFloat(item.price);
             });
             return totalPrice;
@@ -24,13 +24,13 @@ export const useCartStore = defineStore("CartStore", {
 
     actions:{
         addItem(item){
-            this.items.push({ ...item });
+            this.cartItems.push({ ...item });
         },
         clearCart(){
-            this.items = [];
+            this.cartItems = [];
         },
         deleteItem(itemToRemoveIndex){
-            this.items.splice(itemToRemoveIndex, 1);
+            this.cartItems.splice(itemToRemoveIndex, 1);
         },
 
         setCustomer(customer){
@@ -38,7 +38,7 @@ export const useCartStore = defineStore("CartStore", {
         },
         async checkCartValidity(){
             //Updating cart with newest info from DB
-            this.items = await Promise.all(this.items.map(async(item, index) => {
+            this.cartItems = await Promise.all(this.cartItems.map(async(item, index) => {
                 return await getItem(item.normalized).then(responseItem => {
                     if(Object.keys(responseItem).length == 0){
                         return {
@@ -58,10 +58,10 @@ export const useCartStore = defineStore("CartStore", {
                     };
                 })
             }))
-            //Deleting items not found in DB
-            this.items = this.items.filter((item) => !item.deleted)
+            //Deleting cartItems not found in DB
+            this.cartItems = this.cartItems.filter((item) => !item.deleted)
             //Removing deleted property
-            this.items = this.items.map((item) => {
+            this.cartItems = this.cartItems.map((item) => {
                 Object.keys(item).forEach(key => {
                     if(key === 'deleted'){
                         delete item[key]

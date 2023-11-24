@@ -34,14 +34,22 @@
     const swal = inject('$swal')
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+    import { useAdminStore } from '../../stores/AdminStore';
 
     let isLoading = ref(false)
     let credentials = {}
+    const adminStore = useAdminStore();
 
     function loginSubmit(){
         isLoading.value = true;
-        login(credentials).then(() => {
-            router.push({ path: '/admin' })
+        login(credentials).then((response) => {
+            if(response.isAdmin){
+                adminStore.isAdminLoggedIn(true);
+                router.push({ path: '/admin' })
+            }
+            else{
+                router.push({ path: '/' })
+            }
         })
         .catch((error) => {
             if(error.response.data.code == 'password'){

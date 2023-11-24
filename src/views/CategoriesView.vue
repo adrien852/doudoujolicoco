@@ -9,19 +9,27 @@
 </template>
 <script setup>
     import ShopCategory from '@/components/ShopComponents/ShopCategory.vue';
-    import {getCategories} from '@/services/ShopService.js'
-    import { onMounted, ref, onBeforeMount } from 'vue';
+    import {useSampleItemStore} from '@/stores/SampleShopItemStore.js'
+    import { onMounted, reactive, ref, watch } from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import NavPath from '@/components/NavbarComponents/NavPath.vue';
+    import { inject } from 'vue'
+    const swal = inject('$swal')
+    import router from '@/router'
 
     let categories = ref(null);
     let isLoading = ref(true);
     let path = null;
+    const sampleShopItemStore = useSampleItemStore();
 
-    onMounted(() => {
-        getCategories().then(response => {
-            categories = response;
+    watch(sampleShopItemStore, () => {
+        categories = sampleShopItemStore.categories;
+        setCategories();
+    })
+
+    function setCategories(){
+        if(categories.length > 0){
             isLoading.value = false;
             path = [
                 {
@@ -37,7 +45,27 @@
                     route: ''
                 }
             ]
-        })
-    });
+        }
+        else{
+            swal.fire({
+                icon: 'error',
+                title: 'Désolé',
+                text: 'Le site fait face à un soucis technique. Veuillez nous excuser pour le désagrément.',
+                confirmButtonText: "Retour à l'accueil",
+                showCloseButton: true,
+                showConfirmButton: true,
+                confirmButtonColor: "#94BCD8",
+            }).then(() => {
+                router.push({ path: '/' })
+            })
+        }
+    }
+
+    onMounted(() => {
+        if(!categories.value){
+            categories = sampleShopItemStore.categories;
+            setCategories();
+        }
+    })
 
 </script>

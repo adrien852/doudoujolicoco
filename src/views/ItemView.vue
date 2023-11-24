@@ -75,7 +75,7 @@
     }
 
     onBeforeMount(() => {
-        sampleShopItemStore.fill()
+        sampleShopItemStore.fillItems()
         .catch(function(error) {
 
         })
