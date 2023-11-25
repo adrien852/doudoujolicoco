@@ -11,14 +11,9 @@
                   <h3 class="p-0">Boutique</h3>
               </RouterLink>
             </div>
-            <!-- <SearchBar class="col-lg-5 col-12 justify-content-center" /> -->
-            <RouterLink class="logo position-absolute" to="/"><img alt="Doudou Joli logo" class="py-3" src="@/assets/full_logo_text_only.png"/></RouterLink>
           </div>
 </template>
 <script setup>
-    import SearchBar from '@/components/NavbarComponents/SearchBar.vue';
-    import CartIconToggler from '@/components/CartComponents/CartIconToggler.vue';
-
 </script>
 
 <style scoped>
@@ -31,7 +26,7 @@ img{
   width: 100%;
 }
 h3{
-  font-size: 11pt;
+  font-size: min(1.1vw, 11pt);
   color:#22211F;
   margin: 0;
 }
@@ -39,9 +34,9 @@ h3{
     height: initial;
     width: 100%;
   }
-  @media (min-width: 992px) {
+  @media (min-width: 960px) {
     .navbarContent{
-      height: 92px;
+      height: 60px;
     }
   }
   .nav-item:hover{

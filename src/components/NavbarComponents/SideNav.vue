@@ -75,7 +75,7 @@
   width: 250px;
   position: fixed;
   z-index: 200;
-  top: 92px;
+  top: 60px;
   left: -250px;
   background-color: rgba(255, 255, 255, 0.866);
   overflow-x: hidden;

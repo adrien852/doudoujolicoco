@@ -5,8 +5,16 @@
             class="shopCarousel"
             :modules="modules"
             :spaceBetween="30"
-            :slidesPerView="3"
+            :slidesPerView="1"
             :navigation="true"
+            :breakpoints="{
+                500: {
+                    slidesPerView: 2
+                },
+                768: {
+                    slidesPerView: 3
+                }
+            }"
         >
             <swiper-slide class="swipeImg" v-for="category in categories" :key="category">
                 <ShopCategory class="w-100" :category="category" />
@@ -25,23 +33,6 @@ let modules = [Navigation]
 const props = defineProps({
     categories: Array,
 })
-let settings = {
-    itemsToShow: 1
-}
-let breakpoints = {
-    768: {
-        itemsToShow: 2,
-        snapAlign: 'left',
-    },
-    992: {
-        itemsToShow: 2,
-        snapAlign: 'left',
-    },
-    1200: {
-        itemsToShow: 3,
-        snapAlign: 'left',
-    },
-}
 </script>
 
 <style>

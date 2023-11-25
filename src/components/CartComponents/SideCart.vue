@@ -92,11 +92,11 @@
         width: 90%;
     }
     .sideCart {
-    height: calc(100% - 92px);
-    width: 350px;
+    height: calc(100% - 60px);
+    width: 300px;
     position: fixed;
     z-index: 200;
-    top: 92px;
+    top: 60px;
     right: -350px;
     background-color: rgba(255, 255, 255, 0.866);
     overflow-x: hidden;

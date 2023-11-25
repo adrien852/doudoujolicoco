@@ -1,6 +1,6 @@
 <template>
     <div class="navPath">
-        <p class="ml-sm-5 ml-4">
+        <p class="ml-sm-5 ml-3">
             <span v-for="(pathElement, index) in path">
                 <span v-if="index !== path.length - 1">
                     <RouterLink class="text-uppercase" :to="pathElement.route">{{ pathElement.name }}</RouterLink> 
@@ -21,7 +21,7 @@ const props = defineProps({
 <style scoped>
     .navPath{
         width: 100%;
-        height: 70px;
+        height: 50px;
         background-image: url("@/assets/images/clouds.jpg");
         background-size: contain;
         opacity: 60%;

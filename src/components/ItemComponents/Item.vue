@@ -3,8 +3,8 @@
         <ItemImageCarousel :item="item" />
         <div class="itemDetails d-flex flex-column col-lg-5 col-12 mt-lg-0 mt-3">
             <div class="d-flex align-items-center">
-                <h1 class="mb-2">{{ item.name }}</h1>
-                <h2 class="ml-auto mb-2">{{ parseFloat(item.price) }}€</h2>
+                <h1 class="mb-2 pr-2">{{ item.name }}</h1>
+                <h2 class="ml-auto mb-1">{{ parseFloat(item.price) }}€</h2>
             </div>
             <p>
                 {{ item.description }}
@@ -93,7 +93,7 @@ function openSideCart(){
     } */
 
     .itemImage img{
-        max-height: calc(100vh - 92px - 48px);
+        max-height: calc(100vh - 60px - 48px);
         max-width: 100%;
         border-radius: 20px;
         box-shadow: 3px 3px 5px rgba(106, 106, 106, 0.437);

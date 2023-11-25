@@ -1,19 +1,21 @@
 <template>
     <loading :is-full-page="false" :active="isLoading"></loading>
-        <div class="item-gallery col-lg-6 col-12 d-flex">
+        <div class="item-gallery col-lg-6 col-12 px-lg-2 p-0 d-flex">
             <swiper
                 :modules="modulesPhone"
                 :speed="300"
                 :zoom="true"
-                :navigation="true"
+                :pagination="true"
                 class="d-block d-sm-none"
+                @zoom-change="disableSwipe"
+                ref="phoneSwiper"
             >
                 
-                    <swiper-slide v-for="slide in item.images">
-                        <div class="swiper-zoom-container">
-                        <img :src="slide"/>
-                    </div>
-                    </swiper-slide>
+            <swiper-slide v-for="slide in item.images">
+                <div class="swiper-zoom-container">
+                    <img :src="slide"/>
+                </div>
+            </swiper-slide>
                 
             </swiper>
             <swiper
@@ -52,7 +54,7 @@ import { reactive, ref } from 'vue';
 import { onMounted } from 'vue';
 import Loading from 'vue3-loading-overlay';
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
-import { Thumbs, Mousewheel, Navigation, Zoom } from 'swiper/modules';
+import { Thumbs, Mousewheel, Pagination, Zoom } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/thumbs';
@@ -63,9 +65,19 @@ const props = defineProps({
 })
 
 let modules = [Thumbs, Mousewheel]
-let modulesPhone = [Navigation, Zoom]
+let modulesPhone = [Pagination, Zoom]
 
 const thumbsSwiper = reactive({});
+const phoneSwiper = ref(null);
+
+function disableSwipe(swiper, scale){
+  if(scale > 1){
+    swiper.allowTouchMove = false;
+  }
+  else{
+    swiper.allowTouchMove = true;
+  }
+}
 
 function setThumbsSwiper(swiperRef) {
   thumbsSwiper.value = swiperRef;
@@ -79,6 +91,34 @@ onMounted(() => {
 </script>
 
 <style>
+.item-gallery .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-gallery .swiper-pagination-bullet {
+  width: 100%;
+  height: 5px;
+  border-radius: 0;
+  -webkit-transition: background 0.2s ease-out;
+    -moz-transition:  background 0.2s ease-out;
+    -o-transition:  background 0.2s ease-out;
+    transition:  background 0.2s ease-out;
+}
+
+.item-gallery .swiper-pagination-bullet-active {
+  -webkit-transition: opacity 0.2s ease-out;
+    -moz-transition: opacity 0.2s ease-out;
+    -o-transition: opacity 0.2s ease-out;
+    transition: opacity 0.2s ease-out;
+}
+
+.item-gallery .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+  margin: 0;
+}
 
 .swiper-button-prev, .swiper-button-next {
     color:white;
@@ -87,6 +127,18 @@ onMounted(() => {
   max-height: 600px;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (max-width: 991px) {
+  .item-gallery .swiper {
+    max-height: 450px;
+  }
+}
+
+@media (max-width: 575px) {
+  .item-gallery .swiper {
+    max-height: 350px;
+  }
 }
 
 .item-gallery .mySwiper.swiper{

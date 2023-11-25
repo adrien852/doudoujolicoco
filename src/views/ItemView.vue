@@ -1,19 +1,20 @@
 <template>
-    <div v-if="item">
+    <div v-if="item" class="position-relative item-containter">
+        <loading :is-full-page="false" :active="isLoading"></loading>
         <NavPath :path="path"/>
-        <loading :active="isLoading"></loading>
-        <div id="itemContainer" v-if="dataLoaded" class="container">
+        <div id="itemContainer" v-if="dataLoaded" class="">
             <Item :item="item"/>
         </div>
-        <div class="container">
-            <div v-if="dataLoaded" class="mt-4">
-                <h1>Vous aimerez aussi...</h1>
-                <ShopCarousel :items="sampleShopItemStore.items" />
-            </div>
-        </div> 
     </div>
-
-    
+    <div class="position-relative carousel-containter mt-5">
+        <loading :is-full-page="false" :active="isCarouselLoading"></loading>
+        <div class="container">
+            <div class="mt-4">
+                <h1>Vous aimerez aussi...</h1>
+            </div>
+        </div>
+        <ShopCarousel v-if="!isCarouselLoading" :items="sampleShopItemStore.items" />
+    </div>
 </template>
 
 <script setup>
@@ -36,10 +37,9 @@
     const sampleShopItemStore = useSampleItemStore();
     let isLoading = ref(true);
     let dataLoaded = ref(false);
+    let isCarouselLoading = ref(true);
     let item = reactive({});
     let path = null;
-
-
 
     function getRouteItem(itemId){
         dataLoaded.value = false;
@@ -75,9 +75,8 @@
     }
 
     onBeforeMount(() => {
-        sampleShopItemStore.fillItems()
-        .catch(function(error) {
-
+        sampleShopItemStore.fillItems().then(() => {
+            isCarouselLoading.value = false;
         })
     })
 
@@ -91,6 +90,12 @@
 </script>
 
 <style scoped>
+.item-containter{
+    min-height: 600px;
+}
+.carousel-containter{
+    min-height: 300px;
+}
 h1{
     font-size: 25pt;
 }

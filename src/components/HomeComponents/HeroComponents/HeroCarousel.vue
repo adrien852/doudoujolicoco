@@ -42,7 +42,7 @@ let carouselImages = [
 </script>
 
 <style scoped>
-@media (min-width: 992px) {
+@media (min-width: 960px) {
   .homeSwiper{
     border-radius: 0 50px 50px 0;
   }

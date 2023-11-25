@@ -1,5 +1,5 @@
 <template>
-    <footer class="mt-4">
+    <footer class="">
         <div class="p-3 d-flex align-items-center h-100">
             <RouterLink class="logo d-sm-block d-none" to="/"><img alt="Doudou Joli logo" class="py-3" src="@/assets/full_logo.png"/></RouterLink>
             <div class="flex-wrap d-flex justify-content-center w-100">

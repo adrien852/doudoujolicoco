@@ -3,14 +3,14 @@
     <SideNav :categories="categories" />
 
     <nav :class="['navbar navbar-light px-3', {'navBlock': false}]">
-      <RouterLink class="logo position-absolute" to="/"><img alt="Doudou Joli logo" class="py-3" src="@/assets/full_logo_text_only.png"/></RouterLink>
+      <RouterLink class="logo position-absolute" to="/"><img alt="Doudou Joli logo" class="pt-3" src="@/assets/full_logo_text_only.png"/></RouterLink>
 
       <div id="navbarNav" class="d-flex flex-grow-1 align-items-center">
         <button id="sideToggler" class="navbar-toggler mr-3" type="button">
           <span class="navbar-toggler-icon"></span>
         </button>
         <NavbarContent />
-        <div class="col-2 d-flex align-items-center justify-content-end">
+        <div class="col-2 d-flex align-items-center justify-content-end p-0">
           <CartIconToggler />
         </div>
       </div>
@@ -33,23 +33,29 @@
     const sampleItemStore = useSampleItemStore();
     
     onMounted(() => {
-      sampleItemStore.fillCategories()
-      .then(() => {
+      if(sampleItemStore.categories.length === 0){
+        sampleItemStore.fillCategories()
+        .then(() => {
+          categories = sampleItemStore.categories;
+          isLoading.value = false;
+        })
+        .catch(function(error) {
+          isLoading.value = false;
+        })
+      }
+      else {
         categories = sampleItemStore.categories;
         isLoading.value = false;
-      })
-      .catch(function(error) {
-        isLoading.value = false;
-      })
+      }
     })
 </script>
 
 <style scoped>
  
 .logo{
-  top: 8px;
-  left:calc(50% - 60px);
-  width: 120px;
+  top: -3px;
+  left:calc(50% - 50px);
+  width: 100px;
 }
 img{
   width: 100%;
@@ -64,7 +70,7 @@ img{
   nav{
     z-index: 1000;
     width: 100%;
-    height: 92px;
+    height: 60px;
     background-color: rgba(255, 255, 255, 0.866);
     position: fixed;
     -ms-flex-flow: row nowrap;

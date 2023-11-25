@@ -24,7 +24,7 @@
   import { onBeforeMount, reactive, ref, watch} from 'vue';
   import Loading from 'vue3-loading-overlay';
   import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
-import { onMounted } from 'vue';
+  import { onMounted } from 'vue';
 
   const sampleShopItemStore = useSampleItemStore();
   let categoryCarouselLoading = ref(true);

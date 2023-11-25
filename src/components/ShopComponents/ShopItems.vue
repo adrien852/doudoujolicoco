@@ -1,7 +1,7 @@
 <template>
     <div>
         <div id="shopItems" class="flex-wrap d-flex justify-content-left mx-auto w-100">
-            <SimpleShopItem class="col-lg-3 col-sm-6 col-12 pt-sm-3 pb-5" v-for="item in paginatedItems" :item="item"/>
+            <SimpleShopItem class="col-lg-3 col-sm-6 col-12 py-3" v-for="item in paginatedItems" :item="item"/>
         </div>
     </div>
 </template>

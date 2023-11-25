@@ -1,20 +1,20 @@
 <template>
     <div>
         <div class="bg-white d-flex w-100 flex-column shopItemCard position-relative">
-            <span @click="addItemToCart" v-if="!longDisplay" class="addBasket cartTriggerToggler">
+            <span @click="addItemToCart" class="addBasket cartTriggerToggler">
                 <img class="cartTriggerToggler" src="@/assets/images/add-to-cart-white2.png" />
             </span>
             <RouterLink :to="'/article/'+item.normalized" class="cartImgContainer">
                 <img class="w-100 zoom" width="300" height="300" :src="item.images[0]">
             </RouterLink>
-            <RouterLink :to="'/article/'+item.normalized" class="mt-2 px-1">
+            <RouterLink :to="'/article/'+item.normalized" class="d-flex align-items-center justify-content-between mt-2 px-1">
                 <div class="itemTitle text-left">
                     <p class="m-0">{{ item.name }}</p>
                 </div>
+                <p class="itemPrice m-0">{{ parseFloat(item.price) }}€</p>
             </RouterLink>
             <RouterLink class="d-flex align-items-center justify-content-between px-1" :to="'/boutique/'+item.category.normalized">
                 <p class="itemCategory text-uppercase ">{{ item.category.name }}</p>
-                <p class="itemPrice m-0">{{ parseFloat(item.price) }}€</p>
             </RouterLink>
         </div>
     </div>
@@ -110,8 +110,9 @@ function openSideCart(){
     .itemTitle{
         font-size:16pt;
         opacity: 1;
-        height:38px;
+        height:36px;
         overflow: hidden;
+        padding-right: 7px;
     }
     .itemTitle p{
         overflow: hidden;

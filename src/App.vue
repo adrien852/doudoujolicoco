@@ -51,13 +51,13 @@
 
 <style>
   header{
-    margin-bottom: 92px;
+    margin-bottom: 60px;
     scroll-margin-top: 100px;
   }
   .noNavMargin{
     margin-bottom: 0px;
   }
   .content{
-    min-height: calc(100vh - 218px - 92px);
+    min-height: calc(100vh - 218px - 60px);
   }
 </style>

@@ -1,9 +1,10 @@
 <template>
     <loading :is-full-page="false" :active="isLoading"></loading>
     <NavPath :path="path"/>
+    <CategoryNavSlider />
     <div class="container">
         <div ref="shopContainer" class="d-flex flex-column w-100 py-3">
-            <vue-paginate v-if="pageCount > 1" class="row mx-auto"
+            <vue-paginate v-if="pageCount > 1" class="row mx-auto mb-0"
                 v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
             </vue-paginate>
             <!-- <ShopFilters :categoryNormalized="categoryNormalized" @filterByCategory="filterItemsByCategory" /> -->
@@ -37,6 +38,7 @@
     import { inject } from 'vue'
     const swal = inject('$swal')
     import router from '@/router'
+    import CategoryNavSlider from '../components/NavbarComponents/CategoryNavSlider.vue';
     
     let path = reactive([]);
     let isLoading = ref(true);
@@ -163,9 +165,9 @@
     }
 
     function clickCallback(pageNum){
-        // nextTick(() => {
-        //     shopContainer.value?.scrollIntoView({behavior: "smooth"});
-        // });
+        nextTick(() => {
+            shopContainer.value?.scrollIntoView();
+        });
         isLoading.value = true;
         paginatedItems = paginateItems(pageNum);
         isLoading.value = false;
