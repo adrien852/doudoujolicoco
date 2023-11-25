@@ -8,9 +8,6 @@
     :autoplay="{
       delay: 4000,
     }"
-    :pagination="{
-      clickable: true,
-    }"
   >
     <swiper-slide class="swipeImg" v-for="slide in carouselImages">
       <img alt="Peluche de vache en crochet" class="d-block w-100" :src="slide">
@@ -28,10 +25,10 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
-import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
+import { Autoplay, EffectFade } from 'swiper/modules';
 import { RouterLink, RouterView } from 'vue-router'
 
-let modules = [Autoplay, Pagination, EffectFade]
+let modules = [Autoplay, EffectFade]
 
 let carouselImages = [
   "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fporte-tetine%2Ffile4?alt=media&token=7c205c76-f5f1-4fed-b32d-b65df559b0e0",

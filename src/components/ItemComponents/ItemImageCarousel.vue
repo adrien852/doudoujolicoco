@@ -5,7 +5,9 @@
                 :modules="modulesPhone"
                 :speed="300"
                 :zoom="true"
-                :pagination="true"
+                :pagination="{
+                  clickable: true,
+                }"
                 class="d-block d-sm-none"
                 @zoom-change="disableSwipe"
                 ref="phoneSwiper"
