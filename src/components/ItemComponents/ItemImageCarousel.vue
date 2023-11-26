@@ -40,7 +40,7 @@
                 :thumbs="{ swiper: thumbsSwiper.value }"
                 :modules="modules"
                 :allow-touch-move="false"
-                :speed="1"
+                :speed="0"
                 class="mySwiper2 d-sm-block d-none"
             >
                 <swiper-slide v-for="slide in item.images">

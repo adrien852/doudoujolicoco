@@ -1,6 +1,6 @@
 <template>
   <NavPath :path="path"/>
-  <div class="about container pt-4">
+  <div class="about container mt-3">
     <div class="d-flex flex-wrap align-items-center justify-content-center">
       <div class="col-lg-7">
         <AboutText />

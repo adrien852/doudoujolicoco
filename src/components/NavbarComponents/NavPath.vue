@@ -1,5 +1,5 @@
 <template>
-    <div class="navPath">
+    <div class="navPath mb-lg-3">
         <p class="ml-sm-5 ml-3">
             <span v-for="(pathElement, index) in path">
                 <span v-if="index !== path.length - 1">

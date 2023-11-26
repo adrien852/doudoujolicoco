@@ -7,12 +7,12 @@
             <RouterLink :to="'/article/'+item.normalized" class="cartImgContainer">
                 <img :class="[{'h-100 cartImg': longDisplay}, {'w-100 zoom': !longDisplay}]" width="300" height="300" :src="item.images[0]">
             </RouterLink>
-            <RouterLink :to="'/article/'+item.normalized" v-if="!hideDescription" :style="{minWidth: longDisplay ? '180px' : 'initial'}" :class="['d-flex flex-column justify-content-center', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
+            <RouterLink :to="'/article/'+item.normalized" v-if="!hideDescription" :style="{minWidth: longDisplay ? '180px' : 'initial'}" :class="['d-flex flex-column justify-content-center cartDetailsContainer', longDisplay ? 'text-left mr-auto px-md-4 pl-2' : 'text-center m-auto']">
                 <p class="itemCategory text-uppercase">{{ item.category.name }}</p>
                 <div class="itemTitle d-flex">
                     <p :class="['my-auto', {'m-auto': !longDisplay}]">{{ item.name }}</p>
                 </div>
-                <p class="itemCategory">{{ parseFloat(item.price) }}€</p>
+                <p class="itemPrice">{{ parseFloat(item.price) }}€</p>
             </RouterLink>
             <!-- <p :class="['itemPrice text-center ml-3 my-auto mr-4', {'d-none':!longDisplay}]">{{ item.price }}€</p> -->
         </div>
@@ -117,6 +117,11 @@ function openSideCart(){
         opacity: 0.6;
         margin-bottom: 0;
     }
+    .itemPrice{
+        font-size: small;
+        opacity: 0.6;
+        margin-bottom: 0;
+    }
     .itemTitle{
         font-size:16pt;
         opacity: 1;
@@ -138,11 +143,6 @@ function openSideCart(){
     }
     img{
         object-fit: cover;
-    }
-    .itemPrice{
-        color: #94BCD8;
-        font-size: 13pt;
-        font-weight: bold;
     }
     .cartImgContainer{
         overflow: hidden;

@@ -1,10 +1,10 @@
 <template>
-    <loading :is-full-page="false" :active="isLoading"></loading>
-    <div class="container">
+    <NavPath :path="path"/>
+    <div class="container mt-3 position-relative">
+        <loading :is-full-page="false" :active="isLoading"></loading>
         <div class="mb-3">
             <RouterLink to="/admin"><button class="btn btn-secondary">Retour</button></RouterLink>
         </div>
-        <h1>Commandes</h1>
         <OrdersTable :orders="orders" :tableHeaders="tableHeaders"/>
     </div>
 </template>
@@ -14,6 +14,8 @@
     import { onMounted } from 'vue';
     import { getAdminOrders } from '@/services/OrderService';
     import { ref, reactive, inject } from 'vue';
+    import NavPath from '@/components/NavbarComponents/NavPath.vue';
+    import { onBeforeMount } from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import router from '@/router'
@@ -23,6 +25,24 @@
     let isLoading = ref(true)
     let orders = reactive({})
     let tableHeaders = reactive({})
+    let path = null;
+
+    onBeforeMount(() => {
+        path = [
+            {
+                name: 'accueil',
+                route: '/'
+            },
+            {
+                name: 'Admin',
+                route: '/admin'
+            },
+            {
+                name: 'Commandes',
+                route: '/admin/commandes'
+            },
+        ]
+    })
 
     onMounted(async() => {
         getAdminOrders().then((response) => {

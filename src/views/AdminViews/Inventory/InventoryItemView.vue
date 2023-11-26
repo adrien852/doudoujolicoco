@@ -1,6 +1,7 @@
 <template>
-    <loading :is-full-page="false" :active="isLoading"></loading>
-    <div v-if="item && categories" class="container">
+    <NavPath :path="path"/>
+    <div v-if="!isLoading" class="container position-relative mt-2">
+        <loading :is-full-page="false" :active="isLoading"></loading>
         <div class="mb-3">
             <RouterLink to="/admin/inventaire"><button class="btn btn-secondary">Retour</button></RouterLink>
             <button @click="deleteProduct(item)" class="btn btn-delete ml-2">Suppr.</button>
@@ -148,7 +149,7 @@
                 <div v-if="item.images[0] !== ''" class="col-lg-5 col-md-8">
                     <loading :is-full-page="false" :active="fileUploading"></loading>
                     <h4>Aperçu du produit en boutique</h4>
-                    <ShopItem :item="{
+                    <SimpleShopItem :item="{
                         ...item,
                         images: {
                             0: item.images[0]
@@ -156,7 +157,9 @@
                     }"/>
                 </div>
             </div>
-            <FormKit type="submit" :disabled="submitDisabled">Enregistrer</FormKit>
+            <div class="mt-3">
+                <FormKit type="submit" :disabled="submitDisabled">Enregistrer</FormKit>
+            </div>
         </FormKit>
             <div v-if="imageData!=null">                     
                 <img class="preview" height="268" width="356" :src="imageData">
@@ -166,12 +169,14 @@
 
 <script setup>
     import { useRoute } from 'vue-router';
-    import ShopItem from '@/components/ShopComponents/ShopItem.vue';
+    import SimpleShopItem from '@/components/ShopComponents/SimpleShopItem.vue';
     import { getCategories } from '@/services/ShopService.js'
     import { getItem, updateItem, deleteItem } from '@/services/InventoryService.js'
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import { ref, onMounted, inject } from 'vue';
+    import NavPath from '@/components/NavbarComponents/NavPath.vue';
+    import { onBeforeMount } from 'vue';
     import { getStorage, uploadBytes, getDownloadURL } from "firebase/storage";
     import {ref as firebaseRef} from "firebase/storage";
     const swal = inject('$swal')
@@ -186,6 +191,28 @@
     let photos = {};
     let fileUploading = ref(false);
     let submitDisabled = ref(false);
+    let path = null;
+
+    onBeforeMount(() => {
+        path = [
+            {
+                name: 'accueil',
+                route: '/'
+            },
+            {
+                name: 'Admin',
+                route: '/admin'
+            },
+            {
+                name: 'Inventaire',
+                route: '/admin/inventaire'
+            },
+            {
+                name: 'Produit '+route.params.id,
+                route: ''
+            },
+        ]
+    })
 
     onMounted(async() => {
         await getItem(route.params.id)

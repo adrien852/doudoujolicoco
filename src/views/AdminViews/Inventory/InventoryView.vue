@@ -1,12 +1,12 @@
 <template>
-    <loading :is-full-page="false" :active="isLoading"></loading>
-    <div class="container">
+    <NavPath :path="path"/>
+    <div class="container position-relative mt-2">
+        <loading :is-full-page="false" :active="isLoading"></loading>
         <div class="mb-3">
             <RouterLink to="/admin"><button class="btn btn-secondary">Retour</button></RouterLink>
             <RouterLink class="position-relative ml-2" to="/admin/inventaire/nouveau"><button id="deleteButton" class="btn btn-primary">Nouveau</button></RouterLink>
         </div>
-        <h1>Inventaire</h1>
-        <div ref="shopContainer" class="d-flex flex-column w-100">
+        <div ref="inventoryContainer" class="d-flex flex-column w-100">
             <vue-paginate v-if="pageCount > 1" class="row mx-auto"
                 v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
             </vue-paginate> 
@@ -25,7 +25,9 @@
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import {getItems} from '@/services/InventoryService.js'
     import { VuePaginate } from '@svifty7/vue-paginate';
-    import { inject, ref } from 'vue'
+    import { inject, ref, nextTick } from 'vue'
+    import NavPath from '@/components/NavbarComponents/NavPath.vue';
+    import { onBeforeMount } from 'vue';
     import router from '@/router'
     const swal = inject('$swal')
 
@@ -37,7 +39,26 @@
     let page = ref(1);
     let pageCount = ref(1);
     let isLoading = ref(true);
+    let inventoryContainer = ref(null)
 
+    let path = null;
+
+    onBeforeMount(() => {
+        path = [
+            {
+                name: 'accueil',
+                route: '/'
+            },
+            {
+                name: 'Admin',
+                route: '/admin'
+            },
+            {
+                name: 'Inventaire',
+                route: '/admin/inventaire'
+            },
+        ]
+    })
 
     onMounted(async() => {
         await getItems()
@@ -102,9 +123,9 @@
     }
     
     function clickCallback(pageNum){
-        // nextTick(() => {
-        //     shopContainer.value?.scrollIntoView({behavior: "smooth"});
-        // });
+        nextTick(() => {
+            inventoryContainer.value?.scrollIntoView();
+        });
         isLoading.value = true;
         paginatedItems = paginateItems(pageNum);
         isLoading.value = false;

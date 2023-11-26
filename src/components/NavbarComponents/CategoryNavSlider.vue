@@ -7,7 +7,7 @@
             :slides-per-view="'auto'"
             :spaceBetween="8"
         >
-            <swiper-slide class="category-container text-uppercase mt-2" v-for="category in categories">
+            <swiper-slide class="category-container text-uppercase mt-lg-0 mt-2" v-for="category in categories">
                 <RouterLink :to="'/boutique/'+category.normalized">
                     <p class="m-0">{{ category.name }}</p>
                 </RouterLink>

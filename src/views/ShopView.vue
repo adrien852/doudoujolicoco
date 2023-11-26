@@ -38,7 +38,7 @@
     import { inject } from 'vue'
     const swal = inject('$swal')
     import router from '@/router'
-    import CategoryNavSlider from '../components/NavbarComponents/CategoryNavSlider.vue';
+    import CategoryNavSlider from '@/components/NavbarComponents/CategoryNavSlider.vue';
     
     let path = reactive([]);
     let isLoading = ref(true);

@@ -105,3 +105,15 @@
     letter-spacing: 1px;
     }
 </style>
+
+<style>
+    .sideCart .cartDetailsContainer p{
+        font-size: 8pt;
+    }
+    .sideCart .cartDetailsContainer{
+        padding: 10px!important;
+    }
+    .sideCart .itemCategory{
+        font-size: 7pt;
+    }
+</style>

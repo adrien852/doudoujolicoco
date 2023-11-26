@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <h1 class="ml-lg-3 mb-5 text-left">Panier</h1>
+    <NavPath :path="path"/>
+    <div class="container position-relative mt-3">
         <div v-if="cartStore.count > 0" class="d-flex row mt-4">
             <CartItems v-if="cartStore.count > 0" :items="cartStore.cartItems"/>
             <div id="cartDetails" class="col-lg-4">
@@ -27,6 +27,23 @@
     import CartItems from '@/components/CartComponents/CartItems.vue';
     import CartDetails from '@/components/CartComponents/CartDetails.vue';
     import { useCartStore } from '@/stores/CartStore'
+    import NavPath from '@/components/NavbarComponents/NavPath.vue';
+    import { onBeforeMount } from 'vue';
+
+    let path = null;
+
+    onBeforeMount(() => {
+        path = [
+            {
+                name: 'accueil',
+                route: '/'
+            },
+            {
+                name: 'Panier',
+                route: '/panier'
+            },
+        ]
+    })
     const cartStore = useCartStore();
 </script>
 

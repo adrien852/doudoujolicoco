@@ -1,7 +1,7 @@
 <template>
-    <div v-if="!(cartStore.cartItems.length == 0 || cartStore.customer.length == 0)" class="container">
+    <NavPath :path="path"/>
+    <div v-if="!(cartStore.cartItems.length == 0 || cartStore.customer.length == 0)" class="container position-relative mt-3">
         <loading :active="isLoading"></loading>
-        <h1 class="ml-3 mb-4 text-left">Paiement</h1>
         <div class="d-flex justify-content-center">
             <Payment :braintreeToken="braintreeToken" @paymentInit="paymentInit"/>
         </div>
@@ -15,6 +15,7 @@
     import {onBeforeMount, onMounted, ref} from 'vue'
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+    import NavPath from '@/components/NavbarComponents/NavPath.vue';
     import { inject } from 'vue'
     const swal = inject('$swal')
 
@@ -22,8 +23,27 @@
 
     let braintreeToken = ref(null);
     let isLoading = ref(true);
+    let path = null;
 
     onBeforeMount(() => {
+        path = [
+            {
+                name: 'accueil',
+                route: '/'
+            },
+            {
+                name: 'Panier',
+                route: '/panier'
+            },
+            {
+                name: 'Livraison',
+                route: '/livraison'
+            },
+            {
+                name: 'Paiement',
+                route: '/paiement'
+            },
+        ]
         if(cartStore.cartItems.length == 0 || cartStore.customer.length == 0){
             swal.fire({
                 icon: 'warning',
@@ -118,21 +138,32 @@
                     creditCardSubmit(event, submitButton, checkoutButton, dropinInstance);
                 });
             });
-        });
+        })
+        .catch(() => {
+            swal.fire({
+                icon: 'error',
+                title: 'Oups !',
+                text: 'Erreur lors de l\'initialisation du paiement. Veuillez réessayer plus tard.',
+                confirmButtonText: "OK",
+                showConfirmButton: true,
+            }).then(() => {
+                router.push({ path: '/panier' })
+            })
+        })
     }
 
     function initializeButtons(submitButton, checkoutButton){
         
         submitButton.setAttribute('id', 'sendNonce');
         submitButton.setAttribute('type', 'button');
-        submitButton.setAttribute('class', 'btn btn-primary');
+        submitButton.setAttribute('class', 'btn btn-primary mb-3');
         submitButton.innerHTML = "Valider"
         submitButton.style.display = 'none';
         document.getElementById('submitButtons').appendChild(submitButton);
         
         checkoutButton.setAttribute('id', 'sendCheckout');
         checkoutButton.setAttribute('type', 'button');
-        checkoutButton.setAttribute('class', 'btn btn-primary');
+        checkoutButton.setAttribute('class', 'btn btn-primary mb-3');
         checkoutButton.innerHTML = "Payer"
         checkoutButton.style.display = 'none';
         document.getElementById('submitButtons').appendChild(checkoutButton);

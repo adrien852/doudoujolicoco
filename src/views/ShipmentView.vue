@@ -1,7 +1,7 @@
 <template>
-    <loading :active="isLoading"></loading>
-    <div v-if="cartStore.cartItems.length != 0" class="container mt-4">
-        <h1 class="ml-lg-3 mb-3 text-left">Formulaire de livraison</h1>
+    <NavPath :path="path"/>
+    <div v-if="cartStore.cartItems.length != 0" class="container position-relative mt-2">
+        <loading :active="isLoading"></loading>
         <div class="mx-1 d-flex flex-md-wrap flex-wrap-reverse row justify-content-around">
             <div class="d-flex row m-0 col-md-8 col-12 ml-auto mb-md-0 mt-3 mt-md-0">
                 <FormKit
@@ -16,7 +16,7 @@
                     <ul class="steps nav-tabs nav ">
                         <li
                         v-for="stepName in stepNames"
-                        class="step nav-item col p-0"
+                        :class="['step nav-item col p-0', {'d-none': isSameAsShipping && stepName == 'billing'}]"
                         @click="step = stepName"
                         :data-step-active="step === stepName"
                         >
@@ -62,7 +62,7 @@
                     <FormKit type="submit" @click="showError = true" />
                 </FormKit>
             </div>
-            <CartDetails class="col-md-4 col-12 h-fit" :checkoutButton="false" />
+            <CartDetails class="col-md-4 col-12 h-fit d-md-block d-none" :checkoutButton="false" />
         </div>
     </div>
     
@@ -77,7 +77,9 @@
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import {onMounted, ref, toRaw, nextTick, reactive, onBeforeMount } from 'vue'
     import {useCartStore} from '@/stores/CartStore.js'
-    
+    import NavPath from '@/components/NavbarComponents/NavPath.vue';
+
+    let path = null;
     const cartStore = useCartStore();
     let isLoading = ref(true);
     let initSameAsShipping = ref(true);
@@ -91,6 +93,21 @@
     const swal = inject('$swal')
 
     onBeforeMount(() => {
+        path = [
+            {
+                name: 'accueil',
+                route: '/'
+            },
+            {
+                name: 'Panier',
+                route: '/panier'
+            },
+            {
+                name: 'Livraison',
+                route: '/livraison'
+            },
+        ]
+        
         if(cartStore.cartItems.length == 0){
             swal.fire({
                 icon: 'warning',

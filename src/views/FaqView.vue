@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <h1 class="ml-lg-3 mb-5 text-left">Foire Aux Questions</h1>
+    <NavPath :path="path"/>
+    <div class="container mt-3">
         <FaqAccordion />
     </div>
 
@@ -8,6 +8,23 @@
 
 <script setup>
     import FaqAccordion from '@/components/FaqComponents/FaqAccordion.vue';
+    import NavPath from '@/components/NavbarComponents/NavPath.vue';
+    import { onBeforeMount } from 'vue';
+
+    let path = null;
+
+    onBeforeMount(() => {
+        path = [
+            {
+                name: 'accueil',
+                route: '/'
+            },
+            {
+                name: 'Foire Aux Questions',
+                route: '/faq'
+            },
+        ]
+    })
 </script>
 
 <style scoped>
