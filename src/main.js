@@ -13,7 +13,7 @@ import "firebase/compat/storage";
 import "firebase/compat/analytics";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBjIjM34j1ZWCvmmL4pXYYurdnlwiwU_40",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "doudoujoli-610f9.firebaseapp.com",
     projectId: "doudoujoli-610f9",
     storageBucket: "doudoujoli-610f9.appspot.com",
