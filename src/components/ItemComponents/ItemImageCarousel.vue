@@ -44,7 +44,7 @@
                 class="mySwiper2 d-sm-block d-none"
             >
                 <swiper-slide v-for="slide in item.images">
-                    <VueMagnifier class="d-sm-block d-none" :src="slide" :mg-border-width="0" :mg-shape="'square'" :mg-width="1200" :mg-height="1200" :mg-show-overflow="false" :zoom-factor="0.15"/>
+                    <VueMagnifier class="d-sm-block d-none" :src="slide" :mg-border-width="0" :mg-shape="'square'" :mg-width="2000" :mg-height="2000" :mg-show-overflow="false" :zoom-factor="0.08"/>
                 </swiper-slide>
             </swiper>
         </div>

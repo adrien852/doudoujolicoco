@@ -30,15 +30,16 @@ const props = defineProps({
         height: fit-content;
     }
     .zoom{
+        transform: scale3d(1,1,1);
         -webkit-transition: transform 0.1s ease-out;
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;
         transition: transform 0.1s ease-out;
     }
     .zoom:hover{
-        transform: scale(1.02) rotate(0.01deg);
-        -webkit-transform: scale(1.02) rotate(0.01deg);
-        -moz-transform: scale(1.02) rotate(0.01deg);
+        transform: scale3d(1.02,1.02,1.02);
+        -webkit-transform: scale3d(1.02,1.02,1.02);
+        -moz-transform: scale3d(1.02,1.02,1.02);
         -webkit-transition: transform 0.1s ease-out;
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;

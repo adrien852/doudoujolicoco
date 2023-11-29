@@ -46,15 +46,14 @@
     }
     else{
       noAnimation.value = true;
-      newProductsLoading.value = false;
     }
-    categoryCarouselLoading.value = false;
   }
 
   onMounted(() => {
     if(!categories.value){
         categories = sampleShopItemStore.categories;
         setCategories();
+        categoryCarouselLoading.value = false;
     }
     sampleShopItemStore.fillItems()
     .then(response => {

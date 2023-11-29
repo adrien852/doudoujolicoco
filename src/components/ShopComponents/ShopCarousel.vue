@@ -2,7 +2,7 @@
     <swiper 
         class="shopCarousel pb-3"
         :modules="modules"
-        :spaceBetween="10"
+        :spaceBetween="30"
         :slidesPerView="'auto'"
         :freeMode="true"
         :loop="true"

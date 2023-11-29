@@ -55,18 +55,18 @@ function openSideCart(){
         padding: 8px;
         right:5px;
         top:5px;
-        transform: scale(1) rotate(0.01deg);
-        -webkit-transform: scale(1) rotate(0.01deg);
-        -moz-transform: scale(1) rotate(0.01deg);
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
         -webkit-transition: transform 0.1s ease-out;
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;
         transition: transform 0.1s ease-out;
     }
     .addBasket:hover{
-        transform: scale(1.05) rotate(0.01deg);
-        -webkit-transform: scale(1.05) rotate(0.01deg);
-        -moz-transform: scale(1.05) rotate(0.01deg);
+        transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+        -moz-transform: scale(1.05);
         -webkit-transition: transform 0.1s ease-out;
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;
@@ -81,15 +81,16 @@ function openSideCart(){
         /* height: fit-content; */
     }
     .zoom:hover{
-        transform: scale(1.02) rotate(0.01deg);
-        -webkit-transform: scale(1.02) rotate(0.01deg);
-        -moz-transform: scale(1.02) rotate(0.01deg);
-        -webkit-transition: transform 0.1s ease-out;
-        -moz-transition: transform 0.1s ease-out;
-        -o-transition: transform 0.1s ease-out;
-        transition: transform 0.1s ease-out;
+        transform: scale3d(1.02,1.02,1.02);
+        -webkit-transform: scale3d(1.02,1.02,1.02);
+        -moz-transform: scale3d(1.02,1.02,1.02);
+        -webkit-transition: transform 0.2s ease-out;
+        -moz-transition: transform 0.2s ease-out;
+        -o-transition: transform 0.2s ease-out;
+        transition: transform 0.2s ease-out;
     }
     .zoom{
+        transform: scale3d(1,1,1);
         -webkit-transition: transform 0.1s ease-out;
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;
