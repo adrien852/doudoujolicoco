@@ -219,11 +219,39 @@
         .then(response => {
             item = response;
         })
+        .catch(function(error) {
+            console.log(error)
+            swal.fire({
+                icon: 'error',
+                title: 'Désolé',
+                text: 'Le site fait face à un soucis technique. Veuillez nous excuser pour le désagrément.',
+                confirmButtonText: "Retour à l'accueil",
+                showCloseButton: true,
+                showConfirmButton: true,
+                confirmButtonColor: "#94BCD8",
+            }).then(() => {
+                router.push({ path: '/admin' })
+            })
+        })
         await getCategories()
         .then(response => {
             categoryNames = response.map(category => category.name);
             categories = response;
-        }) 
+        })
+        .catch(function(error) {
+            console.log(error)
+            swal.fire({
+                icon: 'error',
+                title: 'Désolé',
+                text: 'Le site fait face à un soucis technique. Veuillez nous excuser pour le désagrément.',
+                confirmButtonText: "Retour à l'accueil",
+                showCloseButton: true,
+                showConfirmButton: true,
+                confirmButtonColor: "#94BCD8",
+            }).then(() => {
+                router.push({ path: '/admin' })
+            })
+        })
         isLoading.value = false;
     })
 

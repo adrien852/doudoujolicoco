@@ -2,7 +2,8 @@
   <header style="position: relative;" id="header" ref="header" :class="{'noNavMargin': false}">
     <Navbar />
   </header>
-  <div class="content">
+  <div class="content position-relative">
+    <loading :is-full-page="false" :active="adminStore.isAdminRouteLoading"></loading>
     <RouterView />
   </div>
   <MyFooter />
@@ -12,10 +13,14 @@
   import { RouterLink, RouterView } from 'vue-router'
   import Navbar from '@/components/NavbarComponents/Navbar.vue'
   import MyFooter from '@/components/FooterComponents/MyFooter.vue'
+  import { useAdminStore } from '@/stores/AdminStore';
   import { useRoute } from 'vue-router'
   import { watch, onMounted, nextTick, ref } from 'vue';
+  import Loading from 'vue3-loading-overlay';
+  import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
   const route = useRoute();
   const header = ref(null)
+  const adminStore = useAdminStore()
   
   onMounted(() => {
     watch(route, () =>{

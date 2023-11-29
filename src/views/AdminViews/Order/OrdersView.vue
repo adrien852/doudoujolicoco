@@ -70,7 +70,7 @@
                 showConfirmButton: true,
                 confirmButtonColor: "#94BCD8",
             }).then(() => {
-                router.push({ path: '/' })
+                router.push({ path: '/admin' })
             })
         })
         

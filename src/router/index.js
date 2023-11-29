@@ -1,3 +1,5 @@
+import axios from 'axios'
+import { useAdminStore } from '@/stores/AdminStore';
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import ShopView from '@/views/ShopView.vue'
@@ -17,6 +19,28 @@ import AdminInventoryNewView from '@/views/AdminViews/Inventory/InventoryItemNew
 import ContactView from '@/views/ContactView.vue'
 import FaqView from '@/views/FaqView.vue'
 import LoginView from '@/views/LoginView.vue'
+
+const API = import.meta.env.VITE_EXPRESS_API_URL;
+const instance = axios.create({
+  withCredentials: true,
+  baseURL: API
+})
+
+async function loginCheck(){
+  const adminStore = useAdminStore();
+  adminStore.isAdminRouteAccessed(true);
+  try{
+    const response = await instance.get('/loginCheck');
+    adminStore.isAdminRouteAccessed(false);
+  }
+  catch(error){
+    if(error.response.status === 401 || error.response.status === 403){
+      adminStore.isAdminLoggedIn(false);
+      adminStore.isAdminRouteAccessed(false);
+      return {name: 'login'};
+    }
+  }
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -82,35 +106,42 @@ const router = createRouter({
       name: 'login',
       component: LoginView
     },
+    //Admin protected routes
     {
       path: '/admin/commandes',
       name: 'adminCommandes',
-      component: AdminOrdersView
+      component: AdminOrdersView,
+      beforeEnter: loginCheck
     },
     {
       path: '/admin/commandes/:reference',
       name: 'adminCommande',
-      component: AdminOrderView
+      component: AdminOrderView,
+      beforeEnter: loginCheck
     },
     {
       path: '/admin/inventaire',
       name: 'adminInventaire',
-      component: AdminInventoryView
+      component: AdminInventoryView,
+      beforeEnter: loginCheck
     },
     {
       path: '/admin/inventaire/:id',
       name: 'adminInventaireItem',
-      component: AdminInventoryItemView
+      component: AdminInventoryItemView,
+      beforeEnter: loginCheck
     },
     {
       path: '/admin/inventaire/nouveau',
       name: 'adminInventaireNew',
-      component: AdminInventoryNewView
+      component: AdminInventoryNewView,
+      beforeEnter: loginCheck
     },
     {
       path: '/admin',
       name: 'admin',
-      component: AdminView
+      component: AdminView,
+      beforeEnter: loginCheck
     },
     { 
       path: '/404', 

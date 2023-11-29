@@ -1,9 +1,9 @@
 <template>
     <NavPath :path="path"/>
-    <div v-if="adminStore.isAdmin" class="container mt-3">
+    <div class="container mt-3">
         <div class="d-flex flex-wrap">
             <RouterLink class="mb-3 col-md-6 col-12" :to="'/admin/commandes'"><button class="btn btn-primary w-100">Mes commandes</button></RouterLink>
-            <RouterLink class="mb-3 col-md-6 col-12" :to="'/admin/inventaire'"><button class="btn btn-primary w-100">Mon inventaire</button></RouterLink>
+            <RouterLink class="mb-3 col-md-6 col-12" :to="'/admin/inventaire'"><button class="btn btn-primary w-100">Ma boutique</button></RouterLink>
         </div>
     </div>
 </template>
@@ -32,20 +32,6 @@
             },
         ]
     })
-
-    if(!adminStore.isAdmin){
-        swal.fire({
-            icon: 'error',
-            title: 'Oops !',
-            text: 'Vous n\'êtes pas connecté comme admin.',
-            confirmButtonText: "Se connecter",
-            showCloseButton: false,
-            showConfirmButton: true,
-            confirmButtonColor: "#94BCD8",
-        }).then(() => {
-            router.push({ path: '/se-connecter' })
-        })
-    }
 </script>
 
 <style scoped>
