@@ -1,6 +1,5 @@
 <template>
-    <div class="py-4 my-4">
-        <h1>Toutes les catégories</h1>
+    <div class="homeCategories">
         <swiper 
             class="shopCarousel"
             :modules="modules"
@@ -38,5 +37,15 @@ const props = defineProps({
 <style>
 .swiper-button-prev, .swiper-button-next {
     color:white;
+}
+.homeCategories{
+    padding: 40px 0;
+    margin: 60px 0;
+}
+@media (max-width:991px) {
+    .homeCategories{
+        padding: 50px 0;
+        margin: 0 0;
+    }
 }
 </style>

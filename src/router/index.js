@@ -15,7 +15,10 @@ import AdminOrderView from '@/views/AdminViews/Order/OrderView.vue'
 import AdminView from '@/views/AdminViews/AdminView.vue'
 import AdminInventoryView from '@/views/AdminViews/Inventory/InventoryView.vue'
 import AdminInventoryItemView from '@/views/AdminViews/Inventory/InventoryItemView.vue'
-import AdminInventoryNewView from '@/views/AdminViews/Inventory/InventoryItemNew.vue'
+import AdminInventoryNewView from '@/views/AdminViews/Inventory/InventoryItemNewView.vue'
+import AdminCategoriesView from '@/views/AdminViews/Category/CategoriesView.vue'
+import AdminCategoryView from '@/views/AdminViews/Category/CategoryView.vue'
+import AdminCategoryNewView from '@/views/AdminViews/Category/CategoryNewView.vue'
 import ContactView from '@/views/ContactView.vue'
 import FaqView from '@/views/FaqView.vue'
 import LoginView from '@/views/LoginView.vue'
@@ -135,6 +138,24 @@ const router = createRouter({
       path: '/admin/inventaire/nouveau',
       name: 'adminInventaireNew',
       component: AdminInventoryNewView,
+      beforeEnter: loginCheck
+    },
+    {
+      path: '/admin/categories',
+      name: 'adminCategoriesView',
+      component: AdminCategoriesView,
+      beforeEnter: loginCheck
+    },
+    {
+      path: '/admin/categories/:id',
+      name: 'adminCategoryView',
+      component: AdminCategoryView,
+      beforeEnter: loginCheck
+    },
+    {
+      path: '/admin/categories/nouveau',
+      name: 'adminCategoryNewView',
+      component: AdminCategoryNewView,
       beforeEnter: loginCheck
     },
     {
