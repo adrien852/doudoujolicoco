@@ -34,13 +34,14 @@ p{
     top: 5px;
     right: 6px;
     cursor: pointer;
+    transform: scale3d(1, 1, 1);
     -webkit-transition: transform 0.1s ease-out;
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;
         transition: transform 0.1s ease-out;
 }
 .bin:hover{
-    transform: scale(1.15);
+    transform: scale3d(1.10, 1.10, 1.10);
         -webkit-transition: transform 0.1s ease-out;
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;

@@ -108,12 +108,12 @@
 
 <style>
     .sideCart .cartDetailsContainer p{
-        font-size: 8pt;
+        font-size: 10pt;
     }
     .sideCart .cartDetailsContainer{
         padding: 10px!important;
     }
     .sideCart .itemCategory{
-        font-size: 7pt;
+        font-size: 7pt!important;
     }
 </style>

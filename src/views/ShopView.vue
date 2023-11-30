@@ -2,16 +2,10 @@
     <loading :is-full-page="false" :active="isLoading"></loading>
     <NavPath :path="path"/>
     <CategoryNavSlider />
+    <BackToTop class="position-fixed" />
     <div class="container">
         <div ref="shopContainer" class="d-flex flex-column w-100 py-3">
-            <vue-paginate v-if="pageCount > 1" class="row mx-auto mb-0"
-                v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
-            </vue-paginate>
-            <!-- <ShopFilters :categoryNormalized="categoryNormalized" @filterByCategory="filterItemsByCategory" /> -->
             <ShopItems :paginatedItems="paginatedItems"/>
-            <vue-paginate v-if="pageCount > 1" class="row mx-auto my-2"
-                v-model="page" :page-count="pageCount" :active-class="'active'" :containerClass="'pagination'" :prev-text="'<'" :next-text="'>'" :click-handler="clickCallback">
-            </vue-paginate> 
         </div>
     </div>
 </template>
@@ -28,6 +22,7 @@
 <script setup>
     import ShopItems from '@/components/ShopComponents/ShopItems.vue';
     import NavPath from '@/components/NavbarComponents/NavPath.vue';
+    import BackToTop from '@/components/ShopComponents/BackToTop.vue'
     import {getItems, getCategoryItems} from '@/services/ShopService.js'
     import { useSampleItemStore } from '@/stores/SampleShopItemStore';
     import { useRoute } from 'vue-router'
@@ -103,6 +98,13 @@
             }            
             setCategory()
         }
+
+        app.addEventListener('scroll', e => {
+            if(app.scrollTop + app.clientHeight >= shopContainer.value?.scrollHeight) {
+                page.value++;
+                clickCallback(page)
+            }
+        });
         
         isLoading.value = false;
     })
@@ -165,11 +167,8 @@
     }
 
     function clickCallback(pageNum){
-        nextTick(() => {
-            shopContainer.value?.scrollIntoView();
-        });
         isLoading.value = true;
-        paginatedItems = paginateItems(pageNum);
+        paginatedItems = items.concat(paginateItems(pageNum));
         isLoading.value = false;
     }
 </script>
