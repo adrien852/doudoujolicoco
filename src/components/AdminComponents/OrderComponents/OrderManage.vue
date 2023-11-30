@@ -1,5 +1,6 @@
 <template>
     <div class="orderDetails col-xl-4 col-md-6 col-12">
+        <loading :is-full-page="false" :active="isLoading"></loading>
         <div class="card">
             <div class="card-header">
                 Gérér la commande
@@ -29,23 +30,24 @@
 </template>
 
 <script setup>
-    import { updateOrderStatus } from '@/services/OrderService.js'
+    import { updateOrderStatus, sendStatusEmail } from '@/services/OrderService.js';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import { ref, inject } from 'vue';
-    const swal = inject('$swal')
+    const swal = inject('$swal');
 
     const props = defineProps({
         order: Object
     })
 
     let isStatusLoading = ref(false);
+    let isLoading = ref(false);
 
     const statusFr = {
         PENDING: "En attente",
         IN_PROGRESS: "En traitement",
-        SHIPPED: "Expédié",
-        DELIVERED: "Livré"
+        SHIPPED: "Expédiée",
+        DELIVERED: "Livrée"
     }
 
     function removeStatusIcon(statusContainer){
@@ -82,7 +84,7 @@
         swal.fire({
             icon: 'question',
             title: 'Statut : "'+statusFr[status]+'"',
-            text: 'Êtes-vous sûr de vouloir envoyer un email pour notifier le client ?',
+            html: 'Êtes-vous sûr de vouloir envoyer un email pour notifier le client ?<br/>Email client : '+`<b>${props.order.customer.email}</b>.`,
             width: 600,
             showCancelButton: true,
             confirmButtonText: "Envoyer",
@@ -93,9 +95,32 @@
             showClass: {
                 popup: 'animate__animated animate__fadeIn'
             },
-        }).then((result) => {
+        }).then(async(result) => {
             if (result.isConfirmed) {
-                console.log("test")
+                isLoading.value = true;
+                await sendStatusEmail(props.order, status).then(() => {
+                    swal.fire({
+                        icon: 'success',
+                        title: 'Email envoyé',
+                        text: 'L\'email de confirmation a bien été envoyé',
+                        confirmButtonText: "OK",
+                        showCloseButton: true,
+                        showConfirmButton: true,
+                        confirmButtonColor: "#94BCD8",
+                    })
+                })
+                .catch(() => {
+                    swal.fire({
+                        icon: 'error',
+                        title: 'Erreur d\'envoi',
+                        text: 'L\'email de confirmation n\'a pas été envoyé. Réessayer plus tard.',
+                        confirmButtonText: "OK",
+                        showCloseButton: true,
+                        showConfirmButton: true,
+                        confirmButtonColor: "#94BCD8",
+                    })
+                })
+                isLoading.value = false;
             }
         })
     }
