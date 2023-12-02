@@ -2,7 +2,7 @@
   <header style="position: relative;" id="header" ref="header" :class="{'noNavMargin': false}">
     <Navbar />
   </header>
-  <div class="content position-relative">
+  <div class="appContent position-relative">
     <loading :is-full-page="false" :active="adminStore.isAdminRouteLoading"></loading>
     <RouterView />
   </div>
@@ -31,6 +31,7 @@
     document.getElementById("app").addEventListener('click', (event) => {
       let sidebar = document.getElementById("mySidebar");
       let sideCart = document.getElementById("sideCart");
+      let appContent = document.querySelector(".appContent");
       if(typeof event.target.className == "string"){
         if(
           !event.target.className.includes('navbar-toggler-icon') &&
@@ -39,6 +40,11 @@
           if(sidebar.className.includes('toggled')){
               sidebar.style.left = "-250px";
               sidebar.classList.remove('toggled');
+              if(
+                !event.target.className.includes('cartTriggerToggler')
+              ){
+                appContent.style.pointerEvents = '';
+              }
           }
         }
         if(
@@ -46,9 +52,17 @@
         ){
           sideCart.style.right = "-350px";
           sideCart.classList.remove('toggled');
+          if(
+            !event.target.className.includes('navbar-toggler-icon') &&
+            !event.target.className.includes('navbar-toggler')
+          ){
+            appContent.style.pointerEvents = '';
+          }
         }
       }
     })
+
+    
   })
   
 
@@ -62,7 +76,7 @@
   .noNavMargin{
     margin-bottom: 0px;
   }
-  .content{
+  .appContent{
     min-height: calc(100vh - 218px - 60px);
   }
 </style>

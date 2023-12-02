@@ -33,15 +33,21 @@
     const cartStore = useCartStore();
 
     function closeSideCart(){
+        let appContent = document.querySelector(".appContent");
         let sideCart = document.getElementById("sideCart");
         sideCart.style.right = "-350px";
         sideCart.classList.remove('toggled');
+        appContent.style.pointerEvents = '';
     }
 
     function openSideCart(){
         let sideCart = document.getElementById("sideCart");
+        let appContent = document.querySelector(".appContent");
         sideCart.style.right = "0";
         sideCart.classList.add('toggled');
+        if(window.innerWidth < 992){
+            appContent.style.pointerEvents = 'none';
+        }
     }
 
     onMounted(() => {

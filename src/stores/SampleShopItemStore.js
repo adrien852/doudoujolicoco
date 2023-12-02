@@ -13,7 +13,7 @@ export const useSampleItemStore = defineStore("SampleItemStore", {
             this.items = await getItems();
         },
         async fillCategories(){
-            this.categories = await getCategories();
+            this.categories = await getCategories().then((response) => response).catch(() => null);  
         }
     }
 })

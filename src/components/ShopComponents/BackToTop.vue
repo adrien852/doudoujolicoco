@@ -33,7 +33,7 @@
         background-color: #e7e7e6;
         width: 60px;
         height: 60px;
-        z-index: 300;
+        z-index: 150;
         display: flex;
         opacity: 0;
         left: 30px;

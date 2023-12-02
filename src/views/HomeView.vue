@@ -3,8 +3,8 @@
     <Hero />
       <div class="carouselDiv position-relative">
         <div class="container">
-          <loading class="position-relative" style="height: 363px;" :is-full-page="false" :active="categoryCarouselLoading"></loading>
-          <CategoryCarousel v-if="!noCategoryCarousel" :categories="categories" />
+          <loading class="position-relative" style="height: 363px;" :is-full-page="false" :active="categories && categories.length === 0"></loading>
+          <CategoryCarousel v-if="categories && categories.length > 0" :categories="categories" />
         </div>
       </div>
       <KeyPoints :noAnimation="noAnimation" />
@@ -21,40 +21,20 @@
   import KeyPoints from '@/components/HomeComponents/KeyPoints.vue'
   import NewProducts from '@/components/HomeComponents/NewProducts.vue'
   import { useSampleItemStore } from '@/stores/SampleShopItemStore';
-  import { onBeforeMount, reactive, ref, watch} from 'vue';
+  import { computed, onBeforeMount, reactive, ref, watch} from 'vue';
   import Loading from 'vue3-loading-overlay';
   import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
   import { onMounted } from 'vue';
 
   const sampleShopItemStore = useSampleItemStore();
-  let categoryCarouselLoading = ref(true);
-  let noCategoryCarousel = ref(true);
   let newProductsLoading = ref(true);
   let noNewProducts = ref(true);
-  let categories = ref(null);
+  let categories = computed(() => {
+    return sampleShopItemStore.categories
+  })
   let noAnimation = ref(false);
 
-  watch(sampleShopItemStore, () => {
-    categories = sampleShopItemStore.categories;
-    setCategories()
-  })
-
-  function setCategories(){
-    if(categories.length > 0){
-      categories = sampleShopItemStore.categories;
-      noCategoryCarousel.value = false;
-    }
-    else{
-      noAnimation.value = true;
-    }
-  }
-
   onMounted(() => {
-    if(!categories.value){
-        categories = sampleShopItemStore.categories;
-        setCategories();
-        categoryCarouselLoading.value = false;
-    }
     sampleShopItemStore.fillItems()
     .then(response => {
       newProductsLoading.value = false;

@@ -1,5 +1,5 @@
 <template>
-<div id="mySidebar" class="sidebar">
+<div id="mySidebar" class="sidebar" data-backdrop="static">
     <div class="sidebarContent mt-2">
         <div class="d-lg-none d-block">
             <RouterLink to="/boutique/categories"><h2>Accueil</h2></RouterLink>
@@ -31,18 +31,26 @@
     const adminStore = useAdminStore();
 
     function closeSideBar(){
+        let appContent = document.querySelector(".appContent");
         let sidebar = document.getElementById("mySidebar");
         sidebar.style.left = "-250px";
         sidebar.classList.remove('toggled');
+        appContent.style.pointerEvents = '';
     }
 
     function openSideBar(){
+        let appContent = document.querySelector(".appContent");
         let sidebar = document.getElementById("mySidebar");
         sidebar.style.left = "0";
         sidebar.classList.add('toggled');
+        if(window.innerWidth < 992){
+            appContent.style.pointerEvents = 'none';
+        }
     }
 
     onMounted(() => {
+        let appContent = document.querySelector(".appContent");
+
         let sidebar = document.getElementById("mySidebar");
         document.getElementById("header").addEventListener('mouseleave', () => {
             if(window.innerWidth > 991){
@@ -59,6 +67,8 @@
             }
         })
         document.getElementById("sideToggler").addEventListener('click', () => {
+            appContent.style.pointerEvents = 'none';
+            console.log(appContent.style.pointerEvents)
             if(!sidebar.className.includes('toggled')){
                 openSideBar();
             }
