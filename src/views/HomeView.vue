@@ -12,6 +12,7 @@
         <loading class="position-relative" style="height: 250px;" :is-full-page="false" :active="newProductsLoading"></loading>
         <NewProducts v-if="!noNewProducts" :items="sampleShopItemStore.items" />
       </div>
+      <HomeReviews />
   </main>
 </template>
 
@@ -20,6 +21,7 @@
   import CategoryCarousel from '@/components/HomeComponents/CategoryCarousel.vue';
   import KeyPoints from '@/components/HomeComponents/KeyPoints.vue'
   import NewProducts from '@/components/HomeComponents/NewProducts.vue'
+  import HomeReviews from '@/components/HomeComponents/HomeReviews.vue'
   import { useSampleItemStore } from '@/stores/SampleShopItemStore';
   import { computed, onBeforeMount, reactive, ref, watch} from 'vue';
   import Loading from 'vue3-loading-overlay';
