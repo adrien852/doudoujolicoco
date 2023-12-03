@@ -26,6 +26,16 @@
     let path = null;
 
     onBeforeMount(() => {
+        swal.fire({
+            icon: 'error',
+            title: 'Désolé',
+            text: 'Le paiement n\'est pas encore disponible.',
+            confirmButtonText: "Retour à l'accueil",
+            showConfirmButton: true,
+            confirmButtonColor: "#94BCD8",
+        }).then(() => {
+            router.push({ path: '/' })
+        })
         path = [
             {
                 name: 'accueil',
@@ -171,7 +181,7 @@
     }
 
     onMounted(async() => {
-        initializeBrainTree();
+        // initializeBrainTree();
     });
 
     function creditCardSubmit(event, submitButton, checkoutButton, dropinInstance){

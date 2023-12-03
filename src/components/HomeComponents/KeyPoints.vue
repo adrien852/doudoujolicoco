@@ -7,8 +7,8 @@
                         <div class="keyCard">
                             <div id="keyCard1" class="d-none">
                             <img class="m-auto" src="@/assets/images/yarn-ball.png" />
-                            <h4>Text 1</h4>
-                            <p>Longer text to describe</p>
+                            <h4>Avantage 1</h4>
+                            <p>Particularité concrète qui justifie l'avantage</p>
                         </div>
                         </div>
                         
@@ -16,8 +16,8 @@
                     <div class="d-flex text-center flex-column col-md-4 col-12">
                         <div class="keyCard">
                             <div id="keyCard2" class="d-none"><img class="m-auto" src="@/assets/images/knitting.png" />
-                                <h4>Text 1</h4>
-                                <p>Longer text to describe</p>
+                                <h4>Avantage 2</h4>
+                                <p>Particularité concrète qui justifie l'avantage</p>
                             </div>
                         </div>
                     </div>
@@ -25,8 +25,8 @@
                         <div class="keyCard">
                             <div id="keyCard3" class="d-none">
                                 <img class="m-auto" src="@/assets/images/yarn.png" />
-                                <h4>Text 1</h4>
-                                <p>Longer text to describe</p>
+                                <h4>Avantage 3</h4>
+                                <p>Particularité concrète qui justifie l'avantage</p>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
     });
 
     function scrollListener() {
-        if(document.getElementById("app").scrollTop > 450){
+        if(document.getElementById("app").scrollTop > 250){
         document.getElementById("keyCard1").className = "animate__animated animate__fadeInLeft"
         document.getElementById("keyCard2").className = "animate__animated animate__fadeInLeft"
         document.getElementById("keyCard3").className = "animate__animated animate__fadeInLeft"

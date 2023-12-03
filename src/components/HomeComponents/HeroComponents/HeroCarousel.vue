@@ -1,5 +1,5 @@
 <template>
-  <img alt="Doudou Joli Logo" class="heroLogo py-3 d-lg-none d-block" src="@/assets/full_logo.png">
+  <img alt="Doudou Joli Logo" class="heroLogo py-2 d-block" src="@/assets/full_logo.png">
   <swiper 
     class="homeSwiper"
     :modules="modules" 
@@ -13,10 +13,6 @@
       <img alt="Peluche de vache en crochet" class="d-block w-100" :src="slide">
     </swiper-slide>
   </swiper>
-
-  <RouterLink class="d-lg-none d-block" to="/boutique"><button class="btn carouselBtn">
-      <h2 class="m-0">Visiter la boutique</h2>
-    </button></RouterLink>
 </template>
 
 <script setup>
@@ -39,15 +35,10 @@ let carouselImages = [
 </script>
 
 <style scoped>
-@media (min-width: 960px) {
-  .homeSwiper{
-    border-radius: 0 50px 50px 0;
-  }
-}
 .heroLogo{
   position: absolute;
   z-index: 10;
-  width: 150px;
+  width: 110px;
 }
 .homeSwiper, .swipeImg, .swipeImg img{
   height:100%;
@@ -55,7 +46,7 @@ let carouselImages = [
 }
 .swipeImg img{
   object-fit: cover;
-  object-position: 50% 30%;
+  object-position: 50% 40%;
 }
 .carouselBtn{
   width:40%;
@@ -94,6 +85,13 @@ let carouselImages = [
   /* -webkit-filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0));
     filter: drop-shadow( 2px 1px 2px rgb(0, 0, 0)); */
 }
-
+@media (min-width: 960px) {
+  .homeSwiper{
+    border-radius: 0 50px 50px 0;
+  }
+  .heroLogo{
+    width: 220px;
+  }
+}
 </style>
 

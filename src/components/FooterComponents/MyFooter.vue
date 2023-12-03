@@ -7,19 +7,19 @@
                     <h1>Pages</h1>
                     <ul>
                         <li>
-                            <RouterLink to="#">Accueil</RouterLink>
+                            <RouterLink to="/">Accueil</RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="#">A propos</RouterLink>
+                            <RouterLink to="/a-propos">A propos</RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="#">Boutique</RouterLink>
+                            <RouterLink to="/boutique">Boutique</RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="#">Catégories</RouterLink>
+                            <RouterLink to="/boutique/categories">Catégories</RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="#">FAQ</RouterLink>
+                            <RouterLink to="/faq">FAQ</RouterLink>
                         </li>
                     </ul>
                 </div>
@@ -44,13 +44,13 @@
                     <h1>Contact</h1>
                     <ul>
                         <li>
-                            <RouterLink to="#">Formulaire de contact</RouterLink>
+                            <RouterLink to="/contact">Formulaire de contact</RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="#"><span class="phoneEmoji">06 00 00 00 00</span></RouterLink>
+                            <a href="callto:06 00 00 00 00"><span class="phoneEmoji">06 00 00 00 00</span></a>
                         </li>
                         <li>
-                            <RouterLink to="#"><span class="emailEmoji">contact@doudoujoli.fr</span></RouterLink>
+                            <a href="mailto:doudoujolicoco@gmail.com"><span class="emailEmoji">doudoujolicoco@gmail.com</span></a>
                         </li>
                     </ul>
                 </div>

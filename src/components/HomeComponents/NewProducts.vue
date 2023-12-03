@@ -30,17 +30,15 @@
   
   onMounted(() => {
     window.addEventListener("scroll", function () {
-      if(document.getElementById("app").scrollTop > 860){
+      if(document.getElementById("app") && document.getElementById("app").scrollTop > 860){
         document.getElementById("items1").className = "col-lg-3 col-sm-6 col-12 d-flex flex-column animate__animated animate__fadeInLeft"
         document.getElementById("items2").className = "col-lg-3 col-sm-6 col-12 d-flex flex-column animate__animated animate__fadeInLeft"
         document.getElementById("items3").className = "d-sm-flex d-none col-lg-6 p-0 col-12 flex-wrap animate__animated animate__fadeInRight"
       }
-      else if(document.getElementById("items1")){
-        if(document.getElementById("items1").className != "d-none col-lg-3 col-sm-6 col-12 flex-column"){
-          document.getElementById("items1").className = "col-lg-3 col-sm-6 col-12 d-flex flex-column animate__animated animate__fadeOutLeft"
-          document.getElementById("items2").className = "col-lg-3 col-sm-6 col-12 d-flex flex-column animate__animated animate__fadeOutLeft"
-          document.getElementById("items3").className = "d-sm-flex d-none col-lg-6 p-0 col-12 flex-wrap animate__animated animate__fadeOutRight"
-        }
+      if(document.getElementById("items1") && document.getElementById("items1").className != "d-none col-lg-3 col-sm-6 col-12 flex-column"){
+        document.getElementById("items1").className = "col-lg-3 col-sm-6 col-12 d-flex flex-column animate__animated animate__fadeOutLeft"
+        document.getElementById("items2").className = "col-lg-3 col-sm-6 col-12 d-flex flex-column animate__animated animate__fadeOutLeft"
+        document.getElementById("items3").className = "d-sm-flex d-none col-lg-6 p-0 col-12 flex-wrap animate__animated animate__fadeOutRight"
       }
     }, true);
   })
