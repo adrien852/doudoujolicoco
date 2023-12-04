@@ -44,6 +44,8 @@
                 !event.target.className.includes('cartTriggerToggler')
               ){
                 appContent.style.pointerEvents = '';
+                appContent.style.opacity = '1';
+                app.style.overflow = "auto"
               }
           }
         }
@@ -57,6 +59,8 @@
             !event.target.className.includes('navbar-toggler')
           ){
             appContent.style.pointerEvents = '';
+            appContent.style.opacity = '1';
+            app.style.overflow = "auto"
           }
         }
       }

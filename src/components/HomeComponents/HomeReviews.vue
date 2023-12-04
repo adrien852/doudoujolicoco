@@ -39,10 +39,12 @@
 </template>
 
 <script setup>
-    import {onMounted} from 'vue'
+    import {onMounted, onUnmounted, watch} from 'vue'
+    const props = defineProps({
+        noAnimation: Boolean
+    });
 
-    onMounted(() => {
-        window.addEventListener("scroll", function () {
+    function scrollListener() {
         if(document.getElementById("app") && document.getElementById("app").scrollTop > 1300){
             if(!document.getElementById("animated1").className.includes("initialClass") && !document.getElementById("animated1").className.includes("initialReached")){
                 document.getElementById("animated1").className = "d-flex flex-sm-row flex-column col-lg-6 col-12 animate__animated animate__fadeInLeft"
@@ -56,7 +58,21 @@
             document.getElementById("animated1").className = "d-flex flex-sm-row flex-column col-lg-6 col-12 animate__animated animate__fadeOutLeft"
             document.getElementById("animated2").className = "d-flex flex-sm-row flex-column col-lg-6 col-12 mt-lg-0 mt-5 animate__animated animate__fadeOutRight"
         }
-        }, true);
+    }
+
+    onMounted(() => {
+        window.addEventListener("scroll", scrollListener, true);
+    })
+
+    
+    onUnmounted(() => {
+        window.removeEventListener("scroll", scrollListener, true);
+    })
+
+    watch(props, () => {
+        if(props.noAnimation){
+            window.removeEventListener("scroll", scrollListener, true);
+        }
     })
 </script>
 

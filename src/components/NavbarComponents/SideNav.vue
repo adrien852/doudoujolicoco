@@ -33,18 +33,24 @@
     function closeSideBar(){
         let appContent = document.querySelector(".appContent");
         let sidebar = document.getElementById("mySidebar");
+        let app = document.getElementById("app");
         sidebar.style.left = "-250px";
         sidebar.classList.remove('toggled');
         appContent.style.pointerEvents = '';
+        appContent.style.opacity = '1';
+        app.style.overflow = "auto"
     }
 
     function openSideBar(){
         let appContent = document.querySelector(".appContent");
         let sidebar = document.getElementById("mySidebar");
+        let app = document.getElementById("app");
         sidebar.style.left = "0";
         sidebar.classList.add('toggled');
         if(window.innerWidth < 992){
             appContent.style.pointerEvents = 'none';
+            appContent.style.opacity = '0.5';
+            app.style.overflow = "hidden"
         }
     }
 
@@ -68,6 +74,8 @@
         })
         document.getElementById("sideToggler").addEventListener('click', () => {
             appContent.style.pointerEvents = 'none';
+            appContent.style.opacity = '0.5';
+            app.style.overflow = "hidden"
             console.log(appContent.style.pointerEvents)
             if(!sidebar.className.includes('toggled')){
                 openSideBar();

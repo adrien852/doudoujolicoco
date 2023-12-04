@@ -33,20 +33,27 @@
     const cartStore = useCartStore();
 
     function closeSideCart(){
+
         let appContent = document.querySelector(".appContent");
         let sideCart = document.getElementById("sideCart");
+        let app = document.getElementById("app");
         sideCart.style.right = "-350px";
         sideCart.classList.remove('toggled');
         appContent.style.pointerEvents = '';
+        appContent.style.opacity = '1';
+        app.style.overflow = "auto"
     }
 
     function openSideCart(){
         let sideCart = document.getElementById("sideCart");
         let appContent = document.querySelector(".appContent");
+        let app = document.getElementById("app");
         sideCart.style.right = "0";
         sideCart.classList.add('toggled');
         if(window.innerWidth < 992){
             appContent.style.pointerEvents = 'none';
+            appContent.style.opacity = '0.5';
+            app.style.overflow = "hidden"
         }
     }
 

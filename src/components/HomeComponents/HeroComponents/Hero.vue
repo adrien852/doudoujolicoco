@@ -60,7 +60,7 @@ h1::after{
     -o-transition: transform 0.1s ease-out, background-color 0.2s ease-out;
     transition: transform 0.1s ease-out, background-color 0.2s ease-out;
   padding: 10px 20px;
-  margin-top: 30px;
+  margin: 30px;
 }
 .btn:hover{
     /* transform: scale3d(1.01, 1.01, 1.01); */
@@ -99,9 +99,10 @@ img{
 }
 @media (max-width:575px) {
   h1{
-    font-size: 36pt;
+    font-size: 35pt;
     line-height: 45px;
     margin-bottom: 10px;
+    letter-spacing: -1px;
   }
 }
 </style>

@@ -12,7 +12,7 @@
         <loading class="position-relative" style="height: 250px;" :is-full-page="false" :active="newProductsLoading"></loading>
         <NewProducts v-if="!noNewProducts" :items="sampleShopItemStore.items" />
       </div>
-      <HomeReviews />
+      <HomeReviews :noAnimation="noAnimation" />
   </main>
 </template>
 
