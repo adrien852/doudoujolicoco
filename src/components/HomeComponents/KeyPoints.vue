@@ -5,7 +5,7 @@
                 <div class="d-flex flex-wrap w-100">
                     <div class="keyCards d-flex text-center flex-column col-md-4 col-12">
                         <div class="keyCard">
-                            <div id="keyCard1" class="d-none">
+                            <div id="keyCard1">
                             <img class="m-auto" src="@/assets/images/yarn-ball.png" />
                             <h4>Avantage 1</h4>
                             <p>Particularité concrète qui justifie l'avantage</p>
@@ -15,7 +15,7 @@
                     </div>
                     <div class="d-flex text-center flex-column col-md-4 col-12">
                         <div class="keyCard">
-                            <div id="keyCard2" class="d-none"><img class="m-auto" src="@/assets/images/knitting.png" />
+                            <div id="keyCard2"><img class="m-auto" src="@/assets/images/knitting.png" />
                                 <h4>Avantage 2</h4>
                                 <p>Particularité concrète qui justifie l'avantage</p>
                             </div>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="d-flex text-center flex-column col-md-4 col-12">
                         <div class="keyCard">
-                            <div id="keyCard3" class="d-none">
+                            <div id="keyCard3">
                                 <img class="m-auto" src="@/assets/images/yarn.png" />
                                 <h4>Avantage 3</h4>
                                 <p>Particularité concrète qui justifie l'avantage</p>
@@ -51,11 +51,16 @@
 
     function scrollListener() {
         if(document.getElementById("app").scrollTop > 250){
-        document.getElementById("keyCard1").className = "animate__animated animate__fadeInLeft"
-        document.getElementById("keyCard2").className = "animate__animated animate__fadeInLeft"
-        document.getElementById("keyCard3").className = "animate__animated animate__fadeInLeft"
+            if(document.getElementById("keyCard1").className != "initialClass" && document.getElementById("keyCard1").className != "initialClassReached"){
+                document.getElementById("keyCard1").className = "animate__animated animate__fadeInLeft"
+                document.getElementById("keyCard2").className = "animate__animated animate__fadeInLeft"
+                document.getElementById("keyCard3").className = "animate__animated animate__fadeInLeft"
+            }
+            else{
+                document.getElementById("keyCard1").className = "initialClassReached"
+            }
         }
-        else if(document.getElementById("keyCard1").className != "d-none"){
+        else if(document.getElementById("keyCard1").className != "initialClass"){
         document.getElementById("keyCard1").className = "animate__animated animate__fadeOutLeft"
         document.getElementById("keyCard2").className = "animate__animated animate__fadeOutLeft"
         document.getElementById("keyCard3").className = "animate__animated animate__fadeOutLeft"
@@ -64,9 +69,9 @@
 
     onMounted(() => {
         window.addEventListener("scroll", scrollListener, true);
-        document.getElementById("keyCard1").className = "d-none"
-        document.getElementById("keyCard2").className = "d-none"
-        document.getElementById("keyCard3").className = "d-none"
+        document.getElementById("keyCard1").className = "initialClass"
+        document.getElementById("keyCard2").className = "initialClass"
+        document.getElementById("keyCard3").className = "initialClass"
     })
 
     onUnmounted(() => {
@@ -76,9 +81,6 @@
     watch(props, () => {
         if(props.noAnimation){
             window.removeEventListener("scroll", scrollListener, true);
-            document.getElementById("keyCard1").className = "keyCard animate__animated animate__fadeInLeft"
-            document.getElementById("keyCard2").className = "keyCard animate__animated animate__fadeInLeft"
-            document.getElementById("keyCard3").className = "keyCard animate__animated animate__fadeInLeft"
         }
     })
 </script>
