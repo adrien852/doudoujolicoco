@@ -2,9 +2,9 @@
 <div id="mySidebar" class="sidebar" data-backdrop="static">
     <div class="sidebarContent mt-2">
         <div class="d-lg-none d-block">
-            <RouterLink to="/boutique/categories"><h2>Accueil</h2></RouterLink>
-            <RouterLink to="/boutique/categories"><h2>À propos</h2></RouterLink>
-            <RouterLink to="/boutique/categories"><h2>Boutique</h2></RouterLink>
+            <RouterLink to="/"><h2>Accueil</h2></RouterLink>
+            <RouterLink to="/a-propos"><h2>À propos</h2></RouterLink>
+            <RouterLink to="/boutique"><h2>Boutique</h2></RouterLink>
         </div>
         <RouterLink to="/boutique/categories"><h2>Catégories</h2></RouterLink>
         <RouterLink v-for="category in categories" :to="'/boutique/'+category.normalized">
@@ -76,7 +76,6 @@
             appContent.style.pointerEvents = 'none';
             appContent.style.opacity = '0.5';
             app.style.overflow = "hidden"
-            console.log(appContent.style.pointerEvents)
             if(!sidebar.className.includes('toggled')){
                 openSideBar();
             }

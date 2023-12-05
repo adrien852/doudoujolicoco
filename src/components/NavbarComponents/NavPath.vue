@@ -26,6 +26,8 @@ const props = defineProps({
         background-size: contain;
         opacity: 60%;
         display: flex;
+        z-index: 151;
+        position: relative;
     }
     a{
         text-decoration: none;

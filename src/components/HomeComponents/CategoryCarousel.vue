@@ -21,9 +21,24 @@
         </swiper>
     </div>
 
+    <!-- <div class="homeCategories">
+        <swiper 
+            class="shopCarousel"
+            :modules="modules"
+            :spaceBetween="0"
+            :slidesPerView="1"
+            :navigation="true"
+        >
+            <swiper-slide class="swipeImg" v-for="category in categories" :key="category">
+                <HomeCategory class="w-100" :category="category" />
+            </swiper-slide>
+        </swiper>
+    </div> -->
+
 </template>
 <script setup>
 import ShopCategory from '@/components/ShopComponents/ShopCategory.vue';
+import HomeCategory from '@/components/HomeComponents/HomeCategory.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Navigation } from 'swiper/modules';
 

@@ -1,5 +1,4 @@
 html, body, #app{
-    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     width:100%;
     height:100%;
@@ -33,13 +32,13 @@ html, body, #app{
   }
 
   h1{
-    font-weight: bold;
-    font-family: 'Arizonia';
+    font-weight: normal;
+    font-family: 'Kalam';
     font-size: 30pt;
     letter-spacing: 0px;
     position: relative;
     margin-bottom: 15px;
-    color:#22211F;
+    color:#779AB3;
   }
   h1::after {
     position: absolute;

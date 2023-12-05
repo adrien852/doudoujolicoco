@@ -30,7 +30,7 @@
   
   onMounted(() => {
     window.addEventListener("scroll", function () {
-      if(document.getElementById("app") && document.getElementById("app").scrollTop > 700){
+      if(document.getElementById("items1") && document.getElementById("app").scrollTop > 700){
         document.getElementById("items1").className = "col-lg-3 col-sm-6 col-12 d-flex flex-column animate__animated animate__fadeInLeft"
         document.getElementById("items2").className = "col-lg-3 col-sm-6 col-12 d-flex flex-column animate__animated animate__fadeInLeft"
         document.getElementById("items3").className = "d-sm-flex d-none col-lg-6 p-0 col-12 flex-wrap animate__animated animate__fadeInRight"

@@ -36,7 +36,7 @@
                     <h4>Image</h4>
                     <p>Pour conserver une présentation stable et uniforme sur le site, quelques règles à retenir : </p>
                     <ol>
-                        <li>Orientation portrait.</li>
+                        <li>Orientation paysage.</li>
                         <li>Centrer parfaitement le sujet sur la photo.</li>
                         <li>Laisser suffisamment d'espace autour du sujet. Il ne devrait pas occuper plus de &#8531; de la photo.</li>
                         <li>Privilégier les formats suivants : jpg, jpeg, png.</li>

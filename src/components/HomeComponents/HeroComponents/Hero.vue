@@ -3,22 +3,18 @@
       <div class="heroCarousel col-lg-6 col-12 p-0">
         <HeroCarousel />
       </div>
-      <div class="container heroRight col-xl-5 col-lg-6 m-auto position-relative">
-        <div class="text-center">
+      <div class="container heroRight d-flex flex-column col-xl-5 col-lg-6 position-relative">
           <!-- <img alt="Doudou Joli Logo" class="d-none d-lg-block logo py-3" src="@/assets/full_logo.png"/> -->
           <h1 class="mainTitle text-left">Un doudou crocheté<br/>rien que pour vous</h1>
-          <div class="mt-3 text-left">
+          <div class="text-left">
             <h5>Notre adorable collection de peluches et accessoires au crochet est confectionnée avec amour.</h5>
           </div>
-          <HeroBulletPoints />
-          <button class="btn">
-          <RouterLink to="/boutique">
-            
-              <h4 class="m-0">Visiter la boutique</h4>
-            
-          </RouterLink>
-        </button>
-        </div>
+          <HeroBulletPoints class="mt-2" />
+          <button class="btn mt-3">
+              <RouterLink class="m-0" to="/boutique">
+                  <h4 class="m-0">Visiter la boutique</h4>
+              </RouterLink>
+          </button>
       </div>
     </div>
 
@@ -43,10 +39,10 @@ h1{
   text-decoration: none;
   /* font-family: Questrial; */
   color: #3E82B0;
-  font-size: min(5vw + 8px, 62pt);
+  font-size: min(4.9vw + 2px, 62pt);
   letter-spacing: -2px;
-  line-height: 55px;
-  margin-bottom: 35px;
+  line-height: 60px;
+  margin-bottom: 25px;
 }
 h1::after{
   content: none;
@@ -60,7 +56,6 @@ h1::after{
     -o-transition: transform 0.1s ease-out, background-color 0.2s ease-out;
     transition: transform 0.1s ease-out, background-color 0.2s ease-out;
   padding: 10px 20px;
-  margin: 30px;
 }
 .btn:hover{
     /* transform: scale3d(1.01, 1.01, 1.01); */

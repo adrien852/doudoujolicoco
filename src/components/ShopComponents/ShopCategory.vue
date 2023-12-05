@@ -52,7 +52,7 @@ const props = defineProps({
     .shopItemCard img{
         border-radius: 10px;
         width: auto;
-        height: 200px;
+        height: 300px;
     }
     .cartImg{
         object-position: 50% 40%;
