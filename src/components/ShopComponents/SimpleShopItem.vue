@@ -36,8 +36,15 @@ function addItemToCart(){
 
 function openSideCart(){
     let sideCart = document.getElementById("sideCart");
+    let appContent = document.querySelector(".appContent");
+    let app = document.getElementById("app");
     sideCart.style.right = "0";
     sideCart.classList.add('toggled');
+    if(window.innerWidth < 992){
+        appContent.style.pointerEvents = 'none';
+        appContent.style.opacity = '0.5';
+        app.style.overflow = "hidden"
+    }
 }
 
 
