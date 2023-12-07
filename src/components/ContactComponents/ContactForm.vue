@@ -8,7 +8,7 @@
                 id="name"
                 label="Nom"
                 placeholder="Jeanne Dupont"
-                outer-class="col-md-5 col-12"
+                outer-class="col-12"
             />
             <FormKit
                 type="email"
@@ -18,10 +18,8 @@
                 label="E-mail"
                 prefix-icon="email"
                 placeholder="dupont@gmail.com"
-                outer-class="col-md-5 col-12"
+                outer-class="col-12"
             />
-        </div>
-        <div class="d-flex justify-content-center">
             <FormKit
                 type="textarea"
                 validation="required|length:10"
@@ -29,8 +27,11 @@
                 id="body"
                 label="Message"
                 placeholder="Votre message..."
-                outer-class="col-md-10 col-12"
+                outer-class="col-12"
             />
+        </div>
+        <div class="d-flex justify-content-center">
+            
         </div>
         <FormKit type="submit">Envoyer</FormKit>
     </FormKit>
@@ -77,5 +78,5 @@ function handleSubmit(){
 }
 </script>
 
-<style scoped>
+<style>
 </style>

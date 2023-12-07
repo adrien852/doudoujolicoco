@@ -13,12 +13,14 @@
         <NewProducts v-if="!noNewProducts" :items="sampleShopItemStore.items" />
       </div>
       <HomeReviews :noAnimation="noAnimation" />
+      <HomeContact />
   </main>
 </template>
 
 <script setup>
   import Hero from '@/components/HomeComponents/HeroComponents/Hero.vue'
   import CategoryCarousel from '@/components/HomeComponents/CategoryCarousel.vue';
+  import HomeContact from '@/components/HomeComponents/HomeContact.vue';
   import KeyPoints from '@/components/HomeComponents/KeyPoints.vue'
   import NewProducts from '@/components/HomeComponents/NewProducts.vue'
   import HomeReviews from '@/components/HomeComponents/HomeReviews.vue'

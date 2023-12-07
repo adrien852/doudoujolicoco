@@ -113,7 +113,7 @@ img{
     padding: 10px;
 }
 .btn:hover{
-    transform: scale(1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
     -webkit-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
     -moz-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
     -o-transition: transform 0.1s ease-out, background-color 0.1s ease-out;

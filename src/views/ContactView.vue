@@ -1,7 +1,9 @@
 <template>
     <NavPath :path="path"/>
-    <div class="container mt-3">
-        <ContactForm />
+    <div class="container justify-content-center d-flex mt-3">
+        <div class="col-xl-5 col-lg-6 col-md-8 col-12">
+            <ContactForm />
+        </div>
     </div>
 </template>
 

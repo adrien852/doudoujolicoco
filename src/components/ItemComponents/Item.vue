@@ -120,7 +120,7 @@ function openSideCart(){
         background-color: transparent;
     }
     h2{
-        color: #4c778d;
+        color: #779AB3;
         font-size: 20pt;
     }
     h3{
