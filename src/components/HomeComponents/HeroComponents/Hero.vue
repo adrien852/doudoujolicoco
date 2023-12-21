@@ -39,7 +39,7 @@ h1{
   text-decoration: none;
   /* font-family: Questrial; */
   color: #3E82B0;
-  font-size: min(4.9vw + 2px, 62pt);
+  font-size: min(4.9vw + 0px, 62pt);
   letter-spacing: -2px;
   line-height: 60px;
   margin-bottom: 25px;

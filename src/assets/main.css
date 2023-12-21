@@ -39,6 +39,7 @@ html, body, #app{
     position: relative;
     margin-bottom: 15px;
     color:#779AB3;
+    word-spacing: -4pt;
   }
   h1::after {
     position: absolute;
