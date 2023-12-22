@@ -1,10 +1,10 @@
 <template>
-    <div class="itemSummary flex-wrap d-flex mt-sm-4 justify-content-center align-items-center">
+    <div class="itemSummary flex-wrap d-flex mt-lg-4 justify-content-center align-items-center">
         <ItemImageCarousel :item="item" />
         <div class="itemDetails d-flex flex-column col-lg-5 col-12 mt-lg-0 mt-3">
             <div class="d-flex align-items-center">
                 <h1 class="mb-2 pr-2">{{ item.name }}</h1>
-                <h2 class="ml-auto mb-1">{{ parseFloat(item.price) }}€</h2>
+                <h2 class="ml-auto mb-1">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</h2>
             </div>
             <p>
                 {{ item.description }}

@@ -3,7 +3,7 @@
     <div v-if="cartStore.cartItems.length != 0" class="container position-relative mt-2">
         <loading :active="isLoading"></loading>
         <div class="mx-1 d-flex flex-md-wrap flex-wrap-reverse row justify-content-around">
-            <div class="d-flex row m-0 col-md-8 col-12 ml-auto mb-md-0 mt-3 mt-md-0">
+            <div class="d-flex row m-0 col-lg-8 col-12 ml-auto mb-md-0 mt-3 mt-md-0">
                 <FormKit
                     id="mainForm"
                     type="form"
@@ -62,7 +62,7 @@
                     <FormKit type="submit" @click="showError = true" />
                 </FormKit>
             </div>
-            <CartDetails class="col-md-4 col-12 h-fit d-md-block d-none" :checkoutButton="false" />
+            <CartDetails class="col-lg-4 h-fit d-lg-block d-none" :checkoutButton="false" />
         </div>
     </div>
     

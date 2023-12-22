@@ -11,7 +11,7 @@
                 <div class="itemTitle text-left">
                     <p class="m-0">{{ item.name }}</p>
                 </div>
-                <p class="itemPrice m-0">{{ parseFloat(item.price) }}€</p>
+                <p class="itemPrice m-0">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</p>
             </RouterLink>
             <RouterLink class="d-flex align-items-center justify-content-between px-1" :to="'/boutique/'+item.category.normalized">
                 <p class="itemCategory text-uppercase ">{{ item.category.name }}</p>

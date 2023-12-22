@@ -8,7 +8,7 @@
                 :pagination="{
                   clickable: true,
                 }"
-                class="d-block d-sm-none"
+                class="d-block d-lg-none"
                 @zoom-change="disableSwipe"
                 ref="phoneSwiper"
             >
@@ -30,7 +30,7 @@
                 :watchSlidesProgress="true"
                 :modules="modules"
                 :direction="'vertical'"
-                class="mySwiper d-sm-block d-none"
+                class="mySwiper d-lg-block d-none"
             >
                 <swiper-slide v-for="slide in item.images">
                     <img :src="slide"/>
@@ -41,7 +41,7 @@
                 :modules="modules"
                 :allow-touch-move="false"
                 :speed="0"
-                class="mySwiper2 d-sm-block d-none"
+                class="mySwiper2 d-lg-block d-none"
             >
                 <swiper-slide v-for="slide in item.images">
                     <VueMagnifier class="d-sm-block d-none" :src="slide" :mg-border-width="0" :mg-shape="'square'" :mg-width="2000" :mg-height="2000" :mg-show-overflow="false" :zoom-factor="0.08"/>
@@ -133,7 +133,7 @@ onMounted(() => {
 
 @media (max-width: 991px) {
   .item-gallery .swiper {
-    max-height: 450px;
+    max-height: 650px;
   }
 }
 

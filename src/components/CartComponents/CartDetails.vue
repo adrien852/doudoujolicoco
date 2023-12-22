@@ -50,6 +50,8 @@
         font-size: 10pt;
         font-family: 'Questrial', sans-serif;
         color: white;
+        word-spacing: normal;
+        letter-spacing: 1px;
     }
     h3, h2{
         font-size: 10pt;
