@@ -181,7 +181,7 @@
     }
 
     onMounted(async() => {
-        // initializeBrainTree();
+        initializeBrainTree();
     });
 
     function creditCardSubmit(event, submitButton, checkoutButton, dropinInstance){
