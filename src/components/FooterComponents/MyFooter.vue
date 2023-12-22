@@ -24,7 +24,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 col-12">
-                    <h1>Information légales</h1>
+                    <h1>Informations légales</h1>
                     <ul>
                         <li>
                             <RouterLink to="#">Mentions Légales</RouterLink>
