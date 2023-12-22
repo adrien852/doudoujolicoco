@@ -73,9 +73,6 @@
             }
         })
         document.getElementById("sideToggler").addEventListener('click', () => {
-            // appContent.style.pointerEvents = 'none';
-            // appContent.style.opacity = '0.5';
-            // app.style.overflow = "hidden"
             if(!sidebar.className.includes('toggled')){
                 openSideBar();
             }

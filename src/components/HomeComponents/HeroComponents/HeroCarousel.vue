@@ -27,8 +27,8 @@ import { RouterLink, RouterView } from 'vue-router'
 let modules = [Autoplay, EffectFade]
 
 let carouselImages = [
+  "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fvache_crochet%2Ffile1?alt=media&token=6f311b31-39a1-4c2e-acd7-3a6930f00fdc", 
   "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fporte-tetine%2Ffile4?alt=media&token=7c205c76-f5f1-4fed-b32d-b65df559b0e0",
-  "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fvache_crochet%2Ffile1?alt=media&token=6f311b31-39a1-4c2e-acd7-3a6930f00fdc",
   "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Folaf%2Ffile1?alt=media&token=51c9bd00-d603-4bd7-8fbb-eb440aad39b2",
   "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Freine_des_neiges%2Ffile1?alt=media&token=79cc3b8a-8544-4e6d-a563-79ff7d13e77e"
 ]

@@ -5,23 +5,31 @@
             <div class="flex-wrap d-flex justify-content-center w-100">
                 <div class="col-lg-4 col-12">
                     <h1>Pages</h1>
-                    <ul>
-                        <li>
-                            <RouterLink to="/">Accueil</RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink to="/a-propos">A propos</RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink to="/boutique">Boutique</RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink to="/boutique/categories">Catégories</RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink to="/faq">FAQ</RouterLink>
-                        </li>
-                    </ul>
+                    <div class="d-flex">
+                        <div class="col-6">
+                            <ul>
+                                <li>
+                                    <RouterLink to="/">Accueil</RouterLink>
+                                </li>
+                                <li>
+                                    <RouterLink to="/boutique">Boutique</RouterLink>
+                                </li>
+                                <li>
+                                    <RouterLink to="/boutique/categories">Catégories</RouterLink>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul>
+                                <li>
+                                    <RouterLink to="/a-propos">A propos</RouterLink>
+                                </li>
+                                <li>
+                                    <RouterLink to="/faq">FAQ</RouterLink>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-4 col-12">
                     <h1>Informations légales</h1>
@@ -56,6 +64,9 @@
                 </div>
             </div>
         </div>
+        <div class="text-center">
+            <p class="creator">Créé par <a target="_blank" href="https://adriendurouge.com">Adrien Durouge</a> - Tous droits réservés</p>
+        </div>
     </footer>
 </template>
 
@@ -63,6 +74,14 @@
 </script>
 
 <style scoped>
+.creator{
+    font-size: 10pt;
+}
+
+.creator a{
+    color: #2087CE;
+}
+
 footer{
     /* height:150px; */
     background-color:#a18f7b1a;

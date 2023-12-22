@@ -1,7 +1,7 @@
 <template>
     <div class="container my-5">
         <h1 class="ml-3 mb-4 text-left">Prenons contact</h1>
-        <div class="d-flex flex-wrap justify-content-between align-content-center">
+        <div class="d-flex flex-wrap justify-content-lg-between justify-content-md-center align-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 col-12">
                 <ContactForm />
             </div>
