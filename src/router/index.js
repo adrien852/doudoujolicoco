@@ -21,6 +21,7 @@ import AdminCategoryView from '@/views/AdminViews/Category/CategoryView.vue'
 import AdminCategoryNewView from '@/views/AdminViews/Category/CategoryNewView.vue'
 import ContactView from '@/views/ContactView.vue'
 import FaqView from '@/views/FaqView.vue'
+import PaymentConfirmationView from '@/views/PaymentConfirmationView.vue'
 import LoginView from '@/views/LoginView.vue'
 
 const API = import.meta.env.VITE_EXPRESS_API_URL;
@@ -88,6 +89,11 @@ const router = createRouter({
       path: '/paiement',
       name: 'payment',
       component: PaymentView
+    },
+    {
+      path: '/confirmation-paiement',
+      name: 'paymentConfirmation',
+      component: PaymentConfirmationView
     },
     {
       path: '/livraison',

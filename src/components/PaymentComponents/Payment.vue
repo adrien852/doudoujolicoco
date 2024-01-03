@@ -1,21 +1,42 @@
 <template>
-  <form class="col-lg-6 col-md-8 col-12" id="payment-form" action="#">
-    <!-- Putting the empty container you plan to pass to
-      'braintree.dropin.create' inside a form will make layout and flow
-      easier to manage -->
-    <div id="dropin-container"></div>
-    <div class="text-center mt-3" id="submitButtons"></div>
-  </form>
+  <loading :active="isLoading"></loading>
+  <div id="checkout" class="w-100">
+    
+  </div>
 </template>
+
 <script setup>
-  const emit = defineEmits(['paymentInit']);
-  import {onMounted, ref} from 'vue';
-  onMounted(() => {
-    emit('paymentInit');
+  import { onMounted, onBeforeUnmount, ref } from 'vue';
+  import { checkout } from '@/services/PaymentService.js'
+  import {useCartStore} from '@/stores/CartStore.js'
+  import Loading from 'vue3-loading-overlay';
+  import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+
+  const cartStore = useCartStore();
+  let isLoading = ref(true);
+  let stripeCheckout = null;
+
+  onMounted(async() => {
+    const stripe = window.Stripe(`${import.meta.env.VITE_STRIPE_API_KEY}`);
+    checkout(cartStore.cartItems).then(({clientSecret}) => {
+      stripe.initEmbeddedCheckout({
+        clientSecret
+      }).then(response => {
+        stripeCheckout = response;
+        response.mount('#checkout')
+        isLoading.value = false;
+      });
+    })
+
   })
+
+  onBeforeUnmount(() => {
+    if(stripeCheckout){
+      stripeCheckout.destroy();
+    }
+  })
+
 </script>
-<style>
-  #submitButtons .btn{
-    background-color: #94BCD8;
-  }
+
+<style scoped>
 </style>

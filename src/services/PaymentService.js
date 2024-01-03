@@ -8,16 +8,21 @@ function generateHmac(privateKey, payload){
     return CryptoJS.enc.Hex.stringify(CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA256, privateKey).update(payload).finalize());
 }
 
-export async function getBraintreeToken() {
+// export async function getBraintreeToken() {
 
-    const response = await axios.get(API+'/payment/initialize');
+//     const response = await axios.get(API+'/payment/initialize');
+//     return response.data;
+// }
+
+export async function checkout(items) {
+    items = items.map((item) => item = {'normalized': item.normalized, 'qty': 1});
+    const payload = {cartItems: items};
+    const response = await axios.post(API+'/payment/checkout', {hmac: generateHmac(privateKey, payload), publicKey: publicKey, payload: payload});
     return response.data;
 }
 
-export async function checkout(nonce, items) {
-    items = items.map((item) => item = {'normalized': item.normalized, 'qty': 1});
-    const payload = {paymentMethodNonce: nonce, cartItems: items};
-    const response = await axios.post(API+'/payment/checkout', {hmac: generateHmac(privateKey, payload), publicKey: publicKey, payload: payload});
+export async function getSessionStatus(sessionId) {
+    const response = await axios.get(API+'/payment/session?session_id='+sessionId);
     return response.data;
 }
 
