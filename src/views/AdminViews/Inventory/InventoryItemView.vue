@@ -52,15 +52,19 @@
             </div>
             <div class="d-flex justify-content-center flex-wrap">
                 <FormKit
+                    type="number"
+                    number
+                    name="stock"
+                    label="Stock"
+                    outer-class="col-md-5 col-12"
+                />
+                <FormKit
                     type="textarea"
                     label="Description"
                     name="description"
                     validation="required"
                     outer-class="col-md-5 col-12"
                 />
-                <div class="col-md-5">
-
-                </div>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="col-md-11 col-12 offset-md-6">
@@ -279,6 +283,7 @@
             name: item.name,
             normalized: item.normalized,
             description: item.description,
+            stock: item.stock,
             price: item.price,
             category: categories.find((category) => category.name == item.category.name),
             images: item.images

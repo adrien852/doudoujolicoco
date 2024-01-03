@@ -72,6 +72,7 @@
                 normalized: "Nom normalisé",
                 categoryName:"Catégorie",
                 price: "Prix",
+                stock: "Stock",
                 createdAt: "Date de création",
                 modifiedAt: "Dernière modification",
             }
@@ -108,6 +109,7 @@
                 normalized: item.normalized,
                 categoryName: item.category.name,
                 price: item.price+"€",
+                stock: item.stock,
                 createdAt: new Date(item.createdAt).toLocaleDateString("fr-FR"),
                 modifiedAt: new Date(item.modifiedAt).toLocaleDateString("fr-FR"),
             }

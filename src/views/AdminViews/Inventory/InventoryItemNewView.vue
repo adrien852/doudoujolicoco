@@ -52,15 +52,17 @@
             </div>
             <div class="d-flex justify-content-center flex-wrap">
                 <FormKit
+                    type="number"
+                    label="Stock"
+                    outer-class="col-md-5 col-12"
+                />
+                <FormKit
                     type="textarea"
                     label="Description"
                     name="description"
                     validation="required"
                     outer-class="col-md-5 col-12"
                 />
-                <div class="col-md-5">
-
-                </div>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="col-12 offset-md-7">
