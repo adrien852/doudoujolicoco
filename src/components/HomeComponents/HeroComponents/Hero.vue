@@ -5,9 +5,9 @@
       </div>
       <div class="container heroRight d-flex flex-column col-xl-5 col-lg-6 position-relative">
           <!-- <img alt="Doudou Joli Logo" class="d-none d-lg-block logo py-3" src="@/assets/full_logo.png"/> -->
-          <h1 class="mainTitle text-left">Un doudou crocheté<br/>rien que pour vous</h1>
+          <h1 class="mainTitle text-left">Commandez votre<br/>déco au crochet</h1>
           <div class="text-left">
-            <h5>Notre adorable collection de peluches et accessoires au crochet est confectionnée avec amour.</h5>
+            <h5>Une collection d'articles de décoration et accessoires de mode au crochet confectionnée avec amour.</h5>
           </div>
           <HeroBulletPoints class="mt-2" />
           <button class="btn mt-3">
@@ -41,7 +41,7 @@ h1{
   color: #3E82B0;
   font-size: min(4.9vw + 0px, 62pt);
   letter-spacing: -2px;
-  line-height: 60px;
+  line-height: 65px;
   margin-bottom: 25px;
 }
 h1::after{

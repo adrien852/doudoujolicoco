@@ -80,6 +80,7 @@
     .reviewContainer{
         background-color: #94bcd83d;
         min-height: 390px;
+        overflow-x: hidden;
     }
 
     .review{

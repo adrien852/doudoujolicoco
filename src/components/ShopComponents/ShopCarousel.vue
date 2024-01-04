@@ -2,7 +2,7 @@
     <swiper 
         class="shopCarousel pb-3"
         :modules="modules"
-        :spaceBetween="30"
+        :spaceBetween="20"
         :slidesPerView="'auto'"
         :freeMode="true"
         :loop="true"
@@ -29,6 +29,6 @@
 
 <style scoped>
     .swipeImg{
-        width: 200px;
+        width: 250px;
     }
 </style>

@@ -117,7 +117,7 @@
 
 </script>
 
-<style>
+<style scoped>
 p{
     font-size: 13pt;
     margin-top: 30px;

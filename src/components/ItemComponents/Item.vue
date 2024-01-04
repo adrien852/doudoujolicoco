@@ -4,7 +4,11 @@
         <div class="itemDetails d-flex flex-column col-lg-5 col-12 mt-lg-0 mt-3">
             <div class="d-flex align-items-center">
                 <h1 class="mb-2 pr-2">{{ item.name }}</h1>
-                <h2 class="ml-auto mb-1">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</h2>
+                <div class="d-flex ml-auto" v-if="parseFloat(item.originalPrice) !== 0 && item.originalPrice !== item.price">
+                    <h2 class="discountedPrice mb-2 mr-2">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</h2>
+                    <h2 class="originalPrice">{{ parseFloat(item.originalPrice).toFixed(2).replace('.', ',').replace(',00', '') }}€</h2>
+                </div>
+                <h2 v-if="item.originalPrice === item.price || parseFloat(item.originalPrice) === 0" class="itemPrice ml-auto mb-1">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</h2>
             </div>
             <p>
                 {{ item.description }}
@@ -78,6 +82,18 @@ function openSideCart(){
 
 
 <style scoped>
+    .discountedPrice{
+        color: #c52222;
+        font-weight: bold;
+    }
+    .originalPrice{
+        font-size: 15pt;
+        text-decoration:line-through;
+        opacity: 80%;
+        vertical-align: middle;
+        height: fit-content;
+        margin-top:5px;
+    }
     .itemImage{
         width: 100%;
         min-height: 36vw;

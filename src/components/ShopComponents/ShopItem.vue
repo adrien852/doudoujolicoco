@@ -12,7 +12,11 @@
                 <div class="itemTitle d-flex">
                     <p :class="['my-auto', {'m-auto': !longDisplay}]">{{ item.name }}</p>
                 </div>
-                <p class="itemPrice">{{ parseFloat(item.price) }}€</p>
+                <div class="d-flex" v-if="parseFloat(item.originalPrice) !== 0 && item.originalPrice !== item.price">
+                    <p class="discountedPrice mb-0 mr-1">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</p>
+                    <p class="originalPrice mb-0">{{ parseFloat(item.originalPrice).toFixed(2).replace('.', ',').replace(',00', '') }}€</p>
+                </div>
+                <p v-if="item.originalPrice === item.price || parseFloat(item.originalPrice) === 0" class="itemPrice m-0">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</p>
             </RouterLink>
             <!-- <p :class="['itemPrice text-center ml-3 my-auto mr-4', {'d-none':!longDisplay}]">{{ item.price }}€</p> -->
         </div>
@@ -124,10 +128,19 @@ function openSideCart(){
         opacity: 0.6;
         margin-bottom: 0;
     }
-    .itemPrice{
-        font-size: small;
-        opacity: 0.6;
-        margin-bottom: 0;
+    .discountedPrice{
+        font-size: 12pt;
+        color: #c52222;
+        font-weight: bold;
+        height: fit-content;
+        opacity: 90%;
+    }
+    .originalPrice{
+        text-decoration:line-through;
+        opacity: 70%;
+        font-size: 10pt;
+        height: fit-content;
+        margin-top: 3px;
     }
     .itemTitle{
         font-size:16pt;

@@ -123,6 +123,9 @@
     .sideCart .cartDetailsContainer p{
         font-size: 10pt;
     }
+    .sideCart .cartDetailsContainer .discountedPrice{
+        margin-top: 3px;
+    }
     .sideCart .cartDetailsContainer{
         padding: 10px!important;
     }

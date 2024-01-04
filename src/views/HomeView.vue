@@ -53,6 +53,9 @@
 </script>
 
 <style scoped>
+.newProductsDiv{
+  overflow-x: hidden;
+}
 h1{
   color: #22211F;
 }

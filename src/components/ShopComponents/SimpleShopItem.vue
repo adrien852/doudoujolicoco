@@ -11,7 +11,11 @@
                 <div class="itemTitle text-left">
                     <p class="m-0">{{ item.name }}</p>
                 </div>
-                <p class="itemPrice m-0">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</p>
+                <div class="d-flex mb-1" v-if="parseFloat(item.originalPrice) !== 0 && item.originalPrice !== item.price">
+                    <p class="discountedPrice mr-1">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</p>
+                    <p class="originalPrice">{{ parseFloat(item.originalPrice).toFixed(2).replace('.', ',').replace(',00', '') }}€</p>
+                </div>
+                <p v-if="item.originalPrice === item.price || parseFloat(item.originalPrice) === 0" class="itemPrice mb-1">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</p>
             </RouterLink>
             <RouterLink class="d-flex align-items-center justify-content-between px-1" :to="'/boutique/'+item.category.normalized">
                 <p class="itemCategory text-uppercase ">{{ item.category.name }}</p>
@@ -138,8 +142,19 @@ function openSideCart(){
     img{
         object-fit: cover;
     }
-    .itemPrice{
-        font-size: 13pt;
+    .discountedPrice{
+        font-size: 1rem;
+        color: #c52222;
+        font-weight: bold;
+        height: fit-content;
+        margin: auto 0;
+    }
+    .originalPrice{
+        font-size: 0.8rem;
+        text-decoration:line-through;
+        opacity: 80%;
+        height: fit-content;
+        margin: auto 0;
     }
     .cartImgContainer{
         overflow: hidden;
