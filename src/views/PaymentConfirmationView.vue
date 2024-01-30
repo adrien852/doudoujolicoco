@@ -85,15 +85,13 @@
                     router.push({ path: '/paiement' })
                 })
             } else if (session.status == 'complete') {
-                const now = new Date();
-                const offsetMs = now.getTimezoneOffset() * 60 * 1000;
-                const dateLocal = new Date(now.getTime() - offsetMs);
+                const date = new Date(session.data.created * 1000);
                 const payment = {
-                    // paymentId: response.transaction.id,
-                    // amount: response.transaction.amount,
-                    customerId: cartStore.customer.id,
+                    paymentId: session.data.payment_intent,
+                    amount: session.data.amount_total/100,
+                    customerId: session.customerId,
                     items: cartStore.cartItems,
-                    createdAt: dateLocal.toISOString().slice(0, 19).replace("T", " ")
+                    createdAt: date
                 }
                 savePaymentId(payment).then(() => {
                     cartStore.clearCart();

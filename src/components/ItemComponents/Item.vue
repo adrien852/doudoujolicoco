@@ -17,7 +17,7 @@
             <div class="shipment mt-3">
                 <h4 class="shipmentTitle">Livraison</h4>
                 <!-- <h4><span id="availibility">Disponible</span> - Expedition immediate</h4> -->
-                <h4>Livraison rapide - 2 - 4 jours ouvrés en France métropolitaine</h4>
+                <h4>Livraison garantie de 5 à 10 jours ouvrés en France métropolitaine</h4>
                 <h4>Retours acceptés sous conditions</h4>
             </div>
         </div>

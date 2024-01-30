@@ -50,7 +50,7 @@
                 return {
                     "Référence": order.reference,
                     "Montant": order.payment.amount+'€',
-                    "Client": order.customer.shippingAddress.firstName+' '+order.customer.shippingAddress.lastName,
+                    "Client": order.customer.shippingAddress.name,
                     "Produits": order.products.map((product) => product.name).join(', '),
                     "Date de commande": new Date(order.payment.createdAt).toLocaleDateString("fr-FR"),
                     "Statut": order.status

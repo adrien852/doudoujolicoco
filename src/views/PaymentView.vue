@@ -1,6 +1,6 @@
 <template>
     <NavPath :path="path"/>
-    <div v-if="!(cartStore.cartItems.length == 0 || cartStore.customer.length == 0)" class="container position-relative mt-3">
+    <div v-if="!(cartStore.cartItems.length == 0)" class="container position-relative mt-3">
         <div class="d-flex justify-content-center">
             <Payment />
         </div>
@@ -31,15 +31,11 @@
                 route: '/panier'
             },
             {
-                name: 'Livraison',
-                route: '/livraison'
-            },
-            {
                 name: 'Paiement',
                 route: '/paiement'
             },
         ]
-        if(cartStore.cartItems.length == 0 || cartStore.customer.length == 0){
+        if(cartStore.cartItems.length == 0){
             swal.fire({
                 icon: 'warning',
                 title: 'Pas si vite',

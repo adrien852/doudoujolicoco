@@ -7,7 +7,6 @@ import AboutView from '@/views/AboutView.vue'
 import ItemView from '@/views/ItemView.vue'
 import CartView from '@/views/CartView.vue'
 import PaymentView from '@/views/PaymentView.vue'
-import ShipmentView from '@/views/ShipmentView.vue'
 import CategoriesView from '@/views/CategoriesView.vue'
 import NotFound from '@/views/NotFound.vue'
 import AdminOrdersView from '@/views/AdminViews/Order/OrdersView.vue'
@@ -94,11 +93,6 @@ const router = createRouter({
       path: '/confirmation-paiement',
       name: 'paymentConfirmation',
       component: PaymentConfirmationView
-    },
-    {
-      path: '/livraison',
-      name: 'shipment',
-      component: ShipmentView
     },
     {
       path: '/contact',

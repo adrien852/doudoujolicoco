@@ -46,10 +46,6 @@
                 route: '/panier'
             },
             {
-                name: 'Livraison',
-                route: '/livraison'
-            },
-            {
                 name: 'Paiement',
                 route: '/paiement'
             },

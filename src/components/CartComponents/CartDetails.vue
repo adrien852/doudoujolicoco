@@ -21,7 +21,7 @@
             </li>
             <div v-if="checkoutButton">
                 <RouterLink class="mt-4" to="/boutique"><button class="btn btn-primary px-2"><h4 class="text-uppercase">Continuer mes achats</h4></button></RouterLink> 
-                <RouterLink class="mt-3" to="/livraison"><button class="btn btn-primary checkoutButton px-2"><h4 class="text-uppercase">Passer la commande</h4></button></RouterLink> 
+                <RouterLink class="mt-3" to="/paiement"><button class="btn btn-primary checkoutButton px-2"><h4 class="text-uppercase">Passer la commande</h4></button></RouterLink> 
                 <div class="d-flex mt-3">
                     <img class="mx-auto" src="@/assets/images/paiement_icons.png" alt="Méthodes de paiement">
                 </div>
