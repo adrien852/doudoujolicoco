@@ -31,9 +31,8 @@
             />
         </div>
         <div class="d-flex justify-content-center">
-            
+            <FormKit type="submit">Envoyer</FormKit>
         </div>
-        <FormKit type="submit">Envoyer</FormKit>
     </FormKit>
 </template>
 

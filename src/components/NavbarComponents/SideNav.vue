@@ -58,20 +58,20 @@
         let appContent = document.querySelector(".appContent");
 
         let sidebar = document.getElementById("mySidebar");
-        document.getElementById("header").addEventListener('mouseleave', () => {
-            if(window.innerWidth > 991){
-                if(sidebar.className.includes('toggled')){
-                    closeSideBar();
-                }
-            }
-        })
-        document.getElementById("sideToggler").addEventListener('mouseenter', () => {
-            if(window.innerWidth > 991){
-                if(!sidebar.className.includes('toggled')){
-                    openSideBar();
-                }
-            }
-        })
+        // document.getElementById("header").addEventListener('mouseleave', () => {
+        //     if(window.innerWidth > 991){
+        //         if(sidebar.className.includes('toggled')){
+        //             closeSideBar();
+        //         }
+        //     }
+        // })
+        // document.getElementById("sideToggler").addEventListener('mouseenter', () => {
+        //     if(window.innerWidth > 991){
+        //         if(!sidebar.className.includes('toggled')){
+        //             openSideBar();
+        //         }
+        //     }
+        // })
         document.getElementById("sideToggler").addEventListener('click', () => {
             if(!sidebar.className.includes('toggled')){
                 openSideBar();

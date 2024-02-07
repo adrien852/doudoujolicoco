@@ -144,3 +144,11 @@ html, body, #app{
   .vue-magnifier__magnifier-image{
       cursor:crosshair!important;
   }
+
+  [data-type="submit"] .formkit-input {
+    background: #94BCD8!important;
+    font-size: inherit;
+    font-weight: bold;
+    font-family: "Questrial", sans-serif;
+    border-radius: 10px!important;
+  }

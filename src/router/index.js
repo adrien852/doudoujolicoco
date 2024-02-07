@@ -22,6 +22,8 @@ import ContactView from '@/views/ContactView.vue'
 import FaqView from '@/views/FaqView.vue'
 import PaymentConfirmationView from '@/views/PaymentConfirmationView.vue'
 import LoginView from '@/views/LoginView.vue'
+import SalesTermsView from '@/views/SalesTermsView.vue'
+import ConfidentialityPolicyView from '@/views/ConfidentialityPolicyView.vue'
 
 const API = import.meta.env.VITE_EXPRESS_API_URL;
 const instance = axios.create({
@@ -103,6 +105,16 @@ const router = createRouter({
       path: '/faq',
       name: 'faq',
       component: FaqView
+    },
+    {
+      path: '/conditions-generales-vente',
+      name: 'cgv',
+      component: SalesTermsView
+    },
+    {
+      path: '/politique-confidentialite',
+      name: 'confidentiality',
+      component: ConfidentialityPolicyView
     },
     {
       path: '/se-connecter',

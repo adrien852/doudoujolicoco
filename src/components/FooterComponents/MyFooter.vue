@@ -35,13 +35,10 @@
                     <h1>Informations légales</h1>
                     <ul>
                         <li>
-                            <RouterLink to="#">Mentions Légales</RouterLink>
+                            <RouterLink to="/conditions-generales-vente">Conditions générales de vente & Mentions Légales</RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="#">Conditions générales de vente</RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink to="#">Politique de confidentialité</RouterLink>
+                            <RouterLink to="/politique-confidentialite">Politique de confidentialité</RouterLink>
                         </li>
                         <li>
                             <RouterLink to="#">Politique des cookies</RouterLink>
@@ -65,7 +62,7 @@
             </div>
         </div>
         <div class="text-center">
-            <p class="creator">Créé par <a target="_blank" href="https://adriendurouge.com">Adrien Durouge</a> - Tous droits réservés</p>
+            <p class="creator m-0">Créé par <a target="_blank" href="https://adriendurouge.com">Adrien Durouge</a> - Tous droits réservés</p>
         </div>
     </footer>
 </template>
