@@ -185,8 +185,8 @@ onBeforeMount(() => {
             route: '/'
         },
         {
-            name: 'Mentions Légales & CGV',
-            route: '/cgv'
+            name: 'Politique de confidentialité',
+            route: '/politique-confidentialite'
         },
     ]
 })

@@ -90,7 +90,7 @@
     <h3>Article 7 – Prix des produits</h3>
     <p>Les prix sur le Site sont mentionnés toutes taxes comprises (TTC) en Euros. Les prix applicables sont ceux
         indiqués sur le Site à la date de la confirmation de la commande. Les frais de livraison sont indiqués avant la
-        validation de la commande et sont facturés en sus.<br> MéliMélo se réserve le droit de modifier les prix à tout
+        validation de la commande et sont facturés en sus.<br> Doudoujoli se réserve le droit de modifier les prix à tout
         moment sur le Site mais les Produits seront facturés sur la base des tarifs en vigueur au moment de
         l’enregistrement de la commande, sous réserve de disponibilité.</p>
     <h3>Article 8 – Conditions de règlement</h3>
@@ -275,7 +275,7 @@ onBeforeMount(() => {
         },
         {
             name: 'Mentions Légales & CGV',
-            route: '/cgv'
+            route: '/conditions-generales-vente'
         },
     ]
 })
