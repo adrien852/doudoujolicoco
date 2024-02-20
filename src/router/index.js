@@ -54,127 +54,196 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta:{
+        title: "Accueil"
+      }
     },
     {
       path: '/boutique',
       name: 'shop',
-      component: ShopView
+      component: ShopView,
+      meta:{
+        title: "Boutique"
+      }
     },
     {
       path: '/boutique/:categoryNormalized',
       name: 'filteredShop',
-      component: ShopView
+      component: ShopView,
+      meta:{
+        title: ""
+      }
     },
     {
       path: '/boutique/categories',
       name: 'categories',
-      component: CategoriesView
+      component: CategoriesView,
+      meta:{
+        title: "Catégories"
+      }
     },
     {
       path: '/a-propos',
       name: 'about',
-      component: AboutView
+      component: AboutView,
+      meta:{
+        title: "A propos"
+      }
     },
     {
       path: '/article/:id',
       name: 'item',
-      component: ItemView
+      component: ItemView,
+      meta:{
+        title: "Boutique"
+      }
     },
     {
       path: '/panier',
       name: 'cart',
-      component: CartView
+      component: CartView,
+      meta:{
+        title: "Panier"
+      }
     },
     {
       path: '/paiement',
       name: 'payment',
-      component: PaymentView
+      component: PaymentView,
+      meta:{
+        title: "Paiement"
+      }
     },
     {
       path: '/confirmation-paiement',
       name: 'paymentConfirmation',
-      component: PaymentConfirmationView
+      component: PaymentConfirmationView,
+      meta:{
+        title: "Confirmation de paiement"
+      }
     },
     {
       path: '/contact',
       name: 'contact',
-      component: ContactView
+      component: ContactView,
+      meta:{
+        title: "Contact"
+      }
     },
     {
       path: '/faq',
       name: 'faq',
-      component: FaqView
+      component: FaqView,
+      meta:{
+        title: "FAQ"
+      }
     },
     {
       path: '/conditions-generales-vente',
       name: 'cgv',
-      component: SalesTermsView
+      component: SalesTermsView,
+      meta:{
+        title: "CGV"
+      }
     },
     {
       path: '/politique-confidentialite',
       name: 'confidentiality',
-      component: ConfidentialityPolicyView
+      component: ConfidentialityPolicyView,
+      meta:{
+        title: "Confidentialité"
+      }
     },
     {
       path: '/se-connecter',
       name: 'login',
-      component: LoginView
+      component: LoginView,
+      meta:{
+        title: "Connexion"
+      }
     },
     //Admin protected routes
     {
       path: '/admin/commandes',
       name: 'adminCommandes',
       component: AdminOrdersView,
-      beforeEnter: loginCheck
+      beforeEnter: loginCheck,
+      meta:{
+        title: "Commandes"
+      }
     },
     {
       path: '/admin/commandes/:reference',
       name: 'adminCommande',
       component: AdminOrderView,
-      beforeEnter: loginCheck
+      beforeEnter: loginCheck,
+      meta:{
+        title: "Commandes"
+      }
     },
     {
       path: '/admin/inventaire',
       name: 'adminInventaire',
       component: AdminInventoryView,
-      beforeEnter: loginCheck
+      beforeEnter: loginCheck,
+      meta:{
+        title: "Articles"
+      }
     },
     {
       path: '/admin/inventaire/:id',
       name: 'adminInventaireItem',
       component: AdminInventoryItemView,
-      beforeEnter: loginCheck
+      beforeEnter: loginCheck,
+      meta:{
+        title: "Articles"
+      }
     },
     {
       path: '/admin/inventaire/nouveau',
       name: 'adminInventaireNew',
       component: AdminInventoryNewView,
-      beforeEnter: loginCheck
+      beforeEnter: loginCheck,
+      meta:{
+        title: "Nouvel article"
+      }
     },
     {
       path: '/admin/categories',
       name: 'adminCategoriesView',
       component: AdminCategoriesView,
-      beforeEnter: loginCheck
+      beforeEnter: loginCheck,
+      meta:{
+        title: "Catégories"
+      }
     },
     {
       path: '/admin/categories/:id',
       name: 'adminCategoryView',
       component: AdminCategoryView,
-      beforeEnter: loginCheck
+      beforeEnter: loginCheck,
+      meta:{
+        title: "Catégories"
+      }
     },
     {
       path: '/admin/categories/nouveau',
       name: 'adminCategoryNewView',
       component: AdminCategoryNewView,
-      beforeEnter: loginCheck
+      beforeEnter: loginCheck,
+      meta:{
+        title: "Nouvelle catégorie"
+      }
     },
     {
       path: '/admin',
       name: 'admin',
       component: AdminView,
-      beforeEnter: loginCheck
+      beforeEnter: loginCheck,
+      meta:{
+        title: "Admin"
+      }
     },
     { 
       path: '/404', 
@@ -185,6 +254,20 @@ const router = createRouter({
       redirect: '/404' 
     },  
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  let name = to.params.categoryNormalized ?? to.params.id ?? to.meta.title ?? "";
+  
+  if(name){
+    name = name.charAt(0).toUpperCase() + name.slice(1);
+    name = name.replace("_", " ");
+    document.title = name + " - Doudou Joli";
+  }
+  else{
+    document.title = "Doudou Joli - La boutique de Coco";
+  }
+  next();
 })
 
 export default router
