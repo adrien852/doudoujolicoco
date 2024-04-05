@@ -80,7 +80,7 @@
                     text: 'Votre paiement n\'a pas abouti. Veuillez réessayer.',
                     confirmButtonText: "OK",
                     showConfirmButton: true,
-                    confirmButtonColor: "#94BCD8",
+                    confirmButtonColor: "#F39E6A",
                 }).then(() => {
                     router.push({ path: '/paiement' })
                 })
@@ -104,7 +104,7 @@
                         html: '<div style="text-align:left">Votre paiement a été traité, mais une erreur est survenue lors de l\'enregistrement de votre paiement. Envoyez nous les informations suivantes à contact@doudoujoli.fr<br/><br/>Client ID : '+cartStore.customer.id+'<br/>Transaction ID : '+response.transaction.id,
                         confirmButtonText: "Retour à l'accueil",
                         showConfirmButton: true,
-                        confirmButtonColor: "#94BCD8",
+                        confirmButtonColor: "#F39E6A",
                     })
                 })
             }

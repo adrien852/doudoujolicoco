@@ -3,7 +3,7 @@
     <SideNav :categories="categories" />
 
     <nav :class="['navbar navbar-light px-3', {'navBlock': false}]">
-      <RouterLink class="logo position-absolute" to="/"><img alt="Doudou Joli logo" class="pt-3" src="@/assets/full_logo_text_only.png"/></RouterLink>
+      <RouterLink class="logo position-absolute" to="/"><img alt="Doudou Joli logo" class="" src="@/assets/half_logo.png"/></RouterLink>
 
       <div id="navbarNav" class="d-flex flex-grow-1 align-items-center">
         <button id="sideToggler" class="navbar-toggler mr-3" type="button">
@@ -53,9 +53,8 @@
 <style scoped>
  
 .logo{
-  top: -3px;
-  left:calc(50% - 50px);
-  width: 100px;
+  left:calc(50% - 30px);
+  width: 60px;
 }
 img{
   width: 100%;

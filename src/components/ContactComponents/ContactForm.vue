@@ -52,7 +52,7 @@ function handleSubmit(){
             text: 'Nous vous répondrons dans les plus brefs délais',
             confirmButtonText: "OK",
             showCloseButton: false,
-            confirmButtonColor: "#94BCD8",
+            confirmButtonColor: "#F39E6A",
             showClass: {
                 popup: 'animate__animated animate__fadeIn'
             },
@@ -68,7 +68,7 @@ function handleSubmit(){
             html: 'Veuillez réessayer ultérieurement.',
             confirmButtonText: "OK",
             showCloseButton: true,
-            confirmButtonColor: "#94BCD8",
+            confirmButtonColor: "#F39E6A",
             showClass: {
                 popup: 'animate__animated animate__fadeIn'
             },

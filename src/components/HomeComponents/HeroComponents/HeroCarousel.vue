@@ -1,5 +1,5 @@
 <template>
-  <img alt="Doudou Joli Logo" class="heroLogo py-2 d-block" src="@/assets/full_logo.png">
+  <img alt="Doudou Joli Logo" class="heroLogo py-2 d-block" src="@/assets/full_logo_colored_contoured.png">
   <swiper 
     class="homeSwiper"
     :modules="modules" 
@@ -37,6 +37,7 @@ let carouselImages = [
 <style scoped>
 .heroLogo{
   position: absolute;
+  left:5px;
   z-index: 10;
   width: 110px;
 }
@@ -60,7 +61,7 @@ let carouselImages = [
   z-index: 15;
   margin-right: auto;
   margin-left: auto;
-  background-color: #94BCD8;
+  background-color: #F39E6A;
   color: white;
   border-radius: 10px;
   -webkit-transition: transform 0.2s ease-out;

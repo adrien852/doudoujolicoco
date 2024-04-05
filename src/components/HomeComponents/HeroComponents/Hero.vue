@@ -5,12 +5,12 @@
       </div>
       <div class="container heroRight d-flex flex-column col-xl-5 col-lg-6 position-relative">
           <!-- <img alt="Doudou Joli Logo" class="d-none d-lg-block logo py-3" src="@/assets/full_logo.png"/> -->
-          <h1 class="mainTitle text-left">Commandez votre<br/>déco au crochet</h1>
+          <h1 class="mainTitle text-left mb-3">Commandez votre<br/>déco au crochet</h1>
+          <HeroBulletPoints class="mb-3" />
           <div class="text-left">
-            <h5>Une collection d'articles de décoration et accessoires de mode au crochet confectionnée avec amour.</h5>
+            <h5>Chez Doudou Joli, nous vous proposons une large sélection de produits crochetés tels que des peluches, des accessoires de mode, de la décoration pour la maison et bien plus encore. Chaque pièce est réalisée avec amour et minutie par notre créatrice, Corinne Boyer.</h5>
           </div>
-          <HeroBulletPoints class="mt-2" />
-          <button class="btn mt-3">
+          <button class="btn btn-primary mt-3 mx-auto">
               <RouterLink class="m-0" to="/boutique">
                   <h4 class="m-0">Visiter la boutique</h4>
               </RouterLink>
@@ -38,35 +38,20 @@ a{
 h1{
   text-decoration: none;
   /* font-family: Questrial; */
-  color: #3E82B0;
+  color: #22211F;
   font-size: min(4.9vw + 0px, 62pt);
   letter-spacing: -2px;
   line-height: 65px;
-  margin-bottom: 25px;
 }
 h1::after{
   content: none;
 }
 .btn{
-  background-color: #94BCD8;
-  color: white;
-  border-radius: 10px;
-  -webkit-transition: transform 0.1s ease-out, background-color 0.2s ease-out;
-    -moz-transition: transform 0.1s ease-out, background-color 0.2s ease-out;
-    -o-transition: transform 0.1s ease-out, background-color 0.2s ease-out;
-    transition: transform 0.1s ease-out, background-color 0.2s ease-out;
   padding: 10px 20px;
-}
-.btn:hover{
-    /* transform: scale3d(1.01, 1.01, 1.01); */
-    -webkit-transition: transform 0.1s ease-out, background-color 0.2s ease-out;
-    -moz-transition: transform 0.1s ease-out, background-color 0.2s ease-out;
-    -o-transition: transform 0.1s ease-out, background-color 0.2s ease-out;
-    transition: transform 0.1s ease-out, background-color 0.2s ease-out;
-    background-color: #4c778d;
+  width: fit-content;
 }
 h4{
-  font-size: 27px;
+  font-size: 16px;
 }
 h5{
   font-weight: normal;
@@ -77,7 +62,7 @@ img{
   max-width: 50%;
 }
 .heroCarousel{
-  height:400px;
+  height:780px;
 }
 @media (max-width:991px) {
   .heroCarousel{

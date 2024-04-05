@@ -91,7 +91,7 @@
             cancelButtonText: "Annuler",
             showCloseButton: true,
             confirmButtonColor: "#f4aa46",
-            denyButtonColor: "#94BCD8",
+            denyButtonColor: "#F39E6A",
             showClass: {
                 popup: 'animate__animated animate__fadeIn'
             },
@@ -106,7 +106,7 @@
                         confirmButtonText: "OK",
                         showCloseButton: true,
                         showConfirmButton: true,
-                        confirmButtonColor: "#94BCD8",
+                        confirmButtonColor: "#F39E6A",
                     })
                 })
                 .catch(() => {
@@ -117,7 +117,7 @@
                         confirmButtonText: "OK",
                         showCloseButton: true,
                         showConfirmButton: true,
-                        confirmButtonColor: "#94BCD8",
+                        confirmButtonColor: "#F39E6A",
                     })
                 })
                 isLoading.value = false;

@@ -32,7 +32,7 @@
         //     text: 'Le paiement n\'est pas encore disponible.',
         //     confirmButtonText: "Retour à l'accueil",
         //     showConfirmButton: true,
-        //     confirmButtonColor: "#94BCD8",
+        //     confirmButtonColor: "#F39E6A",
         // }).then(() => {
         //     router.push({ path: '/' })
         // })
@@ -58,7 +58,7 @@
                 confirmButtonText: "Retour à la boutique",
                 showCloseButton: false,
                 showConfirmButton: true,
-                confirmButtonColor: "#94BCD8",
+                confirmButtonColor: "#F39E6A",
             }).then(() => {
                 router.push({ path: '/boutique' })
             })
@@ -250,7 +250,7 @@
                         confirmButtonText: "Retour à l'accueil",
                         showCloseButton: true,
                         showConfirmButton: true,
-                        confirmButtonColor: "#94BCD8",
+                        confirmButtonColor: "#F39E6A",
                     }).then(() => {
                         router.push({ path: '/' })
                     })
@@ -263,7 +263,7 @@
                         html: '<div style="text-align:left">Une erreur est survenue lors de l\'enregistrement de votre paiement. Envoyez nous les informations suivantes à contact@doudoujoli.fr<br/><br/>Client ID : '+cartStore.customer.id+'<br/>Transaction ID : '+response.transaction.id,
                         confirmButtonText: "Retour à l'accueil",
                         showConfirmButton: true,
-                        confirmButtonColor: "#94BCD8",
+                        confirmButtonColor: "#F39E6A",
                     }).then(() => {
                         router.push({ path: '/' })
                     })

@@ -44,7 +44,7 @@ function deleteItem(item){
         cancelButtonText: "Annuler",
         showCloseButton: true,
         confirmButtonColor: "#D89494",
-        denyButtonColor: "#94BCD8",
+        denyButtonColor: "#F39E6A",
         showClass: {
             popup: 'animate__animated animate__fadeIn'
         },

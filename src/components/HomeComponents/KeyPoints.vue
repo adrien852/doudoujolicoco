@@ -1,5 +1,5 @@
 <template>
-    <div class="keyPointsDiv pt-md-5 pb-md-3 py-3">
+    <div class="pt-md-5 pb-md-3 py-5">
         <div class="container">
             <div class="position-relative">
                 <div class="d-flex flex-wrap w-100">
@@ -33,7 +33,7 @@
                 </div>
                 <div class="d-flex">
                     <RouterLink class="keyPointsButton m-auto" to="/a-propos">
-                        <button class="btn">
+                        <button class="btn btn-primary">
                             <p class="m-0">En savoir plus</p>
                         </button>
                     </RouterLink>
@@ -91,35 +91,11 @@
     border-radius: 25px;
     min-height: 176px;
 }
-.keyPointsDiv{
-  /* margin: 40px 0; */
-  padding: 70px 0;
-  background-color: #dbaa933e;
-}
 .keyCards{
     min-height: 176px;
 }
 img{
     width: 100px;
-}
-.btn{
-  background-color: #daa991;
-  color: white;
-  border-radius: 10px;
-  -webkit-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    -moz-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    -o-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    padding: 10px;
-}
-.btn:hover{
-    transform: scale3d(1.03, 1.03, 1.03);
-    -webkit-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    -moz-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    -o-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    text-decoration: none;
-    background-color: #bc7d63;
 }
 .btn p{
     font-weight: bold;
@@ -127,5 +103,8 @@ img{
 .keyPointsButton{
     /* position: absolute; */
     left: calc(50% - 63.4px);
+}
+h4{
+    font-size: 15pt;
 }
 </style>

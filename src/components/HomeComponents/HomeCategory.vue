@@ -30,14 +30,14 @@ const props = defineProps({
         padding: 10px 20px;
     }
     .btn:hover{
-        background-color: #94BCD8;
+        background-color: #F39E6A;
         color: white;
     }
     .shopItemCard{
         overflow: hidden;
     }
     a{
-        color: #94BCD8;
+        color: #F39E6A;
         height: fit-content;
     }
     a:hover{

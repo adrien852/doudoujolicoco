@@ -94,6 +94,9 @@ img{
 h1{
     font-size: 22pt;
 }
+h1::after {
+    background-color: #22211F;
+  }
 ul{
     padding: 0;
 }

@@ -2,12 +2,8 @@
     <div class="reviewContainer py-5">
         <div class="container d-flex flex-wrap">
                 <div id="animated1" class="initialClass d-flex flex-sm-row flex-column col-lg-6 col-12">
-                    <img class="reviewPic col-sm-6 mx-auto pb-sm-0 mb-3" src="@/assets/images/review1.jpg" />
                     <div class="col-sm-6 d-flex flex-column justify-content-center">
-                        <q class="review">
-                            Mes petits adorent leurs doudous ! Ils ne les lachent plus et en demandent d'autres.
-                        </q>
-                        <cite class="blockquote-footer" title="name">Laura</cite>
+                        <img class="reviewPic col-sm-6 mx-auto pb-sm-0 mb-3" src="@/assets/images/review1.png" />
                         <div class="stars d-flex p-2">
                             <img class="px-1" src="@/assets/images/star.png"/>
                             <img class="px-1" src="@/assets/images/star.png"/>
@@ -16,14 +12,16 @@
                             <img class="px-1" src="@/assets/images/star.png"/>
                         </div>
                     </div>
-                </div>
-                <div id="animated2" class="initialClass d-flex flex-sm-row flex-column col-lg-6 col-12 mt-lg-0 mt-5">
-                    <img class="reviewPic col-sm-6 mx-auto pb-sm-0 mb-3" src="@/assets/images/review1.jpg" />
                     <div class="col-sm-6 d-flex flex-column justify-content-center">
                         <q class="review">
-                            Mes petits adorent leurs doudous ! Ils ne les lachent plus et en demandent d'autres.
+                            La laine est si douce et les couleurs sont si vives.
                         </q>
-                        <cite class="blockquote-footer" title="name">Laura</cite>
+                        <cite class="blockquote-footer" title="name">Julie</cite>
+                    </div>
+                </div>
+                <div id="animated2" class="initialClass d-flex flex-sm-row flex-column col-lg-6 col-12 mt-lg-0 mt-5">
+                    <div class="col-sm-6 d-flex flex-column justify-content-center">
+                        <img class="reviewPic col-sm-6 mx-auto pb-sm-0 mb-3" src="@/assets/images/review2.png" />
                         <div class="stars d-flex p-2">
                             <img class="px-1" src="@/assets/images/star.png"/>
                             <img class="px-1" src="@/assets/images/star.png"/>
@@ -31,6 +29,12 @@
                             <img class="px-1" src="@/assets/images/star.png"/>
                             <img class="px-1" src="@/assets/images/star.png"/>
                         </div>
+                    </div>
+                    <div class="col-sm-6 d-flex flex-column justify-content-center">
+                        <q class="review">
+                            Mes petits adorent leurs nouvelles peluches.
+                        </q>
+                        <cite class="blockquote-footer" title="name">Laura</cite>
                     </div>
                 </div>
         </div>
@@ -78,13 +82,12 @@
 
 <style scoped>
     .reviewContainer{
-        background-color: #94bcd83d;
         min-height: 390px;
         overflow-x: hidden;
     }
 
     .review{
-        font-size: 16pt;
+        font-size: 15pt;
     }
 
     .reviewPic{

@@ -164,7 +164,7 @@
                     html: 'Une catégorie avec ce <b>Nom normalisé</b> existe déjà. Réessayez avec un nom différent.',
                     confirmButtonText: "OK",
                     showCloseButton: true,
-                    confirmButtonColor: "#94BCD8",
+                    confirmButtonColor: "#F39E6A",
                     showClass: {
                         popup: 'animate__animated animate__fadeIn'
                     },
@@ -177,7 +177,7 @@
                     text: 'Votre catégorie a bien été enregistré.',
                     confirmButtonText: "OK",
                     showCloseButton: false,
-                    confirmButtonColor: "#94BCD8",
+                    confirmButtonColor: "#F39E6A",
                     showClass: {
                         popup: 'animate__animated animate__fadeIn'
                     },
@@ -194,7 +194,7 @@
                 text: 'Votre catégorie n\'a pas été enregistré. Veuillez réessayer plus tard.',
                 confirmButtonText: "OK",
                 showCloseButton: true,
-                confirmButtonColor: "#94BCD8",
+                confirmButtonColor: "#F39E6A",
                 showClass: {
                     popup: 'animate__animated animate__fadeIn'
                 },

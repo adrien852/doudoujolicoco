@@ -24,14 +24,14 @@ const props = defineProps({
         height: 50px;
         background-image: url("@/assets/images/clouds.jpg");
         background-size: contain;
-        opacity: 60%;
+        opacity: 90%;
         display: flex;
         z-index: 151;
         position: relative;
     }
     a{
         text-decoration: none;
-        color:white;
+        color:#22211F;
         height: fit-content;
         background-repeat: no-repeat;
         transition: background-size .4s cubic-bezier(.22,.61,.36,1),color .2s ease-out;
@@ -44,8 +44,8 @@ const props = defineProps({
     }
     p{
         margin: auto 0;
-        color: white;
-        text-shadow:black 1px 0px 2px;
+        color: #22211F;
+        text-shadow:white 1px 1px 0px;
         font-size: 14px;
         font-weight: bold;
     }

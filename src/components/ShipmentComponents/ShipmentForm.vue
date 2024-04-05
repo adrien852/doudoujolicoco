@@ -158,8 +158,8 @@ watch(shippingValues, () => {
 
 button.formkit-input {
     color: white;
-    background-color: #94BCD8!important;
-    border-color: #94BCD8!important;
+    background-color: #F39E6A!important;
+    border-color: #F39E6A!important;
   }
 
   button.formkit-input:hover {

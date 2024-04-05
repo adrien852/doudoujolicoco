@@ -93,7 +93,7 @@
         border-radius: .25rem;
     }
     .btn{
-        background-color: #94BCD8;
+        background-color: #F39E6A;
     }
     .btn-primary:hover {
         border-color: none;
@@ -110,7 +110,7 @@
         padding:15px;
     }
     .detailsTitle{
-        background-color: #94bcd8;
+        background-color: #F39E6A;
         color: white;
         text-align: center;
         padding: 7px 0;

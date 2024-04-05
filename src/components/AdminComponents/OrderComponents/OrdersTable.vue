@@ -30,7 +30,7 @@ const props = defineProps({
 
 <style scoped>
 .btn{
-  background-color: #94BCD8;
+  background-color: #F39E6A;
   color: white;
   border-radius: 10px;
   -webkit-transition: transform 0.1s ease-out, background-color 0.2s ease-out;

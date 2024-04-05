@@ -51,7 +51,7 @@ function addItemToCart(){
     //     denyButtonText: "Retour à la boutique",
     //     showCloseButton: true,
     //     confirmButtonColor: "#f4aa46",
-    //     denyButtonColor: "#94BCD8",
+    //     denyButtonColor: "#F39E6A",
     //     showClass: {
     //         popup: 'animate__animated animate__fadeIn'
     //     },
@@ -190,7 +190,7 @@ function openSideCart(){
     }
     .shipment{
         padding:20px;
-        background-color: #94BCD824;
+        background-color: #F39E6A24;
         border-radius: 10px;
     }
     .shipmentTitle{

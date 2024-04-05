@@ -9,7 +9,7 @@
                 <p>Si vous avez la moindre question concernant nos produits ou nos services, vous pouvez nous contacter par email à <a class="mailLink" href="mailto:doudoujolicoco@gmail.com">doudoujolicoco@gmail.com</a> ou en utilisant le formulaire de contact. Nous vous répondrons dans les plus brefs délais.</p>
                 <p>Vous pouvez également consulter notre Foire Aux Questions pour en savoir plus sur les modalités de livraison et bien d'autres.</p>
                 <RouterLink class="mx-auto" to="/faq">
-                    <button class="btn">
+                    <button class="btn btn-primary">
                         <p class="m-0">Foire Aux Questions</p>
                     </button>
                 </RouterLink>
@@ -35,25 +35,6 @@
 }
 .mailLink:hover{
     background-size: 100% 1px;
-}
-.btn{
-    background-color: #94BCD8;
-  color: white;
-  border-radius: 10px;
-  -webkit-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    -moz-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    -o-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    padding: 10px;
-}
-.btn:hover{
-    transform: scale3d(1.03, 1.03, 1.03);
-    -webkit-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    -moz-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    -o-transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    transition: transform 0.1s ease-out, background-color 0.1s ease-out;
-    text-decoration: none;
-    background-color: #4c778d;
 }
 .btn p{
     font-weight: bold;

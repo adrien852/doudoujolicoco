@@ -116,7 +116,7 @@
                 confirmButtonText: "Retour à la boutique",
                 showCloseButton: false,
                 showConfirmButton: true,
-                confirmButtonColor: "#94BCD8",
+                confirmButtonColor: "#F39E6A",
             }).then(() => {
                 router.push({ path: '/boutique' })
             })
@@ -135,7 +135,7 @@
                     confirmButtonText: "OK",
                     showCloseButton: false,
                     showConfirmButton: true,
-                    confirmButtonColor: "#94BCD8",
+                    confirmButtonColor: "#F39E6A",
                 }).then(() => {
                     router.push({ path: '/panier' })
                 })

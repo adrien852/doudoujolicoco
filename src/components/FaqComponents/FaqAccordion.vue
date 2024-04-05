@@ -83,14 +83,14 @@ h5{
 }
 .btn-accordion .card-header{
     padding: 20px 40px 20px 20px;
-    color: #6c889c;
+    color: #22211F;
     border: 0;
     background-color: rgba(161, 143, 123, 0.034);
 }
 
 .btn-accordion .card-header:after {
     content: "－";
-    color: #6c889c;
+    color: #22211F;
     font-weight: bolder;
     font-size: 20pt;
     position: absolute;
