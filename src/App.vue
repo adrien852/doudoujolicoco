@@ -81,6 +81,6 @@
     margin-bottom: 0px;
   }
   .appContent{
-    min-height: calc(100vh - 218px - 60px);
+    min-height: calc(100vh - 191px - 60px);
   }
 </style>

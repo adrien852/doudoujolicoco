@@ -48,10 +48,6 @@
 h1{
   font-size: clamp(24pt, 8vw, 28pt);
 }
-.marginDiv{
-    margin: 40px 0;
-    padding: 30px 0;
-}
 .itemContainer{
   min-height: 632px;
 }

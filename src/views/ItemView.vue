@@ -6,7 +6,7 @@
             <Item :item="item"/>
         </div>
     </div>
-    <div class="position-relative carousel-containter mt-5">
+    <div class="position-relative carousel-containter my-5">
         <loading :is-full-page="false" :active="isCarouselLoading"></loading>
         <div class="container">
             <div class="mt-4">

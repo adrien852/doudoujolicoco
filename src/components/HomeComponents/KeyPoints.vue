@@ -1,7 +1,8 @@
 <template>
-    <div class="pt-md-5 pb-md-3 py-5">
+    <div class="keyPointsDiv py-md-3">
         <div class="container">
-            <div class="position-relative">
+            <h1 class="ml-3 text-left">Nos promesses</h1>
+            <div class="mt-5 position-relative">
                 <div class="d-flex flex-wrap w-100">
                     <div class="keyCards d-flex text-center flex-column col-md-4 col-12">
                         <div class="keyCard">
@@ -90,6 +91,11 @@
     /* border: #dbaa93be solid 5px; */
     border-radius: 25px;
     min-height: 176px;
+}
+.keyPointsDiv{
+  /* margin: 40px 0; */
+  /* padding: 70px 0; */
+  /* background-color: #dbaa933e; */
 }
 .keyCards{
     min-height: 176px;

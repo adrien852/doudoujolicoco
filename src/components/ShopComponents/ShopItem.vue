@@ -63,7 +63,7 @@ function openSideCart(){
     .addBasket{
         border: 2px dashed #ffffff;
         position: absolute;
-        background-color: #f4aa46;
+        background-color: #f39e6a;
         border-radius: 100%;
         width: 55px;
         height: 53px;

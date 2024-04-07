@@ -164,7 +164,7 @@ function openSideCart(){
         width: 8%;
     }
     .btn{
-        background-color: #f4aa46;
+        background-color: #f39e6a;
         margin:auto;
         width: 350px;
         max-width: 100%;
@@ -190,7 +190,7 @@ function openSideCart(){
     }
     .shipment{
         padding:20px;
-        background-color: #F39E6A24;
+        background-color: #F39E6A21;
         border-radius: 10px;
     }
     .shipmentTitle{

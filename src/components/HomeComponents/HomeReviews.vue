@@ -1,9 +1,10 @@
 <template>
-    <div class="reviewContainer py-5">
-        <div class="container d-flex flex-wrap">
+    <div class="reviewContainer container">
+        <h1 class="ml-3 text-left">Avis clients</h1>
+        <div class="mt-5 d-flex flex-wrap">
                 <div id="animated1" class="initialClass d-flex flex-sm-row flex-column col-lg-6 col-12">
                     <div class="col-sm-6 d-flex flex-column justify-content-center">
-                        <img class="reviewPic col-sm-6 mx-auto pb-sm-0 mb-3" src="@/assets/images/review1.png" />
+                        <img class="reviewPic mx-auto pb-sm-0 mb-3" src="@/assets/images/review1.png" />
                         <div class="stars d-flex p-2">
                             <img class="px-1" src="@/assets/images/star.png"/>
                             <img class="px-1" src="@/assets/images/star.png"/>
@@ -14,14 +15,15 @@
                     </div>
                     <div class="col-sm-6 d-flex flex-column justify-content-center">
                         <q class="review">
-                            La laine est si douce et les couleurs sont si vives.
+                            La laine est si douce et les couleurs sont si vives !
                         </q>
                         <cite class="blockquote-footer" title="name">Julie</cite>
+                        
                     </div>
                 </div>
                 <div id="animated2" class="initialClass d-flex flex-sm-row flex-column col-lg-6 col-12 mt-lg-0 mt-5">
                     <div class="col-sm-6 d-flex flex-column justify-content-center">
-                        <img class="reviewPic col-sm-6 mx-auto pb-sm-0 mb-3" src="@/assets/images/review2.png" />
+                        <img class="reviewPic mx-auto pb-sm-0 mb-3" src="@/assets/images/review2.png" />
                         <div class="stars d-flex p-2">
                             <img class="px-1" src="@/assets/images/star.png"/>
                             <img class="px-1" src="@/assets/images/star.png"/>
@@ -82,12 +84,13 @@
 
 <style scoped>
     .reviewContainer{
+        /* background-color: #94bcd877; */
         min-height: 390px;
         overflow-x: hidden;
     }
 
     .review{
-        font-size: 15pt;
+        font-size: 14pt;
     }
 
     .reviewPic{

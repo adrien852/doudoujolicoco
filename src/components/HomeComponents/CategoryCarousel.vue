@@ -55,6 +55,7 @@ const props = defineProps({
 }
 .homeCategories{
     padding: 40px 0;
+    /* margin: 60px 0; */
 }
 @media (max-width:991px) {
     .homeCategories{
