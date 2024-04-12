@@ -1,11 +1,9 @@
 <template>
     <RouterLink :to="'/boutique/'+category.normalized">
-        <div class="d-flex flex-column justify-content-center text-center mx-auto mb-2">
-            <div class="itemTitle d-flex">
-                <p class="m-auto text-uppercase">{{ category.name }}</p>
-            </div>
-        </div>
         <div class="bg-white d-flex w-100 flex-column shopItemCard">
+            <div class="itemTitle d-flex justify-content-center">
+                <p class="m-auto text-uppercase position-absolute">{{ category.name }}</p>
+            </div>
             <img class="zoom" width="300" height="300" :src="category.image">
         </div>
     </RouterLink>
@@ -29,17 +27,16 @@ const props = defineProps({
         color:#22211F;
         height: fit-content;
     }
-    .zoom{
-        transform: scale3d(1,1,1);
+    .zoom:hover{
+        transform: scale(1.02) rotate(0.01deg);
+        -webkit-transform: scale(1.02) rotate(0.01deg);
+        -moz-transform: scale(1.02) rotate(0.01deg);
         -webkit-transition: transform 0.1s ease-out;
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;
         transition: transform 0.1s ease-out;
     }
-    .zoom:hover{
-        transform: scale3d(1.02,1.02,1.02);
-        -webkit-transform: scale3d(1.02,1.02,1.02);
-        -moz-transform: scale3d(1.02,1.02,1.02);
+    .zoom{
         -webkit-transition: transform 0.1s ease-out;
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;
@@ -52,7 +49,12 @@ const props = defineProps({
     .shopItemCard img{
         border-radius: 10px;
         width: auto;
-        height: 300px;
+        height: 600px;
+    }
+    @media(max-width: 991px) {
+        .shopItemCard img{
+            height: 300px;
+        }
     }
     .cartImg{
         object-position: 50% 40%;
@@ -60,5 +62,27 @@ const props = defineProps({
     }
     img{
         object-fit: cover;
+    }
+    .itemTitle p{
+        font-family: 'Kalam';
+        word-spacing: -4pt;
+        letter-spacing: -1px;
+        z-index: 10;
+        top:10px;
+        background-color: white;
+        padding: 3px 50px 1px 50px;
+        border-radius: 25px;
+    }
+    .itemTitle p::after{
+        content:"●";
+        position: absolute;
+        right: 10px;
+        color: #9D877A;
+    }
+    .itemTitle p::before{
+        content:"●";
+        position: absolute;
+        left: 10px;
+        color: #9D877A;
     }
 </style>

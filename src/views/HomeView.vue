@@ -2,10 +2,8 @@
   <main id="main" class="w-100">
     <Hero />
       <div class="carouselDiv position-relative my-5">
-        <div class="container">
           <loading class="position-relative" style="height: 363px;" :is-full-page="false" :active="categories && categories.length === 0"></loading>
-          <CategoryCarousel v-if="categories && categories.length > 0" :categories="categories" />
-        </div>
+          <Category v-if="categories && categories.length > 0" :categories="categories" />
       </div>
       <BusinessPhilosophy :noAnimation="noAnimation" class="my-5"/>
       <KeyPoints :noAnimation="noAnimation" class="my-5"/>
@@ -20,7 +18,7 @@
 
 <script setup>
   import Hero from '@/components/HomeComponents/HeroComponents/Hero.vue'
-  import CategoryCarousel from '@/components/HomeComponents/CategoryCarousel.vue';
+  import Category from '@/components/HomeComponents/CategoryComponents/Category.vue';
   import BusinessPhilosophy from '@/components/HomeComponents/BusinessPhilosophy.vue';
   import KeyPoints from '@/components/HomeComponents/KeyPoints.vue'
   import NewProducts from '@/components/HomeComponents/NewProducts.vue'
