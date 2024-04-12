@@ -1,7 +1,7 @@
 <template>
     <RouterLink :to="'/boutique/'+category.normalized">
         <div class="bg-white d-flex w-100 flex-column shopItemCard">
-            <div class="itemTitle d-flex justify-content-center">
+            <div class="itemTitle d-flex justify-content-center position-relative">
                 <p class="m-auto text-uppercase position-absolute">{{ category.name }}</p>
             </div>
             <img class="zoom" width="300" height="300" :src="category.image">
@@ -19,7 +19,6 @@ const props = defineProps({
 
 <style scoped>
     .shopItemCard{
-        border-radius: 10px;
         box-shadow: 2px 3px 8px #0000001f;
         overflow: hidden;
     }
@@ -47,7 +46,6 @@ const props = defineProps({
         text-decoration: none;
     }
     .shopItemCard img{
-        border-radius: 10px;
         width: auto;
         height: 600px;
     }

@@ -1,9 +1,9 @@
 <template>
-    <div class="d-lg-flex flex-wrap justify-content-center align-content-center">
+    <div class="d-lg-flex flex-wrap justify-content-center">
         <div class="col-lg-6 col-12 p-0">
             <CategoryCarousel :categories="categories"/>
         </div>
-        <div class="col-lg-6 col-12 align-content-center">
+        <div class="col-lg-6 col-12 d-flex">
             <div class="col-10 d-flex flex-column justify-content-center m-auto">
                 <h1>Découvrez nos catégories</h1>
                 <p class="mt-2">
