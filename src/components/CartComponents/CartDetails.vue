@@ -12,12 +12,12 @@
                     <h3 class="tva m-0 font-weight-normal text-uppercase">TVA 20%</h3><span>{{ ((20*(cartStore.subTotal)/100)).toFixed(2) }}€</span>
                 </li> -->
                 <li class="d-flex align-items-center">
-                    <h3 class="frais m-0 font-weight-normal text-uppercase">Frais de port</h3><span>10€</span>
+                    <h3 class="frais m-0 font-weight-normal text-uppercase">Frais de port</h3><span>Offerts</span>
                 </li>
             </ol>
             <hr class="py-2 my-0">
             <li class="d-flex align-items-center">
-                <h2 class="m-0 text-uppercase">Total</h2><span class="mt-1 font-weight-bold">{{ ((cartStore.subTotal+10)).toFixed(2) }}€</span>
+                <h2 class="m-0 text-uppercase">Total</h2><span class="mt-1 font-weight-bold">{{ cartStore.subTotal.toFixed(2) }}€</span>
             </li>
             <div v-if="checkoutButton">
                 <RouterLink class="mt-4" to="/boutique"><button class="btn btn-primary px-2"><h4 class="text-uppercase">Continuer mes achats</h4></button></RouterLink> 

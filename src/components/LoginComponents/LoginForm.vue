@@ -23,7 +23,7 @@
                     outer-class="col-lg-5 col-md-8 col-12 mx-auto mt-2"
                 />
             </div>
-            <FormKit type="submit">Se connecter</FormKit>
+            <FormKit outer-class="d-flex justify-content-center" type="submit">Se connecter</FormKit>
         </FormKit>
 </template>
 

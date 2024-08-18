@@ -80,7 +80,28 @@
                     validation="required"
                     outer-class="col-md-5 col-12"
                 />
-                <div class="col-md-5 col-12"></div>
+                <FormKit
+                    type="textarea"
+                    label="Matériaux"
+                    name="material"
+                    outer-class="col-md-5 col-12"
+                />
+            </div>
+            <div class="d-flex justify-content-center flex-wrap">
+                <FormKit
+                    type="textarea"
+                    label="Dimensions"
+                    name="dimensions"
+                    validation="required"
+                    outer-class="col-md-5 col-12"
+                />
+                <FormKit
+                    type="checkbox"
+                    label="Pas un jouet ?"
+                    name="isNotForChildren"
+                    validation="required"
+                    outer-class="col-md-5 col-12 mt-md-4"
+                />
             </div>
             <div class="d-flex justify-content-center">
                 <div class="col-md-11 col-12 offset-md-6">
@@ -177,7 +198,7 @@
                     }"/>
                 </div>
             </div>
-            <div class="mt-3">
+            <div class="d-flex justify-content-center mt-3">
                 <FormKit type="submit" :disabled="submitDisabled">Enregistrer</FormKit>
             </div>
         </FormKit>
@@ -299,6 +320,9 @@
             name: item.name,
             normalized: item.normalized,
             description: item.description,
+            material: item.material,
+            dimensions: item.dimensions,
+            isNotForChildren: item.isNotForChildren,
             stock: item.stock,
             price: item.price,
             originalPrice: item.originalPrice,

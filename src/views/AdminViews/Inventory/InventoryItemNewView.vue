@@ -64,6 +64,31 @@
                     outer-class="col-md-5 col-12"
                 />
             </div>
+            <div class="d-flex justify-content-center flex-wrap">
+                <FormKit
+                    type="textarea"
+                    label="Matériaux"
+                    name="material"
+                    outer-class="col-md-5 col-12"
+                />
+                <FormKit
+                    type="textarea"
+                    label="Dimensions"
+                    name="dimensions"
+                    validation="required"
+                    outer-class="col-md-5 col-12"
+                />
+            </div>
+            <div class="d-flex justify-content-center flex-wrap">
+                <FormKit
+                    type="checkbox"
+                    label="Pas un jouet ?"
+                    name="isNotForChildren"
+                    validation="required"
+                    outer-class="col-md-5 col-12 mt-md-4"
+                />
+                <div class="col-md-5 col-12"></div>
+            </div>
             <div class="d-flex justify-content-center">
                 <div class="col-12 offset-md-7">
                     <h4>Images</h4>
@@ -159,7 +184,7 @@
                     }"/>
                 </div>
             </div>
-            <div class="mt-3">
+            <div class="d-flex justify-content-center mt-3">
                 <FormKit type="submit" :disabled="submitDisabled">Enregistrer</FormKit>
             </div>
         </FormKit>

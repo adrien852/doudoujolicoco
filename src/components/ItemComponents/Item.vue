@@ -13,6 +13,15 @@
             <p>
                 {{ item.description }}
             </p>
+            <p>
+                {{ item.dimensions }}
+            </p>
+            <p>
+                {{ item.material }}
+            </p>
+            <p class="smallDisclaimer" v-if="item.isNotForChildren">
+                *Il est important de noter que cette peluche est un objet décoratif et ne doit pas être utilisée comme jouet pour enfants.
+            </p>
             <button @click="addItemToCart" class="btn btn-primary cartTriggerToggler"><h3 class="cartTriggerToggler">Ajouter au panier</h3></button>
             <div class="shipment mt-3">
                 <h4 class="shipmentTitle">Livraison</h4>
@@ -82,6 +91,9 @@ function openSideCart(){
 
 
 <style scoped>
+    .smallDisclaimer{
+        font-size: 8pt;
+    }
     .discountedPrice{
         color: #c52222;
         font-weight: bold;
@@ -136,7 +148,7 @@ function openSideCart(){
         background-color: transparent;
     }
     h2{
-        color: #779AB3;
+        color: #d37a43;
         font-size: 20pt;
     }
     h3{
