@@ -10,7 +10,7 @@
             <div class="d-flex justify-content-center flex-column">
                 <FormKit
                     type="text"
-                    label="E-mail"
+                    label="Identifiant"
                     name="email"
                     validation="required"
                     outer-class="col-lg-5 col-md-8 col-12 mx-auto mt-2"

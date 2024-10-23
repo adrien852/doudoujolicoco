@@ -63,7 +63,6 @@ const props = defineProps({
     }
     .itemTitle p{
         font-family: 'Kalam';
-        word-spacing: -4pt;
         letter-spacing: -1px;
         z-index: 10;
         top:10px;
