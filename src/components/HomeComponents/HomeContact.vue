@@ -36,7 +36,4 @@
 .mailLink:hover{
     background-size: 100% 1px;
 }
-.btn p{
-    font-weight: bold;
-}
 </style>

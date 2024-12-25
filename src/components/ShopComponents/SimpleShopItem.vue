@@ -111,9 +111,6 @@ function openSideCart(){
         color: #22211F;
         text-decoration: none;
     }
-    .cartImgContainer img{
-        /* width: auto; */
-    }
     .itemCategory{
         opacity: 0.6;
         margin-bottom: 0;

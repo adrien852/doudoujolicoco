@@ -52,6 +52,9 @@
             await getItems()
             .then(response => {
                 items = response;
+                if(response.length <= 0){
+                    throw new Error();
+                }
                 paginatedItems = paginateItems(page.value);
                 pageCount.value = Math.ceil(items.length / itemsPerPage);
             })
@@ -73,6 +76,9 @@
             await getCategoryItems(route.params.categoryNormalized)
             .then(response => {
                 items = response;
+                if(response.length <= 0){
+                    throw new Error();
+                }
                 page.value = 1;
                 paginatedItems = paginateItems(page.value);
                 pageCount.value = Math.ceil(items.length / itemsPerPage);

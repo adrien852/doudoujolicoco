@@ -98,9 +98,6 @@
 img{
     width: 100px;
 }
-.btn p{
-    font-weight: bold;
-}
 .keyPointsButton{
     /* position: absolute; */
     left: calc(50% - 63.4px);

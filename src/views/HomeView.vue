@@ -9,7 +9,7 @@
       <KeyPoints :noAnimation="noAnimation" class="my-5"/>
       <div class="container newProductsDiv position-relative">
         <loading class="position-relative" style="height: 250px;" :is-full-page="false" :active="newProductsLoading"></loading>
-        <NewProducts v-if="!noNewProducts" :items="sampleShopItemStore.items" />
+        <NewProducts v-if="!noNewProducts && sampleShopItemStore.items.length > 0" :items="sampleShopItemStore.items" />
       </div>
       <HomeReviews :noAnimation="noAnimation" class="my-5"/>
       <HomeContact />
