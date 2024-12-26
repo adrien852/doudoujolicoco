@@ -11,13 +11,14 @@
   import {useCartStore} from '@/stores/CartStore.js'
   import Loading from 'vue3-loading-overlay';
   import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+import { loadStripe } from '@stripe/stripe-js';
 
   const cartStore = useCartStore();
   let isLoading = ref(true);
   let stripeCheckout = null;
 
   onMounted(async() => {
-    const stripe = window.Stripe(`${import.meta.env.VITE_STRIPE_API_KEY}`);
+    const stripe = await loadStripe(`${import.meta.env.VITE_STRIPE_API_KEY}`);
     checkout(cartStore.cartItems).then(({clientSecret}) => {
       stripe.initEmbeddedCheckout({
         clientSecret

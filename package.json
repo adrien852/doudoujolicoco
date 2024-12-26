@@ -12,6 +12,7 @@
   "dependencies": {
     "@formkit/vue": "^1.2.1",
     "@popperjs/core": "^2.11.8",
+    "@stripe/stripe-js": "^5.4.0",
     "@svifty7/vue-paginate": "^0.0.10",
     "@vueuse/core": "^10.4.1",
     "@websitebeaver/vue-magnifier": "^1.1.0",
