@@ -42,10 +42,13 @@
                     outer-class="col-md-5 col-12"
                 />
                 <FormKit
-                    type="select"
-                    label="Catégorie"
-                    v-model="item.category.name"
-                    :options="categoryNames"
+                    type="number"
+                    prefix-icon="euro"
+                    number
+                    step="0.01"
+                    label="Prix d'origine"
+                    help="Avant offre promotionnel"
+                    name="originalPrice"
                     validation="required"
                     outer-class="col-md-5 col-12"
                 />
@@ -56,6 +59,17 @@
                     label="Stock"
                     outer-class="col-md-5 col-12"
                 />
+                
+                <FormKit
+                    type="select"
+                    label="Catégorie"
+                    v-model="item.category.name"
+                    :options="categoryNames"
+                    validation="required"
+                    outer-class="col-md-5 col-12"
+                />
+            </div>
+            <div class="d-flex justify-content-center flex-wrap">
                 <FormKit
                     type="textarea"
                     label="Description"
@@ -63,30 +77,26 @@
                     validation="required"
                     outer-class="col-md-5 col-12"
                 />
-            </div>
-            <div class="d-flex justify-content-center flex-wrap">
                 <FormKit
                     type="textarea"
                     label="Matériaux"
                     name="material"
                     outer-class="col-md-5 col-12"
                 />
+            </div>
+            <div class="d-flex justify-content-center flex-wrap">
                 <FormKit
                     type="textarea"
                     label="Dimensions"
                     name="dimensions"
                     outer-class="col-md-5 col-12"
                 />
-            </div>
-            <div class="d-flex justify-content-center flex-wrap">
                 <FormKit
                     type="checkbox"
                     label="Pas un jouet ?"
                     name="isNotForChildren"
-                    validation="required"
                     outer-class="col-md-5 col-12 mt-md-4"
                 />
-                <div class="col-md-5 col-12"></div>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="col-12 offset-md-7">

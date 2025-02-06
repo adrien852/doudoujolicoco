@@ -98,7 +98,6 @@
                     type="checkbox"
                     label="Pas un jouet ?"
                     name="isNotForChildren"
-                    validation="required"
                     outer-class="col-md-5 col-12 mt-md-4"
                 />
             </div>
