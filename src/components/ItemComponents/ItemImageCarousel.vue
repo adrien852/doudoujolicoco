@@ -13,7 +13,7 @@
                 ref="phoneSwiper"
             >
                 
-            <swiper-slide v-for="slide in item.images">
+            <swiper-slide v-for="slide in sliderImages">
                 <div class="swiper-zoom-container">
                     <img :src="slide"/>
                 </div>
@@ -32,7 +32,7 @@
                 :direction="'vertical'"
                 class="mySwiper d-lg-block d-none"
             >
-                <swiper-slide v-for="slide in item.images">
+                <swiper-slide v-for="slide in sliderImages">
                     <img :src="slide"/>
                 </swiper-slide>
             </swiper>
@@ -43,7 +43,7 @@
                 :speed="0"
                 class="mySwiper2 d-lg-block d-none"
             >
-                <swiper-slide v-for="slide in item.images">
+                <swiper-slide v-for="slide in sliderImages">
                     <VueMagnifier class="d-sm-block d-none" :src="slide" :mg-border-width="0" :mg-shape="'square'" :mg-width="2000" :mg-height="2000" :mg-show-overflow="false" :zoom-factor="0.08"/>
                 </swiper-slide>
             </swiper>
@@ -52,7 +52,7 @@
 <script setup>
 import VueMagnifier from '@websitebeaver/vue-magnifier'
 import '@websitebeaver/vue-magnifier/styles.css'
-import { reactive, ref } from 'vue';
+import { computed, reactive, ref } from 'vue';
 import { onMounted } from 'vue';
 import Loading from 'vue3-loading-overlay';
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
@@ -90,6 +90,10 @@ let isLoading = ref(true);
 onMounted(() => {
     isLoading.value = false;
 })
+
+const sliderImages = computed(() => props.item.images.filter((image) => {
+    return image !== '';
+}))
 </script>
 
 <style>
