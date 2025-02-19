@@ -9,8 +9,8 @@
       delay: 4000,
     }"
   >
-    <swiper-slide class="swipeImg" v-for="slide in carouselImages">
-      <img alt="Peluche de vache en crochet" class="d-block w-100" :src="slide">
+    <swiper-slide class="swipeImg" v-for="(slide, index) in carouselImages">
+      <img alt="Article de la boutique" class="d-block w-100" :id="'heroImg'+index" :src="slide">
     </swiper-slide>
   </swiper>
 </template>
@@ -46,8 +46,17 @@ let carouselImages = [
 }
 .swipeImg img{
   object-fit: cover;
-  object-position: 50% 40%;
+  object-position: 50% 50%;
 }
+#heroImg0{
+    object-position: 50% 45%;
+  }
+@media (min-width: 960px) {
+  #heroImg0{
+    object-position: 50% 60%;
+  }
+}
+
 .carouselBtn{
   width:40%;
   height: 60px;

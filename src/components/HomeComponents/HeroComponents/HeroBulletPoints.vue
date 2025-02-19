@@ -25,7 +25,7 @@
     }
 
     .bulletPoint{
-        max-width: 190px;
+        max-width: 195px;
         font-weight: bold;
     }
 </style>
