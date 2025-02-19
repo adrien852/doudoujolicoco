@@ -7,15 +7,14 @@
             <div class="col-10 d-flex flex-column justify-content-center m-auto">
                 <h1>Découvrez nos catégories</h1>
                 <p class="mt-2">
-                    Chez Doudou Joli, nous vous proposons une large sélection de produits crochetés tels que des peluches, des accessoires de mode, de la décoration pour la maison et bien plus encore. 
-                    Chaque pièce est réalisée avec amour et minutie par notre créatrice, Corinne Boyer.
+                    Pour faire votre choix, parcourez nos catégories, vous y découvrirez de nombreux articles faits pour vous plaire.
                 </p>
                 <ul>
                     <li class="mt-0">
-                        Peluches faites mains avec des matériaux doux
+                        Boites de différents modèles et couleurs
                     </li>
                     <li>
-                        Idées originales de décoration pour chambres d'enfants
+                        Idées originales pour décorer votre intérieur
                     </li>
                     <li>
                         Accessoires de mode élégants et originaux

@@ -8,7 +8,7 @@
           <h1 class="mainTitle text-left mb-3">Commandez votre<br/>déco au crochet</h1>
           <HeroBulletPoints class="mb-3" />
           <div class="text-left">
-            <h5>Chez Doudou Joli, nous vous proposons une large sélection de produits crochetés tels que des peluches, des accessoires de mode, de la décoration pour la maison et bien plus encore. Chaque pièce est réalisée avec amour et minutie par notre créatrice, Corinne Boyer.</h5>
+            <h5>Chez Doudou Joli, nous vous proposons une large sélection de produits crochetés tels que des accessoires de mode, de la décoration pour la maison et bien plus encore. Chaque pièce est réalisée avec amour et minutie par notre créatrice, Corinne Boyer.</h5>
           </div>
           <button class="btn btn-primary mt-3 mx-auto">
               <RouterLink class="m-0" to="/boutique">

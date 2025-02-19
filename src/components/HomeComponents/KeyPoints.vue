@@ -8,8 +8,8 @@
                         <div class="keyCard">
                             <div id="keyCard1">
                             <img class="m-auto" src="@/assets/images/yarn-ball.png" />
-                            <h4>Avantage 1</h4>
-                            <p>Particularité concrète qui justifie l'avantage</p>
+                            <h4>Qualité du travail</h4>
+                            <p>Un grand soin est apporté à chaque pièce lors de sa confection.</p>
                         </div>
                         </div>
                         
@@ -17,8 +17,8 @@
                     <div class="d-flex text-center flex-column col-md-4 col-12">
                         <div class="keyCard">
                             <div id="keyCard2"><img class="m-auto" src="@/assets/images/knitting.png" />
-                                <h4>Avantage 2</h4>
-                                <p>Particularité concrète qui justifie l'avantage</p>
+                                <h4>Originalité</h4>
+                                <p>Chaque pièce est unique et pensée pour apporter une touche originale à votre look ou dans votre intérieur</p>
                             </div>
                         </div>
                     </div>
@@ -26,8 +26,8 @@
                         <div class="keyCard">
                             <div id="keyCard3">
                                 <img class="m-auto" src="@/assets/images/yarn.png" />
-                                <h4>Avantage 3</h4>
-                                <p>Particularité concrète qui justifie l'avantage</p>
+                                <h4>Qualité des matériaux</h4>
+                                <p>Nous choisissons rigoureusement nos matériaux afin que nos créations soient à la hauteur de notre savoir-faire et durables dans le temps</p>
                             </div>
                         </div>
                     </div>

@@ -9,7 +9,7 @@
         </div>
         <div class="mt-4 d-flex flex-wrap justify-content-center align-items-center" v-if="cartStore.count <= 0">
             <div class="text-center mb-md-0 mb-3">
-                <img src="@/assets/images/yarn-ball2.png" />
+                <img src="@/assets/images/yarn-ball.png" />
             </div>
             <div class="col-lg-5 col-md-6 text-center">
                 <h3>Votre panier est vide !</h3>

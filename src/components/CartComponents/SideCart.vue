@@ -9,7 +9,7 @@
         </div>
         <div class="mt-2" v-if="cartStore.count <= 0">
             <div class="text-center mb-md-1 mb-3">
-                <img src="@/assets/images/yarn-ball2.png" />
+                <img src="@/assets/images/yarn-ball.png" />
             </div>
             <div class="px-3 text-center">
                 <h3 class="mt-3">Votre panier est vide !</h3>
