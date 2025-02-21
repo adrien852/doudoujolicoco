@@ -41,7 +41,7 @@
                             <RouterLink to="/politique-confidentialite">Politique de confidentialité</RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="#">Politique des cookies</RouterLink>
+                            <RouterLink to="/politique-cookies">Politique des cookies</RouterLink>
                         </li>
                     </ul>
                 </div>

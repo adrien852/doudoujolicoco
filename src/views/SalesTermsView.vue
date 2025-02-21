@@ -258,7 +258,7 @@
         mentions, pour toute demande qu’il pourrait souhaiter adresser à Doudou Joli, il peut adresser un
         message à ses titulaires dans la rubrique Contact du Site et/ou un courrier électronique à
         doudoujolicoco@gmail.com</p>
-    <p>Actualisé le 7 février 2024.</p>
+    <p>Dernière mise à jour: 21 février 2025.</p>
 </div></template>
 
 <script setup>

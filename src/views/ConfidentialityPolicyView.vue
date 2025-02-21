@@ -77,33 +77,18 @@
                 pendant trois ans après votre dernière commande ou après votre dernier contact avec Doudou Joli.
                 Néanmoins, pour certains types de traitement, la conservation des données fait l’objet de durées de conservation
                 spécifiques selon la loi (par exemple, les factures liés aux achats sont conservées 6 ans).</p>
-            <h3>4. Destinataires des données personnelles et transferts</h3>
-                <p>Nous transmettons les données personnelles que nous collectons aux prestataires de services qui soutiennent
-                    notre activité (prestataires informatiques, prestataire de service de paiement, partenaires logistiques) et
-                    notamment à l’hébergeur du Site.</p>
-                <ul>
-                    <li>hébergeur: <a href="https://www.siteground.com/" rel="noopener noreferrer"
-                            target="_blank">SiteGround</a></li>
-                    <li>plataforme web: <a href="https://wordpress.org/" rel="noopener noreferrer"
-                            target="_blank">WordPress.org</a></li>
-                    <li>plataforme de Newsletter: The Rocket Science Group, LLC ( “<a href="https://mailchimp.com/"
-                            rel="noopener noreferrer" target="_blank">MailChimp</a>”) situé 675 Ponce de León Ave NE, Suite
-                        5000, Atlanta, GA 30308 et dont la politique de confidentialité est disponible <a
-                            href="http://mailchimp.com/legal/" rel="noopener noreferrer" target="_blank">ici</a></li>
-                </ul>
-                <p>Nous ne transmettons pas de données personnelles en dehors de l’Union européenne.</p>
-            <h3>5. Autorité publique</h3>
+            <h3>4. Autorité publique</h3>
             <p>Nous pouvons être amenés à divulguer des données personnelles aux organismes et autorités légalement habilités
                 dans le cadre d’une enquête sur des activités illégales pouvant engagées notre responsabilité, votre
                 responsabilité ou la responsabilité d’un autre utilisateur du Site.</p>
-            <h3>6. Communications commerciales et opt-out</h3>
+            <h3>5. Communications commerciales et opt-out</h3>
             <p>Nous pouvons vous envoyer des emails d’ordre administratif (emails concernant des changements dans le
                 fonctionnement du Site, de la politique de confidentialité etc.) et des Newsetters comportant des nouveautés et
                 des informations promotionnelles.</p>
             <p>Vous pouvez demander à ne pas recevoir des emails autres qu’administratifs en nous contactant par courrier à :
                 doudoujolicoco@gmail.com ou en utilisant le lien de désinscription se trouvant au pied de la Newsletter
                 reçue.</p>
-            <h3>7. Vos droits</h3>
+            <h3>6. Vos droits</h3>
             <p>Vous disposez d’un droit d’accès, de rectification, de suppression et d’opposition pour motif légitime, ainsi que
                 d’un droit à l’oubli et d’un droit à la portabilité de vos données.</p>
             <p>Si vous souhaitez exercer ces droits, vous pouvez nous adresser un email à l’adresse
@@ -122,13 +107,13 @@
             <p>En cas de demande de suppression de vos Données, nous pourrons toutefois les conserver dans nos archives et ce
                 pour la durée nécessaire à satisfaire à nos obligations légales, comptables et fiscales.</p>
             <p>Pour plus d’informations concernant l’exercice de vos droits:<br> En France, la CNIL: www.cnil.fr</p>
-            <h3>8. Sites tiers</h3>
+            <h3>7. Sites tiers</h3>
             <p>La Plateforme peut contenir des liens vers d’autres sites Web exploités par des tiers.<br> Veuillez noter que
                 cette politique de confidentialité s’applique uniquement aux données personnelles que nous recueillons sur la
                 Plateforme. Nous ne sommes pas responsables des données personnelles que les tiers peuvent collecter,
                 sauvegarder et utiliser sur leur propre site Web. Nous vous recommandons de lire attentivement la politique de
                 confidentialité de chaque site Web que vous visitez.</p>
-            <h3>9. Contenu et Liens Hypertextes</h3>
+            <h3>8. Contenu et Liens Hypertextes</h3>
             <p>Les informations fournies par les titulaires le sont à titre indicatif. Les titulaires ne sauraient garantir
                 l’exactitude, la complétude, l’actualité des informations diffusées sur le Site. En conséquence, l’utilisateur
                 reconnaît utiliser ces informations sous sa responsabilité exclusive.</p>
@@ -141,7 +126,7 @@
                 est interdite, sauf autorisation écrite et préalable à Doudou Joli, laquelle autorisation pouvant
                 être révoquée à tout moment. Tous ces sites ne sont pas sous le contrôle des titulaires et ceux-ci déclinent par
                 conséquent toute responsabilité concernant l’accès et son contenu.</p>
-            <h3>11. Responsabilité</h3>
+            <h3>9. Responsabilité</h3>
             <ul> Doudou Joli ne maîtrise pas les risques liés au fonctionnement d’Internet et ne saurait être tenue
                 pour responsable:<p></p>
                 <li>de tous dommages résultant d’une intrusion informatique d’un tiers ayant entraîné une modification des
@@ -151,7 +136,7 @@
                 <li>de tous dommages causés par l’utilisation du site et/ou du crédit accordé à une quelconque information
                     provenant de ce dernier.</li>
             </ul>
-            <h3>12. Sécurité</h3>
+            <h3>10. Sécurité</h3>
             <p>Nous nous engageons à assurer la sécurité de vos données à caractère personnel via des procédures strictes au
                 sein de Doudou Joli.<br> Pour les données collectées sur le Site Internet, nous utilisons le
                 protocole sécurisé SSL (Secure Socket Layer) qui vous garantit un haut niveau de protection.</p>
@@ -159,7 +144,7 @@
                 pares feu étendus et de mots de passe permettant aussi de sécuriser l’accès à vos données personnelles. En
                 outre, nous limitons l’accès aux données personnelles aux salariés qui ont besoin de connaître ces informations
                 pour faire fonctionner, développer ou améliorer les services de la Plateforme.</p>
-            <h3>13. Informations d’ordre général</h3>
+            <h3>11. Informations d’ordre général</h3>
             <p>La présente politique de confidentialité peut être mise à jour périodiquement. Nous vous informerons de toute
                 modification substantielle ayant trait à l’exploitation de vos données personnelles.</p>
             <p>En cas de questions concernant la présente politique de confidentialité ou l’utilisation de vos données
@@ -167,7 +152,7 @@
             <p>Nous vous prions de bien vouloir également prendre connaissance des <a
                     href="https://doudoujoli.fr/conditions-generales-vente/">mentions légales et conditions générales
                     d’utilisation</a> du Site .</p>
-            <p>Dernière mise à jour: 7 février 2024.</p>
+            <p>Dernière mise à jour: 21 février 2025.</p>
         </div>
     </div>
 </template>

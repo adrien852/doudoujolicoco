@@ -24,6 +24,7 @@ import PaymentConfirmationView from '@/views/PaymentConfirmationView.vue'
 import LoginView from '@/views/LoginView.vue'
 import SalesTermsView from '@/views/SalesTermsView.vue'
 import ConfidentialityPolicyView from '@/views/ConfidentialityPolicyView.vue'
+import CookiesTerms from '@/views/CookiesTerms.vue';
 
 const API = import.meta.env.VITE_EXPRESS_API_URL;
 const instance = axios.create({
@@ -153,6 +154,14 @@ const router = createRouter({
       component: ConfidentialityPolicyView,
       meta:{
         title: "Confidentialité"
+      }
+    },
+    {
+      path: '/politique-cookies',
+      name: 'cookies',
+      component: CookiesTerms,
+      meta:{
+        title: "Politique des cookies"
       }
     },
     {

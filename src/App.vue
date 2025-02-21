@@ -6,13 +6,15 @@
     <loading :is-full-page="false" :active="adminStore.isAdminRouteLoading"></loading>
     <RouterView />
   </div>
+  <CookieBanner/>
   <MyFooter />
 </template>
 
 <script setup>
-  import { RouterLink, RouterView } from 'vue-router'
+  import { RouterView } from 'vue-router'
   import Navbar from '@/components/NavbarComponents/Navbar.vue'
   import MyFooter from '@/components/FooterComponents/MyFooter.vue'
+  import CookieBanner from '@/components/HomeComponents/CookieBanner.vue'
   import { useAdminStore } from '@/stores/AdminStore';
   import { useRoute } from 'vue-router'
   import { watch, onMounted, nextTick, ref } from 'vue';

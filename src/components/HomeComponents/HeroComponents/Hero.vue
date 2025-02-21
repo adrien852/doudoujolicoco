@@ -5,7 +5,7 @@
       </div>
       <div class="container heroRight d-flex flex-column col-xl-5 col-lg-6 position-relative">
           <!-- <img alt="Doudou Joli Logo" class="d-none d-lg-block logo py-3" src="@/assets/full_logo.png"/> -->
-          <h1 class="mainTitle text-left mb-3">Commandez votre<br/>déco au crochet</h1>
+          <h1 class="mainTitle text-left mb-3">Commandez votre<br/>article au crochet</h1>
           <HeroBulletPoints class="mb-3" />
           <div class="text-left">
             <h5>Chez Doudou Joli, nous vous proposons une large sélection de produits crochetés tels que des accessoires de mode, de la décoration pour la maison et bien plus encore. Chaque pièce est réalisée avec amour et minutie par notre créatrice, Corinne Boyer.</h5>
