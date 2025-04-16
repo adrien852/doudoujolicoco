@@ -97,6 +97,7 @@
     import { onBeforeMount } from 'vue';
     const swal = inject('$swal')
     import router from '@/router'
+    import Compressor from 'compressorjs';
     
     let path = null;
 
@@ -142,12 +143,18 @@
 
         const storageRef = firebaseRef(storage, 'category_images/'+item.normalized+'/'+event.target.name);
 
-        uploadBytes(storageRef, file).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then(function(downloadURL) {
-                item.image = downloadURL;
-                fileUploading.value = false;
-                submitDisabled.value = false;
-            });
+        new Compressor(file, {
+            quality: 0.1,
+            mimeType: 'image/webp',
+            success(result) {
+                uploadBytes(storageRef, result).then((snapshot) => {
+                    getDownloadURL(snapshot.ref).then(function(downloadURL) {
+                        item.image = downloadURL;
+                        fileUploading.value = false;
+                        submitDisabled.value = false;
+                    });
+                });
+            }
         });
     }
 

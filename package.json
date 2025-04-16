@@ -19,6 +19,7 @@
     "@websitebeaver/vue-magnifier": "^1.1.0",
     "axios": "^1.5.0",
     "bootstrap": "^5.3.1",
+    "compressorjs": "^1.2.1",
     "crypto-js": "^4.1.1",
     "firebase": "^10.5.2",
     "firebase-tools": "^13.14.0",

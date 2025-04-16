@@ -221,6 +221,7 @@
     import {ref as firebaseRef} from "firebase/storage";
     const swal = inject('$swal')
     import router from '@/router'
+    import Compressor from 'compressorjs';
 
     const route = useRoute();
     let isLoading = ref(true);
@@ -303,12 +304,18 @@
 
         const storageRef = firebaseRef(storage, 'product_images/'+item.normalized+'/'+event.target.name);
 
-        uploadBytes(storageRef, file).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then(function(downloadURL) {
-                item.images[id] = downloadURL;
-                fileUploading.value = false;
-                submitDisabled.value = false;
-            });
+        new Compressor(file, {
+            quality: 0.1,
+            mimeType: 'image/webp',
+            success(result) {
+                uploadBytes(storageRef, result).then((snapshot) => {
+                    getDownloadURL(snapshot.ref).then(function(downloadURL) {
+                        item.images[id] = downloadURL;
+                        fileUploading.value = false;
+                        submitDisabled.value = false;
+                    });
+                });
+            }
         });
     }
 
