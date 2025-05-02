@@ -52,9 +52,6 @@
                             <RouterLink to="/contact">Formulaire de contact</RouterLink>
                         </li>
                         <li>
-                            <a href="callto:06 00 00 00 00"><span class="phoneEmoji">06 00 00 00 00</span></a>
-                        </li>
-                        <li>
                             <a href="mailto:doudoujolicoco@gmail.com"><span class="emailEmoji">doudoujolicoco@gmail.com</span></a>
                         </li>
                     </ul>

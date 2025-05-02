@@ -71,7 +71,7 @@
 
             <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
             <div class="card-body">
-                Nos créations étant faites main, le temps de réalisation peut varier selon la commande. Les articles en stock sont expédiés sous 3 à 5 jours ouvrés. Pour les commandes personnalisées, un délai supplémentaire peut être nécessaire, précisé lors de la commande. Nous expédions via La Poste ou un transporteur avec numéro de suivi, et la livraison est disponible en France et à l’international.
+                Nos créations étant faites main, le temps de réalisation peut varier selon la commande. Les articles en stock sont expédiés sous 3 à 5 jours ouvrés. Pour les commandes personnalisées, un délai supplémentaire peut être nécessaire, précisé lors de la commande. Nous expédions via La Poste ou un transporteur avec numéro de suivi, et la livraison est disponible uniquement en France.
             </div>
             </div>
         </div>
