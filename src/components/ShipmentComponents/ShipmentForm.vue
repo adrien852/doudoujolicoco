@@ -164,8 +164,8 @@ button.formkit-input {
 
   button.formkit-input:hover {
     color: #fff;
-    background-color: #4c778d!important;
-    border-color: #4c778d!important;
+    background-color: #d48b5e!important;
+    border-color: #d48b5e!important;
   }
 
   button.formkit-input.focus, button.formkit-input:focus, button.formkit-input:not(:disabled):not(.disabled).active, button.formkit-input:not(:disabled):not(.disabled):active, .show > button.formkit-input.dropdown-toggle {

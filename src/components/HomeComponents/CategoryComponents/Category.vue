@@ -5,7 +5,7 @@
         </div>
         <div class="col-lg-6 col-12 d-flex">
             <div class="col-10 d-flex flex-column justify-content-center m-auto">
-                <h1>Découvrez nos catégories</h1>
+                <h2>Découvrez nos catégories</h2>
                 <p class="mt-2">
                     Pour faire votre choix, parcourez nos catégories, vous y découvrirez de nombreux articles faits pour vous plaire.
                 </p>

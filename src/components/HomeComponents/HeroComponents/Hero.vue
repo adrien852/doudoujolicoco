@@ -8,11 +8,11 @@
           <h1 class="mainTitle text-left mb-3">Commandez votre<br/>article au crochet</h1>
           <HeroBulletPoints class="mb-3" />
           <div class="text-left">
-            <h5>Chez Doudou Joli, nous vous proposons une large sélection de produits crochetés tels que des accessoires de mode, de la décoration pour la maison et bien plus encore. Chaque pièce est réalisée avec amour et minutie par notre créatrice, Corinne Boyer.</h5>
+            <h5>Chez Doudou Joli, nous vous proposons une large sélection de produits crochetés tels que des accessoires de mode, de la décoration pour la maison et bien plus encore. Chaque pièce est réalisée avec amour et minutie par notre créatrice, <b>Corinne Boyer</b>.</h5>
           </div>
           <button class="btn btn-primary mt-3 mx-auto">
-              <RouterLink class="m-0" to="/boutique">
-                  <h4 class="m-0">Visiter la boutique</h4>
+              <RouterLink class="mainButtonText m-0" to="/boutique">
+                  Visiter la boutique
               </RouterLink>
           </button>
       </div>
@@ -32,9 +32,6 @@ a{
   color: white;
   text-decoration: none;
 }
-.heroRight button{
-  line-height: 90px;
-}
 h1{
   text-decoration: none;
   /* font-family: Questrial; */
@@ -47,11 +44,14 @@ h1::after{
   content: none;
 }
 .btn{
-  padding: 10px 20px;
+  padding: 15px 23px;
   width: fit-content;
+  background-color: #f08f54;
+  border-color: #f08f54;
 }
-h4{
-  font-size: 16px;
+.mainButtonText{
+  font-size: 20px;
+  font-weight: bold;;
 }
 h5{
   font-weight: normal;
@@ -72,9 +72,6 @@ img{
     margin-top: 25px;
     font-size: 48pt;
     line-height: 45px;
-  }
-  .heroRight button{
-    line-height: 70px;
   }
 }
 @media (max-width:575px) {

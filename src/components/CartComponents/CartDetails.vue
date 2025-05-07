@@ -97,11 +97,11 @@
     }
     .btn-primary:hover {
         border-color: none;
-        background-color: #4c778d;
+        background-color: #d48b5e;
     }
     .btn-primary.focus, .btn-primary:focus {
-        background-color: #4c778d;
-        border-color: #4c778d;
+        background-color: #d48b5e;
+        border-color: #d48b5e;
         box-shadow: none;
     }
     .detailsContainer{

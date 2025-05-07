@@ -31,7 +31,7 @@ html, body, #app{
     font-weight: bold;
   }
 
-  h1{
+  h1, h2{
     font-weight: normal;
     font-family: 'Kalam';
     font-size: 27pt;
@@ -41,7 +41,7 @@ html, body, #app{
     color:#22211F;
     word-spacing: -4pt;
   }
-  h1::after {
+  h1::after, h2::after {
     position: absolute;
     content: '';
     bottom: -7px;
@@ -99,9 +99,9 @@ html, body, #app{
   }
 
   .form-control:focus {
-    color: #4c778d;
-    background-color: #fff;
-    border-color: #F39E6A;
+    color: #fff;
+    background-color: #d48b5e;
+    border-color: #d48b5e;
     outline: 0;
     box-shadow: 0 0 0 .1rem rgba(152, 174, 185, 25%);
   }

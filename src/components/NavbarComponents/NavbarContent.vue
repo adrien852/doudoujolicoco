@@ -2,13 +2,13 @@
         <div class="navbarContent d-flex">
             <div class="w-100 d-lg-flex d-none h-100 col-lg-5 col-12 p-0">
               <RouterLink class="d-flex justify-content-center align-items-center col-4 h-100 nav-item nav-link active text-uppercase" to="/">
-                  <h3 class="p-0">Accueil</h3>
+                Accueil
               </RouterLink>
               <RouterLink class="d-flex justify-content-center align-items-center col-4 h-100 nav-item nav-link active text-uppercase" to="/a-propos">
-                  <h3 class="p-0">À propos</h3>
+                À propos
               </RouterLink>
               <RouterLink class="d-flex justify-content-center justify-items-center align-items-center col-4 h-100 nav-item nav-link active text-uppercase" to="/boutique">
-                  <h3 class="p-0">Boutique</h3>
+                Boutique
               </RouterLink>
             </div>
           </div>
@@ -25,8 +25,9 @@
 img{
   width: 100%;
 }
-h3{
+a{
   font-size: min(1.1vw, 11pt);
+  font-weight: bold;
   color:#22211F;
   margin: 0;
 }

@@ -44,7 +44,7 @@ const props = defineProps({
     -o-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
     text-decoration: none;
-    background-color: #4c778d;
+    background-color: #d48b5e;
 }
 td{
     vertical-align: middle;

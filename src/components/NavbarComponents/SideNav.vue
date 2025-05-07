@@ -2,21 +2,21 @@
 <div id="mySidebar" class="sidebar" data-backdrop="static">
     <div class="sidebarContent mt-2">
         <div class="d-lg-none d-block">
-            <RouterLink to="/"><h2>Accueil</h2></RouterLink>
-            <RouterLink to="/a-propos"><h2>À propos</h2></RouterLink>
-            <RouterLink to="/boutique"><h2>Boutique</h2></RouterLink>
+            <RouterLink class="mainNavItems d-block" to="/">Accueil</RouterLink>
+            <RouterLink class="mainNavItems d-block" to="/a-propos">À propos</RouterLink>
+            <RouterLink class="mainNavItems d-block" to="/boutique">Boutique</RouterLink>
         </div>
-        <RouterLink to="/boutique/categories"><h2>Catégories</h2></RouterLink>
+        <RouterLink class="mainNavItems d-block" to="/boutique/categories">Catégories</RouterLink>
         <RouterLink v-for="category in categories" :to="'/boutique/'+category.normalized">
         <ul class="m-0">
-            <li>
-                <h3 class="pl-3">{{category.name}}</h3>
+            <li class="pl-3">
+                {{category.name}}
             </li>
         </ul>
         </RouterLink>
-        <RouterLink to="/contact"><h2 class="m-0 py-2">Contact</h2></RouterLink>
-        <RouterLink to="/faq"><h2 class="m-0 py-2">FAQ</h2></RouterLink>
-        <RouterLink v-if="adminStore.isAdmin" to="/admin"><h2 class="m-0 py-2">Admin</h2></RouterLink>
+        <RouterLink class="mainNavItems d-block m-0 py-2" to="/contact">Contact</RouterLink>
+        <RouterLink class="mainNavItems d-block m-0 py-2" to="/faq">FAQ</RouterLink>
+        <RouterLink class="mainNavItems d-block m-0 py-2" v-if="adminStore.isAdmin" to="/admin">Admin</RouterLink>
     </div>
 </div>
 </template>
@@ -98,12 +98,15 @@
   letter-spacing: 1px;
 }
 
-h2{
+.mainNavItems{
     color:#22211F;
     padding: 5px 20px;
     font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: .5rem;
+    line-height: 1.2;
 }
-h3{
+li{
     color:#22211F;
     font-size: 10pt;
     font-weight: normal;

@@ -57,7 +57,8 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta:{
-        title: "Accueil"
+        title: "Accueil",
+        description: 'Doudou Joli - Boutique en ligne d\'accessoires au crochet faits main.'
       }
     },
     {
@@ -65,7 +66,8 @@ const router = createRouter({
       name: 'shop',
       component: ShopView,
       meta:{
-        title: "Boutique"
+        title: "Boutique",
+        description: 'Découvrez notre boutique d’articles cousus main : décorations, accessoires, idées cadeaux originales.'
       }
     },
     {
@@ -73,7 +75,8 @@ const router = createRouter({
       name: 'filteredShop',
       component: ShopView,
       meta:{
-        title: ""
+        title: "",
+        description: "Doudou Joli - Boutique en ligne d\'accessoires au crochet faits main."
       }
     },
     {
@@ -81,7 +84,8 @@ const router = createRouter({
       name: 'categories',
       component: CategoriesView,
       meta:{
-        title: "Catégories"
+        title: "Catégories",
+        description: 'Parcourez nos créations par catégories : articles décoratifs, boîtes et accessoires faits main.'
       }
     },
     {
@@ -89,7 +93,8 @@ const router = createRouter({
       name: 'about',
       component: AboutView,
       meta:{
-        title: "A propos"
+        title: "A propos",
+        description: 'Apprenez-en plus sur l’histoire de Doudou Joli et Corinne, passionnée par l’artisanat et le fait main de qualité.'
       }
     },
     {
@@ -97,7 +102,8 @@ const router = createRouter({
       name: 'item',
       component: ItemView,
       meta:{
-        title: "Boutique"
+        title: "Boutique",
+        description: 'Doudou Joli - Boutique en ligne d\'accessoires au crochet faits main.'
       }
     },
     {
@@ -105,7 +111,8 @@ const router = createRouter({
       name: 'cart',
       component: CartView,
       meta:{
-        title: "Panier"
+        title: "Panier",
+        description: 'Vérifiez le contenu de votre panier et finalisez votre commande d’objets faits main.'
       }
     },
     {
@@ -113,7 +120,8 @@ const router = createRouter({
       name: 'payment',
       component: PaymentView,
       meta:{
-        title: "Paiement"
+        title: "Paiement",
+        description: 'Finalisez votre commande en toute sécurité grâce à notre module de paiement sécurisé.'
       }
     },
     {
@@ -121,7 +129,8 @@ const router = createRouter({
       name: 'paymentConfirmation',
       component: PaymentConfirmationView,
       meta:{
-        title: "Confirmation de paiement"
+        title: "Confirmation de paiement",
+        description: 'Merci pour votre commande ! Votre paiement a bien été reçu et votre colis est en préparation.'
       }
     },
     {
@@ -129,7 +138,8 @@ const router = createRouter({
       name: 'contact',
       component: ContactView,
       meta:{
-        title: "Contact"
+        title: "Contact",
+        description: 'Besoin d’aide ou d’informations ? Contactez-nous directement via notre formulaire en ligne.'
       }
     },
     {
@@ -137,7 +147,8 @@ const router = createRouter({
       name: 'faq',
       component: FaqView,
       meta:{
-        title: "FAQ"
+        title: "FAQ",
+        description: 'Retrouvez les réponses aux questions fréquentes concernant nos produits, expéditions et retours.'
       }
     },
     {
@@ -145,7 +156,8 @@ const router = createRouter({
       name: 'cgv',
       component: SalesTermsView,
       meta:{
-        title: "CGV"
+        title: "CGV",
+        description: 'Consultez les conditions générales de vente applicables sur notre boutique en ligne.'
       }
     },
     {
@@ -153,7 +165,8 @@ const router = createRouter({
       name: 'confidentiality',
       component: ConfidentialityPolicyView,
       meta:{
-        title: "Confidentialité"
+        title: "Confidentialité",
+        description: 'Votre vie privée est importante : voici comment nous protégeons vos données personnelles.'
       }
     },
     {
@@ -161,7 +174,8 @@ const router = createRouter({
       name: 'cookies',
       component: CookiesTerms,
       meta:{
-        title: "Politique des cookies"
+        title: "Politique des cookies",
+        description: 'Informations sur l’utilisation des cookies et les options de gestion de votre navigation.'
       }
     },
     {
@@ -169,7 +183,8 @@ const router = createRouter({
       name: 'login',
       component: LoginView,
       meta:{
-        title: "Connexion"
+        title: "Connexion",
+        description: 'Connectez-vous à votre espace personnel ou accédez à l’interface d’administration.'
       }
     },
     //Admin protected routes
@@ -276,6 +291,17 @@ router.beforeEach((to, from, next) => {
   else{
     document.title = "Doudou Joli - La boutique de Coco";
   }
+
+  const description = to.meta.description || 'Doudou Joli, boutique en ligne d\'accessoires au crochet faits main. Découvrez nos articles uniques et artisanaux.';
+  
+  let meta = document.querySelector('meta[name="description"]');
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.setAttribute('name', 'description');
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute('content', description);
+
   next();
 })
 

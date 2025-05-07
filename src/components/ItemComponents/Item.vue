@@ -5,10 +5,10 @@
             <div class="d-flex align-items-center">
                 <h1 class="mb-2 pr-2">{{ item.name }}</h1>
                 <div class="d-flex ml-auto" v-if="parseFloat(item.originalPrice) !== 0 && item.originalPrice !== item.price">
-                    <h2 class="discountedPrice mb-2 mr-2">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</h2>
-                    <h2 class="originalPrice">{{ parseFloat(item.originalPrice).toFixed(2).replace('.', ',').replace(',00', '') }}€</h2>
+                    <h3 class="discountedPrice mb-2 mr-2">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</h3>
+                    <h3 class="originalPrice">{{ parseFloat(item.originalPrice).toFixed(2).replace('.', ',').replace(',00', '') }}€</h3>
                 </div>
-                <h2 v-if="item.originalPrice === item.price || parseFloat(item.originalPrice) === 0" class="itemPrice ml-auto mb-1">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</h2>
+                <h3 v-if="item.originalPrice === item.price || parseFloat(item.originalPrice) === 0" class="itemPrice ml-auto mb-1">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</h3>
             </div>
             <p>
                 {{ item.description }}
@@ -22,7 +22,7 @@
             <p class="smallDisclaimer" v-if="item.isNotForChildren">
                 *Il est important de noter que cette peluche est un objet décoratif et ne doit pas être utilisée comme jouet pour enfants.
             </p>
-            <button @click="addItemToCart" class="btn btn-primary cartTriggerToggler"><h3 class="cartTriggerToggler">Ajouter au panier</h3></button>
+            <button @click="addItemToCart" class="btn btn-primary cartTriggerToggler"><p class="cartTriggerToggler">Ajouter au panier</p></button>
             <div class="shipment mt-3">
                 <h4 class="shipmentTitle">Livraison gratuite</h4>
                 <!-- <h4><span id="availibility">Disponible</span> - Expedition immediate</h4> -->
@@ -147,11 +147,11 @@ function openSideCart(){
     h1::after{
         background-color: transparent;
     }
-    h2{
+    h3{
         color: #d37a43;
         font-size: 20pt;
     }
-    h3{
+    button p{
         color: #A18F7B;
         font-size: 13pt;
         margin: 0;
@@ -185,11 +185,12 @@ function openSideCart(){
         position: relative;
         border: none;
     }
-    .btn h3{
+    .btn p{
         color: white;
         font-size: 100%;
         height: auto;
         margin: auto;
+        font-weight: bold;
     }
     .btn-primary:hover {
         border-color: none;
@@ -220,7 +221,7 @@ function openSideCart(){
         content: "🟢";
         padding: 3px;
     }
-    button h3::before{
+    button p::before{
         content: '';
         position: absolute;
         background: url("@/assets/images/add-to-cart-white.png") left 40% no-repeat;
