@@ -47,6 +47,7 @@
         getItem(itemId)
         .then(response => {
             item = response;
+            injectProductJsonLD(item);
             dataLoaded.value = true;
             isLoading.value = false;
             path = [
@@ -72,6 +73,36 @@
         .catch(function(error) {
             router.push({ path: '/404' })
         })
+    }
+
+    function injectProductJsonLD(item) {
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": item.name,
+            "image": [item.images[0]],
+            "description": item.description ?? '',
+            "sku": item.id,
+            "brand": {
+                "@type": "Brand",
+                "name": "Doudou Joli",
+                "logo": "https://doudoujoli.fr/assets/full_logo_colored_contoured-fab892d0.png"
+            },
+            "offers": {
+                "@type": "Offer",
+                "url": `https://doudoujoli.fr/article/${item.normalized}`, // adjust if needed
+                "priceCurrency": "EUR",
+                "price": item.price,
+                "availability": "https://schema.org/InStock",
+                "itemCondition": "https://schema.org/NewCondition"
+            }
+        });
+
+        const existing = document.querySelector('script[type="application/ld+json"]');
+        if (existing) existing.remove();
+        document.head.appendChild(script);
     }
 
     onBeforeMount(() => {
