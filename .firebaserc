@@ -1,8 +1,20 @@
 {
   "projects": {
     "default": "doudoujoli-610f9",
-    "prod": "doudoujoli-610f9"
+    "prod": "doudoujoli-610f9",
+    "staging": "doudoujoli-610f9"
   },
-  "targets": {},
+  "targets": {
+    "doudoujoli-610f9": {
+      "hosting": {
+        "production": [
+          "doudoujoli-610f9"
+        ],
+        "staging": [
+          "doudoujoli-staging"
+        ]
+      }
+    }
+  },
   "etags": {}
 }

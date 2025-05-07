@@ -27,9 +27,9 @@ import { RouterLink, RouterView } from 'vue-router'
 let modules = [Autoplay, EffectFade]
 
 let carouselImages = [
-  "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Ftest-adrien%2Ffile1?alt=media&token=00d10b04-4bca-4e4b-b4fa-ff766e76f60a",
-  "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Ftest-adrien%2Ffile2?alt=media&token=c8482065-5d87-471a-a91b-9dc930d825f7",
-  "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Ftest-adrien%2Ffile3?alt=media&token=44eb6074-92e1-44e7-8ea3-0d2d10cc4ad8"
+  "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile1.webp?alt=media&token=a73c41b3-b3f4-410d-8b0e-1fde60364d38",
+  "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile2.webp?alt=media&token=35ae6246-5258-44ae-9d19-9406d49d29c3",
+  "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile3.webp?alt=media&token=8f4e6924-dbde-4e98-8cd3-9637f6510cce"
 ]
 </script>
 

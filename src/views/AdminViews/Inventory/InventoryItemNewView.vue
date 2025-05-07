@@ -278,8 +278,9 @@
         submitDisabled.value = true;
         const file = event.target.files[0];
         const storage = getStorage();
+        const directory = import.meta.env.VITE_ENV === 'production' ? 'product_images' : 'product_images_staging';
 
-        const storageRef = firebaseRef(storage, 'product_images/'+item.normalized+'/'+event.target.name);
+        const storageRef = firebaseRef(storage, directory+'/'+item.normalized+'/'+event.target.name);
 
         new Compressor(file, {
             quality: 0.1,

@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "deploy": "firebase deploy",
+    "build:prod": "vite build --mode production",
+    "build:staging": "vite build --mode staging --outDir dist-staging",
+    "deploy:prod": "firebase deploy --only hosting:production",
+    "deploy:staging": "firebase deploy --only hosting:staging",
     "host": "vite --host",
     "serve": "vite",
     "build": "vite build",
