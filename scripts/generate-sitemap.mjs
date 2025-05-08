@@ -3,6 +3,11 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import axios from 'axios';
 
+const isStaging = process.argv.includes('--staging');
+
+const outputDir = isStaging ? '../../dist-staging/sitemap.xml' : '../../dist/sitemap.xml';
+const hostname = isStaging ? 'https://doudoujoli-staging.web.app' : 'https://doudoujoli.fr';
+
 async function getCategories() {
 
     const response = await axios.get('https://api.doudoujoli.fr/api/categories');
@@ -15,7 +20,6 @@ async function getItems() {
     return response.data;
 }
 
-const hostname = 'https://doudoujoli.fr';
 const keyRoutes = [
   '/',
   '/boutique'
@@ -61,7 +65,7 @@ async function generateSitemap() {
 ${urls.join('\n')}
 </urlset>`;
 
-  const outputPath = path.resolve(fileURLToPath(import.meta.url), '../../dist/sitemap.xml');
+  const outputPath = path.resolve(fileURLToPath(import.meta.url), outputDir);
   fs.writeFileSync(outputPath, sitemap);
   console.log('✅ Sitemap generated at:', outputPath);
 }

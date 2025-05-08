@@ -14,7 +14,10 @@
           "destination": "/index.html"
         }
       ],
-      "predeploy": ["npm run build"]
+      "predeploy": [
+        "npm run build:prod",
+        "npm run sitemap"
+      ]
     },
     {
       "target": "staging",
@@ -30,7 +33,10 @@
           "destination": "/index.html"
         }
       ],
-      "predeploy": ["npm run build:staging"]
+      "predeploy": [
+        "npm run build:staging",
+        "npm run sitemap -- --staging"
+      ]
     }
   ]
 }
