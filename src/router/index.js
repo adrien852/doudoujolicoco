@@ -57,7 +57,7 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta:{
-        title: "Accueil",
+        title: "La boutique de Coco",
         description: 'Doudou Joli - Boutique en ligne d\'accessoires au crochet faits main.'
       }
     },
@@ -286,7 +286,7 @@ router.beforeEach((to, from, next) => {
   if(name){
     name = name.charAt(0).toUpperCase() + name.slice(1);
     name = name.replace("_", " ");
-    document.title = name + " - Doudou Joli";
+    document.title = "Doudou Joli - " + name;
   }
   else{
     document.title = "Doudou Joli - La boutique de Coco";

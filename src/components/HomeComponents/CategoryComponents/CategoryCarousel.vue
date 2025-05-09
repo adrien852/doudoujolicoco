@@ -10,8 +10,11 @@
                   clickable: true,
                 }"
             :loop="true"
+            :autoplay="{
+                delay: 4000,
+            }"
         >
-            <swiper-slide class="swipeImg" v-for="category in categories" :key="category">
+            <swiper-slide class="swipeImg" v-for="category in computedCategories" :key="category">
                 <ShopCategory class="w-100" :category="category" />
             </swiper-slide>
         </swiper>
@@ -36,13 +39,22 @@
 import ShopCategory from '@/components/ShopComponents/ShopCategory.vue';
 import HomeCategory from '@/components/HomeComponents/HomeCategory.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { computed } from 'vue';
 
-let modules = [Navigation, Pagination]
+let modules = [Navigation, Pagination, Autoplay]
 
 const props = defineProps({
     categories: Array,
 })
+
+let computedCategories = computed(() => {
+    return [
+        props.categories[2],
+        props.categories[1],
+        props.categories[0]
+    ]
+  })
 </script>
 
 <style>

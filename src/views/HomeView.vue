@@ -5,12 +5,12 @@
           <loading class="position-relative" style="height: 363px;" :is-full-page="false" :active="categories && categories.length === 0"></loading>
           <Category v-if="categories && categories.length > 0" :categories="categories" />
       </div>
-      <BusinessPhilosophy :noAnimation="noAnimation" class="my-5"/>
-      <KeyPoints :noAnimation="noAnimation" class="my-5"/>
       <div class="container newProductsDiv position-relative">
         <loading class="position-relative" style="height: 250px;" :is-full-page="false" :active="newProductsLoading"></loading>
         <NewProducts v-if="!noNewProducts && sampleShopItemStore.items.length > 0" :items="sampleShopItemStore.items" />
       </div>
+      <BusinessPhilosophy :noAnimation="noAnimation" class="my-5"/>
+      <KeyPoints :noAnimation="noAnimation" class="my-5"/>
       <HomeReviews :noAnimation="noAnimation" class="my-5"/>
       <HomeContact />
   </main>
