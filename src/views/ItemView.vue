@@ -88,7 +88,7 @@
             "brand": {
                 "@type": "Brand",
                 "name": "Doudou Joli",
-                "logo": "https://doudoujoli.fr/assets/logo_white.png"
+                "logo": "https://doudoujoli.fr/assets/logo_white-80f4d317.png"
             },
             "offers": {
                 "@type": "Offer",
