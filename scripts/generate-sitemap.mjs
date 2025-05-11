@@ -5,8 +5,8 @@ import axios from 'axios';
 
 const isStaging = process.argv.includes('--staging');
 
-const outputDir = isStaging ? '../../dist-staging/sitemap.xml' : '../../dist/sitemap.xml';
-const hostname = isStaging ? 'https://doudoujoli-staging.web.app' : 'https://doudoujoli.fr';
+const outputDir = '../../dist/sitemap.xml';
+const hostname = 'https://doudoujoli.fr';
 
 async function getCategories() {
 
@@ -70,4 +70,6 @@ ${urls.join('\n')}
   console.log('✅ Sitemap generated at:', outputPath);
 }
 
-generateSitemap();
+if(!isStaging){
+  generateSitemap();
+}

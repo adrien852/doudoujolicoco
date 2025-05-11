@@ -3,7 +3,7 @@
     <SideNav :categories="categories" />
 
     <nav :class="['navbar navbar-light px-3', {'navBlock': false}]">
-      <RouterLink class="logo position-absolute" to="/"><img alt="Doudou Joli logo" class="" src="@/assets/half_logo.png"/></RouterLink>
+      <RouterLink class="logo position-absolute" to="/"><img alt="Doudou Joli logo" class="" src="@/assets/logo_white.png"/></RouterLink>
 
       <div id="navbarNav" class="d-flex flex-grow-1 align-items-center">
         <button id="sideToggler" class="navbar-toggler mr-3" type="button">

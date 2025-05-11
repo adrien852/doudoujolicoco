@@ -1,7 +1,7 @@
 <template>
     <footer class="">
-        <div class="p-3 d-flex align-items-center h-100">
-            <RouterLink class="logo d-sm-block d-none" to="/"><img alt="Doudou Joli logo" class="py-3" src="@/assets/full_logo.png"/></RouterLink>
+        <div class="px-3 pt-3 d-flex align-items-center h-100">
+            <RouterLink class="logo d-sm-block d-none" to="/"><img alt="Doudou Joli logo" class="pt-3" src="@/assets/logo_faded.png"/></RouterLink>
             <div class="flex-wrap d-flex justify-content-center w-100">
                 <div class="col-lg-4 col-12">
                     <h1>Pages</h1>
@@ -57,9 +57,6 @@
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="text-center">
-            <p class="creator m-0">Créé par <a target="_blank" href="https://adriendurouge.com">Adrien Durouge</a> - Tous droits réservés</p>
         </div>
     </footer>
 </template>

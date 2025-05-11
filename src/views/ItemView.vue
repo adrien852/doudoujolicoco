@@ -88,7 +88,7 @@
             "brand": {
                 "@type": "Brand",
                 "name": "Doudou Joli",
-                "logo": "https://doudoujoli.fr/assets/full_logo_colored_contoured-fab892d0.png"
+                "logo": "https://doudoujoli.fr/assets/logo_white.png"
             },
             "offers": {
                 "@type": "Offer",
@@ -97,7 +97,8 @@
                 "price": item.price,
                 "availability": "https://schema.org/InStock",
                 "itemCondition": "https://schema.org/NewCondition"
-            }
+            },
+            "keywords": "fait main, crochet, artisanal, cadeau unique, décoration chambre bébé, vêtements faits main, objet déco"
         });
 
         const existing = document.querySelector('script[type="application/ld+json"]');

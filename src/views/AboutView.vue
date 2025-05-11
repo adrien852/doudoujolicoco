@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="d-flex">
-      <img alt="Vue logo" class="logo py-3 mx-auto" src="@/assets/full_logo_colored_contoured.png"/>
+      <img alt="Vue logo" class="logo py-3 mx-auto" src="@/assets/logo.png"/>
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <img alt="Doudou Joli Logo" class="heroLogo py-2 d-block" src="@/assets/full_logo_colored_contoured.png">
+  <img alt="Doudou Joli Logo" class="heroLogo py-2 d-block" src="@/assets/logo_white.png">
   <swiper 
     class="homeSwiper"
     :modules="modules" 
@@ -40,7 +40,7 @@ let carouselImages = [
   position: absolute;
   left:5px;
   z-index: 10;
-  width: 110px;
+  width: 80px;
 }
 .homeSwiper, .swipeImg, .swipeImg img{
   height:100%;
@@ -101,7 +101,7 @@ let carouselImages = [
     border-radius: 0 50px 50px 0;
   }
   .heroLogo{
-    width: 220px;
+    width: 150px;
   }
 }
 </style>
