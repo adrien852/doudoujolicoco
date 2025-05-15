@@ -1,5 +1,5 @@
 <template>
-  <img alt="Doudou Joli Logo" class="heroLogo py-2 d-block" src="@/assets/logo_white.png">
+  <!-- <img alt="Doudou Joli Logo" class="heroLogo py-2 d-block" src="@/assets/logo.png"> -->
   <swiper 
     class="homeSwiper"
     :modules="modules" 

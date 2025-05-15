@@ -10,9 +10,9 @@
                 <ShopItem v-if="items[2]" class="py-2" :hideDescription="true" :item="items[2]" />
                 <ShopItem v-if="items[3]" class="py-2" :hideDescription="true" :item="items[3]" />
             </div>
-            <div id="items3" class="col-lg-6 p-0 col-12 flex-wrap">
-                <ShopItem v-if="items[4]" class="col-lg-12 col-6 py-2" :hideDescription="true" :item="items[4]" />
-                <ShopItem v-if="items[5]" class="col-lg-12 col-6 py-2" :hideDescription="true" :item="items[5]" />
+            <div id="items3" class="col-lg-6 p-0 col-12 flex-wrap d-flex">
+                <ShopItem v-if="items[4]" class="col-lg-12 col-sm-6 col-12 py-2" :hideDescription="true" :item="items[4]" />
+                <ShopItem v-if="items[5]" class="col-lg-12 col-sm-6 col-12 py-2" :hideDescription="true" :item="items[5]" />
             </div>
         </div>
     </div>

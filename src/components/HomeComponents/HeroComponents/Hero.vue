@@ -4,7 +4,7 @@
         <HeroCarousel />
       </div>
       <div class="container heroRight d-flex flex-column col-xl-5 col-lg-6 position-relative">
-          <h1 class="mainTitle text-left mb-3">Commandez votre<br/>article au crochet</h1>
+          <h1 class="mainTitle text-lg-left text-center mb-3">Commandez votre<br/>article au crochet</h1>
           <HeroBulletPoints class="mb-3" />
           <div class="text-left">
             <h5>Chez <b>Doudou Joli</b>, nous vous proposons une large sélection de produits crochetés tels que des accessoires de mode, de la décoration pour la maison et bien plus encore. Chaque pièce est réalisée avec amour et minutie par notre créatrice, <b>Corinne Boyer</b>.</h5>
@@ -35,9 +35,9 @@ h1{
   text-decoration: none;
   /* font-family: Questrial; */
   color: #22211F;
-  font-size: min(4.9vw + 0px, 62pt);
+  font-size: min(5.3vw + 0px, 75pt);
   letter-spacing: -2px;
-  line-height: 65px;
+  line-height: min(89px, 5vw + 0px);
 }
 h1::after{
   content: none;
@@ -70,13 +70,13 @@ img{
   h1{
     margin-top: 25px;
     font-size: 48pt;
-    line-height: 45px;
+    line-height: 58px;
   }
 }
 @media (max-width:575px) {
   h1{
     font-size: 35pt;
-    line-height: 45px;
+    line-height: 46px;
     margin-bottom: 10px;
     letter-spacing: -1px;
   }

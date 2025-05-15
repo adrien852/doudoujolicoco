@@ -1,7 +1,7 @@
 <template>
     <footer class="">
         <div class="px-3 pt-3 d-flex align-items-center h-100">
-            <RouterLink class="logo d-sm-block d-none" to="/"><img alt="Doudou Joli logo" class="pt-3" src="@/assets/logo_faded.png"/></RouterLink>
+            <RouterLink class="logo d-sm-block d-none" to="/"><img alt="Doudou Joli logo" class="pt-3" src="@/assets/logo_bw.png"/></RouterLink>
             <div class="flex-wrap d-flex justify-content-center w-100">
                 <div class="col-lg-4 col-12">
                     <h1>Pages</h1>

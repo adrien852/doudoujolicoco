@@ -3,8 +3,8 @@
     <SideNav :categories="categories" />
 
     <nav :class="['navbar navbar-light px-3', {'navBlock': false}]">
-      <!-- <RouterLink class="logo position-absolute" to="/"><img alt="Doudou Joli logo" class="" src="@/assets/logo_white.png"/></RouterLink> -->
-      <RouterLink class="logo position-absolute" to="/">Doudou Joli</RouterLink>
+      <!-- <RouterLink class="logo position-absolute" to="/"></RouterLink> -->
+      <RouterLink class="logo position-absolute d-flex" to="/">Doudou <img alt="Doudou Joli logo" class="" src="@/assets/logo.png"/> Joli</RouterLink>
       <div id="navbarNav" class="d-flex flex-grow-1 align-items-center">
         <button id="sideToggler" class="navbar-toggler mr-3" type="button">
           <span class="navbar-toggler-icon"></span>
@@ -53,15 +53,16 @@
 <style scoped>
  
 .logo{
-  left:calc(50% - 85px);
-  width: 170px;
+  left:calc(50% - 116px);
+  width: 232px;
   font-family: "Dancing Script", cursive;
   text-decoration: none;
   color: #22211F;
   font-size: 40px;
 }
 img{
-  width: 100%;
+  width: 24%;
+  margin: 3px 10px;
 }
   #toggler{
     margin: auto;
