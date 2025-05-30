@@ -18,6 +18,9 @@ import AdminInventoryNewView from '@/views/AdminViews/Inventory/InventoryItemNew
 import AdminCategoriesView from '@/views/AdminViews/Category/CategoriesView.vue'
 import AdminCategoryView from '@/views/AdminViews/Category/CategoryView.vue'
 import AdminCategoryNewView from '@/views/AdminViews/Category/CategoryNewView.vue'
+import AdminPromoNewView from '@/views/AdminViews/Promo/AdminPromoNewView.vue';
+import AdminPromoView from '@/views/AdminViews/Promo/AdminPromoView.vue';
+import AdminPromosView from '@/views/AdminViews/Promo/AdminPromosView.vue';
 import ContactView from '@/views/ContactView.vue'
 import FaqView from '@/views/FaqView.vue'
 import PaymentConfirmationView from '@/views/PaymentConfirmationView.vue'
@@ -258,6 +261,33 @@ const router = createRouter({
       beforeEnter: loginCheck,
       meta:{
         title: "Nouvelle catégorie"
+      }
+    },
+    {
+      path: '/admin/promos',
+      name: 'adminPromosView',
+      component: AdminPromosView,
+      // beforeEnter: loginCheck,
+      meta:{
+        title: "Code promos"
+      }
+    },
+    {
+      path: '/admin/promos/:id',
+      name: 'adminPromoView',
+      component: AdminPromoView,
+      // beforeEnter: loginCheck,
+      meta:{
+        title: "Code promos"
+      }
+    },
+    {
+      path: '/admin/promos/nouveau',
+      name: 'adminPromoNewView',
+      component: AdminPromoNewView,
+      // beforeEnter: loginCheck,
+      meta:{
+        title: "Nouveau code promos"
       }
     },
     {
