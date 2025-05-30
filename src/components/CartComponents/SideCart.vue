@@ -7,7 +7,7 @@
                     <span>Sous-total</span>
                     <span>{{ cartStore.subTotal.toFixed(2) }}€</span>
                 </div>
-                <div class="d-flex justify-content-between" v-if="cartStore.promo && !cartStore.promoError">
+                <div class="d-flex justify-content-between" v-if="cartStore.promo && cartStore.promoValue < 0">
                     <span class="text-success">Code promo</span>
                     <span class="text-success">-{{ Math.abs(cartStore.promoValue).toFixed(2) }}€</span>
                 </div>

@@ -267,7 +267,7 @@ const router = createRouter({
       path: '/admin/promos',
       name: 'adminPromosView',
       component: AdminPromosView,
-      // beforeEnter: loginCheck,
+      beforeEnter: loginCheck,
       meta:{
         title: "Code promos"
       }
@@ -276,7 +276,7 @@ const router = createRouter({
       path: '/admin/promos/:id',
       name: 'adminPromoView',
       component: AdminPromoView,
-      // beforeEnter: loginCheck,
+      beforeEnter: loginCheck,
       meta:{
         title: "Code promos"
       }
@@ -285,7 +285,7 @@ const router = createRouter({
       path: '/admin/promos/nouveau',
       name: 'adminPromoNewView',
       component: AdminPromoNewView,
-      // beforeEnter: loginCheck,
+      beforeEnter: loginCheck,
       meta:{
         title: "Nouveau code promos"
       }

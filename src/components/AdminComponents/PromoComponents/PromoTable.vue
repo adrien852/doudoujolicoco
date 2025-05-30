@@ -38,7 +38,7 @@ function deleteItem(item){
     swal.fire({
         icon: 'question',
         title: 'Supprimer '+item.code+' ?',
-        text: 'Êtes-vous sûr de vouloir supprimer cette catégorie ?',
+        text: 'Êtes-vous sûr de vouloir supprimer ce code promotionnel ?',
         showCancelButton: true,
         confirmButtonText: "Supprimer",
         cancelButtonText: "Annuler",
