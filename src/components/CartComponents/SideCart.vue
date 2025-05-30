@@ -2,6 +2,20 @@
     <div id="sideCart" class="sideCart pb-3">
         <div v-if="cartStore.count > 0" class="sideCartContent mt-2">
             <CartItems :items="cartStore.cartItems"/>
+            <div class="cartDetailsContainer mx-3">
+                <div class="d-flex justify-content-between">
+                    <span>Sous-total</span>
+                    <span>{{ cartStore.subTotal.toFixed(2) }}€</span>
+                </div>
+                <div class="d-flex justify-content-between" v-if="cartStore.promo && !cartStore.promoError">
+                    <span class="text-success">Code promo</span>
+                    <span class="text-success">-{{ Math.abs(cartStore.promoValue).toFixed(2) }}€</span>
+                </div>
+                <div class="d-flex justify-content-between font-weight-bold">
+                    <span>Total</span>
+                    <span>{{ cartStore.total.toFixed(2) }}€</span>
+                </div>
+            </div>
             <div class="d-flex flex-column">
                 <RouterLink class="mx-auto mt-1" to="/panier"><button class="btn btn-primary checkoutButton px-2"><span class="text-uppercase">Voir mon panier</span></button></RouterLink> 
                 <RouterLink class="mx-auto mt-1" to="/boutique"><button class="btn btn-primary px-2"><span class="text-uppercase">Retour à la boutique</span></button></RouterLink> 
@@ -127,7 +141,9 @@
         margin-top: 3px;
     }
     .sideCart .cartDetailsContainer{
-        padding: 10px!important;
+            background-color: #d2d2d214;
+    padding: 10px 15px;
+
     }
     .sideCart .itemCategory{
         font-size: 7pt!important;

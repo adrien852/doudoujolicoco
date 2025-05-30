@@ -1,16 +1,23 @@
 import { defineStore } from "pinia";
 import { useStorage } from '@vueuse/core'
 import { getItem } from "@/services/ShopService"
+import { getPromo } from "@/services/PromoService"
 
 export const useCartStore = defineStore("CartStore", {
     state: () => ({
         cartItems: useStorage('cartItems', []),
-        customer: useStorage('customer', [])
+        customer: useStorage('customer', []),
+        promoCode: useStorage('promoCode', ''),
+        promo: useStorage('promo', {
+            code: '',
+            type: '',
+            amount: 0,
+            minimumOrderTotal: 0
+        }),
     }),
 
     getters:{
         count: (state) => state.cartItems.length,
-
         isEmpty: (state) => state.count == 0,
 
         subTotal(state) {
@@ -19,6 +26,28 @@ export const useCartStore = defineStore("CartStore", {
                 totalPrice += parseFloat(item.price);
             });
             return totalPrice;
+        },
+
+        promoValue(state) {
+            // Valeur négative de la promo appliquée
+            if (state.promo) {
+                let totalPrice = 0;
+                state.cartItems.forEach((item) => {
+                    totalPrice += parseFloat(item.price);
+                });
+                if (totalPrice >= state.promo.minimumOrderTotal) {
+                    if (state.promo.type === "Pourcentage") {
+                        return -totalPrice * (state.promo.amount / 100);
+                    } else if (state.promo.type === "Valeur fixe") {
+                        return -state.promo.amount;
+                    }
+                }
+            }
+            return 0;
+        },
+
+        total(state) {
+            return state.subTotal + state.promoValue;
         }
     },
 
@@ -28,6 +57,8 @@ export const useCartStore = defineStore("CartStore", {
         },
         clearCart(){
             this.cartItems = [];
+            this.promo = null;
+            this.promoCode = '';
         },
         deleteItem(itemToRemoveIndex){
             this.cartItems.splice(itemToRemoveIndex, 1);
@@ -69,6 +100,46 @@ export const useCartStore = defineStore("CartStore", {
                 })
                 return item;
             })
+        },
+
+        async applyPromoCode(code) {
+            if (!code) {
+                return {
+                    success: false, 
+                    message: "Veuillez entrer un code promo."
+                };
+            }
+            try {
+                const promo = await getPromo(code.trim());
+                if (!promo || !promo.code) {
+                    return {
+                        success: false, 
+                        message: "Code promo invalide."
+                    };
+                }
+                // Vérifie le minimum de commande
+                let total = 0;
+                this.cartItems.forEach((item) => {
+                    total += parseFloat(item.price);
+                });
+                if (total < promo.minimumOrderTotal) {
+                    return {
+                        success: false, 
+                        message: `Commande minimum de ${promo.minimumOrderTotal}€ requise.`
+                    };
+                }
+                this.promo = promo;
+                this.promoCode = code.trim();
+                return {
+                    success: true, 
+                    message: "Code promo appliqué : " + promo.code
+                };
+            } catch (e) {
+                return {
+                    success: false, 
+                    message: "Erreur lors de la vérification du code promo."
+                };
+            }
         }
     }
 })

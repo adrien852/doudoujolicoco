@@ -98,12 +98,17 @@ html, body, #app{
     border-color: #515d62;
   }
 
-  .form-control:focus {
-    color: #fff;
-    background-color: #d48b5e;
+  .form-control:focus:not([type="text"]) {
+      color: #fff;
+      background-color: #d48b5e;
+      border-color: #d48b5e;
+      outline: 0;
+      box-shadow: 0 0 0 .1rem rgba(152, 174, 185, 25%);
+  }
+
+  .form-control:focus:is([type="text"]) {
+    box-shadow: none;
     border-color: #d48b5e;
-    outline: 0;
-    box-shadow: 0 0 0 .1rem rgba(152, 174, 185, 25%);
   }
 
   .p-nav{

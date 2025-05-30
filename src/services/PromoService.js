@@ -17,6 +17,12 @@ export async function getAdminPromo(id) {
     return response.data;
 }
 
+export async function getPromo(code) {
+
+    const response = await instance.get('/promo/code/'+code);
+    return response.data;
+}
+
 export async function updateAdminPromo(item) {
 
     const response = await instance.put('/promo/'+item.id, {payload: item});

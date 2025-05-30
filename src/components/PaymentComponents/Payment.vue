@@ -19,7 +19,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
   onMounted(async() => {
     const stripe = await loadStripe(`${import.meta.env.VITE_STRIPE_API_KEY}`);
-    checkout(cartStore.cartItems).then(({clientSecret}) => {
+    checkout(cartStore.cartItems, cartStore.promo.code).then(({clientSecret}) => {
       stripe.initEmbeddedCheckout({
         clientSecret
       }).then(response => {

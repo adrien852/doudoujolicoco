@@ -4,10 +4,6 @@
             <div @click="cartStore.deleteItem(index)" class="bin"><img class="w-100 cartTriggerToggler" src="@/assets/images/bin.png"/></div>
             <ShopItem :item="item" :longDisplay="true"/>
         </div>
-        <div class="d-flex totalContainer align-items-center justify-content-between w-100">
-            <p class="m-0">Total</p>
-            <p class="m-0">{{ cartStore.subTotal }}€</p>
-        </div>
     </div>
 </template>
 

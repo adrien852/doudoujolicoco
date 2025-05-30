@@ -6,19 +6,35 @@
         <div class="detailsColor py-3">
             <ol class="pb-3 m-0">
                 <li class="d-flex align-items-center">
-                    <h3 class="m-0 font-weight-normal text-uppercase">Total</h3><span>{{ cartStore.subTotal.toFixed(2) }}€</span>
+                    <p class="m-0 font-weight-normal text-uppercase">Total</p><span>{{ cartStore.subTotal.toFixed(2) }}€</span>
                 </li>
                 <!-- <li class="d-flex align-items-center">
                     <h3 class="tva m-0 font-weight-normal text-uppercase">TVA 20%</h3><span>{{ ((20*(cartStore.subTotal)/100)).toFixed(2) }}€</span>
                 </li> -->
+                <li class="d-flex align-items-center text-success" v-if="cartStore.promo && cartStore.promoValue < 0">
+                    <p class="m-0 font-weight-normal text-uppercase">Code promotionnel</p>
+                    <span class="">-{{ Math.abs(cartStore.promoValue).toFixed(2) }}€</span>
+                </li>
                 <li class="d-flex align-items-center">
-                    <h3 class="frais m-0 font-weight-normal text-uppercase">Frais de port</h3><span>Offerts</span>
+                    <p class="frais m-0 font-weight-normal text-uppercase">Frais de port</p><span>Offerts</span>
                 </li>
             </ol>
             <hr class="py-2 my-0">
             <li class="d-flex align-items-center">
-                <h2 class="m-0 text-uppercase">Total</h2><span class="mt-1 font-weight-bold">{{ cartStore.subTotal.toFixed(2) }}€</span>
+                <p class="m-0 text-uppercase">Total</p><span class="mt-1 font-weight-bold">{{ cartStore.total.toFixed(2) }}€</span>
             </li>
+            <div class="d-flex align-items-center mt-3">
+                <div class="pr-2">
+                    <input placeholder="Utiliser un code promo" class="form-control" type="text" v-model="cartStore.promoCode">
+                </div>
+                <button class="btn btn-primary col-4" @click="applyPromo">Appliquer</button>
+            </div>
+            <div v-if="showApplyMessage" 
+                :class="{'text-red': showApplyMessage.success !== true,'text-success': showApplyMessage.success === true}" 
+                class="text-red mt-2"
+            >
+                {{ showApplyMessage.message }}
+            </div>
             <div v-if="checkoutButton">
                 <RouterLink class="mt-4" to="/boutique"><button class="btn btn-primary px-2"><h4 class="text-uppercase">Continuer mes achats</h4></button></RouterLink> 
                 <RouterLink class="mt-3" to="/paiement"><button class="btn btn-primary checkoutButton px-2"><h4 class="text-uppercase">Passer la commande</h4></button></RouterLink> 
@@ -31,7 +47,9 @@
 </template>
 <script setup>
     import { useCartStore } from '@/stores/CartStore'
+    import { ref } from 'vue';
     const cartStore = useCartStore();
+    const showApplyMessage = ref(null);
 
     const props = defineProps({
         checkoutButton: {
@@ -39,6 +57,12 @@
             default: true
         },
     });
+
+    async function applyPromo() {
+        cartStore.applyPromoCode(cartStore.promoCode).then((response) => {
+            showApplyMessage.value = response;
+        });
+    }
 </script>
 
 <style scoped>
@@ -53,7 +77,7 @@
         word-spacing: normal;
         letter-spacing: 1px;
     }
-    h3, h2{
+    p{
         font-size: 10pt;
         width: calc(100% - 60px); 
         overflow: hidden; 
@@ -62,7 +86,7 @@
     .frais, .tva{
         width: calc(100% - 60px); 
     }
-    h3:after, h2:after { 
+    p:after, h2:after { 
         content: " ...................................................................................................................................................................................................................................................................." 
     }
     span{

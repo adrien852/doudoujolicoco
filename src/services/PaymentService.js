@@ -14,9 +14,9 @@ function generateHmac(privateKey, payload){
 //     return response.data;
 // }
 
-export async function checkout(items) {
+export async function checkout(items, promoCode) {
     items = items.map((item) => item = {'normalized': item.normalized, 'qty': 1});
-    const payload = {cartItems: items};
+    const payload = {cartItems: items, promoCode: promoCode};
     const response = await axios.post(API+'/payment/checkout', {hmac: generateHmac(privateKey, payload), publicKey: publicKey, payload: payload});
     return response.data;
 }
