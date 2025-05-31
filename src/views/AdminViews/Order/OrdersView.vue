@@ -4,18 +4,18 @@
         <loading :is-full-page="false" :active="isLoading"></loading>
         <div class="mb-3">
             <RouterLink to="/admin"><button class="btn btn-secondary">Retour</button></RouterLink>
+            <input placeholder="Recherche..." class="float-right mt-3" v-model="search"></input>
         </div>
-        <OrdersTable :orders="orders" :tableHeaders="tableHeaders"/>
+        <OrdersTable :search="search" :orders="orders" :tableHeaders="tableHeaders"/>
     </div>
 </template>
 
 <script setup>
     import OrdersTable from '@/components/AdminComponents/OrderComponents/OrdersTable.vue'
-    import { onMounted } from 'vue';
+    import { onMounted, onBeforeMount } from 'vue';
     import { getAdminOrders } from '@/services/OrderService';
     import { ref, reactive, inject } from 'vue';
     import NavPath from '@/components/NavbarComponents/NavPath.vue';
-    import { onBeforeMount } from 'vue';
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import router from '@/router'
@@ -23,6 +23,7 @@
 
 
     let isLoading = ref(true)
+    let search = ref('')
     let orders = reactive({})
     let tableHeaders = reactive({})
     let path = null;

@@ -8,7 +8,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="order in orders">
+                <tr v-for="order in filteredOrders">
                     <td v-for="value in order">
                         {{ value }}
                     </td>
@@ -22,9 +22,30 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
+
 const props = defineProps({
     orders: Object,
-    tableHeaders: Object
+    tableHeaders: Object,
+    search: String
+})
+
+const filteredOrders = computed(() => {
+  if (!props.search || props.search.trim() === '') {
+    return props.orders;
+  }
+
+  const keyword = props.search.toLowerCase();
+
+  return props.orders.filter((item) => {
+    return props.tableHeaders.some((field) => {
+      const value = item[field]
+      return (
+          value &&
+          value.toString().toLowerCase().includes(keyword)
+      )
+    })
+  })
 })
 </script>
 
