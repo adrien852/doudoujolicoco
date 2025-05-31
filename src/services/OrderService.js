@@ -26,6 +26,6 @@ export async function updateOrderStatus(order) {
 
 export async function sendStatusEmail(order, status) {
 
-    const response = await instance.post('/order/sendEmail/'+order.reference, {payload: {newStatus: status}});
+    const response = await instance.post('/order/sendEmail/'+order.reference, {payload: {newStatus: status, trackingNumber: order.trackingNumber}});
     return response.data;
 }
