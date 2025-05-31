@@ -29,12 +29,14 @@ const props = defineProps({
 })
 
 let paymentDate = computed(() => {
-    let date = new Date(props.order.payment?.createdAt);
-    var hours = date.getHours();
-    var minutes = "0" + date.getMinutes();
-
-    var formattedTime = hours + ':' + minutes.substring(-2);
-    return date.getDate()+'/'+date.getMonth()+1+'/'+date.getFullYear()+' '+formattedTime
+    if (!props.order.payment?.createdAt) return '';
+    const date = new Date(props.order.payment?.createdAt);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
   })
 </script>
 

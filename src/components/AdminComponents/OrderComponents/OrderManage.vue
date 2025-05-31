@@ -21,8 +21,11 @@
                 <div>
                     <h5 class="card-title">Envoyer email de confirmation</h5>
                     <button @click="sendEmail('IN_PROGRESS')" class="btn btn-primary w-100">Commande en traitement</button>
-                    <button @click="sendEmail('SHIPPED')" class="btn btn-primary w-100 mt-2">Commande expédiée</button>
-                    <button @click="sendEmail('DELIVERED')" class="btn btn-primary w-100 mt-2">Commande livrée</button>
+                    <div class="d-flex flex-column align-items-center mt-4">
+                        <input placeholder="Numéro de suivi" class="form-control" type="text" v-model="order.trackingNumber" />
+                        <button @click="sendEmail('SHIPPED')" class="btn btn-primary mt-1 w-100">Commande expédiée</button>
+                    </div>
+                    <button @click="sendEmail('DELIVERED')" class="btn btn-primary w-100 mt-4">Commande livrée</button>
                 </div>
             </div>
         </div>
@@ -84,7 +87,14 @@
         swal.fire({
             icon: 'question',
             title: 'Statut : "'+statusFr[status]+'"',
-            html: 'Êtes-vous sûr de vouloir envoyer un email pour notifier le client ?<br/>Email client : '+`<b>${props.order.customer.email}</b>.`,
+            html: 
+                'Êtes-vous sûr de vouloir envoyer un email pour notifier le client ?<br/>' +
+                (
+                    props.order.trackingNumber && props.order.trackingNumber.trim() !== ''
+                        ? `Numéro de suivi : <b>${props.order.trackingNumber}</b><br/>`
+                        : 'Sans numéro de suivi<br/>'
+                ) +
+                'Email client : <b>' + props.order.customer.email + '</b>.',
             width: 600,
             showCancelButton: true,
             confirmButtonText: "Envoyer",
