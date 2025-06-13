@@ -10,7 +10,7 @@
     }"
   >
     <swiper-slide class="swipeImg" v-for="(slide, index) in carouselImages">
-      <RouterLink :to="'/article/'+slide.normalized" class="cartImgContainer">
+      <RouterLink :to="slide.redirect" class="cartImgContainer">
         <img alt="Article de la boutique" class="d-block w-100" :id="'heroImg'+index" :src="slide.link">
       </RouterLink>
     </swiper-slide>
@@ -29,9 +29,10 @@ import { RouterLink, RouterView } from 'vue-router'
 let modules = [Autoplay, EffectFade]
 
 let carouselImages = [
-  {"normalized": "mouton-balancoire", "link": "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile1.webp?alt=media&token=a73c41b3-b3f4-410d-8b0e-1fde60364d38"},
-  {"normalized": "boitecoeur", "link": "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile2.webp?alt=media&token=35ae6246-5258-44ae-9d19-9406d49d29c3"},
-  {"normalized": "chale", "link": "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile3.webp?alt=media&token=8f4e6924-dbde-4e98-8cd3-9637f6510cce"}
+  {"redirect": "/boutique", "link": "src/assets/images/promoHero.png"},
+  {"redirect": "/article/mouton-balancoire", "link": "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile1.webp?alt=media&token=a73c41b3-b3f4-410d-8b0e-1fde60364d38"},
+  {"redirect": "/article/boitecoeur", "link": "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile2.webp?alt=media&token=35ae6246-5258-44ae-9d19-9406d49d29c3"},
+  {"redirect": "/article/chale", "link": "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile3.webp?alt=media&token=8f4e6924-dbde-4e98-8cd3-9637f6510cce"}
 ]
 </script>
 

@@ -28,6 +28,7 @@ import LoginView from '@/views/LoginView.vue'
 import SalesTermsView from '@/views/SalesTermsView.vue'
 import ConfidentialityPolicyView from '@/views/ConfidentialityPolicyView.vue'
 import CookiesTerms from '@/views/CookiesTerms.vue';
+import AdminHomeView from '@/views/AdminViews/Home/HomeView.vue'
 
 const API = import.meta.env.VITE_EXPRESS_API_URL;
 const instance = axios.create({
@@ -288,6 +289,15 @@ const router = createRouter({
       beforeEnter: loginCheck,
       meta:{
         title: "Nouveau code promos"
+      }
+    },
+    {
+      path: '/admin/accueil',
+      name: 'adminHomeView',
+      component: AdminHomeView,
+      beforeEnter: loginCheck,
+      meta:{
+        title: "Elements d'accueil"
       }
     },
     {
