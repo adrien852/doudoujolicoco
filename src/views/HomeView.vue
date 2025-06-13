@@ -1,6 +1,6 @@
 <template>
   <main id="main" class="w-100">
-    <Hero />
+    <Hero :promo="homePromo" />
       <div class="carouselDiv position-relative my-5">
           <loading class="position-relative" style="height: 363px;" :is-full-page="false" :active="categories && categories.length === 0"></loading>
           <Category v-if="categories && categories.length > 0" :categories="categories" />
@@ -29,6 +29,7 @@
   import Loading from 'vue3-loading-overlay';
   import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
   import { onMounted } from 'vue';
+  import { getHomeElements } from '@/services/HomeService'
 
   const sampleShopItemStore = useSampleItemStore();
   let newProductsLoading = ref(true);
@@ -37,6 +38,7 @@
     return sampleShopItemStore.categories
   })
   let noAnimation = ref(false);
+  const homePromo = ref(null);
 
   onMounted(() => {
     sampleShopItemStore.fillItems()
@@ -48,8 +50,12 @@
       noAnimation.value = true;
       newProductsLoading.value = false;
     })
-  })
+  });
 
+  onMounted(async () => {
+    const homeData = await getHomeElements();
+    homePromo.value = homeData.promo;
+  });
 </script>
 
 <style scoped>

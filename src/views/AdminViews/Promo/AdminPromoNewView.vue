@@ -19,8 +19,7 @@
                     name="code"
                     validation="required"
                     outer-class="col-md-5 col-12"
-                    :transform="(val) => val.toUpperCase()"
-                    help="En majuscules, sans espace. Chiffres et tirets autorisés"
+                    help="En majuscules, sans espace ni accents. Chiffres et tirets autorisés"
                 />
                 <FormKit
                     type="radio"
@@ -52,6 +51,18 @@
                     name="minimumOrderTotal"
                     outer-class="col-md-5 col-12"
                 />
+            </div>
+            <div class="d-flex justify-content-center flex-wrap">
+               <FormKit
+                    type="text"
+                    label="Description"
+                    name="description"
+                    validation="required"
+                    outer-class="col-md-5 col-12"
+                    :transform="(val) => val.toUpperCase()"
+                    help="Affichée sur la page d'accueil"
+                />
+                <div class="col-md-5 col-12"></div>
             </div>
             <div class="d-flex justify-content-center mt-3">
                 <FormKit type="submit" :disabled="submitDisabled">Enregistrer</FormKit>
