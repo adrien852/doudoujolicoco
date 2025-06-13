@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex flex-wrap align-items-center heroContainer">
       <div class="heroCarousel col-lg-6 col-12 p-0">
-        <HeroCarousel />
+        <HeroCarousel :promo="promo" />
       </div>
       <div class="container heroRight d-flex flex-column col-xl-5 col-lg-6 position-relative">
           <h1 class="mainTitle text-lg-left text-center mb-3">Commandez votre<br/>article au crochet</h1>
@@ -24,6 +24,9 @@
   import HeroBulletPoints from '@/components/HomeComponents/HeroComponents/HeroBulletPoints.vue'
   import { RouterLink, RouterView } from 'vue-router'
 
+  const props = defineProps({
+    promo: Object
+  });
 </script>
 
 <style scoped>

@@ -162,7 +162,7 @@ const sliderImages = computed(() => props.item.images.filter((image) => {
 
 .swiper-slide {
   text-align: center;
-  font-size: 18px;
+  font-size: 17px;
   background: #fff;
 
   /* Center slide text vertically */
