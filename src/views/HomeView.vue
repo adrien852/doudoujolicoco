@@ -29,9 +29,10 @@
   import Loading from 'vue3-loading-overlay';
   import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
   import { onMounted } from 'vue';
-  import { getHomeElements } from '@/services/HomeService'
+  import { useHomeStore } from '@/stores/HomeStore'
 
   const sampleShopItemStore = useSampleItemStore();
+  const homeStore = useHomeStore();
   let newProductsLoading = ref(true);
   let noNewProducts = ref(true);
   let categories = computed(() => {
@@ -50,11 +51,16 @@
       noAnimation.value = true;
       newProductsLoading.value = false;
     })
-  });
 
-  onMounted(async () => {
-    const homeData = await getHomeElements();
-    homePromo.value = homeData.promo;
+    if(homeStore.homeElements.id === -1) {
+      homeStore.fillHomeElements()
+      .then(() => {
+        homePromo.value = homeStore.homeElements.promo;
+      })
+    }
+    else {
+      homePromo.value = homeStore.homeElements.promo;
+    }
   });
 </script>
 

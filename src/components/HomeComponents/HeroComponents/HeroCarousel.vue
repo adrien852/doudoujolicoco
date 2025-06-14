@@ -5,17 +5,16 @@
     :modules="modules" 
     effect="fade"
     :loop="true"
-    :autoplay="{ delay: 5000, disableOnInteraction: true }"
+    :autoplay="{ delay: 7000, disableOnInteraction: true }"
   >
     <swiper-slide class="swipeImg" v-for="(slide, index) in carouselImages" :key="index">
       <RouterLink :to="slide.redirect" class="cartImgContainer" style="position:relative;">
         <img alt="Article de la boutique" class="d-block w-100" :id="'heroImg'+index" :src="slide.link">
-        <!-- Overlay dynamique sur promoHero -->
         <div
-          v-if="index === 0"
+          v-if="slide.link === promoHero"
           class="promoHeroOverlay promoHeroContent justify-content-center align-items-center"
         >
-            <h2 class="">Promo Spéciale Été !</h2>
+            <h2 class="">{{ promo?.description }}</h2>
             <div class="d-flex flex-column align-items-end w-100 promoContentText">
               <div v-if="promo" class="col-7">
                 <p>Réduction de 
@@ -42,23 +41,40 @@ import 'swiper/css/navigation';
 import { Autoplay, EffectFade } from 'swiper/modules';
 import { RouterLink } from 'vue-router'
 import { useCartStore } from '@/stores/CartStore'
-import { inject } from 'vue';
+import { inject, ref, watch } from 'vue';
+import promoHero from '@/assets/images/promoHero.png'
 const swal = inject('$swal')
 
 let modules = [Autoplay, EffectFade]
 
-let carouselImages = [
-  {"redirect": "/boutique", "link": "src/assets/images/promoHero.png"},
-  {"redirect": "/article/mouton-balancoire", "link": "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile1.webp?alt=media&token=a73c41b3-b3f4-410d-8b0e-1fde60364d38"},
-  {"redirect": "/article/boitecoeur", "link": "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile2.webp?alt=media&token=35ae6246-5258-44ae-9d19-9406d49d29c3"},
-  {"redirect": "/article/chale", "link": "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile3.webp?alt=media&token=8f4e6924-dbde-4e98-8cd3-9637f6510cce"}
+const baseImages = [
+  { redirect: "/article/mouton-balancoire", link: "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile1.webp?alt=media&token=a73c41b3-b3f4-410d-8b0e-1fde60364d38" },
+  { redirect: "/article/boitecoeur", link: "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile2.webp?alt=media&token=35ae6246-5258-44ae-9d19-9406d49d29c3" },
+  { redirect: "/article/chale", link: "https://firebasestorage.googleapis.com/v0/b/doudoujoli-610f9.appspot.com/o/product_images%2Fhomepage%2Ffile3.webp?alt=media&token=8f4e6924-dbde-4e98-8cd3-9637f6510cce" }
 ]
+
+const carouselImages = ref([...baseImages])
 
 const cartStore = useCartStore();
 
 const props = defineProps({
   promo: Object
 });
+
+watch(
+  () => props.promo,
+  (newPromo) => {
+    let images = [...baseImages]
+    if (newPromo && newPromo.id !== null && newPromo.id !== -1) {
+      images.unshift({
+        redirect: '/boutique',
+        link: promoHero
+      })
+    }
+    carouselImages.value = images
+  },
+  { immediate: true }
+)
 
 function applyPromo() {
   if (props.promo?.code) {
@@ -213,7 +229,7 @@ p.minimumOrderText{
     font-size: 45px;
   }
   .promoContentText{
-    min-height: 166px;
+    min-height: 226px;
   }
 }
 </style>
