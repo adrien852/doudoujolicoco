@@ -60,18 +60,25 @@
     })
 
     let isLoading = ref(true);
-
     let promos = null;
     let promoCodes = ref([]);
     let submitDisabled = ref(false);
 
-    onMounted(async() => {
-        await getHomeElements(route.params.id)
-        .then(response => {
-            item = response;
-        })
-        .catch(function(error) {
-            console.log(error)
+    onMounted(async () => {
+        isLoading.value = true;
+
+        try {
+            const [homeResponse, promosResponse] = await Promise.all([
+                getHomeElements(route.params.id),
+                getAdminPromos()
+            ]);
+
+            item = homeResponse;
+            promoCodes.value = [{ value: null, label: '' }].concat(
+                promosResponse.map(promo => ({ value: String(promo.id), label: promo.code }))
+            );
+            promos = promosResponse;
+        } catch (error) {
             swal.fire({
                 icon: 'error',
                 title: 'Désolé',
@@ -81,16 +88,12 @@
                 showConfirmButton: true,
                 confirmButtonColor: "#F39E6A",
             }).then(() => {
-                router.push({ path: '/admin' })
-            })
-        })
-        await getAdminPromos()
-        .then(response => {
-            promoCodes.value = [{ value: null, label: '' }].concat(response.map(promo => ({ value: promo.id, label: promo.code })));
-            promos = response;
-        })
-        isLoading.value = false;
-    })
+                router.push({ path: '/admin' });
+            });
+        } finally {
+            isLoading.value = false;
+        }
+    });
 
     function handleSubmit() {
         isLoading.value = true;
