@@ -52,7 +52,7 @@
       newProductsLoading.value = false;
     })
 
-    if(homeStore.homeElements.id === -1) {
+    if(homeStore.homeElements.id === -1 || homeStore.isHomeExpired()) {
       homeStore.fillHomeElements()
       .then(() => {
         homePromo.value = homeStore.homeElements.promo;
