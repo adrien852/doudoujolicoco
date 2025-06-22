@@ -130,20 +130,20 @@ const sliderImages = computed(() => props.item.images.filter((image) => {
     color:white;
   }
 .item-gallery .swiper {
-  max-height: 600px;
+  max-height: 750px;
   margin-left: auto;
   margin-right: auto;
 }
 
 @media (max-width: 991px) {
   .item-gallery .swiper {
-    max-height: 650px;
+    max-height: 850px;
   }
 }
 
 @media (max-width: 575px) {
   .item-gallery .swiper {
-    max-height: 350px;
+    max-height: 450px;
   }
 }
 

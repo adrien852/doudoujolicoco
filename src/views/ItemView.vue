@@ -82,7 +82,7 @@
             "@context": "https://schema.org/",
             "@type": "Product",
             "name": item.name,
-            "image": [item.images[0]],
+            "image": item.images,
             "description": item.description ?? '',
             "sku": item.id,
             "brand": {
