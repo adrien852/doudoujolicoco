@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { useStorage } from '@vueuse/core'
 import { getItem } from "@/services/ShopService"
 import { getPromo } from "@/services/PromoService"
+import { useHomeStore } from '@/stores/HomeStore.js'
 
 export const useCartStore = defineStore("CartStore", {
     state: () => ({
@@ -103,6 +104,7 @@ export const useCartStore = defineStore("CartStore", {
         },
 
         async applyPromoCode(code) {
+            const homeStore = useHomeStore();
             if (!code) {
                 return {
                     success: false, 
@@ -111,6 +113,13 @@ export const useCartStore = defineStore("CartStore", {
             }
             try {
                 const promo = await getPromo(code.trim());
+                // Vérification usage unique
+                if (promo.singleUse && homeStore.usedPromoCodes.includes(promo.code)) {
+                    return {
+                        success: false,
+                        message: "Ce code promotionnel a déjà été utilisé et n'est valable qu'une seule fois."
+                    };
+                }
                 if (!promo || !promo.code) {
                     return {
                         success: false, 

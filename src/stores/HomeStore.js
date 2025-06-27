@@ -23,7 +23,8 @@ function getExpiryDate(ttlDay = 1) {
 
 export const useHomeStore = defineStore("HomeStore", {
     state: () => ({
-        homeElements: useStorage('homeElements', getDefaultHomeElements())
+        homeElements: useStorage('homeElements', getDefaultHomeElements()),
+        usedPromoCodes: useStorage('usedPromoCodes', [])
     }),
 
     actions:{
