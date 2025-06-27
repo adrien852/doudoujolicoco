@@ -5,6 +5,10 @@
                 Commande <b>#{{ order.reference }}</b>
             </div>
             <div class="card-body px-sm-2 px-0 d-flex flex-wrap">
+                <div v-if="order.promo" class="w-100">
+                    <p class="m-0"> Code promo utilisé : <span class="font-weight-bold">{{ order.promo.code }}</span></p>
+                    <hr/>
+                </div>
                 <div class="col-12 mb-2" v-for="product in order.products">
                     <ShopItem :item="product" :longDisplay="true" />
                 </div>

@@ -62,7 +62,14 @@
                     :transform="(val) => val.toUpperCase()"
                     help="Affichée sur la page d'accueil"
                 />
-                <div class="col-md-5 col-12"></div>
+                <FormKit
+                    type="checkbox"
+                    :value="false"
+                    label="Usage unique ?"
+                    name="singleUse"
+                    validation="required"
+                    outer-class="col-md-5 col-12 align-self-center"
+                />
             </div>
             <div class="d-flex justify-content-center mt-3">
                 <FormKit type="submit" :disabled="submitDisabled">Enregistrer</FormKit>

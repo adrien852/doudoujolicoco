@@ -58,13 +58,15 @@
 </template>
 
 <script setup>
-    import { onMounted } from 'vue';
+    import { onMounted, inject } from 'vue';
     import {getSessionStatus, savePaymentId} from '@/services/PaymentService.js'
     import {useCartStore} from '@/stores/CartStore.js'
-    import Loading from 'vue3-loading-overlay';
+    import { useHomeStore } from '@/stores/HomeStore.js'
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 
     const cartStore = useCartStore();
+    const homeStore = useHomeStore();
+    const swal = inject('$swal');
     import router from '@/router'
 
     onMounted(async() => {
@@ -91,21 +93,32 @@
                     amount: session.data.amount_total/100,
                     customerId: session.customerId,
                     items: cartStore.cartItems,
+                    promo: cartStore.promo.code,
                     createdAt: date
                 }
-                savePaymentId(payment).then(() => {
-                    cartStore.clearCart();
+                savePaymentId(payment).then((response) => {
+                    if (response.order && response.order.promo && response.order.promo.code) {
+                        if (!homeStore.usedPromoCodes.includes(response.order.promo.code)) {
+                            homeStore.usedPromoCodes.push(response.order.promo.code);
+                        }
+                    }
                 })
-                .catch(() => {
+                .catch((error) => {
+                    if(error.response && error.response.status === 500){
+                        swal.fire({
+                            icon: 'warning',
+                            title: 'Oups !',
+                            html: '<div style="text-align:left">Votre paiement a été traité, mais une erreur est survenue lors de l\'enregistrement de votre commande. Envoyez nous les informations suivantes à doudoujolicoco@gmail.com<br/><br/>Client ID : '+cartStore.customer.id+'<br/>Transaction ID : '+session.data.payment_intent,
+                            confirmButtonText: "Retour à l'accueil",
+                            showConfirmButton: true,
+                            confirmButtonColor: "#F39E6A",
+                        }).then(() => {
+                            router.push({ path: '/' })
+                        })
+                    }
+                   
+                }).finally(() => {
                     cartStore.clearCart();
-                    swal.fire({
-                        icon: 'warning',
-                        title: 'Oups !',
-                        html: '<div style="text-align:left">Votre paiement a été traité, mais une erreur est survenue lors de l\'enregistrement de votre paiement. Envoyez nous les informations suivantes à contact@doudoujoli.fr<br/><br/>Client ID : '+cartStore.customer.id+'<br/>Transaction ID : '+response.transaction.id,
-                        confirmButtonText: "Retour à l'accueil",
-                        showConfirmButton: true,
-                        confirmButtonColor: "#F39E6A",
-                    })
                 })
             }
         })

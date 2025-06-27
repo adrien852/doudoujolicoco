@@ -64,7 +64,14 @@
                     :transform="(val) => val.toUpperCase()"
                     help="Affichée sur la page d'accueil"
                 />
-                <div class="col-md-5 col-12"></div>
+                <FormKit
+                    type="checkbox"
+                    :value="false"
+                    label="Usage unique ?"
+                    name="singleUse"
+                    validation="required"
+                    outer-class="col-md-5 col-12 align-self-center"
+                />
             </div>
             <div class="d-flex justify-content-center mt-3">
                 <FormKit type="submit" :disabled="submitDisabled">Enregistrer</FormKit>
@@ -75,7 +82,7 @@
 
 <script setup>
     import { useRoute } from 'vue-router';
-    import { getAdminPromo, saveAdminPromo, deleteAdminPromo } from '@/services/PromoService.js'
+    import { getAdminPromo, updateAdminPromo, deleteAdminPromo } from '@/services/PromoService.js'
     import Loading from 'vue3-loading-overlay';
     import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
     import { ref, onMounted, inject } from 'vue';
@@ -141,7 +148,7 @@
 
     function handleSubmit() {
         isLoading.value = true;
-        saveAdminPromo(item).then((response) => {
+        updateAdminPromo(item).then((response) => {
             if(response.code === 'ER_DUP_ENTRY'){
                 swal.fire({
                     icon: 'error',
