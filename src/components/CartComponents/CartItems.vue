@@ -5,7 +5,11 @@
             <div class="d-flex align-items-center mt-2 qtyButtons">
                 <button class="btn btn-light px-2 py-1 cartTriggerToggler" @click="cartStore.decrementQty(item)">-</button>
                 <span class="mx-2">{{ item.qty }}</span>
-                <button class="btn btn-light px-2 py-1 cartTriggerToggler" @click="cartStore.incrementQty(item)">+</button>
+                <button
+                  class="btn btn-light px-2 py-1 cartTriggerToggler"
+                  @click="cartStore.incrementQty(item)"
+                  :disabled="item.qty >= item.stock"
+                >+</button>
             </div>
         </div>
     </div>
