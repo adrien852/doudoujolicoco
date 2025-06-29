@@ -158,7 +158,7 @@ function openSideCart(){
     }
     .cartImg{
         object-position: 50% 40%;
-        max-width: 210px;
+        max-width: 135px;
         width: 100%;
     }
     img{

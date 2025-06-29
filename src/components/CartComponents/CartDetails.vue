@@ -36,10 +36,10 @@
                 {{ showApplyMessage.message }}
             </div>
             <div v-if="checkoutButton">
-                <RouterLink class="mt-4" to="/boutique"><button class="btn btn-primary px-2"><h4 class="text-uppercase">Continuer mes achats</h4></button></RouterLink> 
-                <RouterLink class="mt-3" to="/paiement"><button class="btn btn-primary checkoutButton px-2"><h4 class="text-uppercase">Passer la commande</h4></button></RouterLink> 
-                <div class="d-flex mt-3">
-                    <img class="mx-auto" src="@/assets/images/paiement_icons.png" alt="Méthodes de paiement">
+                <RouterLink class="mt-4" to="/paiement"><button class="btn btn-primary checkoutButton px-2"><h4 class="text-uppercase">Passer la commande</h4></button></RouterLink>
+                <div class="d-flex flex-column">
+                    <RouterLink class="mt-3 w-75 mx-auto" to="/boutique"><button class="btn btn-primary px-2 "><h4 class="text-uppercase">Continuer mes achats</h4></button></RouterLink> 
+                    <img class="mt-3 mx-auto" src="@/assets/images/paiement_icons.png" alt="Méthodes de paiement">
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
         width: 100%;
     }
     h4{
-        font-size: 10pt;
+        font-size: 9pt;
         margin: 0;
     }
     .btn, a{
@@ -142,6 +142,9 @@
     .checkoutButton{
         background-color: #f4aa46;
         border-color: #f4aa46;
+    }
+    .checkoutButton h4{
+        font-size: 12pt;
     }
     .checkoutButton:hover, .checkoutButton.focus, .checkoutButton:focus, .checkoutButton:not(:disabled):not(.disabled).active, .checkoutButton:not(:disabled):not(.disabled):active, .show > .checkoutButton.dropdown-toggle {
         background-color: #f39a25;

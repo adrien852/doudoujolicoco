@@ -1,8 +1,12 @@
 <template>
     <div id="cartItems" class="row d-flex justify-content-left col mx-auto">
-        <div class="position-relative mb-3 w-100" v-for="(item, index) in items">
-            <div @click="cartStore.deleteItem(index)" class="bin"><img class="w-100 cartTriggerToggler" src="@/assets/images/bin.png"/></div>
+        <div class="position-relative mb-4 w-100" v-for="(item, index) in items">
             <ShopItem :item="item" :longDisplay="true"/>
+            <div class="d-flex align-items-center mt-2 qtyButtons">
+                <button class="btn btn-light px-2 py-1 cartTriggerToggler" @click="cartStore.decrementQty(item)">-</button>
+                <span class="mx-2">{{ item.qty }}</span>
+                <button class="btn btn-light px-2 py-1 cartTriggerToggler" @click="cartStore.incrementQty(item)">+</button>
+            </div>
         </div>
     </div>
 </template>
@@ -42,6 +46,18 @@ p{
         -moz-transition: transform 0.1s ease-out;
         -o-transition: transform 0.1s ease-out;
         transition: transform 0.1s ease-out;
+}
+.qtyButtons button {
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 1.2em;
+    min-width: 32px;
+}
+.qtyButtons{
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+    z-index: 10;
 }
 .totalContainer{
     background-color: #d2d2d214;

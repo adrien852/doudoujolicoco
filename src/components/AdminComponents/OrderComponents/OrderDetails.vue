@@ -9,8 +9,8 @@
                     <p class="m-0"> Code promo utilisé : <span class="font-weight-bold">{{ order.promo.code }}</span></p>
                     <hr/>
                 </div>
-                <div class="col-12 mb-2" v-for="product in order.products">
-                    <ShopItem :item="product" :longDisplay="true" />
+                <div class="col-12 mb-2" v-for="item in order.items">
+                    <ShopItem :item="item.product" :longDisplay="true" /><span class="quantity">x {{ item.quantity }}</span>
                 </div>
             </div>
         </div>
@@ -28,5 +28,11 @@ const props = defineProps({
 <style scoped>
 .orderDetails img{
     object-fit: contain;
+}
+.quantity {
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
 }
 </style>

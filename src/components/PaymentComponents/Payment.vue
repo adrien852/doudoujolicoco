@@ -11,7 +11,9 @@
   import {useCartStore} from '@/stores/CartStore.js'
   import Loading from 'vue3-loading-overlay';
   import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
-import { loadStripe } from '@stripe/stripe-js';
+  import { loadStripe } from '@stripe/stripe-js';
+  import swal from 'sweetalert2';
+  import router from '@/router'
 
   const cartStore = useCartStore();
   let isLoading = ref(true);
@@ -27,7 +29,13 @@ import { loadStripe } from '@stripe/stripe-js';
         response.mount('#checkout')
         isLoading.value = false;
       });
-    })
+    }).catch(error => {
+      swal.fire({ icon: 'error', title: 'Erreur', text: error.response.data.error }).then(() => {
+        isLoading.value = false;
+        cartStore.clearCart();
+        router.push({ path: '/' })
+      });
+    });
 
   })
 

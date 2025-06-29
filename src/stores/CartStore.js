@@ -3,6 +3,7 @@ import { useStorage } from '@vueuse/core'
 import { getItem } from "@/services/ShopService"
 import { getPromo } from "@/services/PromoService"
 import { useHomeStore } from '@/stores/HomeStore.js'
+import swal from 'sweetalert2';
 
 export const useCartStore = defineStore("CartStore", {
     state: () => ({
@@ -18,24 +19,20 @@ export const useCartStore = defineStore("CartStore", {
     }),
 
     getters:{
-        count: (state) => state.cartItems.length,
+        count(state) {
+            return state.cartItems.reduce((sum, item) => sum + (item.qty || 1), 0);
+        },
+
         isEmpty: (state) => state.count == 0,
 
         subTotal(state) {
-            let totalPrice = 0;
-            state.cartItems.forEach((item) => {
-                totalPrice += parseFloat(item.price);
-            });
-            return totalPrice;
+            return state.cartItems.reduce((sum, item) => sum + parseFloat(item.price) * (item.qty || 1), 0);
         },
 
         promoValue(state) {
             // Valeur négative de la promo appliquée
             if (state.promo) {
-                let totalPrice = 0;
-                state.cartItems.forEach((item) => {
-                    totalPrice += parseFloat(item.price);
-                });
+                let totalPrice = state.subTotal;
                 if (totalPrice >= state.promo.minimumOrderTotal) {
                     if (state.promo.type === "Pourcentage") {
                         return -totalPrice * (state.promo.amount / 100);
@@ -53,8 +50,21 @@ export const useCartStore = defineStore("CartStore", {
     },
 
     actions:{
-        addItem(item){
-            this.cartItems.push({ ...item });
+        addItem(item) {
+            // Vérifie le stock avant d'ajouter
+            if (!item.stock || item.stock <= 0) {
+                return;
+            }
+            const existing = this.cartItems.find(i => i.id === item.id || i.normalized === item.normalized);
+            if (existing) {
+                if ((existing.qty || 1) < item.stock) {
+                    existing.qty = (existing.qty || 1) + 1;
+                } else {
+                    swal.fire({ icon: 'warning', title: 'Stock insuffisant', text: '' });
+                }
+            } else {
+                this.cartItems.push({ ...item, qty: 1 });
+            }
         },
         clearCart(){
             this.cartItems = [];
@@ -63,6 +73,21 @@ export const useCartStore = defineStore("CartStore", {
         },
         deleteItem(itemToRemoveIndex){
             this.cartItems.splice(itemToRemoveIndex, 1);
+        },
+        incrementQty(item) {
+            const found = this.cartItems.find(i => i.id === item.id || i.normalized === item.normalized);
+            if (found) {
+                if ((found.qty || 1) < found.stock) {
+                    found.qty = (found.qty || 1) + 1;
+                } else {
+                    swal.fire({ icon: 'warning', title: 'Stock insuffisant', text: 'Stock maximum atteint pour cet article.' });
+                }
+            }
+        },
+        decrementQty(item) {
+            const found = this.cartItems.find(i => i.id === item.id || i.normalized === item.normalized);
+            if (found && found.qty > 1) found.qty -= 1;
+            else if (found && found.qty === 1) this.deleteItem(this.cartItems.indexOf(found));
         },
 
         setCustomer(customer){
@@ -126,12 +151,7 @@ export const useCartStore = defineStore("CartStore", {
                         message: "Code promo invalide."
                     };
                 }
-                // Vérifie le minimum de commande
-                let total = 0;
-                this.cartItems.forEach((item) => {
-                    total += parseFloat(item.price);
-                });
-                if (total < promo.minimumOrderTotal) {
+                if (this.subTotal < promo.minimumOrderTotal) {
                     return {
                         success: false, 
                         message: `Commande minimum de ${promo.minimumOrderTotal}€ requise.`
