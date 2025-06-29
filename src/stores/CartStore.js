@@ -80,7 +80,7 @@ export const useCartStore = defineStore("CartStore", {
                 if ((found.qty || 1) < found.stock) {
                     found.qty = (found.qty || 1) + 1;
                 } else {
-                    swal.fire({ icon: 'warning', title: 'Stock insuffisant', text: 'Stock maximum atteint pour cet article.' });
+                    swal.fire({ icon: 'warning', title: 'Stock insuffisant', text: 'Quantité maximum atteinte pour cet article.' });
                 }
             }
         },
