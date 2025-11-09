@@ -40,7 +40,11 @@
     
     const route = useRoute();
     let path = null;
-    let item = {};
+    const item = ref({
+        promo: {
+            id: null
+        }
+    });
 
     onBeforeMount(() => {
         path = [
@@ -73,7 +77,7 @@
                 getAdminPromos()
             ]);
 
-            item = homeResponse;
+            item.value = homeResponse;
             promoCodes.value = [{ value: null, label: '' }].concat(
                 promosResponse.map(promo => ({ value: String(promo.id), label: promo.code }))
             );
@@ -97,7 +101,7 @@
 
     function handleSubmit() {
         isLoading.value = true;
-        updateHomeElements(item).then((response) => {
+        updateHomeElements(item.value).then((response) => {
             swal.fire({
                 icon: 'success',
                 title: 'Sauvegarde réussie',
