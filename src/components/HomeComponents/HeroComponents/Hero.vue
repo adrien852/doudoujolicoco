@@ -68,7 +68,7 @@ img{
 }
 @media (max-width:991px) {
   .heroCarousel{
-    height:210px;
+    height:235px;
   }
   h1{
     margin-top: 25px;

@@ -23,7 +23,7 @@
                   <span v-if="promo?.minimumOrderTotal > 0">*</span>
                 <br/>sur toute la boutique</p>
                 <button class="btn btn-primary mt-2 promoTag" @click.stop.prevent="applyPromo">{{ promo?.code }}</button>
-                <p v-if="promo?.minimumOrderTotal > 0" class="minimumOrderText d-none d-lg-block mt-3">*Pour un total de commande minimum de {{ promo?.minimumOrderTotal }}€</p>
+                <p v-if="promo?.minimumOrderTotal > 0" class="minimumOrderText mt-1 mt-lg-3">*Pour un total de commande minimum de {{ promo?.minimumOrderTotal }}€</p>
               </div>
             </div>
         </div>
