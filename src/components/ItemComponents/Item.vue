@@ -8,7 +8,7 @@
                     <h3 class="discountedPrice mb-2 mr-2">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</h3>
                     <h3 class="originalPrice">{{ parseFloat(item.originalPrice).toFixed(2).replace('.', ',').replace(',00', '') }}€</h3>
                 </div>
-                <h3 v-if="item.originalPrice === item.price || parseFloat(item.originalPrice) === 0" class="itemPrice ml-auto mb-1">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</h3>
+                <h3 v-if="item.originalPrice === item.price || parseFloat(item.originalPrice) === 0" class="itemPrice ml-auto mb-2">{{ parseFloat(item.price).toFixed(2).replace('.', ',').replace(',00', '') }}€</h3>
             </div>
             <p>
                 {{ item.description }}
