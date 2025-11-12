@@ -5,7 +5,7 @@
     :modules="modules" 
     effect="fade"
     :loop="true"
-    :autoplay="{ delay: 7000, disableOnInteraction: true }"
+    :autoplay="{ delay: 14000, disableOnInteraction: true }"
   >
     <swiper-slide class="swipeImg" v-for="(slide, index) in carouselImages" :key="index">
       <RouterLink :to="slide.redirect" class="cartImgContainer" style="position:relative;">
